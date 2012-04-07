@@ -156,7 +156,7 @@ Each section has the form:
 .nf
 .BI "Section  \*q" SectionName \*q
 .RI "    " SectionEntry
-    ...
+    \&...
 .B EndSection
 .fi
 .RE
@@ -1548,7 +1548,7 @@ section, and they may also be included here.
 
 .SH "VIDEOADAPTOR SECTION"
 Nobody wants to say how this works.
-Maybe nobody knows ...
+Maybe nobody knows \&...
 
 .SH "MONITOR SECTION"
 The config file may have multiple
