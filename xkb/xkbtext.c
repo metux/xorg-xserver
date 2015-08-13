@@ -622,7 +622,7 @@ XkbGeomFPText(int val, unsigned format)
 {
     int whole, frac;
     char *buf;
-    const int bufsize = 12;
+    const int bufsize = 13;
 
     buf = tbGetBuffer(bufsize);
     if (format == XkbCFile) {
@@ -630,9 +630,17 @@ XkbGeomFPText(int val, unsigned format)
     }
     else {
         whole = val / XkbGeomPtsPerMM;
-        frac = val % XkbGeomPtsPerMM;
-        if (frac != 0)
-            snprintf(buf, bufsize, "%d.%d", whole, frac);
+        frac = abs(val % XkbGeomPtsPerMM);
+        if (frac != 0) {
+            if (val < 0)
+            {
+                int wholeabs;
+                wholeabs = abs(whole);
+                snprintf(buf, bufsize, "-%d.%d", wholeabs, frac);
+            }
+            else
+                snprintf(buf, bufsize, "%d.%d", whole, frac);
+        }
         else
             snprintf(buf, bufsize, "%d", whole);
     }
