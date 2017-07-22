@@ -31,7 +31,7 @@
 Xserver \- X Window System display server
 .SH SYNOPSIS
 .B X
-[option ...]
+[option \&...\&]
 .SH DESCRIPTION
 .I X
 is the generic name for the X Window System display server.  It is
@@ -54,7 +54,7 @@ The X server may also be started directly by the user, though this
 method is usually reserved for testing and is not recommended for
 normal operation.  On some platforms, the user must have special
 permission to start the X server, often because access to certain
-devices (e.g. \fI/dev/mouse\fP) is restricted.  Where applicable, the
+devices (e.g.\& \fI/dev/mouse\fP) is restricted.  Where applicable, the
 X server notifies systemd when it is ready to process requests.
 .PP
 When the X server starts up, it typically takes over the display.  If
@@ -78,7 +78,7 @@ NAMES section of the \fIX\fP(@miscmansuffix@) manual page to learn how to
 specify which display number clients should try to use.
 .TP 8
 .B \-a \fInumber\fP
-sets pointer acceleration (i.e. the ratio of how much is reported to how much
+sets pointer acceleration (i.e.\& the ratio of how much is reported to how much
 the user actually moved the pointer).
 .TP 8
 .B \-ac
@@ -102,14 +102,15 @@ to authenticate access.  See also the \fIxdm\fP(1) and
 \fIXsecurity\fP(@miscmansuffix@) manual pages.
 .TP 8
 .BI \-background\ none
-Asks the driver not to clear the background on startup, if the driver supports that.
-May be useful for smooth transition with eg. fbdev driver.
+Asks the driver not to clear the background on startup,
+if the driver supports that.
+May be useful for smooth transition with e.g.\& fbdev driver.
 For security reasons this is not the default as the screen contents might
 show a previous user session.
 .TP 8
 .B \-br
 sets the default root window to solid black instead of the standard root weave
-pattern.   This is the default unless -retro or -wr is specified.
+pattern.  This is the default unless \-retro or \-wr is specified.
 .TP 8
 .B \-bs
 disables backing store support on all screens.
@@ -161,11 +162,11 @@ disables DPMS (display power management services).  The default state
 is platform and configuration specific.
 .TP 8
 .BI "\-extension " extensionName
-disables named extension.   If an unknown extension name is specified,
+disables named extension.  If an unknown extension name is specified,
 a list of accepted extension names is printed.
 .TP 8
 .BI "+extension " extensionName
-enables named extension.   If an unknown extension name is specified,
+enables named extension.  If an unknown extension name is specified,
 a list of accepted extension names is printed.
 .TP 8
 .B \-f \fIvolume\fP
@@ -254,8 +255,8 @@ turns on auto-repeat.
 .B \-retro
 starts the server with the classic stipple and cursor visible.  The default
 is to start with a black root window, and to suppress display of the cursor
-until the first time an application calls XDefineCursor(). For kdrive
-servers, this implies -zap.
+until the first time an application calls XDefineCursor().
+For kdrive servers, this implies \-zap.
 .TP 8
 .B \-s \fIminutes\fP
 sets screen-saver timeout time in minutes.
@@ -264,13 +265,13 @@ sets screen-saver timeout time in minutes.
 disables save under support on all screens.
 .TP 8
 .B \-seat \fIseat\fP
-seat to run on. Takes a string identifying a seat in a platform
-specific syntax. On platforms which support this feature this may be
+seat to run on.  Takes a string identifying a seat in a platform
+specific syntax.  On platforms which support this feature this may be
 used to limit the server to expose only a specific subset of devices
 connected to the system.
 .TP 8
 .B \-t \fInumber\fP
-sets pointer acceleration threshold in pixels (i.e. after how many pixels
+sets pointer acceleration threshold in pixels (i.e.\& after how many pixels
 pointer acceleration should take effect).
 .TP 8
 .B \-terminate \fI[delay]\fP
@@ -410,7 +411,7 @@ data (not that it is very private, being on the command line!).
 Yet another XDMCP specific value, this one allows the display manager to
 identify each display so that it can locate the shared key.
 .SH XKEYBOARD OPTIONS
-X servers that support the XKEYBOARD (a.k.a. \*qXKB\*q) extension accept the
+X servers that support the XKEYBOARD (a.k.a.\& \*qXKB\*q) extension accept the
 following options.  All layout files specified on the command line must be
 located in the XKB base directory or a subdirectory, and specified as the
 relative path from the XKB base directory.  The default XKB base directory is
@@ -465,7 +466,7 @@ If no other authorization mechanism is being used,
 this list initially consists of the host on which the server is running as
 well as any machines listed in the file \fI/etc/X\fBn\fI.hosts\fR, where
 \fBn\fP is the display number of the server.  Each line of the file should
-contain either an Internet hostname (e.g. expo.lcs.mit.edu)
+contain either an Internet hostname (e.g.\& expo.lcs.mit.edu)
 or a complete name in the format
 \fIfamily\fP:\fIname\fP as described in the \fIxhost\fP(1) manual page.
 There should be no leading or trailing spaces on any lines.  For example:
@@ -534,8 +535,8 @@ The default font path is
 @default_font_path@ .
 .LP
 A special kind of directory can be specified using the \fBcatalogue\fP:
-prefix. Directories specified this way can contain symlinks pointing to the
-real font directories. See the FONTPATH.D section for details.
+prefix.  Directories specified this way can contain symlinks pointing to the
+real font directories.  See the FONTPATH.D section for details.
 .LP
 The font path can be set with the \fB\-fp\fP option or by \fIxset\fP(1)
 after the server has started.
@@ -544,9 +545,9 @@ You can specify a special kind of font path in the form \fBcatalogue:<dir>\fR.
 The directory specified after the catalogue: prefix will be scanned for symlinks
 and each symlink destination will be added as a local fontfile FPE.
 .PP
-The symlink can be suffixed by attributes such as '\fBunscaled\fR', which
-will be passed through to the underlying fontfile FPE. The only exception is
-the newly introduced '\fBpri\fR' attribute, which will be used for ordering
+The symlink can be suffixed by attributes such as \&'\fBunscaled\fR', which
+will be passed through to the underlying fontfile FPE.  The only exception is
+the newly introduced \&'\fBpri\fR' attribute, which will be used for ordering
 the font paths specified by the symlinks.
 
 An example configuration:
@@ -561,7 +562,7 @@ An example configuration:
 
 This will add /usr/share/X11/fonts/misc as the first FPE with the attribute
 \N'39'unscaled', second FPE will be /usr/share/X11/fonts/75dpi, also with
-the attribute 'unscaled' etc. This is functionally equivalent to setting
+the attribute \&'unscaled' etc.  This is functionally equivalent to setting
 the following font path:
 
 .nf
