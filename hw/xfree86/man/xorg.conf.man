@@ -14,8 +14,11 @@ than one way, the highest precedence mechanism is used. The list of
 mechanisms is ordered from highest precedence to lowest. Note that not
 all parameters can be supplied via all methods. The available command
 line options and environment variables (and some defaults) are
-described in the Xserver(@appmansuffix@) and
-Xorg(@appmansuffix@) manual pages. Most configuration file
+described in the
+.BR Xserver (@appmansuffix@)
+and
+.BR Xorg (@appmansuffix@)
+manual pages. Most configuration file
 parameters, with their defaults, are described below. Driver and module
 specific configuration parameters are described in the relevant driver
 or module manual page.
@@ -50,11 +53,11 @@ server is started as a normal user:
 .PP
 where
 .I <cmdline>
-is a relative path (with no \(lq..\(rq components) specified with the
+is a relative path (with no \(lq..\&\(rq components) specified with the
 .B \-config
 command line option,
 .B $XORGCONFIG
-is the relative path (with no \(lq..\(rq components) specified by that
+is the relative path (with no \(lq..\&\(rq components) specified by that
 environment variable, and
 .I <hostname>
 is the machine's hostname as reported by
@@ -109,7 +112,7 @@ directories when the server is started as a normal user:
 .PP
 where
 .I <cmdline>
-is a relative path (with no \(lq..\(rq components) specified with the
+is a relative path (with no \(lq..\&\(rq components) specified with the
 .B \-configdir
 command line option.
 .PP
@@ -379,7 +382,6 @@ is a number used to order the fontfile FPEs. Examples:
 .I gscript:pri=60 -> /usr/share/fonts/default/ghostscript
 .I misc:unscaled:pri=10 \-> /usr/share/X11/fonts/misc
 .fi
-.PP
 .RE
 .RE
 .RE
@@ -551,9 +553,14 @@ extension) to connect from another host.
 Default: off.
 .TP 7
 .BI "Option \*qAllowMouseOpenFail\*q  \*q" boolean \*q
-This tells the mousedrv(@drivermansuffix@) and vmmouse(@drivermansuffix@)
+This tells the
+.BR mousedrv (@drivermansuffix@)
+and
+.BR vmmouse (@drivermansuffix@)
 drivers to not report failure if the mouse device can't be opened/initialised.
-It has no effect on the evdev(@drivermansuffix@) or other drivers.
+It has no effect on the
+.BR evdev (@drivermansuffix@)
+or other drivers.
 Default: false.
 .TP 7
 .BI "Option \*qBlankTime\*q  \*q" time \*q
@@ -565,7 +572,7 @@ is in minutes.
 This is equivalent to the Xorg server's
 .B \-s
 flag, and the value can be changed at run\-time with
-.BR xset(@appmansuffix@).
+.BR xset (@appmansuffix@).
 Default: 10 minutes.
 .TP 7
 .BI "Option \*qStandbyTime\*q  \*q" time \*q
@@ -574,7 +581,7 @@ sets the inactivity timeout for the
 phase of DPMS mode.
 .I time
 is in minutes, and the value can be changed at run\-time with
-.BR xset(@appmansuffix@).
+.BR xset (@appmansuffix@).
 Default: 10 minutes.
 This is only suitable for VESA DPMS compatible monitors, and may not be
 supported by all video drivers.
@@ -588,7 +595,7 @@ sets the inactivity timeout for the
 phase of DPMS mode.
 .I time
 is in minutes, and the value can be changed at run\-time with
-.BR xset(@appmansuffix@).
+.BR xset (@appmansuffix@).
 Default: 10 minutes.
 This is only suitable for VESA DPMS compatible monitors, and may not be
 supported by all video drivers.
@@ -602,7 +609,7 @@ sets the inactivity timeout for the
 phase of DPMS mode.
 .I time
 is in minutes, and the value can be changed at run\-time with
-.BR xset(@appmansuffix@).
+.BR xset (@appmansuffix@).
 Default: 10 minutes.
 This is only suitable for VESA DPMS compatible monitors, and may not be
 supported by all video drivers.
@@ -635,9 +642,9 @@ The default value is
 .BR "typical" ,
 which will setup up a typical subset of
 the GLXFBConfigs provided by the driver as GLX visuals.  Other options are
-.BR "minimal" ,
+.BR minimal ,
 which will set up the minimal set allowed by the GLX specification and
-.BR "all"
+.B all
 which will setup GLX visuals for all GLXFBConfigs.
 .TP 7
 .BI "Option \*qUseDefaultFontPath\*q \*q" boolean \*q
@@ -730,7 +737,7 @@ instruction, the standard name is case-sensitive, and does not include the
 "lib" prefix, or the ".a", ".o", or ".so" suffixes.
 .PP
 The second form of entry is a
-.BR SubSection,
+.BR SubSection ,
 with the subsection name being the module name, and the contents of the
 .B SubSection
 being
@@ -785,7 +792,7 @@ it.
 Entries in this section are listed as Option statements with the name of
 the extension as the first argument, and a boolean value as the second.
 The extension name is case\-sensitive, and matches the form shown in the output
-of \*qXorg -extension ?\*q.
+of \*qXorg \-extension ?\*q.
 .PP
 .RS 7
 Example: the MIT-SHM extension can be disabled with the following entry:
@@ -794,7 +801,7 @@ Example: the MIT-SHM extension can be disabled with the following entry:
 .nf
 .B "Section \*qExtensions\*q"
 .B "    Option \*qMIT-SHM\*q \*qDisable\*q"
-.B "EndSection"
+.B EndSection
 .fi
 .RE
 .RE
@@ -806,7 +813,7 @@ Recent X servers employ HAL or udev backends for input device enumeration
 and input hotplugging. It is usually not
 necessary to provide
 .B InputDevice
-sections in the xorg.conf if hotplugging is in use (i.e. AutoAddDevices is
+sections in the xorg.conf if hotplugging is in use (i.e., AutoAddDevices is
 enabled). If hotplugging is enabled,
 .B InputDevice
 sections using the
@@ -843,7 +850,7 @@ sections have the following format:
 .BI "    Driver     \*q" inputdriver \*q
 .I  "    options"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -885,7 +892,6 @@ and
 .BR mousedrv (@drivermansuffix@)
 on other platforms.
 .PP
-.PP
 .B InputDevice
 sections recognise some driver\-independent
 .BR Options ,
@@ -898,11 +904,11 @@ Always add the device to the ServerLayout section used by this instance of
 the server. This affects implied layouts as well as explicit layouts
 specified in the configuration and/or on the command line.
 .TP 7
-.BI "Option \*qCorePointer\*q"
+.B "Option \*qCorePointer\*q"
 Deprecated, see
 .B Floating
 .TP 7
-.BI "Option \*qCoreKeyboard\*q"
+.B "Option \*qCoreKeyboard\*q"
 Deprecated, see
 .B Floating
 .TP 7
@@ -928,7 +934,7 @@ and
 .B SendCoreEvents,
 are the inverse of option
 .B Floating
-(i.e.
+(i.e.,
 .B SendCoreEvents \*qon\*q
 is equivalent to
 .B Floating \*qoff\*q
@@ -950,8 +956,10 @@ respectively.  The identity matrix is "1 0 0 0 1 0 0 0 1".
 .SS POINTER ACCELERATION
 For pointing devices, the following options control how the pointer
 is accelerated or decelerated with respect to physical device motion. Most of
-these can be adjusted at runtime, see the xinput(1) man page for details. Only
-the most important acceleration options are discussed here.
+these can be adjusted at runtime, see the
+.BR xinput (1)
+man page for details.
+Only the most important acceleration options are discussed here.
 .TP 7
 .BI "Option \*qAccelerationProfile\*q  \*q" integer \*q
 Select the profile. In layman's terms, the profile constitutes the "feeling" of
@@ -962,7 +970,7 @@ is constructed. This is mainly a matter of personal preference.
 .RS 6
 .nf
 .B  " 0      classic (mostly compatible)"
-.B  "-1      none (only constant deceleration is applied)"
+.B  "\-1      none (only constant deceleration is applied)"
 .B  " 1      device-dependent"
 .B  " 2      polynomial (polynomial function)"
 .B  " 3      smooth linear (soft knee, then linear)"
@@ -1004,7 +1012,7 @@ profiles to suit the users needs. The
 .B simple
 and
 .B limited
-profiles use it directly (i.e. they accelerate by the factor), for other
+profiles use it directly (i.e., they accelerate by the factor), for other
 profiles it should hold that a higher acceleration factor leads to a faster
 pointer. Typically, 1 is unaccelerated and values up to 5 are sensible.
 .TP 7
@@ -1035,7 +1043,7 @@ sections have the following format:
 .I  "    ..."
 .I  "    options"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -1079,13 +1087,13 @@ attribute. For example:
 .nf
 .B  "Section \*qInputClass\*q"
 .B  "    Identifier   \*qMy Class\*q"
-.B  "    # product string must contain example and
-.B  "    # either gizmo or gadget
-.B  "    MatchProduct \*qexample\*q
-.B  "    MatchProduct \*qgizmo|gadget\*q
-.B  "    NoMatchDriver \*qdrivername\*q
-.I  "    ..."
-.B  "EndSection"
+.B  "    # product string must contain example and"
+.B  "    # either gizmo or gadget"
+.B  "    MatchProduct \*qexample\*q"
+.B  "    MatchProduct \*qgizmo\^|\^gadget\*q"
+.B  "    NoMatchDriver \*qdrivername\*q"
+.I  "    \&.\|.\|.\&"
+.B  EndSection
 .fi
 .RE
 .TP 7
@@ -1224,7 +1232,7 @@ sections have the following format:
 .BI "    Identifier  \*q" name \*q
 .I  "    entries"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -1268,10 +1276,10 @@ For example:
 .nf
 .B  "Section \*qOutputClass\*q"
 .B  "    Identifier   \*qMy Class\*q"
-.B  "    # kernel driver must be either foo or bar
-.B  "    MatchDriver \*qfoo|bar\*q
-.I  "    ..."
-.B  "EndSection"
+.B  "    # kernel driver must be either foo or bar"
+.B  "    MatchDriver \*qfoo\^|\^bar\*q"
+.I  "    \&.\|.\|.\&"
+.B  EndSection
 .fi
 .RE
 .TP 7
@@ -1344,7 +1352,7 @@ sections have the following format:
 .BI "    Driver     \*q" driver \*q
 .I  "    entries"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -1417,7 +1425,7 @@ section is required for each head, and this
 parameter determines which head each of the
 .B Device
 sections applies to.
-The legal values of
+The valid values of
 .I number
 range from 0 to one less than the total number of heads per entity.
 Most drivers require that the primary screen (0) be present.
@@ -1477,7 +1485,7 @@ For details, see the appropriate driver manual page.
 .BI "VideoRam  " "mem"
 This optional entry specifies the amount of video ram that is installed
 on the graphics board.
-This is measured in kBytes.
+This is measured in kilobytes.
 In most cases this is not required because the Xorg server probes
 the graphics board to determine this quantity.
 The driver-specific documentation should indicate when it might be needed.
@@ -1508,7 +1516,7 @@ when the driver-specific documentation recommends it.
 Only apply this
 .B Device
 section if X server was started with
-.B -seat
+.B \-seat
 .I seat\-id
 option.
 .TP 7
@@ -1566,7 +1574,7 @@ sections have the following format:
 .BI "    Identifier \*q" name \*q
 .I  "    entries"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -1643,7 +1651,7 @@ is added to the end of the line.
 The data given here is used by the Xorg server to determine if video
 modes are within the specifications of the monitor.
 This information should be available in the monitor's handbook.
-If this entry is omitted, a default range of 28\-33kHz is used.
+If this entry is omitted, a default range of 28\(en33\ kHz is used.
 .TP 7
 .BI "VertRefresh  " "vertrefresh\-range"
 gives the range(s) of vertical refresh frequencies supported by the
@@ -1662,7 +1670,7 @@ is added to the end of the line.
 The data given here is used by the Xorg server to determine if video
 modes are within the specifications of the monitor.
 This information should be available in the monitor's handbook.
-If this entry is omitted, a default range of 43\-72Hz is used.
+If this entry is omitted, a default range of 43\(en72\ Hz is used.
 .TP 7
 .BI "DisplaySize  " "width height"
 This optional entry gives the width and height, in millimetres, of the
@@ -1683,7 +1691,7 @@ Not all drivers are capable of using this information.
 Include the set of modes listed in the
 .B Modes
 section called
-.IR modesection\-id.
+.IR modesection\-id .
 This makes all of the modes defined in that section available for use by
 this monitor.
 .TP 7
@@ -1938,7 +1946,7 @@ sections have the following format:
 .BI "    Identifier \*q" name \*q
 .I  "    entries"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -1987,12 +1995,12 @@ sections have the following format:
 .BI "    Monitor    \*q" monid \*q
 .I  "    entries"
 .I  "    ..."
-.BI "    SubSection \*qDisplay\*q"
+.B  "    SubSection \*qDisplay\*q"
 .I  "       entries"
-.I  "       ...
+.I  "       \&.\|.\|.\&"
 .B  "    EndSubSection"
-.I  "    ..."
-.B  "EndSection"
+.I  "    \&.\|.\|.\&"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -2030,14 +2038,17 @@ section in the config file.
 .BI "GPUDevice  \*q" device\-id \*q
 This entry specifies the
 .B Device
-section to be used as a secondary GPU device for this screen.  When multiple graphics cards are
-present, this is what ties a specific secondary card to a screen.  The
+section to be used as a secondary GPU device for this screen.
+When multiple graphics cards are present, this is what ties a specific
+secondary card to a screen.
+The
 .I device\-id
 must match the
 .B Identifier
 of a
 .B Device
-section in the config file. This can be specified up to 4 times for a single screen.
+section in the config file.
+This can be specified up to 4 times for a single screen.
 .TP 7
 .BI "Monitor  \*q" monitor\-id \*q
 specifies which monitor description is to be used for this screen.
@@ -2073,7 +2084,7 @@ sparse 32 bit framebuffer layout.
 Only apply this
 .B Screen
 section if X server was started with
-.B -seat
+.B \-seat
 .I seat\-id
 option.
 .TP 7
@@ -2087,7 +2098,7 @@ Some are driver\-specific and are described in the driver documentation.
 Others are driver\-independent, and will eventually be described here.
 .\" XXX These should really be in an xaa man page.
 .TP 7
-.BI "Option \*qAccel\*q"
+.B "Option \*qAccel\*q"
 Enables 2D hardware acceleration.
 This option is on by default, but it may be necessary to turn it off if
 there are bugs in the driver.
@@ -2193,7 +2204,7 @@ This entry specifies the framebuffer format this
 .B Display
 subsection is to be used for.
 This entry is only needed when providing depth 24 configurations that allow
-a choice between a 24 bpp packed framebuffer format and a 32bpp sparse
+a choice between a 24\ bpp packed framebuffer format and a 32\ bpp sparse
 framebuffer format.
 In most cases this entry should not be used.
 .TP 7
@@ -2204,7 +2215,7 @@ formats.
 This may also be specified from the command line with the
 .B \-weight
 option (see
-.BR Xorg(@appmansuffix@)).
+.BR Xorg (@appmansuffix@)).
 .TP 7
 .BI "Virtual  " "xdim ydim"
 This optional entry specifies the virtual screen resolution to be used.
@@ -2255,7 +2266,7 @@ built-in VESA standard modes.
 .BI "Visual  \*q" visual\-name \*q
 This optional entry sets the default root visual type.
 This may also be specified from the command line (see the
-.BR Xserver(@appmansuffix@)
+.BR Xserver (@appmansuffix@)
 man page).
 The visual types available for depth 8 are (default is
 .BR PseudoColor ):
@@ -2362,7 +2373,7 @@ sections have the following format:
 .I  "    ..."
 .I  "    options"
 .I  "    ..."
-.B  "EndSection"
+.B  EndSection
 .fi
 .RE
 .PP
@@ -2484,7 +2495,7 @@ and core keyboard devices respectively.
 Only apply this
 .B ServerLayout
 section if X server was started with
-.B -seat
+.B \-seat
 .I seat\-id
 option.
 .TP 7
@@ -2531,7 +2542,7 @@ section for a dual headed configuration with two mice:
 .B "    InputDevice \*qMouse 1\*q    \*qCorePointer\*q"
 .B "    InputDevice \*qMouse 2\*q    \*qSendCoreEvents\*q"
 .B "    Option      \*qBlankTime\*q  \*q5\*q"
-.B "EndSection"
+.B EndSection
 .fi
 .RE
 .SH "DRI SECTION"
@@ -2551,7 +2562,6 @@ entry and multiple
 .B Option
 flags.
 The data therein is not used in this release.
-.PP
 .SH "SEE ALSO"
 General:
 .BR X (@miscmansuffix@),
