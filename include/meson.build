@@ -177,7 +177,7 @@ if cc.has_header_symbol('sys/socket.h', 'SCM_RIGHTS')
 endif
 
 if conf_data.get('HAVE_GETPEEREID').to_int() == 0 and conf_data.get('HAVE_GETPEERUCRED').to_int() == 0
-    if not cc.has_header_symbol('sys/socket.h', 'SO_PEERCRED')
+    if not cc.has_header_symbol('sys/socket.h', 'SO_PEERCRED', args: '-D_GNU_SOURCE')
         conf_data.set('NO_LOCAL_CLIENT_CRED', 1)
     endif
 endif
