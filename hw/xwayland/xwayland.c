@@ -266,14 +266,13 @@ wm_selection_callback(CallbackListPtr *p, void *data, void *arg)
     DeleteCallback(&SelectionCallback, wm_selection_callback, xwl_screen);
 }
 
-_X_NORETURN
 static void _X_ATTRIBUTE_PRINTF(1, 0)
 xwl_log_handler(const char *format, va_list args)
 {
     char msg[256];
 
     vsnprintf(msg, sizeof msg, format, args);
-    FatalError("%s", msg);
+    ErrorF("XWAYLAND: %s", msg);
 }
 
 static const ExtensionModule xwayland_extensions[] = {
