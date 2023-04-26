@@ -52,41 +52,6 @@ static DevPrivateKeyRec xwl_window_private_key;
 static DevPrivateKeyRec xwl_damage_private_key;
 static const char *xwl_surface_tag = "xwl-surface";
 
-static void
-xwl_window_set_allow_commits(struct xwl_window *xwl_window, Bool allow,
-                             const char *debug_msg)
-{
-    xwl_window->allow_commits = allow;
-    DebugF("xwayland: win %d allow_commits = %d (%s)\n",
-           xwl_window->window->drawable.id, allow, debug_msg);
-}
-
-static void
-xwl_window_set_allow_commits_from_property(struct xwl_window *xwl_window,
-                                           PropertyPtr prop)
-{
-    static Bool warned = FALSE;
-    CARD32 *propdata;
-
-    if (prop->propertyName != xwl_window->xwl_screen->allow_commits_prop)
-        FatalError("Xwayland internal error: prop mismatch in %s.\n", __func__);
-
-    if (prop->type != XA_CARDINAL || prop->format != 32 || prop->size != 1) {
-        /* Not properly set, so fall back to safe and glitchy */
-        xwl_window_set_allow_commits(xwl_window, TRUE, "WM fault");
-
-        if (!warned) {
-            LogMessageVerb(X_WARNING, 0, "Window manager is misusing property %s.\n",
-                           NameForAtom(prop->propertyName));
-            warned = TRUE;
-        }
-        return;
-    }
-
-    propdata = prop->data;
-    xwl_window_set_allow_commits(xwl_window, !!propdata[0], "from property");
-}
-
 struct xwl_window *
 xwl_window_get(WindowPtr window)
 {
@@ -131,6 +96,41 @@ Bool
 is_surface_from_xwl_window(struct wl_surface *surface)
 {
     return wl_proxy_get_tag((struct wl_proxy *) surface) == &xwl_surface_tag;
+}
+
+static void
+xwl_window_set_allow_commits(struct xwl_window *xwl_window, Bool allow,
+                             const char *debug_msg)
+{
+    xwl_window->allow_commits = allow;
+    DebugF("XWAYLAND: win %d allow_commits = %d (%s)\n",
+           xwl_window->window->drawable.id, allow, debug_msg);
+}
+
+static void
+xwl_window_set_allow_commits_from_property(struct xwl_window *xwl_window,
+                                           PropertyPtr prop)
+{
+    static Bool warned = FALSE;
+    CARD32 *propdata;
+
+    if (prop->propertyName != xwl_window->xwl_screen->allow_commits_prop)
+        FatalError("Xwayland internal error: prop mismatch in %s.\n", __func__);
+
+    if (prop->type != XA_CARDINAL || prop->format != 32 || prop->size != 1) {
+        /* Not properly set, so fall back to safe and glitchy */
+        xwl_window_set_allow_commits(xwl_window, TRUE, "WM fault");
+
+        if (!warned) {
+            LogMessageVerb(X_WARNING, 0, "Window manager is misusing property %s.\n",
+                           NameForAtom(prop->propertyName));
+            warned = TRUE;
+        }
+        return;
+    }
+
+    propdata = prop->data;
+    xwl_window_set_allow_commits(xwl_window, !!propdata[0], "from property");
 }
 
 void
