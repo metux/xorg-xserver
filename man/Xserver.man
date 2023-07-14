@@ -101,7 +101,7 @@ specifies a file which contains a collection of authorization records used
 to authenticate access.  See also the \fIxdm\fP(1) and
 \fIXsecurity\fP(@miscmansuffix@) manual pages.
 .TP 8
-.BI \-background\ none
+.B \-background none
 Asks the driver not to clear the background on startup,
 if the driver supports that.
 May be useful for smooth transition with e.g.\& fbdev driver.
@@ -110,7 +110,8 @@ show a previous user session.
 .TP 8
 .B \-br
 sets the default root window to solid black instead of the standard root weave
-pattern.  This is the default unless \-retro or \-wr is specified.
+pattern.
+This is the default unless \-retro or \-wr is specified.
 .TP 8
 .B \-bs
 disables backing store support on all screens.
@@ -162,18 +163,20 @@ disables DPMS (display power management services).  The default state
 is platform and configuration specific.
 .TP 8
 .BI "\-extension " extensionName
-disables named extension.  If an unknown extension name is specified,
+disables named extension.
+If an unknown extension name is specified,
 a list of accepted extension names is printed.
 .TP 8
 .BI "+extension " extensionName
-enables named extension.  If an unknown extension name is specified,
+enables named extension.
+If an unknown extension name is specified,
 a list of accepted extension names is printed.
 .TP 8
 .B \-f \fIvolume\fP
 sets beep (bell) volume (allowable range: 0\(en100).
 .TP 8
-.B \-fakescreenfps \fFps\fP
-sets fake presenter screen default fps (allowable range: 1-600).
+.B \-fakescreenfps \fIfps\fP
+sets fake presenter screen default fps (allowable range: 1\(en600).
 .TP 8
 .B \-fp \fIfontPath\fP
 sets the search path for fonts.  This path is a comma separated list
@@ -274,7 +277,8 @@ connected to the system.
 sets pointer acceleration threshold in pixels (i.e.\& after how many pixels
 pointer acceleration should take effect).
 .TP 8
-.B \-terminate \fI[delay]\fP
+.BR \-terminate " ["\c
+.IR  delay ]
 causes the server to terminate at server reset, instead of continuing to run.
 This overrides a previous
 .B \-noreset
@@ -303,7 +307,7 @@ pattern.
 loads the specified extension at init.
 This is a no-op for most implementations.
 .TP 8
-.B [+\-]xinerama
+.RB [ +\- ] xinerama
 enables(+) or disables(\-) the XINERAMA extension.  The default state is
 platform and configuration specific.
 .SH SERVER DEPENDENT OPTIONS
@@ -368,7 +372,8 @@ enables XDMCP and sends Query packets to the specified
 enable XDMCP and broadcasts BroadcastQuery packets to the network.  The
 first responding display manager will be chosen for the session.
 .TP 8
-.B \-multicast [\fIaddress\fP [\fIhop count\fP]]
+.BR  \-multicast " ["\c
+.IR address " [" "hop count" ]]
 Enable XDMCP and multicast BroadcastQuery packets to the  network.
 The first responding display manager is chosen for the session.  If an
 address is specified, the multicast is sent to that address.  If no
@@ -417,7 +422,8 @@ located in the XKB base directory or a subdirectory, and specified as the
 relative path from the XKB base directory.  The default XKB base directory is
 .IR @projectroot@/lib/X11/xkb .
 .TP 8
-.BR [+\-]accessx " [ \fItimeout\fP [ \fItimeout_mask\fP [ \fIfeedback\fP [ \fIoptions_mask\fP ] ] ] ]"
+.RB [ +\- ] accessx " [ \fItimeout\fP [ \fItimeout_mask\fP [ \
+\fIfeedback\fP [ \fIoptions_mask\fP ] ] ] ]"
 enables(+) or disables(\-) AccessX key sequences.
 .TP 8
 .B \-xkbdir \fIdirectory\fP
@@ -545,10 +551,10 @@ You can specify a special kind of font path in the form \fBcatalogue:<dir>\fR.
 The directory specified after the catalogue: prefix will be scanned for symlinks
 and each symlink destination will be added as a local fontfile FPE.
 .PP
-The symlink can be suffixed by attributes such as \&'\fBunscaled\fR', which
-will be passed through to the underlying fontfile FPE.  The only exception is
-the newly introduced \&'\fBpri\fR' attribute, which will be used for ordering
-the font paths specified by the symlinks.
+The symlink can be suffixed by attributes such as \&'\fBunscaled\fR',
+which will be passed through to the underlying fontfile FPE.
+The only exception is the newly introduced \&'\fBpri\fR' attribute,
+which will be used for ordering the font paths specified by the symlinks.
 
 An example configuration:
 
@@ -562,8 +568,8 @@ An example configuration:
 
 This will add /usr/share/X11/fonts/misc as the first FPE with the attribute
 \N'39'unscaled', second FPE will be /usr/share/X11/fonts/75dpi, also with
-the attribute \&'unscaled' etc.  This is functionally equivalent to setting
-the following font path:
+the attribute \&'unscaled' etc.
+This is functionally equivalent to setting the following font path:
 
 .nf
     /usr/share/X11/fonts/misc:unscaled,
