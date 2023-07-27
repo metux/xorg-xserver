@@ -145,7 +145,7 @@ UnrefCursor(CursorPtr cursor)
 }
 
 int
-CursorRefCount(const CursorPtr cursor)
+CursorRefCount(ConstCursorPtr cursor)
 {
     return cursor ? cursor->refcnt : 0;
 }

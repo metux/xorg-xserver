@@ -60,6 +60,11 @@ SOFTWARE.
 struct _DeviceIntRec;
 
 typedef struct _Cursor *CursorPtr;
+// FUN FACT: If you typedef a pointer type, like the `CursorPtr` above
+// then `const CursorPtr` or `CursorPtr const` actually means `struct _Cursor *const`, a constant pointer
+// which is probably not what you want(a pointer to constant).
+// Maybe better just keep the `*` around, or you have to typedef a separate constPtr type.
+typedef struct _Cursor const *ConstCursorPtr;
 typedef struct _CursorMetric *CursorMetricPtr;
 
 extern _X_EXPORT CursorPtr rootCursor;
@@ -69,7 +74,7 @@ extern _X_EXPORT int FreeCursor(void *pCurs,
 
 extern _X_EXPORT CursorPtr RefCursor(CursorPtr /* cursor */);
 extern _X_EXPORT CursorPtr UnrefCursor(CursorPtr /* cursor */);
-extern _X_EXPORT int CursorRefCount(const CursorPtr /* cursor */);
+extern _X_EXPORT int CursorRefCount(ConstCursorPtr /* cursor */);
 
 extern _X_EXPORT int AllocARGBCursor(unsigned char * /*psrcbits */ ,
                                      unsigned char * /*pmaskbits */ ,
