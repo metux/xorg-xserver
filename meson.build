@@ -222,6 +222,7 @@ if (host_machine.system() != 'darwin' and
         dependency('wayland-client', version: wayland_req, required: xwayland_required),
         dependency('wayland-protocols', version: wayland_protocols_req, required: xwayland_required),
         dependency('libxcvt', fallback: ['libxcvt', 'libxcvt_dep'], required: xwayland_required),
+        dependency('xshmfence', version: '>= 1.1', required: xwayland_required),
     ]
 
     if build_glamor
