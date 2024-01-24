@@ -73,9 +73,9 @@ extern _X_EXPORT Bool noDPMSExtension;
 extern _X_EXPORT Bool noGlxExtension;
 #endif
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 extern _X_EXPORT Bool noPanoramiXExtension;
-#endif
+#endif /* XINERAMA */
 
 #ifdef RANDR
 extern _X_EXPORT Bool noRRExtension;

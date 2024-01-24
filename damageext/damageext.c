@@ -31,7 +31,7 @@
 #include "extinit_priv.h"
 #include "dixstruct_priv.h"
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
 
@@ -43,7 +43,7 @@ typedef struct {
 static RESTYPE XRT_DAMAGE;
 static int (*PanoramiXSaveDamageCreate) (ClientPtr);
 
-#endif
+#endif /* XINERAMA */
 
 static unsigned char DamageReqCode;
 static int DamageEventBase;
@@ -68,7 +68,7 @@ DamageNoteCritical(ClientPtr pClient)
 static void
 damageGetGeometry(DrawablePtr draw, int *x, int *y, int *w, int *h)
 {
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension && draw->type == DRAWABLE_WINDOW) {
         WindowPtr win = (WindowPtr)draw;
 
@@ -80,7 +80,7 @@ damageGetGeometry(DrawablePtr draw, int *x, int *y, int *w, int *h)
             return;
         }
     }
-#endif
+#endif /* XINERAMA */
 
     *x = draw->x;
     *y = draw->y;
@@ -319,7 +319,7 @@ ProcDamageDestroy(ClientPtr client)
     return Success;
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static RegionPtr
 DamageExtSubtractWindowClip(DamageExtPtr pDamageExt)
 {
@@ -367,7 +367,7 @@ DamageExtFreeWindowClip(RegionPtr reg)
     if (reg != &PanoramiXScreenRegion)
         RegionDestroy(reg);
 }
-#endif
+#endif /* XINERAMA */
 
 /*
  * DamageSubtract intersects with borderClip, so we must reconstruct the
@@ -378,7 +378,7 @@ DamageExtSubtract(DamageExtPtr pDamageExt, const RegionPtr pRegion)
 {
     DamagePtr pDamage = pDamageExt->pDamage;
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension) {
         RegionPtr damage = DamageRegion(pDamage);
         RegionSubtract(damage, damage, pRegion);
@@ -396,7 +396,7 @@ DamageExtSubtract(DamageExtPtr pDamageExt, const RegionPtr pRegion)
 
         return RegionNotEmpty(damage);
     }
-#endif
+#endif /* XINERAMA */
 
     return DamageSubtract(pDamage, pRegion);
 }
@@ -604,7 +604,7 @@ SDamageNotifyEvent(xDamageNotifyEvent * from, xDamageNotifyEvent * to)
     cpswaps(from->geometry.height, to->geometry.height);
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 
 static void
 PanoramiXDamageReport(DamagePtr pDamage, RegionPtr pRegion, void *closure)
@@ -723,7 +723,7 @@ PanoramiXDamageReset(void)
     ProcDamageVector[X_DamageCreate] = PanoramiXSaveDamageCreate;
 }
 
-#endif /* PANORAMIX */
+#endif /* XINERAMA */
 
 void
 DamageExtensionInit(void)
@@ -752,10 +752,10 @@ DamageExtensionInit(void)
             (EventSwapPtr) SDamageNotifyEvent;
         SetResourceTypeErrorValue(DamageExtType,
                                   extEntry->errorBase + BadDamage);
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (XRT_DAMAGE)
             SetResourceTypeErrorValue(XRT_DAMAGE,
                                       extEntry->errorBase + BadDamage);
-#endif
+#endif /* XINERAMA */
     }
 }

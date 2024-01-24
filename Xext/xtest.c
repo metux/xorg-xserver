@@ -78,10 +78,10 @@ static InternalEvent *xtest_evlist;
  */
 DeviceIntPtr xtestpointer, xtestkeyboard;
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 
 static int XTestSwapFakeInput(ClientPtr /* client */ ,
                               xReq *    /* req */

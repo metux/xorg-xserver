@@ -65,10 +65,10 @@ static void SShapeNotifyEvent(xShapeNotifyEvent * /* from */ ,
  * externally by the Xfixes extension and are now defined in window.h
  */
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 
 static int ShapeEventBase = 0;
 static RESTYPE ClientType, ShapeEventType;      /* resource types for event masks */
@@ -297,7 +297,7 @@ ProcShapeRectangles(ClientPtr client)
                          stuff->xOff, stuff->yOff, createDefault);
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static int
 ProcPanoramiXShapeRectangles(ClientPtr client)
 {
@@ -320,7 +320,7 @@ ProcPanoramiXShapeRectangles(ClientPtr client)
     }
     return result;
 }
-#endif
+#endif /* XINERAMA */
 
 /**************
  * ProcShapeMask
@@ -395,7 +395,7 @@ ProcShapeMask(ClientPtr client)
                          stuff->xOff, stuff->yOff, createDefault);
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static int
 ProcPanoramiXShapeMask(ClientPtr client)
 {
@@ -429,7 +429,7 @@ ProcPanoramiXShapeMask(ClientPtr client)
     }
     return result;
 }
-#endif
+#endif /* XINERAMA */
 
 /************
  * ProcShapeCombine
@@ -523,7 +523,7 @@ ProcShapeCombine(ClientPtr client)
                          stuff->xOff, stuff->yOff, createDefault);
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static int
 ProcPanoramiXShapeCombine(ClientPtr client)
 {
@@ -552,7 +552,7 @@ ProcPanoramiXShapeCombine(ClientPtr client)
     }
     return result;
 }
-#endif
+#endif /* XINERAMA */
 
 /*************
  * ProcShapeOffset
@@ -594,7 +594,7 @@ ProcShapeOffset(ClientPtr client)
     return Success;
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static int
 ProcPanoramiXShapeOffset(ClientPtr client)
 {
@@ -617,7 +617,7 @@ ProcPanoramiXShapeOffset(ClientPtr client)
     }
     return result;
 }
-#endif
+#endif /* XINERAMA */
 
 static int
 ProcShapeQueryExtents(ClientPtr client)
@@ -1035,32 +1035,32 @@ ProcShapeDispatch(ClientPtr client)
     case X_ShapeQueryVersion:
         return ProcShapeQueryVersion(client);
     case X_ShapeRectangles:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShapeRectangles(client);
         else
-#endif
+#endif /* XINERAMA */
             return ProcShapeRectangles(client);
     case X_ShapeMask:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShapeMask(client);
         else
-#endif
+#endif /* XINERAMA */
             return ProcShapeMask(client);
     case X_ShapeCombine:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShapeCombine(client);
         else
-#endif
+#endif /* XINERAMA */
             return ProcShapeCombine(client);
     case X_ShapeOffset:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShapeOffset(client);
         else
-#endif
+#endif /* XINERAMA */
             return ProcShapeOffset(client);
     case X_ShapeQueryExtents:
         return ProcShapeQueryExtents(client);

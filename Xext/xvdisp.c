@@ -48,12 +48,12 @@ SOFTWARE.
 
 #include "xvdisp.h"
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
 
 unsigned long XvXRTPort;
-#endif
+#endif /* XINERAMA */
 
 static int
 SWriteQueryExtensionReply(ClientPtr client, xvQueryExtensionReply * rep)
@@ -1433,7 +1433,7 @@ SProcXvDispatch(ClientPtr client)
     return SXvProcVector[stuff->data] (client);
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static int
 XineramaXvStopVideo(ClientPtr client)
 {
@@ -1541,7 +1541,7 @@ XineramaXvShmPutImage(ClientPtr client)
 }
 #else
 #define XineramaXvShmPutImage ProcXvShmPutImage
-#endif
+#endif /* MITSHM */
 
 static int
 XineramaXvPutImage(ClientPtr client)
@@ -1796,17 +1796,17 @@ XineramifyXv(void)
     XvProcVector[xv_PutImage] = XineramaXvPutImage;
     XvProcVector[xv_ShmPutImage] = XineramaXvShmPutImage;
 }
-#endif                          /* PANORAMIX */
+#endif /* XINERAMA */
 
 void
 XvResetProcVector(void)
 {
-#ifdef PANORAMIX
+#ifdef XINERAMA
     XvProcVector[xv_PutVideo] = ProcXvPutVideo;
     XvProcVector[xv_PutStill] = ProcXvPutStill;
     XvProcVector[xv_StopVideo] = ProcXvStopVideo;
     XvProcVector[xv_SetPortAttribute] = ProcXvSetPortAttribute;
     XvProcVector[xv_PutImage] = ProcXvPutImage;
     XvProcVector[xv_ShmPutImage] = ProcXvShmPutImage;
-#endif
+#endif /* XINERAMA */
 }
