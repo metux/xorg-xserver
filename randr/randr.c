@@ -446,9 +446,9 @@ RRExtensionInit(void)
     RRCrtcInitErrorValue();
     RROutputInitErrorValue();
     RRProviderInitErrorValue();
-#ifdef PANORAMIX
+#ifdef XINERAMA
     RRXineramaExtensionInit();
-#endif
+#endif /* XINERAMA */
 }
 
 void

@@ -81,10 +81,10 @@ extern _X_EXPORT Bool noGlxExtension;
 extern void GlxExtensionInit(void);
 #endif
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 extern _X_EXPORT Bool noPanoramiXExtension;
 extern void PanoramiXExtensionInit(void);
-#endif
+#endif /* XINERAMA */
 
 #ifdef RANDR
 extern _X_EXPORT Bool noRRExtension;

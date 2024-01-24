@@ -545,10 +545,10 @@ CreateConicalGradientPicture(Picture pid,
                              int nStops,
                              xFixed * stops, xRenderColor * colors, int *error);
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 extern void PanoramiXRenderInit(void);
 extern void PanoramiXRenderReset(void);
-#endif
+#endif /* XINERAMA */
 
 /*
  * matrix.c

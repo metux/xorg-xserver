@@ -134,10 +134,10 @@ Equipment Corporation.
 #include "dixevents.h"
 #include "dixgrabs.h"
 #include "cursor.h"
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 #include "xace.h"
 #include <assert.h>
 #include "registry.h"
@@ -1176,7 +1176,7 @@ LegalNewID(XID id, ClientPtr client)
     void *val;
     int rc;
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
     XID minid, maxid;
 
     if (!noPanoramiXExtension) {
@@ -1186,7 +1186,7 @@ LegalNewID(XID id, ClientPtr client)
         if ((id >= minid) && (id <= maxid))
             return TRUE;
     }
-#endif                          /* PANORAMIX */
+#endif /* XINERAMA */
     if (client->clientAsMask == (id & ~RESOURCE_ID_MASK)) {
         rc = dixLookupResourceByClass(&val, id, RC_ANY, serverClient,
                                       DixGetAttrAccess);

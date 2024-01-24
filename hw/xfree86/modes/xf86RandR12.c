@@ -755,11 +755,11 @@ xf86RandR12CreateScreenResources(ScreenPtr pScreen)
     int width, height;
     int mmWidth, mmHeight;
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
     /* XXX disable RandR when using Xinerama */
     if (!noPanoramiXExtension)
         return TRUE;
-#endif
+#endif /* XINERAMA */
 
     config = XF86_CRTC_CONFIG_PTR(pScrn);
     randrp = XF86RANDRINFO(pScreen);
@@ -845,7 +845,7 @@ xf86RandR12Init(ScreenPtr pScreen)
     rrScrPrivPtr rp;
     XF86RandRInfoPtr randrp;
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
     /* XXX disable RandR when using Xinerama */
     if (!noPanoramiXExtension) {
         if (xf86NumScreens == 1)
@@ -853,7 +853,7 @@ xf86RandR12Init(ScreenPtr pScreen)
         else
             return TRUE;
     }
-#endif
+#endif /* XINERAMA */
 
     if (xf86RandR12Generation != serverGeneration)
         xf86RandR12Generation = serverGeneration;

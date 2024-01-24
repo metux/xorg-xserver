@@ -47,9 +47,9 @@
 
 #include "compint.h"
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 
 #ifdef COMPOSITE_DEBUG
 static int
@@ -199,12 +199,12 @@ updateOverlayWindow(ScreenPtr pScreen)
     int w = pScreen->width;
     int h = pScreen->height;
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension) {
         w = PanoramiXPixWidth;
         h = PanoramiXPixHeight;
     }
-#endif
+#endif /* XINERAMA */
 
     cs = GetCompScreen(pScreen);
     if ((pWin = cs->pOverlayWin) != NULL) {

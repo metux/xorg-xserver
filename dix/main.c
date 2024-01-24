@@ -106,11 +106,11 @@ Equipment Corporation.
 #include "registry.h"
 #include "client.h"
 #include "exevents.h"
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiXsrv.h"
 #else
 #include "dixevents.h"          /* InitEvents() */
-#endif
+#endif /* XINERAMA */
 
 #ifdef DPMSExtension
 #include <X11/extensions/dpmsconst.h>
@@ -231,13 +231,13 @@ dix_main(int argc, char *argv[], char *envp[])
             FatalError("could not open default cursor font");
         }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
         /*
          * Consolidate window and colourmap information for each screen
          */
         if (!noPanoramiXExtension)
             PanoramiXConsolidate();
-#endif
+#endif /* XINERAMA */
 
         for (i = 0; i < screenInfo.numScreens; i++)
             InitRootWindow(screenInfo.screens[i]->root);
@@ -251,14 +251,14 @@ dix_main(int argc, char *argv[], char *envp[])
 
         dixCloseRegistry();
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension) {
             if (!PanoramiXCreateConnectionBlock()) {
                 FatalError("could not create connection block info");
             }
         }
         else
-#endif
+#endif /* XINERAMA */
         {
             if (!CreateConnectionBlock()) {
                 FatalError("could not create connection block info");
@@ -280,7 +280,7 @@ dix_main(int argc, char *argv[], char *envp[])
         FreeScreenSaverTimer();
         CloseDownExtensions();
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
         {
             Bool remember_it = noPanoramiXExtension;
 
@@ -290,7 +290,7 @@ dix_main(int argc, char *argv[], char *envp[])
         }
 #else
         FreeAllResources();
-#endif
+#endif /* XINERAMA */
 
         CloseInput();
 

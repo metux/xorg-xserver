@@ -570,10 +570,10 @@ IsInterferingGrab(ClientPtr /* client */ ,
                   DeviceIntPtr /* dev */ ,
                   xEvent * /* events */ );
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 extern _X_EXPORT void
 ReinitializeRootWindow(WindowPtr win, int xoff, int yoff);
-#endif
+#endif /* XINERAMA */
 
 #ifdef RANDR
 extern _X_EXPORT void

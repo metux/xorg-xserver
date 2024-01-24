@@ -47,10 +47,10 @@ in this Software without prior written authorization from the X Consortium.
 #include "colormapst.h"
 #include "xace.h"
 #include "inputstr.h"
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 #ifdef DPMSExtension
 #include <X11/extensions/dpmsconst.h>
 #include "dpmsproc.h"
@@ -601,9 +601,9 @@ ScreenSaverHandle(ScreenPtr pScreen, int xstate, Bool force)
             ret = TRUE;
 
     }
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (noPanoramiXExtension || !pScreen->myNum)
-#endif
+#endif /* XINERAMA */
         SendScreenSaverNotify(pScreen, state, force);
     return ret;
 }
@@ -1093,7 +1093,7 @@ ScreenSaverUnsetAttributes(ClientPtr client)
 static int
 ProcScreenSaverSetAttributes(ClientPtr client)
 {
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension) {
         REQUEST(xScreenSaverSetAttributesReq);
         PanoramiXRes *draw;
@@ -1172,7 +1172,7 @@ ProcScreenSaverSetAttributes(ClientPtr client)
 
         return status;
     }
-#endif
+#endif /* XINERAMA */
 
     return ScreenSaverSetAttributes(client);
 }
@@ -1180,7 +1180,7 @@ ProcScreenSaverSetAttributes(ClientPtr client)
 static int
 ProcScreenSaverUnsetAttributes(ClientPtr client)
 {
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension) {
         REQUEST(xScreenSaverUnsetAttributesReq);
         PanoramiXRes *draw;
@@ -1200,7 +1200,7 @@ ProcScreenSaverUnsetAttributes(ClientPtr client)
 
         stuff->drawable = draw->info[0].id;
     }
-#endif
+#endif /* XINERAMA */
 
     return ScreenSaverUnsetAttributes(client);
 }

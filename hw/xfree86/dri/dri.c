@@ -378,7 +378,7 @@ DRIScreenInit(ScreenPtr pScreen, DRIInfoPtr pDRIInfo, int *pDRMFD)
         return FALSE;
     }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
     /*
      * If Xinerama is on, don't allow DRI to initialise.  It won't be usable
      * anyway.
@@ -388,7 +388,7 @@ DRIScreenInit(ScreenPtr pScreen, DRIInfoPtr pDRIInfo, int *pDRMFD)
                   "Direct rendering is not supported when Xinerama is enabled\n");
         return FALSE;
     }
-#endif
+#endif /* XINERAMA */
     if (drm_server_inited == FALSE) {
         drmSetServerInfo(&DRIDRMServerInfo);
         drm_server_inited = TRUE;

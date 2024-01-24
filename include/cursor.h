@@ -129,8 +129,8 @@ extern _X_EXPORT void GetSpritePosition(struct _DeviceIntRec * /* pDev */ ,
                                         int * /*px */ ,
                                         int * /*py */ );
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 extern _X_EXPORT int XineramaGetCursorScreen(struct _DeviceIntRec *pDev);
-#endif                          /* PANORAMIX */
+#endif                          /* XINERAMA */
 
 #endif                          /* CURSOR_H */

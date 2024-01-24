@@ -548,9 +548,9 @@ extern _X_EXPORT int GetProximityEvents(InternalEvent *events,
 extern _X_EXPORT void QueueProximityEvents(DeviceIntPtr pDev,
                                            int type, const ValuatorMask *mask);
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 _X_EXPORT
-#endif
+#endif /* XINERAMA */
 extern void PostSyntheticMotion(DeviceIntPtr pDev,
                                 int x, int y, int screen, unsigned long time);
 
