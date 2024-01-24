@@ -2462,7 +2462,7 @@ _XkbSetMapCheckLength(xkbSetMapReq *req)
         return Success;
 bad:
     ErrorF("[xkb] BOGUS LENGTH in SetMap: expected %ld got %ld\n",
-           len, req_len);
+           (long)len, (long)req_len);
     return BadLength;
 }
 
