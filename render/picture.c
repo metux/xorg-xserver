@@ -40,9 +40,9 @@
 #include "picturestr_priv.h"
 #include "glyphstr_priv.h"
 #include "xace.h"
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 
 DevPrivateKeyRec PictureScreenPrivateKeyRec;
 DevPrivateKeyRec PictureWindowPrivateKeyRec;
@@ -1000,7 +1000,7 @@ CreateConicalGradientPicture(Picture pid, xPointFixed * center, xFixed angle,
 static int
 cpAlphaMap(void **result, XID id, ScreenPtr screen, ClientPtr client, Mask mode)
 {
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension) {
         PanoramiXRes *res;
         int err = dixLookupResourceByType((void **)&res, id, XRT_PICTURE,
@@ -1009,14 +1009,14 @@ cpAlphaMap(void **result, XID id, ScreenPtr screen, ClientPtr client, Mask mode)
             return err;
         id = res->info[screen->myNum].id;
     }
-#endif
+#endif /* XINERAMA */
     return dixLookupResourceByType(result, id, PictureType, client, mode);
 }
 
 static int
 cpClipMask(void **result, XID id, ScreenPtr screen, ClientPtr client, Mask mode)
 {
-#ifdef PANORAMIX
+#ifdef XINERAMA
     if (!noPanoramiXExtension) {
         PanoramiXRes *res;
         int err = dixLookupResourceByType((void **)&res, id, XRT_PIXMAP,
@@ -1025,7 +1025,7 @@ cpClipMask(void **result, XID id, ScreenPtr screen, ClientPtr client, Mask mode)
             return err;
         id = res->info[screen->myNum].id;
     }
-#endif
+#endif /* XINERAMA */
     return dixLookupResourceByType(result, id, X11_RESTYPE_PIXMAP, client, mode);
 }
 

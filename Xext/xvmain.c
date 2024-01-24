@@ -98,10 +98,10 @@ SOFTWARE.
 #include <X11/extensions/Xvproto.h>
 #include "xvdix.h"
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 #include "xvdisp.h"
 
 Bool noXvExtension = FALSE;
@@ -163,9 +163,9 @@ XvExtensionInit(void)
             ErrorF("XvExtensionInit: Unable to allocate resource types\n");
             return;
         }
-#ifdef PANORAMIX
+#ifdef XINERAMA
         XineramaRegisterConnectionBlockCallback(XineramifyXv);
-#endif
+#endif /* XINERAMA */
         XvScreenGeneration = serverGeneration;
     }
 
@@ -256,9 +256,9 @@ XvScreenInit(ScreenPtr pScreen)
             ErrorF("XvScreenInit: Unable to allocate resource types\n");
             return BadAlloc;
         }
-#ifdef PANORAMIX
+#ifdef XINERAMA
         XineramaRegisterConnectionBlockCallback(XineramifyXv);
-#endif
+#endif /* XINERAMA */
         XvScreenGeneration = serverGeneration;
     }
 

@@ -89,10 +89,10 @@ in this Software without prior written authorization from The Open Group.
 #define SHMPERM_MODE(p)		p->mode
 #endif
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
-#endif
+#endif /* XINERAMA */
 
 typedef struct _ShmScrPrivateRec {
     CloseScreenProcPtr CloseScreen;
@@ -732,7 +732,7 @@ ProcShmGetImage(ClientPtr client)
     return Success;
 }
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 static int
 ProcPanoramiXShmPutImage(ClientPtr client)
 {
@@ -1028,7 +1028,7 @@ ProcPanoramiXShmCreatePixmap(ClientPtr client)
 
     return result;
 }
-#endif
+#endif /* XINERAMA */
 
 static PixmapPtr
 fbShmCreatePixmap(ScreenPtr pScreen,
@@ -1348,22 +1348,22 @@ ProcShmDispatch(ClientPtr client)
     case X_ShmDetach:
         return ProcShmDetach(client);
     case X_ShmPutImage:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShmPutImage(client);
-#endif
+#endif /* XINERAMA */
         return ProcShmPutImage(client);
     case X_ShmGetImage:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShmGetImage(client);
-#endif
+#endif /* XINERAMA */
         return ProcShmGetImage(client);
     case X_ShmCreatePixmap:
-#ifdef PANORAMIX
+#ifdef XINERAMA
         if (!noPanoramiXExtension)
             return ProcPanoramiXShmCreatePixmap(client);
-#endif
+#endif /* XINERAMA */
         return ProcShmCreatePixmap(client);
 #ifdef SHM_FD_PASSING
     case X_ShmAttachFd:

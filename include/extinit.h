@@ -57,9 +57,9 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 extern _X_EXPORT Bool noCompositeExtension;
 #endif
 
-#ifdef PANORAMIX
+#ifdef XINERAMA
 extern _X_EXPORT Bool noPanoramiXExtension;
-#endif
+#endif /* XINERAMA */
 
 #if defined(XV)
 extern _X_EXPORT Bool noXvExtension;
