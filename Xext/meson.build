@@ -57,6 +57,10 @@ if build_xselinux
     srcs_xext += ['xselinux_ext.c', 'xselinux_hooks.c', 'xselinux_label.c']
 endif
 
+if build_xcontainer
+    srcs_xext += ['xcontainer.c']
+endif
+
 if build_xv
     srcs_xext += ['xvmain.c', 'xvdisp.c', 'xvmc.c']
     hdrs_xext += ['xvdix.h', 'xvmcext.h']
