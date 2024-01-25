@@ -569,6 +569,13 @@ if build_xsecurity
     endif
 endif
 
+build_xcontainer = get_option('xcontainer')
+if build_xcontainer
+    if not build_xace
+        error('cannot build Container extension without X-ACE')
+    endif
+endif
+
 build_xv = get_option('xv')
 build_xvmc = get_option('xvmc')
 if not build_xv
