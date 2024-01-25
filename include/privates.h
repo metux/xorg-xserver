@@ -51,6 +51,7 @@ typedef enum {
     PRIVATE_GLYPHSET,
     PRIVATE_PICTURE,
     PRIVATE_SYNC_FENCE,
+    PRIVATE_NAMESPACE,
 
     /* last private type */
     PRIVATE_LAST,
