@@ -10,7 +10,8 @@
 //#include "colormapst.h"
 //#include "privates.h"
 //#include "registry.h"
-//#include "xacestr.h"
+#include "xacestr.h"
+#include "registry.h"
 //#include "securitysrv.h"
 //#include <X11/extensions/securproto.h>
 ////#include "extinit.h"
@@ -28,17 +29,17 @@
 //static CallbackListPtr SecurityValidateGroupCallback = NULL;
 
 /* Private state record */
-//static DevPrivateKeyRec stateKeyRec;
+static DevPrivateKeyRec stateKeyRec;
 
-//#define stateKey (&stateKeyRec)
+#define stateKey (&stateKeyRec)
 
 /* This is what we store as client security state */
-//typedef struct {
-//    unsigned int haveState  :1;
-//    unsigned int live       :1;
-//    unsigned int trustLevel :2;
-//    XID authId;
-//} SecurityStateRec;
+typedef struct {
+    unsigned int haveState  :1;
+    unsigned int live       :1;
+    unsigned int trustLevel :2;
+    XID authId;
+} ContainerStateRec;
 
 /* The only extensions that untrusted clients have access to */
 //static const char *SecurityTrustedExtensions[] = {
@@ -91,7 +92,7 @@
  * Performs a Security permission check.
  */
 //static int
-//SecurityDoCheck(SecurityStateRec * subj, SecurityStateRec * obj,
+//SecurityDoCheck(ContainerStateRec * subj, SecurityStateRec * obj,
 //                Mask requested, Mask allowed)
 //{
 //    if (!subj->haveState || !obj->haveState)
@@ -112,7 +113,7 @@
 //static void
 //SecurityLabelInitial(void)
 //{
-//    SecurityStateRec *state;
+//    ContainerStateRec *state;
 //
 //    /* Do the serverClient */
 //    state = dixLookupPrivate(&serverClient->devPrivates, stateKey);
@@ -124,11 +125,11 @@
 /*
  * Looks up a request name
  */
-//static _X_INLINE const char *
-//SecurityLookupRequestName(ClientPtr client)
-//{
-//    return LookupRequestName(client->majorOp, client->minorOp);
-//}
+static _X_INLINE const char *
+ContainerLookupRequestName(ClientPtr client)
+{
+    return LookupRequestName(client->majorOp, client->minorOp);
+}
 
 /* SecurityDeleteAuthorization
  *
@@ -182,7 +183,7 @@
 
 //    for (i = 1; i < currentMaxClients; i++)
 //        if (clients[i]) {
-//            SecurityStateRec *state;
+//            ContainerStateRec *state;
 //
 //            state = dixLookupPrivate(&clients[i]->devPrivates, stateKey);
 //            if (state->haveState && state->authId == pAuth->id)
@@ -672,7 +673,7 @@
 //SecurityDevice(CallbackListPtr *pcbl, void *unused, void *calldata)
 //{
 //    XaceDeviceAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
+//    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityDeviceMask;
 //
@@ -686,12 +687,12 @@
 //    if (SecurityDoCheck(subj, obj, requested, allowed) != Success) {
 //        SecurityAudit("Security denied client %d keyboard access on request "
 //                      "%s\n", rec->client->index,
-//                      SecurityLookupRequestName(rec->client));
+//                      ContainerLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
 //}
 
-/* SecurityResource
+/* ContainerResource
  *
  * This function gets plugged into client->CheckAccess and is called from
  * SecurityLookupIDByType/Class to determine if the client can access the
@@ -712,12 +713,12 @@
  *	Disallowed resource accesses are audited.
  */
 
-//static void
-//SecurityResource(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
-//    XaceResourceAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
-//    int cid = CLIENT_ID(rec->id);
+static void
+ContainerResource(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
+    XaceResourceAccessRec *rec = calldata;
+//    ContainerStateRec *subj, *obj;
+    int cid = CLIENT_ID(rec->id);
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityResourceMask;
 //
@@ -756,15 +757,17 @@
 //    SecurityAudit("Security: denied client %d access %lx to resource 0x%lx "
 //                  "of client %d on request %s\n", rec->client->index,
 //                  (unsigned long)requested, (unsigned long)rec->id, cid,
-//                  SecurityLookupRequestName(rec->client));
+//                  ContainerLookupRequestName(rec->client));
 //    rec->status = BadAccess;    /* deny access */
-//}
+    printf("ContainerResource() client=%d access %lx resource 0x%lx\n of client %d on req %s\n",
+        rec->client->index, requested, (unsigned long)rec->id, cid, ContainerLookupRequestName(rec->client));
+}
 
 //static void
 //SecurityExtension(CallbackListPtr *pcbl, void *unused, void *calldata)
 //{
 //    XaceExtAccessRec *rec = calldata;
-//    SecurityStateRec *subj;
+//    ContainerStateRec *subj;
 //    int i = 0;
 //
 //    subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);
@@ -783,11 +786,12 @@
 //    rec->status = BadAccess;
 //}
 
-//static void
-//SecurityServer(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
+static void
+ContainerServer(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
+    printf("ContainerServer() ... \n");
 //    XaceServerAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
+//    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityServerMask;
 
@@ -800,13 +804,13 @@
 //                      SecurityLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
-//}
+}
 
-//static void
-//SecurityClient(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
+static void
+ContainerClient(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
 //    XaceClientAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
+//    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityClientMask;
 //
@@ -819,13 +823,14 @@
 //                      SecurityLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
-//}
+    printf("ContainerClient()\n");
+}
 
 //static void
 ////SecurityProperty(CallbackListPtr *pcbl, void *unused, void *calldata)
 //{
 //    XacePropertyAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
+//    ContainerStateRec *subj, *obj;
 //    ATOM name = (*rec->ppProp)->propertyName;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityResourceMask | DixReadAccess;
@@ -847,7 +852,7 @@
 //SecuritySend(CallbackListPtr *pcbl, void *unused, void *calldata)
 //{
 //    XaceSendAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
+//    ContainerStateRec *subj, *obj;
 //
 //    if (rec->client) {
 //        int i;
@@ -879,7 +884,7 @@
 //SecurityReceive(CallbackListPtr *pcbl, void *unused, void *calldata)
 //{
 //    XaceReceiveAccessRec *rec = calldata;
-//    SecurityStateRec *subj, *obj;
+//    ContainerStateRec *subj, *obj;
 //
 //    subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);
 //    obj = dixLookupPrivate(&wClient(rec->pWin)->devPrivates, stateKey);
@@ -920,7 +925,7 @@
 //SecurityClientState(CallbackListPtr *pcbl, void *unused, void *calldata)
 //{
 //    NewClientInfoRec *pci = calldata;
-//    SecurityStateRec *state;
+//    ContainerStateRec *state;
 //    SecurityAuthorizationPtr pAuth;
 //    int rc;
 //
@@ -980,6 +985,7 @@
  *	Performs any cleanup needed by Security at server shutdown time.
  */
 
+#if 0
 static void
 ContainerResetProc(ExtensionEntry * extEntry)
 {
@@ -994,8 +1000,9 @@ ContainerResetProc(ExtensionEntry * extEntry)
 //    XaceDeleteCallback(XACE_RECEIVE_ACCESS, SecurityReceive, NULL);
 //    XaceDeleteCallback(XACE_CLIENT_ACCESS, SecurityClient, NULL);
 //    XaceDeleteCallback(XACE_EXT_ACCESS, SecurityExtension, NULL);
-//    XaceDeleteCallback(XACE_SERVER_ACCESS, SecurityServer, NULL);
+    XaceDeleteCallback(XACE_SERVER_ACCESS, ContainerServer, NULL);
 }
+#endif
 
 /* SecurityExtensionInit
  *
@@ -1010,7 +1017,7 @@ ContainerResetProc(ExtensionEntry * extEntry)
 void
 ContainerExtensionInit(void)
 {
-    ExtensionEntry *extEntry;
+//    ExtensionEntry *extEntry;
     int ret = TRUE;
 
     printf("ContainerExtensionInit()\n");
@@ -1029,25 +1036,25 @@ ContainerExtensionInit(void)
 //    RTEventClient |= RC_NEVERRETAIN;
 
     /* Allocate the private storage */
-//    if (!dixRegisterPrivateKey
-//        (stateKey, PRIVATE_CLIENT, sizeof(SecurityStateRec)))
-//        FatalError("SecurityExtensionSetup: Can't allocate client private.\n");
+    if (!dixRegisterPrivateKey
+        (stateKey, PRIVATE_CLIENT, sizeof(ContainerStateRec)))
+        FatalError("ContainerExtensionSetup: Can't allocate client private.\n");
 
     /* Register callbacks */
 //    ret &= AddCallback(&ClientStateCallback, SecurityClientState, NULL);
 
 //    ret &= XaceRegisterCallback(XACE_EXT_DISPATCH, SecurityExtension, NULL);
-//    ret &= XaceRegisterCallback(XACE_RESOURCE_ACCESS, SecurityResource, NULL);
+    ret &= XaceRegisterCallback(XACE_RESOURCE_ACCESS, ContainerResource, NULL);
 //    ret &= XaceRegisterCallback(XACE_DEVICE_ACCESS, SecurityDevice, NULL);
 //    ret &= XaceRegisterCallback(XACE_PROPERTY_ACCESS, SecurityProperty, NULL);
 //    ret &= XaceRegisterCallback(XACE_SEND_ACCESS, SecuritySend, NULL);
 //    ret &= XaceRegisterCallback(XACE_RECEIVE_ACCESS, SecurityReceive, NULL);
-//    ret &= XaceRegisterCallback(XACE_CLIENT_ACCESS, SecurityClient, NULL);
+    ret &= XaceRegisterCallback(XACE_CLIENT_ACCESS, ContainerClient, NULL);
 //    ret &= XaceRegisterCallback(XACE_EXT_ACCESS, SecurityExtension, NULL);
-//    ret &= XaceRegisterCallback(XACE_SERVER_ACCESS, SecurityServer, NULL);
+    ret &= XaceRegisterCallback(XACE_SERVER_ACCESS, ContainerServer, NULL);
 
-//    if (!ret)
-//        FatalError("SecurityExtensionSetup: Failed to register callbacks\n");
+    if (!ret)
+        FatalError("SecurityExtensionSetup: Failed to register callbacks\n");
 
     /* Add extension to server */
 //    extEntry = AddExtension(CONTAINER_EXTENSION_NAME,
