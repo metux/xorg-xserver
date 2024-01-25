@@ -3,6 +3,7 @@ libxserver_namespace = static_library(
 	[
 		'config.c',
 		'hook-clientstate.c',
+		'hook-selection.c',
 		'namespace.c',
 	],
 	include_directories: inc,
