@@ -8,6 +8,7 @@
 #include "miext/extinit_priv.h"
 
 #include "namespace.h"
+#include "hooks.h"
 
 Bool noNamespaceExtension = TRUE;
 
@@ -24,8 +25,9 @@ NamespaceExtensionInit(void)
         return;
     }
 
-    if (!dixRegisterPrivateKey
-        (&namespaceClientPrivKeyRec, PRIVATE_CLIENT, sizeof(struct XnamespaceClientPriv)))
+    if (!(dixRegisterPrivateKey(&namespaceClientPrivKeyRec, PRIVATE_CLIENT,
+            sizeof(struct XnamespaceClientPriv)) &&
+          AddCallback(&ClientStateCallback, hookClientState, NULL)))
         FatalError("NamespaceExtensionInit: allocation failure\n");
 
     /* Do the serverClient */
@@ -53,4 +55,20 @@ void XnamespaceAssignClientByName(struct XnamespaceClientPriv *priv, const char 
         newns = &ns_anon;
 
     XnamespaceAssignClient(priv, newns);
+}
+
+struct Xnamespace* XnsFindByAuth(size_t szAuthProto, const char* authProto, size_t szAuthToken, const char* authToken)
+{
+    struct Xnamespace *walk;
+    xorg_list_for_each_entry(walk, &ns_list, entry) {
+        int protoLen = walk->authProto ? strlen(walk->authProto) : 0;
+        if ((protoLen == szAuthProto) &&
+            (walk->authTokenLen == szAuthToken) &&
+            (memcmp(walk->authTokenData, authToken, szAuthToken)==0) &&
+            (memcmp(walk->authProto, authProto, szAuthProto)==0))
+            return walk;
+    }
+
+    // default to anonymous if credentials aren't assigned to specific NS
+    return &ns_anon;
 }

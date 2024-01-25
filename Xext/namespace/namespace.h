@@ -14,6 +14,9 @@ struct Xnamespace {
     const char *name;
     Bool builtin;
     Bool superPower;
+    const char *authProto;
+    char *authTokenData;
+    size_t authTokenLen;
     size_t refcnt;
 };
 
@@ -34,6 +37,7 @@ extern DevPrivateKeyRec namespaceClientPrivKeyRec;
 
 Bool XnsLoadConfig(void);
 struct Xnamespace *XnsFindByName(const char* name);
+struct Xnamespace* XnsFindByAuth(size_t szAuthProto, const char* authProto, size_t szAuthToken, const char* authToken);
 void XnamespaceAssignClient(struct XnamespaceClientPriv *priv, struct Xnamespace *ns);
 void XnamespaceAssignClientByName(struct XnamespaceClientPriv *priv, const char *name);
 
