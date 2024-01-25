@@ -247,9 +247,9 @@ conf_data.set('XvMCExtension', build_xvmc ? '1' : false)
 conf_data.set('CONFIG_STORE_CLIENT_CREDS', build_store_client_creds ? '1' : false)
 
 # needed by several extensions
-build_registry_resource = (build_xselinux or build_res)
+build_registry_resource = (build_xselinux or build_res or build_xcontainer)
 conf_data.set('X_REGISTRY_RESOURCE', build_registry_resource ? '1' : false)
-build_registry_request = (build_xselinux or build_xsecurity or with_dtrace)
+build_registry_request = (build_xselinux or build_xsecurity or with_dtrace or build_xcontainer)
 conf_data.set('X_REGISTRY_REQUEST', build_registry_request ? '1' : false)
 
 conf_data.set('HAVE_SHA1_IN_' + sha1.to_upper(), '1', description: 'Use @0@ SHA1 functions'.format(sha1))
