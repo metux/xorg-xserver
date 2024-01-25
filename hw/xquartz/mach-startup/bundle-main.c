@@ -30,9 +30,7 @@
 
 #include <CoreFoundation/CoreFoundation.h>
 
-#ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
-#endif
 
 #include <X11/Xlib.h>
 #include <assert.h>

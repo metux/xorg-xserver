@@ -25,9 +25,7 @@
 
 /* This code is a modified version of randr/rrproperty.c */
 
-#ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
-#endif
 
 #include "dix.h"
 #include "inputstr.h"

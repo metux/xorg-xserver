@@ -44,9 +44,7 @@ SOFTWARE.
 
 ************************************************************************/
 
-#ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
-#endif
 
 #include "misc.h"
 #include <X11/fonts/fontstruct.h>

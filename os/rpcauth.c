@@ -31,9 +31,7 @@ from The Open Group.
  * Author:  Mayank Choudhary, Sun Microsystems
  */
 
-#ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
-#endif
 
 #ifdef SECURE_RPC
 

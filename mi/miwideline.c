@@ -52,9 +52,7 @@ SOFTWARE.
  * bresenham zero-width lines, except walks an X edge
  */
 
-#ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
-#endif
 
 #include <stdio.h>
 #ifdef _XOPEN_SOURCE
@@ -72,10 +70,6 @@ SOFTWARE.
 #include "mi.h"
 
 #if 0
-#ifdef HAVE_DIX_CONFIG_H
-#include <dix-config.h>
-#endif
-
 #include "misc.h"
 #include "pixmapstr.h"
 #include "gcstruct.h"

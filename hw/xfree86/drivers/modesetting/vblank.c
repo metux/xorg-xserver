@@ -25,9 +25,7 @@
  * Support for tracking the DRM's vblank events.
  */
 
-#ifdef HAVE_DIX_CONFIG_H
 #include "dix-config.h"
-#endif
 
 #include <unistd.h>
 #include <xf86.h>

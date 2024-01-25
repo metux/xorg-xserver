@@ -23,9 +23,7 @@ dealings in this Software without prior written authorization from Digital
 Equipment Corporation.
 ******************************************************************/
 
-#ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
-#endif
 
 #ifdef HAVE_DMX_CONFIG_H
 #include <dmx-config.h>
