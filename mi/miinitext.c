@@ -115,6 +115,9 @@ static const ExtensionModule staticExtensions[] = {
 #ifdef XCSECURITY
     {SecurityExtensionInit, "SECURITY", &noSecurityExtension},
 #endif
+#ifdef CONFIG_NAMESPACE
+    {NamespaceExtensionInit, "NAMESPACE", &noNamespaceExtension},
+#endif
 #ifdef XINERAMA
     {PanoramiXExtensionInit, "XINERAMA", &noPanoramiXExtension},
 #endif /* XINERAMA */

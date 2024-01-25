@@ -23,6 +23,7 @@ extern Bool noShapeExtension;
 extern Bool noTestExtensions;
 extern Bool noXFixesExtension;
 extern Bool noXFree86BigfontExtension;
+extern Bool noNamespaceExtension;
 
 void CompositeExtensionInit(void);
 void DamageExtensionInit(void);
@@ -53,5 +54,6 @@ void XvMCExtensionInit(void);
 void dri3_extension_init(void);
 void PseudoramiXExtensionInit(void);
 void present_extension_init(void);
+void NamespaceExtensionInit(void);
 
 #endif /* _XSERVER_EXTINIT_PRIV_H */

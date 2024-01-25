@@ -568,6 +568,13 @@ if build_xsecurity
     endif
 endif
 
+build_namespace = get_option('namespace')
+if build_namespace
+    if not build_xace
+        error('cannot build Container extension without X-ACE')
+    endif
+endif
+
 build_xv = get_option('xv')
 build_xvmc = get_option('xvmc')
 if not build_xv
@@ -818,6 +825,11 @@ libxserver = [
 ]
 
 libxserver += libxserver_dri3
+
+if build_namespace
+    subdir('Xext/namespace')
+    libxserver += libxserver_namespace
+endif
 
 subdir('hw')
 
