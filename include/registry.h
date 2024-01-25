@@ -20,14 +20,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "resource.h"
 #include "extnsionst.h"
 
-#if defined(XSELINUX) || defined(RES)
-#define X_REGISTRY_RESOURCE       1
-#endif
-
-#if defined(XSELINUX) || defined(XCSECURITY) || defined(XSERVER_DTRACE)
-#define X_REGISTRY_REQUEST        1
-#endif
-
 /* Internal string registry - for auditing, debugging, security, etc. */
 
 #ifdef X_REGISTRY_RESOURCE
