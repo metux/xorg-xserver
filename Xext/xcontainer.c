@@ -5,8 +5,8 @@
 
 //#include "scrnintstr.h"
 //#include "inputstr.h"
-//#include "windowstr.h"
-//#include "propertyst.h"
+#include "windowstr.h"
+#include "propertyst.h"
 //#include "colormapst.h"
 //#include "privates.h"
 //#include "registry.h"
@@ -653,6 +653,21 @@ ContainerLookupRequestName(ClientPtr client)
 //    cpswapl(from->authId, to->authId);
 //}
 
+static int isServer(ClientPtr client1) {
+    return (client1->index == 0);
+}
+
+// fixme
+static int isSameContainer(ClientPtr client1, int client2) {
+    // same client means same container
+    if (client1->index == client2) {
+        return 1;
+    }
+    // server itself has super power
+    return isServer(client1);
+}
+
+
 /* SecurityCheckDeviceAccess
  *
  * Arguments:
@@ -669,10 +684,25 @@ ContainerLookupRequestName(ClientPtr client)
  *	An audit message is generated if access is denied.
  */
 
-//static void
-//SecurityDevice(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
-//    XaceDeviceAccessRec *rec = calldata;
+static const char * devPermittedRequests[] = {
+    "X11:QueryPointer",
+    "X11:GetInputFocus",
+    NULL
+};
+
+static int devRequestPermitted(const char* reqName) {
+    for (int x=0; devPermittedRequests[x] != NULL; x++) {
+        if (strcmp(reqName, devPermittedRequests[x])==0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+static void
+ContainerDevice(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
+    XaceDeviceAccessRec *rec = calldata;
 //    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityDeviceMask;
@@ -685,12 +715,26 @@ ContainerLookupRequestName(ClientPtr client)
 //        allowed = requested;
 //
 //    if (SecurityDoCheck(subj, obj, requested, allowed) != Success) {
-//        SecurityAudit("Security denied client %d keyboard access on request "
+//        printf("client %d keyboard access on request "
 //                      "%s\n", rec->client->index,
 //                      ContainerLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
-//}
+
+    if (isServer(rec->client))
+        return;
+
+    // FIXME: that's not very efficient, but didn't find a better way to do it yet
+    const char* reqName = ContainerLookupRequestName(rec->client);
+
+    if (devRequestPermitted(reqName))
+        return;
+
+    printf("%20s: client %-5d keyboard access on request %s\n",
+        "device",
+        rec->client->index,
+        reqName);
+}
 
 /* ContainerResource
  *
@@ -718,8 +762,15 @@ ContainerResource(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
     XaceResourceAccessRec *rec = calldata;
 //    ContainerStateRec *subj, *obj;
-    int cid = CLIENT_ID(rec->id);
+    int owner_id = CLIENT_ID(rec->id);
 //    Mask requested = rec->access_mode;
+    char buffer[128];
+
+    // resource access inside same container is always permitted
+    if (isSameContainer(rec->client, owner_id)) {
+        return;
+    }
+
 //    Mask allowed = SecurityResourceMask;
 //
 //    subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);
@@ -759,8 +810,16 @@ ContainerResource(CallbackListPtr *pcbl, void *unused, void *calldata)
 //                  (unsigned long)requested, (unsigned long)rec->id, cid,
 //                  ContainerLookupRequestName(rec->client));
 //    rec->status = BadAccess;    /* deny access */
-    printf("ContainerResource() client=%d access %lx resource 0x%lx\n of client %d on req %s\n",
-        rec->client->index, requested, (unsigned long)rec->id, cid, ContainerLookupRequestName(rec->client));
+//    printf("ContainerResource() client=%d access %lx resource 0x%lx\n of client %d on req %s\n",
+//        rec->client->index, requested, (unsigned long)rec->id, cid, ContainerLookupRequestName(rec->client));
+    LookupDixAccessName(rec->access_mode, (char*)&buffer, sizeof(buffer));
+    printf("%20s() client %-5d access 0x%07lx %s to resource 0x%06lx of client %d on request %s\n",
+        __func__,
+        rec->client->index, // calling client
+        (unsigned long)rec->access_mode, buffer,
+        (unsigned long)rec->id,
+        owner_id, // resource owner
+        ContainerLookupRequestName(rec->client));
 }
 
 //static void
@@ -789,8 +848,7 @@ ContainerResource(CallbackListPtr *pcbl, void *unused, void *calldata)
 static void
 ContainerServer(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
-    printf("ContainerServer() ... \n");
-//    XaceServerAccessRec *rec = calldata;
+    XaceServerAccessRec *rec = calldata;
 //    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityServerMask;
@@ -804,12 +862,15 @@ ContainerServer(CallbackListPtr *pcbl, void *unused, void *calldata)
 //                      SecurityLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
+
+    printf("%20s() client %-5d access to server configuration request %s\n",
+        __func__, rec->client->index, ContainerLookupRequestName(rec->client));
 }
 
 static void
 ContainerClient(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
-//    XaceClientAccessRec *rec = calldata;
+    XaceClientAccessRec *rec = calldata;
 //    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityClientMask;
@@ -820,18 +881,20 @@ ContainerClient(CallbackListPtr *pcbl, void *unused, void *calldata)
 //    if (SecurityDoCheck(subj, obj, requested, allowed) != Success) {
 //        SecurityAudit("Security: denied client %d access to client %d on "
 //                      "request %s\n", rec->client->index, rec->target->index,
-//                      SecurityLookupRequestName(rec->client));
+//                      ContainerLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
-    printf("ContainerClient()\n");
+    printf("%20s() client %-5d access to client %d on request %s\n",
+        __func__, rec->client->index, rec->target->index,
+        ContainerLookupRequestName(rec->client));
 }
 
-//static void
-////SecurityProperty(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
-//    XacePropertyAccessRec *rec = calldata;
+static void
+ContainerProperty(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
+    XacePropertyAccessRec *rec = calldata;
 //    ContainerStateRec *subj, *obj;
-//    ATOM name = (*rec->ppProp)->propertyName;
+    ATOM name = (*rec->ppProp)->propertyName;
 //    Mask requested = rec->access_mode;
 //    Mask allowed = SecurityResourceMask | DixReadAccess;
 //
@@ -846,7 +909,17 @@ ContainerClient(CallbackListPtr *pcbl, void *unused, void *calldata)
 //                      SecurityLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
-//}
+
+    if (isSameContainer(rec->client, wClient(rec->pWin)->index)) {
+        return;
+    }
+
+    printf("property: client %d access to property %s (atom 0x%x) window 0x%lx of client %d on request %s\n",
+        rec->client->index, NameForAtom(name), name,
+        (unsigned long)rec->pWin->drawable.id,
+        wClient(rec->pWin)->index,
+        ContainerLookupRequestName(rec->client));
+}
 
 //static void
 //SecuritySend(CallbackListPtr *pcbl, void *unused, void *calldata)
@@ -1045,8 +1118,8 @@ ContainerExtensionInit(void)
 
 //    ret &= XaceRegisterCallback(XACE_EXT_DISPATCH, SecurityExtension, NULL);
     ret &= XaceRegisterCallback(XACE_RESOURCE_ACCESS, ContainerResource, NULL);
-//    ret &= XaceRegisterCallback(XACE_DEVICE_ACCESS, SecurityDevice, NULL);
-//    ret &= XaceRegisterCallback(XACE_PROPERTY_ACCESS, SecurityProperty, NULL);
+    ret &= XaceRegisterCallback(XACE_DEVICE_ACCESS, ContainerDevice, NULL);
+    ret &= XaceRegisterCallback(XACE_PROPERTY_ACCESS, ContainerProperty, NULL);
 //    ret &= XaceRegisterCallback(XACE_SEND_ACCESS, SecuritySend, NULL);
 //    ret &= XaceRegisterCallback(XACE_RECEIVE_ACCESS, SecurityReceive, NULL);
     ret &= XaceRegisterCallback(XACE_CLIENT_ACCESS, ContainerClient, NULL);
