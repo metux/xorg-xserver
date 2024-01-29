@@ -72,6 +72,7 @@ MitCheckCookie(unsigned short data_length,
 {
     struct auth *auth;
 
+    printf("MIT check cookie\n");
     for (auth = mit_auth; auth; auth = auth->next) {
         if (data_length == auth->len &&
             timingsafe_memcmp(data, auth->data, (int) data_length) == 0)

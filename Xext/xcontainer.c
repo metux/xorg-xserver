@@ -40,8 +40,13 @@ typedef struct {
 //    unsigned int haveState  :1;
 //    unsigned int live       :1;
 //    unsigned int trustLevel :2;
-//    XID authId;
+    XID authId;
 } ContainerStateRec;
+
+/* retrieve per client private structure */
+static inline ContainerStateRec *clientPriv(ClientPtr client) {
+    return dixLookupPrivate(&client->devPrivates, stateKey);
+}
 
 /* The only extensions that untrusted clients have access to */
 //static const char *SecurityTrustedExtensions[] = {
@@ -654,7 +659,6 @@ static int isSameContainer(ClientPtr client1, int client2) {
     return isServer(client1);
 }
 
-
 /* SecurityCheckDeviceAccess
  *
  * Arguments:
@@ -686,10 +690,6 @@ static int devRequestPermitted(const char* reqName) {
     return 0;
 }
 
-static ContainerStateRec *clientPriv(ClientPtr client) {
-    return dixLookupPrivate(&client->devPrivates, stateKey);
-}
-
 static void
 ContainerDevice(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
@@ -719,13 +719,13 @@ ContainerDevice(CallbackListPtr *pcbl, void *unused, void *calldata)
     // FIXME: that's not very efficient, but didn't find a better way to do it yet
     const char* reqName = ContainerLookupRequestName(rec->client);
 
+    printf("device: client %-5d authid %ld keyboard access on request %s\n",
+        rec->client->index,
+        subj->authId,
+        reqName);
+
     if (devRequestPermitted(reqName))
         return;
-
-    printf("%20s: client %-5d keyboard access on request %s\n",
-        "device",
-        rec->client->index,
-        reqName);
 }
 
 /* ContainerResource
@@ -753,6 +753,7 @@ static void
 ContainerResource(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
     XaceResourceAccessRec *rec = calldata;
+    ContainerStateRec *subj = clientPriv(rec->client);
 //    ContainerStateRec *subj, *obj;
     int owner_id = CLIENT_ID(rec->id);
 //    Mask requested = rec->access_mode;
@@ -764,8 +765,6 @@ ContainerResource(CallbackListPtr *pcbl, void *unused, void *calldata)
     }
 
 //    Mask allowed = SecurityResourceMask;
-//
-//    subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);
 //
 //    /* disable background None for untrusted windows */
 //    if ((requested & DixCreateAccess) && (rec->rtype == RT_WINDOW))
@@ -856,16 +855,16 @@ ContainerServer(CallbackListPtr *pcbl, void *unused, void *calldata)
 //        rec->status = BadAccess;
 //    }
 
-    printf("%20s() client %-5d access to server configuration request %s\n",
-        __func__, rec->client->index, ContainerLookupRequestName(rec->client));
+    printf("handleServer: client %-5d access to server configuration request %s\n",
+        rec->client->index, ContainerLookupRequestName(rec->client));
 }
 
 static void
 ContainerClient(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
     XaceClientAccessRec *rec = calldata;
-    ContainerStateRec *subj = rec->client;
-    ContainerStateRec *obj = rec->target;
+    ContainerStateRec *subj = clientPriv(rec->client);
+    ContainerStateRec *obj = clientPriv(rec->target);
 
 //    ContainerStateRec *subj, *obj;
 //    Mask requested = rec->access_mode;
@@ -880,8 +879,9 @@ ContainerClient(CallbackListPtr *pcbl, void *unused, void *calldata)
 //                      ContainerLookupRequestName(rec->client));
 //        rec->status = BadAccess;
 //    }
-    printf("%20s() client %-5d access to client %d on request %s\n",
-        __func__, rec->client->index, rec->target->index,
+    printf("handleClient: client %-5d access to client %d on request %s\n",
+        rec->client->index,
+        rec->target->index,
         ContainerLookupRequestName(rec->client));
 }
 
@@ -921,13 +921,11 @@ static void
 ContainerSend(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
     XaceSendAccessRec *rec = calldata;
-    ContainerStateRec *subj, *obj;
+    ContainerStateRec *sub = clientPriv(rec->client);
+    ContainerStateRec *obj = clientPriv(wClient(rec->pWin));
 
     if (rec->client) {
         int i;
-//
-//        subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);
-//        obj = dixLookupPrivate(&wClient(rec->pWin)->devPrivates, stateKey);
 //
 //        if (SecurityDoCheck(subj, obj, DixSendAccess, 0) == Success)
 //            return;
@@ -957,15 +955,19 @@ ContainerSend(CallbackListPtr *pcbl, void *unused, void *calldata)
     }
 }
 
-//static void
-//SecurityReceive(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
-//    XaceReceiveAccessRec *rec = calldata;
-//    ContainerStateRec *subj, *obj;
-//
-//    subj = dixLookupPrivate(&rec->client->devPrivates, stateKey);
-//    obj = dixLookupPrivate(&wClient(rec->pWin)->devPrivates, stateKey);
-//
+static void
+handleReceive(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
+    XaceReceiveAccessRec *rec = calldata;
+    ContainerStateRec *subj = clientPriv(rec->client);
+    ContainerStateRec *obj = clientPriv(wClient(rec->pWin));
+
+    // TODO: client from one NS may not reive events from different NS
+    printf("[receive] client %d receiving event sent to window 0x%lx of client %d\n",
+        rec->client->index,
+        (unsigned long)rec->pWin->drawable.id,
+        wClient(rec->pWin)->index);
+
 //    if (SecurityDoCheck(subj, obj, DixReceiveAccess, 0) == Success)
 //        return;
 //
@@ -974,9 +976,9 @@ ContainerSend(CallbackListPtr *pcbl, void *unused, void *calldata)
 //                  rec->client->index, (unsigned long)rec->pWin->drawable.id,
 //                  wClient(rec->pWin)->index);
 //    rec->status = BadAccess;
-//}
+}
 
-/* SecurityClientStateCallback
+/* handleClientStateCallback
  *
  * Arguments:
  *	pcbl is &ClientStateCallback.
@@ -998,26 +1000,29 @@ ContainerSend(CallbackListPtr *pcbl, void *unused, void *calldata)
  * if it is now zero, the timer for this authorization is started.
  */
 
-//static void
-//SecurityClientState(CallbackListPtr *pcbl, void *unused, void *calldata)
-//{
-//    NewClientInfoRec *pci = calldata;
-//    ContainerStateRec *state;
+static void
+handleClientState(CallbackListPtr *pcbl, void *unused, void *calldata)
+{
+    NewClientInfoRec *pci = calldata;
+    ContainerStateRec *subj = clientPriv(pci->client);
+    ClientPtr client = pci->client;
+    int clientId = client->index;
+
 //    SecurityAuthorizationPtr pAuth;
 //    int rc;
 //
-//    state = dixLookupPrivate(&pci->client->devPrivates, stateKey);
-//
-//    switch (pci->client->clientState) {
-//    case ClientStateInitial:
+    switch (client->clientState) {
+    case ClientStateInitial:
+        printf("[client state] client %d: init\n", clientId);
 //        state->trustLevel = XSecurityClientTrusted;
 //        state->authId = None;
 //        state->haveState = TRUE;
 //        state->live = FALSE;
-//        break;
-//
-//    case ClientStateRunning:
-//        state->authId = AuthorizationIDOfClient(pci->client);
+        break;
+
+    case ClientStateRunning:
+        printf("[client state] client %d: running\n", clientId);
+        subj->authId = AuthorizationIDOfClient(client);
 //        rc = dixLookupResourceByType((void **) &pAuth, state->authId,
 //                                     SecurityAuthorizationResType, serverClient,
 //                                     DixGetAttrAccess);
@@ -1030,10 +1035,13 @@ ContainerSend(CallbackListPtr *pcbl, void *unused, void *calldata)
 //
 //            state->trustLevel = pAuth->trustLevel;
 //        }
-//        break;
-//
-//    case ClientStateGone:
-//    case ClientStateRetained:
+        break;
+
+    case ClientStateGone:
+        printf("[client state] client %d: gone\n", clientId);
+        break;
+    case ClientStateRetained:
+        printf("[client state] client %d: retained\n", clientId);
 //        rc = dixLookupResourceByType((void **) &pAuth, state->authId,
 //                                     SecurityAuthorizationResType, serverClient,
 //                                     DixGetAttrAccess);
@@ -1044,12 +1052,13 @@ ContainerSend(CallbackListPtr *pcbl, void *unused, void *calldata)
 //            if (pAuth->refcnt == 0)
 //                SecurityStartAuthorizationTimer(pAuth);
 //        }
-//        break;
+        break;
 //
-//    default:
-//        break;
-//    }
-//}
+    default:
+        printf("[client state] client %d: unknown %d\n", clientId, client->clientState);
+        break;
+    }
+}
 
 /* ContainerResetProc
  *
@@ -1067,7 +1076,7 @@ static void
 ContainerResetProc(ExtensionEntry * extEntry)
 {
     /* Unregister callbacks */
-//    DeleteCallback(&ClientStateCallback, SecurityClientState, NULL);
+    DeleteCallback(&ClientStateCallback, handleClientState, NULL);
 
 //    XaceDeleteCallback(XACE_EXT_DISPATCH, ContainerExtension, NULL);
 //    XaceDeleteCallback(XACE_RESOURCE_ACCESS, ContainerResource, NULL);
@@ -1118,7 +1127,7 @@ ContainerExtensionInit(void)
         FatalError("ContainerExtensionSetup: Can't allocate client private.\n");
 
     /* Register callbacks */
-//    ret &= AddCallback(&ClientStateCallback, ContainerClientState, NULL);
+    ret &= AddCallback(&ClientStateCallback, handleClientState, NULL);
 
 //    ret &= XaceRegisterCallback(XACE_EXT_DISPATCH, SecurityExtension, NULL);
     ret &= XaceRegisterCallback(XACE_RESOURCE_ACCESS, ContainerResource, NULL);

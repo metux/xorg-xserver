@@ -523,6 +523,7 @@ ClientAuthorized(ClientPtr client,
     /* Allow any client to connect without authorization on a launchd socket,
        because it is securely created -- this prevents a race condition on launch */
     if (trans_conn->flags & TRANS_NOXAUTH) {
+        printf("transport doesnt need auth\n");
         auth_id = (XID) 0L;
     }
     else {
@@ -531,12 +532,16 @@ ClientAuthorized(ClientPtr client,
                                client, &reason);
     }
 
+    printf("CheckAuth: auth_id=%lX\n", auth_id);
+
     if (auth_id == (XID) ~0L) {
+        printf("auth failed ... trying local direct\n");
         if (_XSERVTransGetPeerAddr(trans_conn, &family, &fromlen, &from) != -1) {
             if (InvalidHost((struct sockaddr *) from, fromlen, client))
                 AuthAudit(client, FALSE, (struct sockaddr *) from,
                           fromlen, proto_n, auth_proto, auth_id);
             else {
+                printf("host is allowed\n");
                 auth_id = (XID) 0;
 #ifdef XSERVER_DTRACE
                 if ((auditTrailLevel > 1) || XSERVER_CLIENT_AUTH_ENABLED())
@@ -588,6 +593,7 @@ ClientAuthorized(ClientPtr client,
     XdmcpOpenDisplay(priv->fd);
 #endif                          /* XDMCP */
 
+    printf("calling xace hook auth_id=%lX\n", auth_id);
     XaceHook(XACE_AUTH_AVAIL, client, auth_id);
 
     /* At this point, if the client is authorized to change the access control
