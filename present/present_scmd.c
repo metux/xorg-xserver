@@ -23,9 +23,6 @@
 #include "present_priv.h"
 #include <misync.h>
 #include <misyncstr.h>
-#ifdef MONOTONIC_CLOCK
-#include <time.h>
-#endif
 
 /*
  * Screen flip mode
