@@ -3547,6 +3547,14 @@ CloseDownClient(ClientPtr client)
             nextFreeClientID = client->index;
         clients[client->index] = NullClient;
         SmartLastClient = NullClient;
+
+#ifdef CONFIG_STORE_CLIENT_CREDS
+        if (client->authProto)
+            free(client->authProto);
+        if (client->authToken)
+            free(client->authToken);
+#endif /* CONFIG_STORE_CLIENT_CREDS */
+
         dixFreeObjectWithPrivates(client, PRIVATE_CLIENT);
 
         while (!clients[currentMaxClients - 1])

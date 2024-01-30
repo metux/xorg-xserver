@@ -242,6 +242,9 @@ conf_data.set('XV', build_xv ? '1' : false)
 conf_data.set('XvExtension', build_xv ? '1' : false)
 conf_data.set('XvMCExtension', build_xvmc ? '1' : false)
 
+# enable auto-selected internal lib functions
+conf_data.set('CONFIG_STORE_CLIENT_CREDS', build_store_client_creds ? '1' : false)
+
 # needed by several extensions
 build_registry_resource = (build_xselinux or build_res)
 conf_data.set('X_REGISTRY_RESOURCE', build_registry_resource ? '1' : false)

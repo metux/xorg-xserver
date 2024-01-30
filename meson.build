@@ -114,7 +114,17 @@ if not libsystemd_daemon_dep.found()
     libsystemd_daemon_dep = dependency('libsystemd-daemon', required: false)
 endif
 
+#
+# internal lib components needed by other features
+# (will be enabled later, as needed)
+#
+
+# small hashtable implementation
 build_hashtable = false
+
+# storing client's auth credentials so they can later be retrieved by extensions
+build_store_client_creds = false
+
 
 # Resolve default values of some options
 xkb_dir = get_option('xkb_dir')
