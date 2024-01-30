@@ -430,9 +430,6 @@ GetClientFd(ClientPtr);
 extern _X_EXPORT Bool
 ClientIsLocal(ClientPtr client);
 
-extern _X_EXPORT int
-GetAccessControl(void);
-
 extern _X_EXPORT void
 AddLocalHosts(void);
 
