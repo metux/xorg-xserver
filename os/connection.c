@@ -532,7 +532,7 @@ ClientAuthorized(ClientPtr client,
                                client, &reason);
     }
 
-    printf("CheckAuth: auth_id=%lX\n", auth_id);
+    printf("CheckAuth: auth_id=%ld\n", auth_id);
 
     if (auth_id == (XID) ~0L) {
         printf("auth failed ... trying local direct\n");
