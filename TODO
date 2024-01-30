@@ -1,2 +1,3 @@
 cleanups:
     * replace RegisterResourceName() by static table
+    * factor out dixFreeObjectWithPrivates() to dedicated memory management micro-lib
