@@ -1011,6 +1011,8 @@ handleClientState(CallbackListPtr *pcbl, void *unused, void *calldata)
 //    SecurityAuthorizationPtr pAuth;
 //    int rc;
 //
+    printf("[client state] client id=%d auth-method=%s auth-token=", clientId, client->authProto);
+
     switch (client->clientState) {
     case ClientStateInitial:
         printf("[client state] client %d: init\n", clientId);
