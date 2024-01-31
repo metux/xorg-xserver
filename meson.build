@@ -574,6 +574,7 @@ if build_xcontainer
     if not build_xace
         error('cannot build Container extension without X-ACE')
     endif
+    build_store_client_creds = true
 endif
 
 build_xv = get_option('xv')
