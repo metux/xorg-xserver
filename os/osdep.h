@@ -151,9 +151,6 @@ extern WorkQueuePtr workQueue;
 /* in access.c */
 extern Bool ComputeLocalClient(ClientPtr client);
 
-/* in auth.c */
-extern void GenerateRandomData(int len, char *buf);
-
 /* in mitauth.c */
 extern XID MitCheckCookie(AuthCheckArgs);
 extern XID MitGenerateCookie(AuthGenCArgs);
@@ -207,5 +204,17 @@ extern void XdmcpRegisterBroadcastAddress(const struct sockaddr_in *addr);
 #ifdef HASXDMAUTH
 extern void XdmAuthenticationInit(const char *cookie, int cookie_length);
 #endif
+
+/* for platforms lacking arc4random_buf() libc function */
+#ifndef HAVE_ARC4RANDOM_BUF
+static inline void arc4random_buf(char *buf, size_t n)
+{
+    int fd;
+
+    fd = open("/dev/urandom", O_RDONLY);
+    read(fd, buf, len);
+    close(fd);
+}
+#endif /* HAVE_ARC4RANDOM_BUF */
 
 #endif                          /* _OSDEP_H_ */
