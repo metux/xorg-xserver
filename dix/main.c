@@ -78,10 +78,10 @@ Equipment Corporation.
 #include <version-config.h>
 #endif
 
+#include <pixman.h>
 #include <X11/X.h>
 #include <X11/Xos.h>            /* for unistd.h  */
 #include <X11/Xproto.h>
-#include <pixman.h>
 
 #include "dix/callback_priv.h"
 #include "dix/dix_priv.h"
@@ -89,6 +89,7 @@ Equipment Corporation.
 #include "dix/registry_priv.h"
 #include "os/audit.h"
 #include "os/auth.h"
+#include "os/client_priv.h"
 #include "os/cmdline.h"
 #include "os/ddx_priv.h"
 #include "os/osdep.h"
@@ -114,7 +115,6 @@ Equipment Corporation.
 #include "dixfont.h"
 #include "extnsionst.h"
 #include "privates.h"
-#include "client.h"
 #include "exevents.h"
 #ifdef PANORAMIX
 #include "panoramiXsrv.h"
