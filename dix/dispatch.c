@@ -112,6 +112,7 @@ Equipment Corporation.
 #include "dix/screenint_priv.h"
 #include "include/resource.h"
 #include "os/auth.h"
+#include "os/client_priv.h"
 #include "os/ddx_priv.h"
 #include "os/osdep.h"
 #include "os/screensaver.h"
@@ -133,7 +134,6 @@ Equipment Corporation.
 #include "xace.h"
 #include "inputstr.h"
 #include "xkbsrv.h"
-#include "client.h"
 #include "xfixesint.h"
 #include "dixstruct_priv.h"
 
