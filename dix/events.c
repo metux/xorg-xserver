@@ -104,6 +104,12 @@ Equipment Corporation.
 #include <dix-config.h>
 
 #include <X11/X.h>
+#include <X11/extensions/ge.h>
+#include <X11/extensions/XKBproto.h>
+#include <X11/extensions/XIproto.h>
+#include <X11/extensions/XI2proto.h>
+#include <X11/extensions/XI.h>
+#include <X11/extensions/XI2.h>
 #include <X11/Xproto.h>
 #include <X11/extensions/ge.h>
 #include <X11/extensions/XI.h>
@@ -114,6 +120,7 @@ Equipment Corporation.
 
 #include "dix/cursor_priv.h"
 #include "dix/dix_priv.h"
+#include "dix/dixgrabs_priv.h"
 #include "dix/input_priv.h"
 #include "dix/eventconvert.h"
 #include "dix/exevents_priv.h"
@@ -137,7 +144,6 @@ Equipment Corporation.
 #include "exglobals.h"
 #include "extnsionst.h"
 #include "dixevents.h"
-#include "dixgrabs.h"
 #include "dispatch.h"
 #include "geext.h"
 #include "geint.h"
