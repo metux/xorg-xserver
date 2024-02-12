@@ -115,6 +115,7 @@ Equipment Corporation.
 #include <X11/extensions/XI2proto.h>
 
 #include "dix/dix_priv.h"
+#include "dix/input_priv.h"
 #include "dix/eventconvert.h"
 #include "dix/exevents_priv.h"
 #include "xkb/xkbsrv_priv.h"

@@ -106,6 +106,7 @@ Equipment Corporation.
 #include <X11/fonts/libxfont2.h>
 
 #include "dix/dix_priv.h"
+#include "dix/input_priv.h"
 #include "dix/gc_priv.h"
 #include "dix/registry_priv.h"
 #include "dix/screenint_priv.h"
@@ -121,7 +122,6 @@ Equipment Corporation.
 #include "colormapst.h"
 #include "cursorstr.h"
 #include "scrnintstr.h"
-#include "input.h"
 #include "servermd.h"
 #include "extnsionst.h"
 #include "dixfont.h"
