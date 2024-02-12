@@ -102,6 +102,7 @@ Equipment Corporation.
 
 #include "dix/dix_priv.h"
 #include "dix/exevents_priv.h"
+#include "dix/input_priv.h"
 #include "dix/property_priv.h"
 #include "os/auth.h"
 #include "os/client_priv.h"
@@ -113,7 +114,6 @@ Equipment Corporation.
 #include "validate.h"
 #include "windowstr.h"
 #include "propertyst.h"
-#include "input.h"
 #include "inputstr.h"
 #include "resource.h"
 #include "colormapst.h"

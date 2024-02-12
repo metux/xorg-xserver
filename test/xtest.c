@@ -27,10 +27,12 @@
 #ifdef HAVE_DIX_CONFIG_H
 #include <dix-config.h>
 #endif
+
 #include <stdint.h>
 #include <X11/Xatom.h>
 
 #include "dix/dix_priv.h"
+#include "dix/input_priv.h"
 
 #include "input.h"
 #include "inputstr.h"
@@ -41,7 +43,6 @@
 #include "xkbsrv.h"
 #include "xserver-properties.h"
 #include "syncsrv.h"
-
 #include "tests-common.h"
 
 /**
