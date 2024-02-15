@@ -95,7 +95,7 @@ xnestCollectExposures(void)
 
             RegionInit(&Rgn, &Box, 1);
 
-            miSendExposures(pWin, &Rgn, Box.x2, Box.y2);
+            miSendExposures(pWin, &Rgn, 0, 0);
         }
     }
 }
