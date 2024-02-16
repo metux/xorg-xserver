@@ -30,8 +30,6 @@ is" without express or implied warranty.
 #include "inpututils.h"
 #include "mi.h"
 
-#include "Xnest.h"
-
 #include "Args.h"
 #include "Color.h"
 #include "Display.h"

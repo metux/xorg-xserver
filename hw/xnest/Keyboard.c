@@ -29,8 +29,6 @@ is" without express or implied warranty.
 #include "scrnintstr.h"
 #include "servermd.h"
 
-#include "Xnest.h"
-
 #include "Display.h"
 #include "Screen.h"
 #include "Keyboard.h"

@@ -27,8 +27,6 @@ is" without express or implied warranty.
 #include "colormapst.h"
 #include "resource.h"
 
-#include "Xnest.h"
-
 #include "Display.h"
 #include "Screen.h"
 #include "XNGC.h"

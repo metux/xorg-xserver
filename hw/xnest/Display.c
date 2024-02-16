@@ -28,8 +28,6 @@ is" without express or implied warranty.
 #include "scrnintstr.h"
 #include "servermd.h"
 
-#include "Xnest.h"
-
 #include "Display.h"
 #include "Init.h"
 #include "Args.h"
@@ -52,7 +50,7 @@ Pixel xnestWhitePixel;
 Drawable xnestDefaultDrawables[MAXDEPTH + 1];
 Pixmap xnestIconBitmap;
 Pixmap xnestScreenSaverPixmap;
-XlibGC xnestBitmapGC;
+GC xnestBitmapGC;
 unsigned long xnestEventMask;
 
 static int _X_NORETURN

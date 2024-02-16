@@ -26,8 +26,6 @@ is" without express or implied warranty.
 #include "privates.h"
 #include "mi.h"
 
-#include "Xnest.h"
-
 #include "Display.h"
 #include "Screen.h"
 #include "XNPixmap.h"

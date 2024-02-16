@@ -26,8 +26,6 @@ is" without express or implied warranty.
 #include "mistruct.h"
 #include "region.h"
 
-#include "Xnest.h"
-
 #include "Display.h"
 #include "XNGC.h"
 #include "GCOps.h"
