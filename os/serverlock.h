@@ -7,5 +7,6 @@
 
 void LockServer(void);
 void UnlockServer(void);
+void DisableServerLock(void);
 
 #endif /* _XSERVER_SERVERLOCK_H */
