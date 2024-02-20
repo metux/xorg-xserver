@@ -61,6 +61,7 @@ SOFTWARE.
 #include "dix/dix_priv.h"
 #include "os/busfault.h"
 #include "os/osdep.h"
+#include "os/serverlock.h"
 
 #include "misc.h"
 #include "os.h"

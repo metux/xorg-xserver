@@ -253,11 +253,6 @@ typedef int (*OsSigWrapperPtr) (int /* sig */ );
 extern _X_EXPORT OsSigWrapperPtr
 OsRegisterSigWrapper(OsSigWrapperPtr newWrap);
 
-extern _X_EXPORT void
-LockServer(void);
-extern _X_EXPORT void
-UnlockServer(void);
-
 extern _X_EXPORT Bool
 PrivsElevated(void);
 
