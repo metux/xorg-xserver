@@ -513,6 +513,8 @@ xwl_dmabuf_feedback_main_device(void *data,
     assert(dev->size == sizeof(dev_t));
     memcpy(&devid, dev->data, sizeof(dev_t));
 
+    drmFreeDevice(&xwl_feedback->main_dev);
+
     if (drmGetDeviceFromDevId(devid, 0, &xwl_feedback->main_dev) != 0)
         ErrorF("linux_dmabuf_feedback.main_device: Failed to fetch DRM device\n");
 }

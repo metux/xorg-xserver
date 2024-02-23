@@ -1131,6 +1131,7 @@ xwl_dmabuf_feedback_destroy(struct xwl_dmabuf_feedback *xwl_feedback)
         zwp_linux_dmabuf_feedback_v1_destroy(xwl_feedback->dmabuf_feedback);
 
     xwl_feedback->dmabuf_feedback = NULL;
+    drmFreeDevice(&xwl_feedback->main_dev);
 }
 
 Bool
