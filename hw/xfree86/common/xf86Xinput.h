@@ -51,6 +51,8 @@
 #ifndef _xf86Xinput_h
 #define _xf86Xinput_h
 
+#include <X11/Xfuncproto.h>
+
 #include "xf86.h"
 #include "xf86str.h"
 #include "inputstr.h"

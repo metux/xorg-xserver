@@ -35,6 +35,8 @@
 
 #include <dix-config.h>
 
+#include <X11/Xfuncproto.h>
+
 #include "pseudoramiX.h"
 #include "extnsionst.h"
 #include "nonsdk_extinit.h"

@@ -45,6 +45,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <unistd.h>
 #include <X11/X.h>
 #include <X11/Xproto.h>
+#include <X11/Xfuncproto.h>
 
 #include "dix/dix_priv.h"
 

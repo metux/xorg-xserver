@@ -26,6 +26,8 @@ in this Software without prior written authorization from The Open Group.
 
 #include <dix-config.h>
 
+#include <X11/Xfuncproto.h>
+
 #include "dix/dix_priv.h"
 #include "dix/registry_priv.h"
 #include "os/audit.h"

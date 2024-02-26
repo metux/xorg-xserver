@@ -58,6 +58,8 @@ SOFTWARE.
 #include <time.h>
 #endif
 
+#include <X11/Xfuncproto.h>
+
 #define SCREEN_SAVER_ON   0
 #define SCREEN_SAVER_OFF  1
 #define SCREEN_SAVER_FORCER 2
