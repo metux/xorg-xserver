@@ -309,9 +309,7 @@ UseMsg(void)
 #ifdef RLIMIT_STACK
     ErrorF("-ls int                limit stack space to N Kb\n");
 #endif
-#ifdef LOCK_SERVER
-    ErrorF("-nolock                disable the locking mechanism\n");
-#endif
+    LockServerUseMsg();
     ErrorF("-maxclients n          set maximum number of clients (power of two)\n");
     ErrorF("-nolisten string       don't listen on protocol\n");
     ErrorF("-listen string         listen on protocol\n");

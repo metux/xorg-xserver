@@ -193,10 +193,15 @@ void DisableServerLock(void) {
     nolock = TRUE;
 }
 
+void LockServerUseMsg(void) {
+    ErrorF("-nolock                disable the locking mechanism\n");
+}
+
 #else /* LOCK_SERVER */
 
 void LockServer(void) {}
 void UnlockServer(void) {}
 void DisableServerLock(void) {}
+void LockServerUseMsg(void) {}
 
 #endif /* LOCK_SERVER */
