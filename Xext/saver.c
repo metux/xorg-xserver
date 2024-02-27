@@ -35,6 +35,7 @@ in this Software without prior written authorization from the X Consortium.
 
 #include "dix/cursor_priv.h"
 #include "dix/dix_priv.h"
+#include "os/screensaver.h"
 
 #include "misc.h"
 #include "os.h"
