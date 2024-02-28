@@ -36,6 +36,7 @@
 
 #include <X11/Xatom.h>
 
+#include "dix/property_priv.h"
 #include "os/osdep.h"
 
 #include <micmap.h>
