@@ -20,6 +20,8 @@ is" without express or implied warranty.
 #include <X11/Xdefs.h>
 #include <X11/Xproto.h>
 
+#include "dix/cursor_priv.h"
+
 #include "screenint.h"
 #include "input.h"
 #include "misc.h"
@@ -28,7 +30,6 @@ is" without express or implied warranty.
 #include "servermd.h"
 #include "inputstr.h"
 #include "inpututils.h"
-
 #include "mi.h"
 
 #include "Xnest.h"
