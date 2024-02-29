@@ -70,11 +70,6 @@ typedef struct _CursorMetric *CursorMetricPtr;
 extern _X_EXPORT int FreeCursor(void *pCurs,
                                 XID cid);
 
-extern _X_EXPORT void NewCurrentScreen(struct _DeviceIntRec * /*pDev */ ,
-                                       ScreenPtr /*newScreen */ ,
-                                       int /*x */ ,
-                                       int /*y */ );
-
 extern _X_EXPORT Bool PointerConfinedToScreen(struct _DeviceIntRec * /* pDev */
                                               );
 
