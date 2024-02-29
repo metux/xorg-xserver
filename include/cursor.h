@@ -67,8 +67,6 @@ typedef struct _Cursor *CursorPtr;
 typedef struct _Cursor const *ConstCursorPtr;
 typedef struct _CursorMetric *CursorMetricPtr;
 
-extern _X_EXPORT CursorPtr rootCursor;
-
 extern _X_EXPORT int FreeCursor(void *pCurs,
                                 XID cid);
 
