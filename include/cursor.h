@@ -57,8 +57,6 @@ SOFTWARE.
 /* Provide support for alpha composited cursors */
 #define ARGB_CURSOR
 
-struct _DeviceIntRec;
-
 typedef struct _Cursor *CursorPtr;
 // FUN FACT: If you typedef a pointer type, like the `CursorPtr` above
 // then `const CursorPtr` or `CursorPtr const` actually means `struct _Cursor *const`, a constant pointer
@@ -69,9 +67,5 @@ typedef struct _CursorMetric *CursorMetricPtr;
 
 extern _X_EXPORT int FreeCursor(void *pCurs,
                                 XID cid);
-
-#ifdef PANORAMIX
-extern _X_EXPORT int XineramaGetCursorScreen(struct _DeviceIntRec *pDev);
-#endif                          /* PANORAMIX */
 
 #endif                          /* CURSOR_H */
