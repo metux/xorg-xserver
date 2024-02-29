@@ -70,10 +70,6 @@ typedef struct _CursorMetric *CursorMetricPtr;
 extern _X_EXPORT int FreeCursor(void *pCurs,
                                 XID cid);
 
-extern _X_EXPORT CursorPtr RefCursor(CursorPtr /* cursor */);
-extern _X_EXPORT CursorPtr UnrefCursor(CursorPtr /* cursor */);
-extern _X_EXPORT int CursorRefCount(ConstCursorPtr /* cursor */);
-
 extern _X_EXPORT int AllocARGBCursor(unsigned char * /*psrcbits */ ,
                                      unsigned char * /*pmaskbits */ ,
                                      CARD32 * /*argb */ ,
