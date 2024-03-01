@@ -87,6 +87,7 @@ OR PERFORMANCE OF THIS SOFTWARE.
 #include <time.h>
 #include <X11/Xos.h>
 
+#include "dix/dix_priv.h"
 #include "os/audit.h"
 #include "os/ddx_priv.h"
 #include "os/fmt.h"

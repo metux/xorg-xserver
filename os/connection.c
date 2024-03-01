@@ -102,7 +102,6 @@ SOFTWARE.
 #include "os/osdep.h"
 
 #include "misc.h"               /* for typedef of pointer */
-#include "opaque.h"
 #include "dixstruct_priv.h"
 #include "xace.h"
 
