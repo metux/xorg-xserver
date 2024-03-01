@@ -36,6 +36,9 @@ extern Bool touchEmulatePointer;
 
 extern HWEventQueuePtr checkForInput[2];
 
+ /* -retro mode */
+extern Bool party_like_its_1989;
+
 static inline _X_NOTSAN Bool
 InputCheckPending(void)
 {
