@@ -103,6 +103,7 @@ Equipment Corporation.
 #include "dix/dix_priv.h"
 #include "dix/exevents_priv.h"
 #include "os/auth.h"
+#include "os/client_priv.h"
 
 #include "misc.h"
 #include "scrnintstr.h"
