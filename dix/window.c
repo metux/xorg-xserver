@@ -105,6 +105,7 @@ Equipment Corporation.
 #include "dix/input_priv.h"
 #include "dix/property_priv.h"
 #include "os/auth.h"
+#include "os/client_priv.h"
 #include "os/screensaver.h"
 
 #include "misc.h"
