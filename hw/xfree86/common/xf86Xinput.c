@@ -69,7 +69,7 @@
 #include "mipointer.h"
 #include "extinit.h"
 #include "loaderProcs.h"
-#include "systemd-logind.h"
+#include "../os-support/linux/systemd-logind.h"
 #include "exevents.h"           /* AddInputDevice */
 #include "exglobals.h"
 #include "eventstr.h"
