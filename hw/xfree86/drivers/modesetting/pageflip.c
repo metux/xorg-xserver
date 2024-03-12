@@ -24,7 +24,8 @@
 
 #include <errno.h>
 
-#include <xserver_poll.h>
+#include "os/xserver_poll.h"
+
 #include <xf86drm.h>
 
 #include "driver.h"
