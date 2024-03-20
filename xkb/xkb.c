@@ -3569,7 +3569,6 @@ static int
 _XkbSetNamedIndicator(ClientPtr client, DeviceIntPtr dev,
                       xkbSetNamedIndicatorReq * stuff)
 {
-    unsigned int extDevReason;
     unsigned int statec, namec, mapc;
     XkbSrvLedInfoPtr sli;
     int led = 0;
@@ -3591,11 +3590,9 @@ _XkbSetNamedIndicator(ClientPtr client, DeviceIntPtr dev,
         return BadAlloc;
 
     namec = mapc = statec = 0;
-    extDevReason = 0;
 
     namec |= (1 << led);
     sli->namesPresent |= ((stuff->indicator != None) ? (1 << led) : 0);
-    extDevReason |= XkbXI_IndicatorNamesMask;
 
     if (stuff->setMap) {
         map->flags = stuff->flags;
