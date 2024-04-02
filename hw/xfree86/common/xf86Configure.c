@@ -125,7 +125,7 @@ xf86AddBusDeviceToConfigure(const char *driver, BusType bus, void *busData,
 
     /* Fill in what we know, converting the driver name to lower case */
     lower_driver = XNFalloc(strlen(driver) + 1);
-    for (j = 0; (lower_driver[j] = tolower(driver[j])); j++);
+    for (j = 0; (lower_driver[j] = tolower((unsigned char)driver[j])); j++);
     DevToConfig[i].GDev.driver = lower_driver;
 
     switch (bus) {
