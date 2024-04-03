@@ -146,6 +146,9 @@ Equipment Corporation.
 #include "enterleave.h"
 #include "mi.h"
 
+#define _XkbWantsDetectableAutoRepeat(c) \
+        ((c)->xkbClientFlags&XkbPCF_DetectableAutoRepeatMask)
+
 /* Extension events type numbering starts at EXTENSION_EVENT_BASE.  */
 #define NoSuchEvent 0x80000000  /* so doesn't match NoEventMask */
 #define StructureAndSubMask ( StructureNotifyMask | SubstructureNotifyMask )
