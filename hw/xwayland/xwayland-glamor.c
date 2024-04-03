@@ -25,8 +25,6 @@
 
 #include <xwayland-config.h>
 
-#include <compositeext.h>
-
 #define MESA_EGL_NO_X11_HEADERS
 #define EGL_NO_X11
 #include <glamor_egl.h>
@@ -895,108 +893,6 @@ xwl_glamor_allow_commits(struct xwl_window *xwl_window)
         return TRUE;
 }
 
-static void
-xwl_avoid_implicit_redirect(WindowPtr window)
-{
-    ScreenPtr screen = window->drawable.pScreen;
-    WindowOptPtr parent_optional;
-    VisualPtr parent_visual = NULL;
-    VisualPtr window_visual = NULL;
-    DepthPtr depth32 = NULL;
-    int i;
-
-    if (!window->optional)
-        return;
-
-    parent_optional = FindWindowWithOptional(window)->optional;
-    if (window->optional == parent_optional ||
-        window->optional->visual == parent_optional->visual ||
-        CompositeIsImplicitRedirectException(screen, parent_optional->visual,
-                                             window->optional->visual))
-        return;
-
-    for (i = 0; i < screen->numDepths; i++) {
-        if (screen->allowedDepths[i].depth == 32) {
-            depth32 = &screen->allowedDepths[i];
-            break;
-        }
-    }
-
-    if (!depth32)
-        return;
-
-    for (i = 0; i < depth32->numVids; i++) {
-        XID argb_vid = depth32->vids[i];
-
-        if (argb_vid != parent_optional->visual)
-            continue;
-
-        if (!compIsAlternateVisual(screen, argb_vid))
-            break;
-
-        for (i = 0; i < screen->numVisuals; i++) {
-            if (screen->visuals[i].vid == argb_vid) {
-                parent_visual = &screen->visuals[i];
-                break;
-            }
-        }
-    }
-
-    if (!parent_visual)
-        return;
-
-    for (i = 0; i < screen->numVisuals; i++) {
-        if (screen->visuals[i].vid == window->optional->visual) {
-            window_visual = &screen->visuals[i];
-            break;
-        }
-    }
-
-    if ((window_visual->class != TrueColor &&
-         window_visual->class != DirectColor) ||
-        window_visual->redMask != parent_visual->redMask ||
-        window_visual->greenMask != parent_visual->greenMask ||
-        window_visual->blueMask != parent_visual->blueMask ||
-        window_visual->offsetRed != parent_visual->offsetRed ||
-        window_visual->offsetGreen != parent_visual->offsetGreen ||
-        window_visual->offsetBlue != parent_visual->offsetBlue)
-        return;
-
-    CompositeRegisterImplicitRedirectionException(screen, parent_visual->vid, window_visual->vid);
-}
-
-static Bool
-xwl_glamor_create_window(WindowPtr window)
-{
-    ScreenPtr screen = window->drawable.pScreen;
-    struct xwl_screen *xwl_screen = xwl_screen_get(screen);
-    Bool ret;
-
-    if (window->parent)
-        xwl_avoid_implicit_redirect(window);
-
-    screen->CreateWindow = xwl_screen->CreateWindow;
-    ret = (*screen->CreateWindow) (window);
-    xwl_screen->CreateWindow = screen->CreateWindow;
-    screen->CreateWindow = xwl_glamor_create_window;
-
-    return ret;
-}
-
-static void
-xwl_glamor_reparent_window(WindowPtr window, WindowPtr old_parent)
-{
-    ScreenPtr screen = window->drawable.pScreen;
-    struct xwl_screen *xwl_screen = xwl_screen_get(screen);
-
-    xwl_avoid_implicit_redirect(window);
-
-    screen->ReparentWindow = xwl_screen->ReparentWindow;
-    (*screen->ReparentWindow) (window, old_parent);
-    xwl_screen->ReparentWindow = screen->ReparentWindow;
-    screen->ReparentWindow = xwl_glamor_reparent_window;
-}
-
 static Bool
 xwl_glamor_create_screen_resources(ScreenPtr screen)
 {
@@ -1010,11 +906,6 @@ xwl_glamor_create_screen_resources(ScreenPtr screen)
 
     if (!ret)
         return ret;
-
-    xwl_screen->CreateWindow = screen->CreateWindow;
-    screen->CreateWindow = xwl_glamor_create_window;
-    xwl_screen->ReparentWindow = screen->ReparentWindow;
-    screen->ReparentWindow = xwl_glamor_reparent_window;
 
     if (xwl_screen->rootless) {
         screen->devPrivate =
