@@ -40,6 +40,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "dix/dix_priv.h"
 #include "os/osdep.h"
+#include "xkb/xkbfmisc_priv.h"
 
 #include "inputstr.h"
 #include "scrnintstr.h"

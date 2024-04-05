@@ -71,21 +71,6 @@ typedef void (*XkbFileAddOnFunc) (FILE * /* file */ ,
 
 _XFUNCPROTOBEGIN
 
-#define	_XkbKSLower	(1<<0)
-#define	_XkbKSUpper	(1<<1)
-
-#define	XkbKSIsLower(k)		(_XkbKSCheckCase(k)&_XkbKSLower)
-#define	XkbKSIsUpper(k)		(_XkbKSCheckCase(k)&_XkbKSUpper)
-#define XkbKSIsKeypad(k)	(((k)>=XK_KP_Space)&&((k)<=XK_KP_Equal))
-
-extern _X_EXPORT unsigned _XkbKSCheckCase(KeySym        /* sym */
-    );
-
-extern _X_EXPORT int XkbFindKeycodeByName(XkbDescPtr /* xkb */ ,
-                                          char * /* name */ ,
-                                          Bool  /* use_aliases */
-    );
-
 extern _X_EXPORT Bool XkbWriteXKBKeycodes(FILE * /* file */ ,
                                           XkbDescPtr /* result */ ,
                                           Bool /* topLevel */ ,
@@ -124,14 +109,6 @@ extern _X_EXPORT Bool XkbWriteXKBGeometry(FILE * /* file */ ,
                                           Bool /* showImplicit */ ,
                                           XkbFileAddOnFunc /* addOn */ ,
                                           void *        /* priv */
-    );
-
-extern _X_EXPORT Bool XkbWriteXKBKeymapForNames(FILE * /* file */ ,
-                                                XkbComponentNamesPtr /* names */
-                                                ,
-                                                XkbDescPtr /* xkb */ ,
-                                                unsigned /* want */ ,
-                                                unsigned        /* need */
     );
 
 /***====================================================================***/
