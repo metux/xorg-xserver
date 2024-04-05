@@ -71,48 +71,6 @@ typedef void (*XkbFileAddOnFunc) (FILE * /* file */ ,
 
 _XFUNCPROTOBEGIN
 
-extern _X_EXPORT Bool XkbWriteXKBKeycodes(FILE * /* file */ ,
-                                          XkbDescPtr /* result */ ,
-                                          Bool /* topLevel */ ,
-                                          Bool /* showImplicit */ ,
-                                          XkbFileAddOnFunc /* addOn */ ,
-                                          void *        /* priv */
-    );
-
-extern _X_EXPORT Bool XkbWriteXKBKeyTypes(FILE * /* file */ ,
-                                          XkbDescPtr /* result */ ,
-                                          Bool /* topLevel */ ,
-                                          Bool /* showImplicit */ ,
-                                          XkbFileAddOnFunc /* addOn */ ,
-                                          void *        /* priv */
-    );
-
-extern _X_EXPORT Bool XkbWriteXKBCompatMap(FILE * /* file */ ,
-                                           XkbDescPtr /* result */ ,
-                                           Bool /* topLevel */ ,
-                                           Bool /* showImplicit */ ,
-                                           XkbFileAddOnFunc /* addOn */ ,
-                                           void *       /* priv */
-    );
-
-extern _X_EXPORT Bool XkbWriteXKBSymbols(FILE * /* file */ ,
-                                         XkbDescPtr /* result */ ,
-                                         Bool /* topLevel */ ,
-                                         Bool /* showImplicit */ ,
-                                         XkbFileAddOnFunc /* addOn */ ,
-                                         void * /* priv */
-    );
-
-extern _X_EXPORT Bool XkbWriteXKBGeometry(FILE * /* file */ ,
-                                          XkbDescPtr /* result */ ,
-                                          Bool /* topLevel */ ,
-                                          Bool /* showImplicit */ ,
-                                          XkbFileAddOnFunc /* addOn */ ,
-                                          void *        /* priv */
-    );
-
-/***====================================================================***/
-
 extern _X_EXPORT unsigned XkmReadFile(FILE * /* file */ ,
                                       unsigned /* need */ ,
                                       unsigned /* want */ ,

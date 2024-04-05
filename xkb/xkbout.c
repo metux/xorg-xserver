@@ -36,6 +36,7 @@
 #include <X11/extensions/XKMformat.h>
 
 #include "xkb/xkbfmisc_priv.h"
+#include "xkb/xkbout_priv.h"
 #include "xkb/xkbtext_priv.h"
 
 #include "misc.h"
