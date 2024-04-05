@@ -46,7 +46,6 @@
 #include <xkbsrv.h>
 
 #include "xkbgeom.h"
-#include "xkbfile.h"
 
 #define	VMOD_HIDE_VALUE	0
 #define	VMOD_SHOW_VALUE	1
