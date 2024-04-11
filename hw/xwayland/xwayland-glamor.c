@@ -618,8 +618,8 @@ xwl_dmabuf_feedback_tranche_done(void *data,
      */
     for (int i = 0; i < xwl_feedback->dev_formats_len; i++) {
         tranche = &xwl_feedback->dev_formats[i];
-        if (tranche->drm_dev == xwl_feedback->tmp_tranche.drm_dev &&
-            tranche->supports_scanout == xwl_feedback->tmp_tranche.supports_scanout) {
+        if (tranche->supports_scanout == xwl_feedback->tmp_tranche.supports_scanout &&
+            drmDevicesEqual(tranche->drm_dev, xwl_feedback->tmp_tranche.drm_dev)) {
             appended = true;
 
             /* Add all format/mods to this tranche */
