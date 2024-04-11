@@ -183,8 +183,10 @@ cache_formats_and_modifiers(ScreenPtr screen)
     }
 
     ds->formats = calloc(num_formats, sizeof(dri3_dmabuf_format_rec));
-    if (!ds->formats)
+    if (!ds->formats) {
+        free(formats);
         return BadAlloc;
+    }
 
     for (i = 0; i < num_formats; i++) {
         dri3_dmabuf_format_ptr iter = &ds->formats[i];
@@ -205,6 +207,7 @@ cache_formats_and_modifiers(ScreenPtr screen)
     ds->num_formats = i;
     ds->formats_cached = TRUE;
 
+    free(formats);
     return Success;
 }
 
