@@ -172,10 +172,6 @@ OsSignal(int sig, OsSigHandlerPtr handler)
 #define LOCK_PREFIX "/.X"
 #define LOCK_SUFFIX "-lock"
 
-#if !defined(WIN32) || defined(__CYGWIN__)
-#define LOCK_SERVER
-#endif
-
 #ifndef LOCK_SERVER
 void
 LockServer(void)
