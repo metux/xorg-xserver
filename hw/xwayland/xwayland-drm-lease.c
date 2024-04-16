@@ -43,7 +43,24 @@ xwl_randr_lease_cleanup_outputs(RRLeasePtr rrLease)
 
     for (i = 0; i < rrLease->numOutputs; ++i) {
         output = rrLease->outputs[i]->devPrivate;
-        output->lease = NULL;
+        if (output) {
+            output->lease = NULL;
+        }
+    }
+}
+
+static void
+xwl_randr_lease_free_outputs(RRLeasePtr rrLease)
+{
+    struct xwl_output *xwl_output;
+    int i;
+
+    for (i = 0; i < rrLease->numOutputs; ++i) {
+        xwl_output = rrLease->outputs[i]->devPrivate;
+        if (xwl_output && xwl_output->withdrawn_connector) {
+            rrLease->outputs[i]->devPrivate = NULL;
+            xwl_output_remove(xwl_output);
+        }
     }
 }
 
@@ -70,6 +87,9 @@ drm_lease_handle_finished(void *data,
         AttendClient(lease->client);
         xwl_randr_lease_cleanup_outputs(lease->rrLease);
     }
+
+    /* Free the xwl_outputs that have been withdrawn while lease-able */
+    xwl_randr_lease_free_outputs(lease->rrLease);
 }
 
 static struct wp_drm_lease_v1_listener drm_lease_listener = {
@@ -319,7 +339,15 @@ static void
 lease_connector_handle_withdrawn(void *data,
                                  struct wp_drm_lease_connector_v1 *wp_drm_lease_connector_v1)
 {
-    xwl_output_remove(data);
+    struct xwl_output *xwl_output = data;
+
+    xwl_output->withdrawn_connector = TRUE;
+
+    /* Not removing the xwl_output if currently leased with Wayland */
+    if (xwl_output->lease)
+        return;
+
+    xwl_output_remove(xwl_output);
 }
 
 static const struct wp_drm_lease_connector_v1_listener lease_connector_listener = {
