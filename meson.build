@@ -286,11 +286,23 @@ if build_xquartz
     build_rootless = true
 endif
 
+# IPv6 support
+have_AF_INET6 = cc.compiles('''
+#ifdef WIN32
+#include <winsock2.h>
+#else
+#include <sys/socket.h>
+#endif
+int main() { int foo = AF_INET6; }''')
 if get_option('ipv6') == 'auto'
-    build_ipv6 = cc.has_function('getaddrinfo')
+    build_ipv6 = cc.has_function('getaddrinfo') and have_AF_INET6
 else
     build_ipv6 = get_option('ipv6') == 'true'
 endif
+if build_ipv6 and not have_AF_INET6
+    error('ipv6 support needs AF_INET6')
+endif
+message('IPv6 support: ' + (build_ipv6 ? 'YES' : 'NO'))
 
 int10 = get_option('int10')
 if int10 == 'auto'
