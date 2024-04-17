@@ -944,9 +944,7 @@ ResetHosts(const char *display)
 #if defined(TCPCONN) &&  (!defined(IPv6) || !defined(AF_INET6))
     union {
         struct sockaddr sa;
-#if defined(TCPCONN)
         struct sockaddr_in in;
-#endif                          /* TCPCONN */
     } saddr;
 #endif
     int family = 0;
