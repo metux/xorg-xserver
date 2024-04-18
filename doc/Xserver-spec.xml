@@ -4257,7 +4257,6 @@ bit in that plane equal to 0.  If format is XYPixmap, planemask is
 guaranteed to have a single bit set; the bits should be written in
 Bitmap format, which is the format for a single plane of an XYPixmap.</para>
 <para>
-An example implementation is miGetImage() in Xserver/mi/mibitblt.c.
 <blockquote><programlisting>
 
 	void pGC->ops->ImageText8(pDraw, pGC, x, y, count, chars)

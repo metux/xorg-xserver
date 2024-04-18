@@ -1,6 +1,5 @@
 srcs_mi = [
     'miarc.c',
-    'mibitblt.c',
     'micmap.c',
     'micopy.c',
     'midash.c',
