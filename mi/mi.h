@@ -91,18 +91,6 @@ extern _X_EXPORT RegionPtr miCopyArea(DrawablePtr /*pSrcDrawable */ ,
                                       int       /*yOut */
     );
 
-extern _X_EXPORT RegionPtr miCopyPlane(DrawablePtr /*pSrcDrawable */ ,
-                                       DrawablePtr /*pDstDrawable */ ,
-                                       GCPtr /*pGC */ ,
-                                       int /*srcx */ ,
-                                       int /*srcy */ ,
-                                       int /*width */ ,
-                                       int /*height */ ,
-                                       int /*dstx */ ,
-                                       int /*dsty */ ,
-                                       unsigned long    /*bitPlane */
-    );
-
 extern _X_EXPORT void miGetImage(DrawablePtr /*pDraw */ ,
                                  int /*sx */ ,
                                  int /*sy */ ,
