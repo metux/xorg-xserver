@@ -80,17 +80,6 @@ extern _X_EXPORT void miPolyArc(DrawablePtr /*pDraw */ ,
 
 /* mibitblt.c */
 
-extern _X_EXPORT RegionPtr miCopyArea(DrawablePtr /*pSrcDrawable */ ,
-                                      DrawablePtr /*pDstDrawable */ ,
-                                      GCPtr /*pGC */ ,
-                                      int /*xIn */ ,
-                                      int /*yIn */ ,
-                                      int /*widthSrc */ ,
-                                      int /*heightSrc */ ,
-                                      int /*xOut */ ,
-                                      int       /*yOut */
-    );
-
 extern _X_EXPORT void miGetImage(DrawablePtr /*pDraw */ ,
                                  int /*sx */ ,
                                  int /*sy */ ,
