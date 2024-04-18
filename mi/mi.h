@@ -78,20 +78,6 @@ extern _X_EXPORT void miPolyArc(DrawablePtr /*pDraw */ ,
                                 xArc *  /*parcs */
     );
 
-/* mibitblt.c */
-
-extern _X_EXPORT void miPutImage(DrawablePtr /*pDraw */ ,
-                                 GCPtr /*pGC */ ,
-                                 int /*depth */ ,
-                                 int /*x */ ,
-                                 int /*y */ ,
-                                 int /*w */ ,
-                                 int /*h */ ,
-                                 int /*leftPad */ ,
-                                 int /*format */ ,
-                                 char * /*pImage */
-    );
-
 /* micopy.c  */
 
 #define miGetCompositeClip(pGC) ((pGC)->pCompositeClip)
