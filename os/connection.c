@@ -397,7 +397,7 @@ AuthAudit(ClientPtr client, Bool letin,
             snprintf(addr, sizeof(addr), "IP %s",
                      inet_ntoa(((struct sockaddr_in *) saddr)->sin_addr));
             break;
-#if defined(IPv6) && defined(AF_INET6)
+#if defined(IPv6)
         case AF_INET6:{
             char ipaddr[INET6_ADDRSTRLEN];
 
