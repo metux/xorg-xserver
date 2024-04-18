@@ -174,9 +174,7 @@ SOFTWARE.
 /* #endif */
 #endif
 
-#if defined(IPv6) && defined(AF_INET6)
 #include <arpa/inet.h>
-#endif
 
 #endif                          /* WIN32 */
 
