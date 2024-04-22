@@ -9,6 +9,4 @@
 typedef void (*miOverlayTransFunc) (ScreenPtr, int, BoxPtr);
 typedef Bool (*miOverlayInOverlayFunc) (WindowPtr);
 
-extern _X_EXPORT void miOverlaySetRootClip(ScreenPtr, Bool);
-
 #endif                          /* __MIOVERLAY_H */
