@@ -108,12 +108,6 @@ miOverlaySetTransFunction(ScreenPtr pScreen, miOverlayTransFunc transFunc)
     MIOVERLAY_GET_SCREEN_PRIVATE(pScreen)->MakeTransparent = transFunc;
 }
 
-Bool
-miOverlayCopyUnderlay(ScreenPtr pScreen)
-{
-    return MIOVERLAY_GET_SCREEN_PRIVATE(pScreen)->copyUnderlay;
-}
-
 static void
 MarkUnderlayWindow(WindowPtr pWin)
 {
