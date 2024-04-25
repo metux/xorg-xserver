@@ -86,6 +86,8 @@ static uint32_t
 gbm_format_for_depth(int depth)
 {
     switch (depth) {
+    case 15:
+        return GBM_FORMAT_ARGB1555;
     case 16:
         return GBM_FORMAT_RGB565;
     case 24:
