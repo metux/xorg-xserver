@@ -115,6 +115,13 @@ xwl_randr_request_lease(ClientPtr client, ScreenPtr screen, RRLeasePtr rrLease)
         return BadMatch;
     }
 
+    for (i = 0; i < rrLease->numOutputs; ++i) {
+        output = rrLease->outputs[i]->devPrivate;
+        if (!output || !output->lease_connector || output->lease) {
+            return BadValue;
+        }
+    }
+
     xorg_list_for_each_entry(device_data, &xwl_screen->drm_lease_devices, link) {
         Bool connectors_of_device = FALSE;
         for (i = 0; i < rrLease->numOutputs; ++i) {
@@ -130,13 +137,6 @@ xwl_randr_request_lease(ClientPtr client, ScreenPtr screen, RRLeasePtr rrLease)
                 return BadValue;
             }
             lease_device = device_data;
-        }
-    }
-
-    for (i = 0; i < rrLease->numOutputs; ++i) {
-        output = rrLease->outputs[i]->devPrivate;
-        if (!output || !output->lease_connector || output->lease) {
-            return BadValue;
         }
     }
 
