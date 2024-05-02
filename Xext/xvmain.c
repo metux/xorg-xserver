@@ -106,6 +106,8 @@ SOFTWARE.
 #endif
 #include "xvdisp.h"
 
+Bool noXvExtension = FALSE;
+
 static DevPrivateKeyRec XvScreenKeyRec;
 
 #define XvScreenKey (&XvScreenKeyRec)
