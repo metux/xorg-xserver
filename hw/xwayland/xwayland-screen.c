@@ -40,6 +40,7 @@
 #include "dix/property_priv.h"
 #include "os/osdep.h"
 
+#include "extinit_priv.h"
 #include <micmap.h>
 #include <misyncshm.h>
 #include <os.h>
