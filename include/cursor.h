@@ -99,8 +99,7 @@ extern _X_EXPORT int AllocGlyphCursor(Font /*source */ ,
                                       ClientPtr /*client */ ,
                                       XID /*cid */ );
 
-extern _X_EXPORT CursorPtr CreateRootCursor(char * /*pfilename */ ,
-                                            unsigned int /*glyph */ );
+extern _X_EXPORT CursorPtr CreateRootCursor(void);
 
 extern _X_EXPORT int ServerBitsFromGlyph(FontPtr /*pfont */ ,
                                          unsigned int /*ch */ ,

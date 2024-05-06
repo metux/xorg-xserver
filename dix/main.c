@@ -237,7 +237,7 @@ dix_main(int argc, char *argv[], char *envp[])
             FatalError("could not open default font");
         }
 
-        if (!(rootCursor = CreateRootCursor(NULL, 0))) {
+        if (!(rootCursor = CreateRootCursor())) {
             FatalError("could not open default cursor font");
         }
 
