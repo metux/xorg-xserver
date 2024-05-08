@@ -682,7 +682,7 @@ xf86MatchPciInstances(const char *driverName, int vendorID,
         }
 
         pci_iterator_destroy(iter);
-        instances = xnfallocarray(max_entries, sizeof(struct Inst));
+        instances = XNFreallocarray(NULL, max_entries, sizeof(struct Inst));
     }
 
     iter = pci_slot_match_iterator_create(NULL);

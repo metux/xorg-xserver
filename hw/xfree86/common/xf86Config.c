@@ -362,8 +362,8 @@ xf86ModulelistFromConfig(void ***optlist)
     /*
      * allocate the memory and walk the list again to fill in the pointers
      */
-    modulearray = xnfallocarray(count + 1, sizeof(char *));
-    optarray = xnfallocarray(count + 1, sizeof(void *));
+    modulearray = XNFreallocarray(NULL, count + 1, sizeof(char *));
+    optarray = XNFreallocarray(NULL, count + 1, sizeof(void *));
     count = 0;
     if (xf86configptr->conf_modules) {
         modp = xf86configptr->conf_modules->mod_load_lst;
@@ -430,7 +430,7 @@ xf86DriverlistFromConfig(void)
     /*
      * allocate the memory and walk the list again to fill in the pointers
      */
-    modulearray = xnfallocarray(count + 1, sizeof(char *));
+    modulearray = XNFreallocarray(NULL, count + 1, sizeof(char *));
     count = 0;
     slp = xf86ConfigLayout.screens;
     while (slp->screen) {
@@ -498,7 +498,7 @@ xf86InputDriverlistFromConfig(void)
     /*
      * allocate the memory and walk the list again to fill in the pointers
      */
-    modulearray = xnfallocarray(count + 1, sizeof(char *));
+    modulearray = XNFreallocarray(NULL, count + 1, sizeof(char *));
     count = 0;
     idp = xf86ConfigLayout.inputs;
     while (idp && *idp) {
@@ -1552,7 +1552,7 @@ configLayout(serverLayoutPtr servlayoutp, XF86ConfLayoutPtr conf_layout,
     }
     DebugF("Found %d inactive devices in the layout section %s\n",
            count, conf_layout->lay_identifier);
-    gdp = xnfallocarray(count + 1, sizeof(GDevRec));
+    gdp = XNFreallocarray(NULL, count + 1, sizeof(GDevRec));
     gdp[count].identifier = NULL;
     idp = conf_layout->lay_inactive_lst;
     count = 0;
@@ -1672,7 +1672,7 @@ configXvAdaptor(confXvAdaptorPtr adaptor, XF86ConfVideoAdaptorPtr conf_adaptor)
         count++;
         conf_port = (XF86ConfVideoPortPtr) conf_port->list.next;
     }
-    adaptor->ports = xnfallocarray(count, sizeof(confXvPortRec));
+    adaptor->ports = XNFreallocarray(NULL, count, sizeof(confXvPortRec));
     adaptor->numports = count;
     count = 0;
     conf_port = conf_adaptor->va_port_lst;
@@ -1803,7 +1803,7 @@ configScreen(confScreenPtr screenp, XF86ConfScreenPtr conf_screen, int scrnum,
         count++;
         dispptr = (XF86ConfDisplayPtr) dispptr->list.next;
     }
-    screenp->displays = xnfallocarray(count, sizeof(DispPtr));
+    screenp->displays = XNFreallocarray(NULL, count, sizeof(DispPtr));
     screenp->numdisplays = count;
 
     for (count = 0, dispptr = conf_screen->scrn_display_lst;
@@ -1832,7 +1832,7 @@ configScreen(confScreenPtr screenp, XF86ConfScreenPtr conf_screen, int scrnum,
         count++;
         conf_adaptor = (XF86ConfAdaptorLinkPtr) conf_adaptor->list.next;
     }
-    screenp->xvadaptors = xnfallocarray(count, sizeof(confXvAdaptorRec));
+    screenp->xvadaptors = XNFreallocarray(NULL, count, sizeof(confXvAdaptorRec));
     screenp->numxvadaptors = 0;
     conf_adaptor = conf_screen->scrn_adaptor_lst;
     while (conf_adaptor) {
@@ -2071,7 +2071,7 @@ configDisplay(DispPtr displayp, XF86ConfDisplayPtr conf_display)
         count++;
         modep = (XF86ModePtr) modep->list.next;
     }
-    displayp->modes = xnfallocarray(count + 1, sizeof(char *));
+    displayp->modes = XNFreallocarray(NULL, count + 1, sizeof(char *));
     modep = conf_display->disp_mode_lst;
     count = 0;
     while (modep) {

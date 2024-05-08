@@ -79,7 +79,6 @@ typedef struct _NewClientRec *NewClientPtr;
 #define xnfstrdup(s) XNFstrdup(s)
 
 #define xallocarray(num, size) reallocarray(NULL, (num), (size))
-#define xnfallocarray(num, size) XNFreallocarray(NULL, (num), (size))
 #define xnfreallocarray(ptr, num, size) XNFreallocarray((ptr), (num), (size))
 #endif
 
