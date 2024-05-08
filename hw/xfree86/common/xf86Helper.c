@@ -1337,7 +1337,7 @@ xf86MatchDevice(const char *drivername, GDevPtr ** sectlist)
                 /*
                  * we have a matching driver that wasn't claimed, yet
                  */
-                pgdp = xnfrealloc(pgdp, (i + 2) * sizeof(GDevPtr));
+                pgdp = XNFrealloc(pgdp, (i + 2) * sizeof(GDevPtr));
                 pgdp[i++] = screensecptr->gpu_devices[k];
             }
         }

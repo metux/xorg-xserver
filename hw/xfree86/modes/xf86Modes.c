@@ -288,7 +288,7 @@ xf86ModesEqual(const DisplayModeRec * pMode1, const DisplayModeRec * pMode2)
 static void
 add(char **p, const char *new)
 {
-    *p = xnfrealloc(*p, strlen(*p) + strlen(new) + 2);
+    *p = XNFrealloc(*p, strlen(*p) + strlen(new) + 2);
     strcat(*p, " ");
     strcat(*p, new);
 }

@@ -800,7 +800,7 @@ CreateCallbackList(CallbackListPtr *pcbl)
         }
     }
 
-    listsToCleanup = (CallbackListPtr **) xnfrealloc(listsToCleanup,
+    listsToCleanup = (CallbackListPtr **) XNFrealloc(listsToCleanup,
                                                      sizeof(CallbackListPtr *) *
                                                      (numCallbackListsToCleanup
                                                       + 1));
