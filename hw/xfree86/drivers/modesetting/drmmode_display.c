@@ -2924,7 +2924,7 @@ drmmode_output_get_modes(xf86OutputPtr output)
 
     /* modes should already be available */
     for (i = 0; i < koutput->count_modes; i++) {
-        Mode = xnfalloc(sizeof(DisplayModeRec));
+        Mode = XNFalloc(sizeof(DisplayModeRec));
 
         drmmode_ConvertFromKMode(output->scrn, &koutput->modes[i], Mode);
         Modes = xf86ModesAdd(Modes, Mode);

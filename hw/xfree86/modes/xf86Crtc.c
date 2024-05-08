@@ -521,7 +521,7 @@ xf86OutputSetMonitor(xf86OutputPtr output)
 
     free(output->options);
 
-    output->options = xnfalloc(sizeof(xf86OutputOptions));
+    output->options = XNFalloc(sizeof(xf86OutputOptions));
     memcpy(output->options, xf86OutputOptions, sizeof(xf86OutputOptions));
 
     XNFasprintf(&option_name, "monitor-%s", output->name);
@@ -2551,7 +2551,7 @@ xf86InitialConfiguration(ScrnInfoPtr scrn, Bool canGrow)
     Bool success = FALSE;
 
     /* Set up the device options */
-    config->options = xnfalloc(sizeof(xf86DeviceOptions));
+    config->options = XNFalloc(sizeof(xf86DeviceOptions));
     memcpy(config->options, xf86DeviceOptions, sizeof(xf86DeviceOptions));
     xf86ProcessOptions(scrn->scrnIndex, scrn->options, config->options);
     config->debug_modes = xf86ReturnOptValBool(config->options,

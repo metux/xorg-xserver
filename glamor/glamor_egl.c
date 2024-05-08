@@ -1095,7 +1095,7 @@ glamor_egl_init(ScrnInfoPtr scrn, int fd)
     if (xf86GlamorEGLPrivateIndex == -1)
         xf86GlamorEGLPrivateIndex = xf86AllocateScrnInfoPrivateIndex();
 
-    options = xnfalloc(sizeof(GlamorEGLOptions));
+    options = XNFalloc(sizeof(GlamorEGLOptions));
     memcpy(options, GlamorEGLOptions, sizeof(GlamorEGLOptions));
     xf86ProcessOptions(scrn->scrnIndex, scrn->options, options);
     glvnd_vendor = xf86GetOptValString(options, GLAMOREGLOPT_VENDOR_LIBRARY);

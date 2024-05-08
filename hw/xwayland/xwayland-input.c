@@ -1343,7 +1343,7 @@ keyboard_check_repeat (DeviceIntPtr dev, XkbSrvInfoPtr xkbi, unsigned key)
         }
     }
 
-    p = xnfalloc(sizeof(struct sync_pending));
+    p = XNFalloc(sizeof(struct sync_pending));
     p->pending_dev = dev;
     callback = wl_display_sync (xwl_screen->display);
     xorg_list_add(&p->l, &xwl_seat->sync_pending);

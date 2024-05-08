@@ -1187,7 +1187,7 @@ xwl_output_set_transform(struct xwl_output *xwl_output)
     }
 
     if (xwl_output->transform == NULL) {
-        xwl_output->transform = xnfalloc(sizeof(RRTransformRec));
+        xwl_output->transform = XNFalloc(sizeof(RRTransformRec));
         RRTransformInit(xwl_output->transform);
     }
 

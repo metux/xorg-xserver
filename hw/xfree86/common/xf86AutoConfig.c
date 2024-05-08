@@ -108,7 +108,7 @@ AppendToList(const char *s, const char ***list, int *lines)
     for (p = strtok(str, "\n"); p; p = strtok(NULL, "\n")) {
         (*lines)++;
         *list = xnfreallocarray(*list, *lines + 1, sizeof(**list));
-        newstr = xnfalloc(strlen(p) + 2);
+        newstr = XNFalloc(strlen(p) + 2);
         strcpy(newstr, p);
         strcat(newstr, "\n");
         (*list)[*lines - 1] = newstr;

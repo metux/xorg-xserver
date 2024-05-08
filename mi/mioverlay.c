@@ -1860,7 +1860,7 @@ MarkUnderlayWindow(WindowPtr pWin)
     if (pTree->valdata)
         return;
     pTree->valdata =
-        (miOverlayValDataPtr) xnfalloc(sizeof(miOverlayValDataRec));
+        (miOverlayValDataPtr) XNFalloc(sizeof(miOverlayValDataRec));
     pTree->valdata->oldAbsCorner.x = pWin->drawable.x;
     pTree->valdata->oldAbsCorner.y = pWin->drawable.y;
     pTree->valdata->borderVisible = NullRegion;

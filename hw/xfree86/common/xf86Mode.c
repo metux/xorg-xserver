@@ -1457,7 +1457,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
      * Store the clockRanges for later use by the VidMode extension.
      */
     nt_list_for_each_entry(cp, clockRanges, next) {
-        ClockRangePtr newCR = xnfalloc(sizeof(ClockRange));
+        ClockRangePtr newCR = XNFalloc(sizeof(ClockRange));
         memcpy(newCR, cp, sizeof(ClockRange));
         newCR->next = NULL;
         if (scrp->clockRanges == NULL)
@@ -1574,7 +1574,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
             }
 
             if (status == MODE_OK) {
-                new = xnfalloc(sizeof(DisplayModeRec));
+                new = XNFalloc(sizeof(DisplayModeRec));
                 *new = *p;
                 new->next = NULL;
                 if (!q) {

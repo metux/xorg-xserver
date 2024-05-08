@@ -42,7 +42,7 @@ glamor_upload_boxes(DrawablePtr drawable, BoxPtr in_boxes, int in_nbox,
     char *tmp_bits = NULL;
 
     if (glamor_drawable_effective_depth(drawable) == 24 && pixmap->drawable.depth == 32)
-        tmp_bits = xnfalloc(byte_stride * pixmap->drawable.height);
+        tmp_bits = XNFalloc(byte_stride * pixmap->drawable.height);
 
     glamor_make_current(glamor_priv);
 

@@ -141,7 +141,7 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
     pInt->private = (void *) xnfcalloc(1, sizeof(genericInt10Priv));
     INTPriv(pInt)->alloc = (void *) xnfcalloc(1, ALLOC_ENTRIES(getpagesize()));
     pInt->pScrn = pScrn;
-    base = INTPriv(pInt)->base = xnfalloc(SYS_BIOS);
+    base = INTPriv(pInt)->base = XNFalloc(SYS_BIOS);
 
     /* FIXME: Shouldn't this be a failure case?  Leaving dev as NULL seems like
      * FIXME: an error
@@ -217,7 +217,7 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
     }
 #else
     if (!sysMem) {
-        sysMem = xnfalloc(BIOS_SIZE);
+        sysMem = XNFalloc(BIOS_SIZE);
         setup_system_bios(sysMem);
     }
     INTPriv(pInt)->sysMem = sysMem;

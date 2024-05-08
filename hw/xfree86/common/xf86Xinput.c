@@ -950,7 +950,7 @@ xf86NewInputDevice(InputInfoPtr pInfo, DeviceIntPtr *pdev, BOOL enable)
         if (fd != -1) {
             if (paused) {
                 /* Put on new_input_devices list for delayed probe */
-                PausedInputDevicePtr new_device = xnfalloc(sizeof *new_device);
+                PausedInputDevicePtr new_device = XNFalloc(sizeof *new_device);
                 new_device->pInfo = pInfo;
 
                 xorg_list_append(&new_device->node, &new_input_devices_list);

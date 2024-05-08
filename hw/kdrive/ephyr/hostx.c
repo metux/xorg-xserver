@@ -1580,7 +1580,7 @@ __glXQueryServerString(CARD32 name)
     /* The spec doesn't mention this, but the Xorg server replies with
      * a string already terminated with '\0'. */
     len = xcb_glx_query_server_string_string_length(reply);
-    buf = xnfalloc(len);
+    buf = XNFalloc(len);
     memcpy(buf, str, len);
     free(reply);
 

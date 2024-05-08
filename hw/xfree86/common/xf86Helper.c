@@ -81,7 +81,7 @@ xf86AddDriver(DriverPtr driver, void *module, int flags)
     xf86NumDrivers++;
     xf86DriverList = xnfreallocarray(xf86DriverList,
                                      xf86NumDrivers, sizeof(DriverPtr));
-    xf86DriverList[xf86NumDrivers - 1] = xnfalloc(sizeof(DriverRec));
+    xf86DriverList[xf86NumDrivers - 1] = XNFalloc(sizeof(DriverRec));
     *xf86DriverList[xf86NumDrivers - 1] = *driver;
     xf86DriverList[xf86NumDrivers - 1]->module = module;
     xf86DriverList[xf86NumDrivers - 1]->refCount = 0;
@@ -116,7 +116,7 @@ xf86AddInputDriver(InputDriverPtr driver, void *module, int flags)
                                           xf86NumInputDrivers,
                                           sizeof(InputDriverPtr));
     xf86InputDriverList[xf86NumInputDrivers - 1] =
-        xnfalloc(sizeof(InputDriverRec));
+        XNFalloc(sizeof(InputDriverRec));
     *xf86InputDriverList[xf86NumInputDrivers - 1] = *driver;
     xf86InputDriverList[xf86NumInputDrivers - 1]->module = module;
 }
@@ -573,7 +573,7 @@ xf86SetDepthBpp(ScrnInfoPtr scrp, int depth, int dummy, int fbbpp,
         scrp->confScreen->displays[i]->whiteColour.green = -1;
         scrp->confScreen->displays[i]->whiteColour.blue = -1;
         scrp->confScreen->displays[i]->defaultVisual = -1;
-        scrp->confScreen->displays[i]->modes = xnfalloc(sizeof(char *));
+        scrp->confScreen->displays[i]->modes = XNFalloc(sizeof(char *));
         scrp->confScreen->displays[i]->modes[0] = NULL;
         scrp->confScreen->displays[i]->depth = depth;
         scrp->confScreen->displays[i]->fbbpp = fbbpp;
@@ -1548,7 +1548,7 @@ xf86SetBackingStore(ScreenPtr pScreen)
     ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
     OptionInfoPtr options;
 
-    options = xnfalloc(sizeof(BSOptions));
+    options = XNFalloc(sizeof(BSOptions));
     (void) memcpy(options, BSOptions, sizeof(BSOptions));
     xf86ProcessOptions(pScrn->scrnIndex, pScrn->options, options);
 
@@ -1594,7 +1594,7 @@ xf86SetSilkenMouse(ScreenPtr pScreen)
     ScrnInfoPtr pScrn = xf86ScreenToScrn(pScreen);
     OptionInfoPtr options;
 
-    options = xnfalloc(sizeof(SMOptions));
+    options = XNFalloc(sizeof(SMOptions));
     (void) memcpy(options, SMOptions, sizeof(SMOptions));
     xf86ProcessOptions(pScrn->scrnIndex, pScrn->options, options);
 

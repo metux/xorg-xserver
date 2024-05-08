@@ -143,7 +143,7 @@ VBEExtendedInit(xf86Int10InfoPtr pInt, int entityIndex, int Flags)
                                                    L_ADD(vbe->
                                                          OemProductRevPtr)));
     }
-    vip = (vbeInfoPtr) xnfalloc(sizeof(vbeInfoRec));
+    vip = (vbeInfoPtr) XNFalloc(sizeof(vbeInfoRec));
     vip->version = B_O16(vbe->VbeVersion);
     vip->pInt10 = pInt;
     vip->ddc = DDC_UNCHECKED;
@@ -270,7 +270,7 @@ vbeReadEDID(vbeInfoPtr pVbe)
     if (!page)
         return NULL;
 
-    options = xnfalloc(sizeof(VBEOptions));
+    options = XNFalloc(sizeof(VBEOptions));
     (void) memcpy(options, VBEOptions, sizeof(VBEOptions));
     xf86ProcessOptions(screen, pScrn->options, options);
     xf86GetOptValBool(options, VBEOPT_NOVBE, &novbe);
@@ -302,7 +302,7 @@ vbeReadEDID(vbeInfoPtr pVbe)
     switch (pVbe->pInt10->ax & 0xff00) {
     case 0x0:
         xf86DrvMsgVerb(screen, X_INFO, 3, "VESA VBE DDC read successfully\n");
-        tmp = (unsigned char *) xnfalloc(128);
+        tmp = (unsigned char *) XNFalloc(128);
         memcpy(tmp, page, 128);
         break;
     case 0x100:
@@ -1078,7 +1078,7 @@ VBEReadPanelID(vbeInfoPtr pVbe)
     case 0x0:
         xf86DrvMsgVerb(screen, X_INFO, 3,
                        "VESA VBE PanelID read successfully\n");
-        tmp = xnfalloc(32);
+        tmp = XNFalloc(32);
         memcpy(tmp, page, 32);
         break;
     case 0x100:

@@ -212,7 +212,7 @@ xf86DuplicateMode(const DisplayModeRec * pMode)
 {
     DisplayModePtr pNew;
 
-    pNew = xnfalloc(sizeof(DisplayModeRec));
+    pNew = XNFalloc(sizeof(DisplayModeRec));
     *pNew = *pMode;
     pNew->next = NULL;
     pNew->prev = NULL;

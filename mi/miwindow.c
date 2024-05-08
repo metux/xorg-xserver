@@ -124,7 +124,7 @@ miMarkWindow(WindowPtr pWin)
 
     if (pWin->valdata)
         return;
-    val = (ValidatePtr) xnfalloc(sizeof(ValidateRec));
+    val = (ValidatePtr) XNFalloc(sizeof(ValidateRec));
     val->before.oldAbsCorner.x = pWin->drawable.x;
     val->before.oldAbsCorner.y = pWin->drawable.y;
     val->before.borderVisible = NullRegion;
