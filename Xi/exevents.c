@@ -615,7 +615,7 @@ DeepCopyPointerClasses(DeviceIntPtr from, DeviceIntPtr to)
 
         if (from->button->xkb_acts) {
             size_t maxbuttons = max(to->button->numButtons, from->button->numButtons);
-            to->button->xkb_acts = xnfreallocarray(to->button->xkb_acts,
+            to->button->xkb_acts = XNFreallocarray(to->button->xkb_acts,
                                                    maxbuttons,
                                                    sizeof(XkbAction));
             memset(to->button->xkb_acts, 0, maxbuttons * sizeof(XkbAction));

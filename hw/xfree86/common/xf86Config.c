@@ -1012,7 +1012,7 @@ addDevice(InputInfoPtr * list, InputInfoPtr pInfo)
     for (devs = list; devs && *devs; devs++)
         count++;
 
-    list = xnfreallocarray(list, count + 1, sizeof(InputInfoPtr));
+    list = XNFreallocarray(list, count + 1, sizeof(InputInfoPtr));
     list[count] = NULL;
 
     list[count - 1] = pInfo;

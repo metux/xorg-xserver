@@ -102,7 +102,7 @@ xf86PciProbe(void)
     while ((info = pci_device_next(iter)) != NULL) {
         if (PCIINFOCLASSES(info->device_class)) {
             num++;
-            xf86PciVideoInfo = xnfreallocarray(xf86PciVideoInfo,
+            xf86PciVideoInfo = XNFreallocarray(xf86PciVideoInfo,
                                                num + 1,
                                                sizeof(struct pci_device *));
             xf86PciVideoInfo[num] = NULL;
@@ -979,7 +979,7 @@ xf86MatchPciInstances(const char *driverName, int vendorID,
 
         /* Allocate an entry in the lists to be returned */
         numFound++;
-        retEntities = xnfreallocarray(retEntities, numFound, sizeof(int));
+        retEntities = XNFreallocarray(retEntities, numFound, sizeof(int));
         retEntities[numFound - 1] = xf86ClaimPciSlot(pPci, drvp,
                                                      instances[i].chip,
                                                      instances[i].dev,

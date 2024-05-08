@@ -204,7 +204,7 @@ xwl_dmabuf_get_formats_for_device(struct xwl_dmabuf_feedback *xwl_feedback, drmD
             struct xwl_device_formats *dev_formats = &xwl_feedback->dev_formats[i];
 
             /* Append the formats from this tranche to the list */
-            ret = xnfreallocarray(ret, count + dev_formats->num_formats, sizeof(CARD32));
+            ret = XNFreallocarray(ret, count + dev_formats->num_formats, sizeof(CARD32));
 
             for (int j = 0; j < dev_formats->num_formats; j++) {
                 Bool found = FALSE;

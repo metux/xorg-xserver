@@ -68,7 +68,7 @@ CheckSbusDevice(const char *device, int fbNum)
     if (!sbusDeviceTable[i].devId)
         return;
     xf86SbusInfo =
-        xnfreallocarray(xf86SbusInfo, ++xf86nSbusInfo + 1, sizeof(psdp));
+        XNFreallocarray(xf86SbusInfo, ++xf86nSbusInfo + 1, sizeof(psdp));
     xf86SbusInfo[xf86nSbusInfo] = NULL;
     xf86SbusInfo[xf86nSbusInfo - 1] = psdp = xnfcalloc(sizeof(sbusDevice), 1);
     psdp->devId = sbusDeviceTable[i].devId;
@@ -406,7 +406,7 @@ xf86MatchSbusInstances(const char *driverName, int sbusDevId,
         if (psdp->fd == -2)
             continue;
         ++allocatedInstances;
-        instances = xnfreallocarray(instances,
+        instances = XNFreallocarray(instances,
                                     allocatedInstances, sizeof(struct Inst));
         instances[allocatedInstances - 1].sbus = psdp;
         instances[allocatedInstances - 1].dev = NULL;
@@ -532,7 +532,7 @@ xf86MatchSbusInstances(const char *driverName, int sbusDevId,
 
         /* Allocate an entry in the lists to be returned */
         numFound++;
-        retEntities = xnfreallocarray(retEntities, numFound, sizeof(int));
+        retEntities = XNFreallocarray(retEntities, numFound, sizeof(int));
         retEntities[numFound - 1]
             = xf86ClaimSbusSlot(psdp, drvp, instances[i].dev,
                                 instances[i].dev->active ? TRUE : FALSE);

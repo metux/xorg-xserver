@@ -2569,7 +2569,7 @@ RecalculateMasterButtons(DeviceIntPtr slave)
 
         master->button->numButtons = maxbuttons;
         if (last_num_buttons < maxbuttons) {
-            master->button->xkb_acts = xnfreallocarray(master->button->xkb_acts,
+            master->button->xkb_acts = XNFreallocarray(master->button->xkb_acts,
                                                        maxbuttons,
                                                        sizeof(XkbAction));
             memset(&master->button->xkb_acts[last_num_buttons],

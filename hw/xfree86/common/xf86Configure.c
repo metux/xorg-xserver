@@ -115,7 +115,7 @@ xf86AddBusDeviceToConfigure(const char *driver, BusType bus, void *busData,
     /* Allocate new structure occurrence */
     i = nDevToConfig++;
     DevToConfig =
-        xnfreallocarray(DevToConfig, nDevToConfig, sizeof(DevToConfigRec));
+        XNFreallocarray(DevToConfig, nDevToConfig, sizeof(DevToConfigRec));
     memset(DevToConfig + i, 0, sizeof(DevToConfigRec));
 
     DevToConfig[i].GDev.chipID =

@@ -1035,9 +1035,9 @@ ListenOnOpenFD(int fd, int noxauth)
 
     /* Allocate space to store it */
     ListenTransFds =
-        xnfreallocarray(ListenTransFds, ListenTransCount + 1, sizeof(int));
+        XNFreallocarray(ListenTransFds, ListenTransCount + 1, sizeof(int));
     ListenTransConns =
-        xnfreallocarray(ListenTransConns, ListenTransCount + 1,
+        XNFreallocarray(ListenTransConns, ListenTransCount + 1,
                         sizeof(XtransConnInfo));
 
     /* Store it */
