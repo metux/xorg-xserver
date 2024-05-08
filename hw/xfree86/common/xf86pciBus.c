@@ -272,7 +272,7 @@ xf86ParsePciBusString(const char *busID, int *bus, int *device, int *func)
     if (StringToBusType(busID, &id) != BUS_PCI)
         return FALSE;
 
-    s = xstrdup(id);
+    s = Xstrdup(id);
     p = strtok(s, ":");
     if (p == NULL || *p == 0) {
         free(s);

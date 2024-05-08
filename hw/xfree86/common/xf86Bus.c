@@ -272,7 +272,7 @@ StringToBusType(const char *busID, const char **retID)
         return BUS_PCI;
     }
 
-    s = xstrdup(busID);
+    s = Xstrdup(busID);
     p = strtok(s, ":");
     if (p == NULL || *p == 0) {
         free(s);

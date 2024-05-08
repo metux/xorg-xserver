@@ -361,7 +361,7 @@ setup_ei(ClientPtr client)
     }
 
     xwl_ei_client = calloc(1, sizeof *xwl_ei_client);
-    xwl_ei_client->cmdline = xstrdup(cmdname);
+    xwl_ei_client->cmdline = Xstrdup(cmdname);
     if (!xwl_ei_client) {
         error_ei("OOM, cannot setup EI\n");
         goto out;

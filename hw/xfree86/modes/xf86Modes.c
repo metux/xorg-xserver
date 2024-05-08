@@ -681,7 +681,7 @@ xf86GetConfigModes(XF86ConfModeLinePtr conf_mode)
         mode = calloc(1, sizeof(DisplayModeRec));
         if (!mode)
             continue;
-        mode->name = xstrdup(conf_mode->ml_identifier);
+        mode->name = Xstrdup(conf_mode->ml_identifier);
         if (!mode->name) {
             free(mode);
             continue;
