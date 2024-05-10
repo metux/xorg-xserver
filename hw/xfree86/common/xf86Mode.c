@@ -1585,7 +1585,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
                 }
                 new->prev = NULL;
                 q = new;
-                q->name = xnfstrdup(p->name);
+                q->name = XNFstrdup(p->name);
                 q->status = MODE_OK;
             }
             else {
@@ -1618,7 +1618,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
             new = XNFcallocarray(1, sizeof(DisplayModeRec));
             new->prev = last;
             new->type = M_T_USERDEF;
-            new->name = xnfstrdup(modeNames[i]);
+            new->name = XNFstrdup(modeNames[i]);
             if (new->prev)
                 new->prev->next = new;
             *endp = last = new;
@@ -1685,7 +1685,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
 
             p = XNFcallocarray(1, sizeof(DisplayModeRec));
             p->prev = last;
-            p->name = xnfstrdup(r->name);
+            p->name = XNFstrdup(r->name);
             if (!userModes)
                 p->type = M_T_USERDEF;
             if (p->prev)

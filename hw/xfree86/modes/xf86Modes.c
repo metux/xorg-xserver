@@ -220,7 +220,7 @@ xf86DuplicateMode(const DisplayModeRec * pMode)
     if (pMode->name == NULL)
         xf86SetModeDefaultName(pNew);
     else
-        pNew->name = xnfstrdup(pMode->name);
+        pNew->name = XNFstrdup(pMode->name);
 
     return pNew;
 }

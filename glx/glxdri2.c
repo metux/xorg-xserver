@@ -982,7 +982,7 @@ __glXDRIscreenProbe(ScreenPtr pScreen)
     xf86ProcessOptions(pScrn->scrnIndex, pScrn->options, options);
     glvnd = xf86GetOptValString(options, GLXOPT_VENDOR_LIBRARY);
     if (glvnd)
-        screen->base.glvnd = xnfstrdup(glvnd);
+        screen->base.glvnd = XNFstrdup(glvnd);
     free(options);
 
     if (!screen->base.glvnd)

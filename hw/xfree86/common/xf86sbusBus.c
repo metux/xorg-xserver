@@ -73,7 +73,7 @@ CheckSbusDevice(const char *device, int fbNum)
     xf86SbusInfo[xf86nSbusInfo - 1] = psdp = XNFcallocarray(sizeof(sbusDevice), 1);
     psdp->devId = sbusDeviceTable[i].devId;
     psdp->fbNum = fbNum;
-    psdp->device = xnfstrdup(device);
+    psdp->device = XNFstrdup(device);
     psdp->width = fbattr.fbtype.fb_width;
     psdp->height = fbattr.fbtype.fb_height;
     psdp->fd = -1;

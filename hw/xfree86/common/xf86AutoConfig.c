@@ -104,7 +104,7 @@ AppendToList(const char *s, const char ***list, int *lines)
 {
     char *str, *newstr, *p;
 
-    str = xnfstrdup(s);
+    str = XNFstrdup(s);
     for (p = strtok(str, "\n"); p; p = strtok(NULL, "\n")) {
         (*lines)++;
         *list = XNFreallocarray(*list, *lines + 1, sizeof(**list));
@@ -156,7 +156,7 @@ xf86AddMatchedDriver(XF86MatchedDrivers *md, const char *driver)
     }
 
     if (nmatches < MATCH_DRIVERS_LIMIT) {
-        md->matches[nmatches] = xnfstrdup(driver);
+        md->matches[nmatches] = XNFstrdup(driver);
         md->nmatches++;
     }
     else {
@@ -272,7 +272,7 @@ listPossibleVideoDrivers(XF86MatchedDrivers *md)
                     /* find end of all uppercase vendor section */
                 }
                 if ((cp != visid.name) && (*cp != '\0')) {
-                    char *vendorName = xnfstrdup(visid.name);
+                    char *vendorName = XNFstrdup(visid.name);
 
                     vendorName[cp - visid.name] = '\0';
 
