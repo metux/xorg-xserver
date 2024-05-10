@@ -1615,7 +1615,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
     if (modeNames != NULL) {
         for (i = 0; modeNames[i] != NULL; i++) {
             userModes = TRUE;
-            new = xnfcalloc(1, sizeof(DisplayModeRec));
+            new = XNFcallocarray(1, sizeof(DisplayModeRec));
             new->prev = last;
             new->type = M_T_USERDEF;
             new->name = xnfstrdup(modeNames[i]);
@@ -1683,7 +1683,7 @@ xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
             if (r == NULL)
                 break;
 
-            p = xnfcalloc(1, sizeof(DisplayModeRec));
+            p = XNFcallocarray(1, sizeof(DisplayModeRec));
             p->prev = last;
             p->name = xnfstrdup(r->name);
             if (!userModes)

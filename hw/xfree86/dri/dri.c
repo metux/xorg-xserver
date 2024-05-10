@@ -258,7 +258,7 @@ DRIOpenDRMMaster(ScrnInfoPtr pScrn,
     tmp.resOwner = NULL;
 
     if (!pDRIEntPriv)
-        pDRIEntPriv = xnfcalloc(sizeof(*pDRIEntPriv), 1);
+        pDRIEntPriv = XNFcallocarray(sizeof(*pDRIEntPriv), 1);
 
     if (!pDRIEntPriv) {
         DRIDrvMsg(-1, X_INFO, "[drm] Failed to allocate memory for "

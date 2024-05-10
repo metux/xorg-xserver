@@ -70,7 +70,7 @@ CheckSbusDevice(const char *device, int fbNum)
     xf86SbusInfo =
         XNFreallocarray(xf86SbusInfo, ++xf86nSbusInfo + 1, sizeof(psdp));
     xf86SbusInfo[xf86nSbusInfo] = NULL;
-    xf86SbusInfo[xf86nSbusInfo - 1] = psdp = xnfcalloc(sizeof(sbusDevice), 1);
+    xf86SbusInfo[xf86nSbusInfo - 1] = psdp = XNFcallocarray(sizeof(sbusDevice), 1);
     psdp->devId = sbusDeviceTable[i].devId;
     psdp->fbNum = fbNum;
     psdp->device = xnfstrdup(device);
@@ -589,7 +589,7 @@ xf86SbusUseBuiltinMode(ScrnInfoPtr pScrn, sbusDevicePtr psdp)
 {
     DisplayModePtr mode;
 
-    mode = xnfcalloc(sizeof(DisplayModeRec), 1);
+    mode = XNFcallocarray(sizeof(DisplayModeRec), 1);
     mode->name = "current";
     mode->next = mode;
     mode->prev = mode;
@@ -698,7 +698,7 @@ xf86SbusHandleColormaps(ScreenPtr pScreen, sbusDevicePtr psdp)
     if (!dixRegisterPrivateKey(sbusPaletteKey, PRIVATE_SCREEN, 0))
         FatalError("Cannot register sbus private key");
 
-    cmap = xnfcalloc(1, sizeof(sbusCmapRec));
+    cmap = XNFcallocarray(1, sizeof(sbusCmapRec));
     dixSetPrivate(&pScreen->devPrivates, sbusPaletteKey, cmap);
     cmap->psdp = psdp;
     fbcmap.index = 0;

@@ -322,7 +322,7 @@ void
 xf86PrintModeline(int scrnIndex, DisplayModePtr mode)
 {
     char tmp[256];
-    char *flags = xnfcalloc(1, 1);
+    char *flags = XNFcallocarray(1, 1);
 
 #define TBITS 6
     const char tchar[TBITS + 1] = "UezdPb";
@@ -802,7 +802,7 @@ xf86CVTMode(int HDisplay, int VDisplay, float VRefresh, Bool Reduced,
             Bool Interlaced)
 {
     struct libxcvt_mode_info *libxcvt_mode_info;
-    DisplayModeRec *Mode = xnfcalloc(1, sizeof(DisplayModeRec));
+    DisplayModeRec *Mode = XNFcallocarray(1, sizeof(DisplayModeRec));
     char *tmp;
 
     libxcvt_mode_info =

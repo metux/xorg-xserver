@@ -133,13 +133,13 @@ xf86ExtendedInitInt10(int entityIndex, int Flags)
         return NULL;
     }
 
-    pInt = (xf86Int10InfoPtr) xnfcalloc(1, sizeof(xf86Int10InfoRec));
+    pInt = (xf86Int10InfoPtr) XNFcallocarray(1, sizeof(xf86Int10InfoRec));
     pInt->entityIndex = entityIndex;
     if (!xf86Int10ExecSetup(pInt))
         goto error0;
     pInt->mem = &genericMem;
-    pInt->private = (void *) xnfcalloc(1, sizeof(genericInt10Priv));
-    INTPriv(pInt)->alloc = (void *) xnfcalloc(1, ALLOC_ENTRIES(getpagesize()));
+    pInt->private = (void *) XNFcallocarray(1, sizeof(genericInt10Priv));
+    INTPriv(pInt)->alloc = (void *) XNFcallocarray(1, ALLOC_ENTRIES(getpagesize()));
     pInt->pScrn = pScrn;
     base = INTPriv(pInt)->base = XNFalloc(SYS_BIOS);
 

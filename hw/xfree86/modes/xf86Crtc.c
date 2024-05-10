@@ -59,7 +59,7 @@ xf86CrtcConfigInit(ScrnInfoPtr scrn, const xf86CrtcConfigFuncsRec * funcs)
 
     if (xf86CrtcConfigPrivateIndex == -1)
         xf86CrtcConfigPrivateIndex = xf86AllocateScrnInfoPrivateIndex();
-    config = xnfcalloc(1, sizeof(xf86CrtcConfigRec));
+    config = XNFcallocarray(1, sizeof(xf86CrtcConfigRec));
 
     config->funcs = funcs;
     config->compat_output = -1;
@@ -2284,8 +2284,8 @@ xf86TargetPreferred(ScrnInfoPtr scrn, xf86CrtcConfigPtr config,
     DisplayModePtr *preferred, *preferred_match;
     Bool ret = FALSE;
 
-    preferred = xnfcalloc(config->num_output, sizeof(DisplayModePtr));
-    preferred_match = xnfcalloc(config->num_output, sizeof(DisplayModePtr));
+    preferred = XNFcallocarray(config->num_output, sizeof(DisplayModePtr));
+    preferred_match = XNFcallocarray(config->num_output, sizeof(DisplayModePtr));
 
     /* Check if the preferred mode is available on all outputs */
     for (p = -1; nextEnabledOutput(config, enabled, &p);) {
@@ -2394,7 +2394,7 @@ xf86TargetAspect(ScrnInfoPtr scrn, xf86CrtcConfigPtr config,
     Bool ret = FALSE;
     DisplayModePtr guess = NULL, aspect_guess = NULL, base_guess = NULL;
 
-    aspects = xnfcalloc(config->num_output, sizeof(float));
+    aspects = XNFcallocarray(config->num_output, sizeof(float));
 
     /* collect the aspect ratios */
     for (o = -1; nextEnabledOutput(config, enabled, &o);) {
@@ -2571,9 +2571,9 @@ xf86InitialConfiguration(ScrnInfoPtr scrn, Bool canGrow)
 
     xf86ProbeOutputModes(scrn, width, height);
 
-    crtcs = xnfcalloc(config->num_output, sizeof(xf86CrtcPtr));
-    modes = xnfcalloc(config->num_output, sizeof(DisplayModePtr));
-    enabled = xnfcalloc(config->num_output, sizeof(Bool));
+    crtcs = XNFcallocarray(config->num_output, sizeof(xf86CrtcPtr));
+    modes = XNFcallocarray(config->num_output, sizeof(DisplayModePtr));
+    enabled = XNFcallocarray(config->num_output, sizeof(Bool));
 
     ret = xf86CollectEnabledOutputs(scrn, config, enabled);
     if (ret == FALSE && canGrow) {

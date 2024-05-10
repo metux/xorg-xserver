@@ -203,7 +203,7 @@ xwl_glamor_xv_add_formats(XvAdaptorPtr pa)
     int i;
 
     totFormat = NUM_FORMATS;
-    pFormat = xnfcalloc(totFormat, sizeof(XvFormatRec));
+    pFormat = XNFcallocarray(totFormat, sizeof(XvFormatRec));
     pScreen = pa->pScreen;
     for (pf = pFormat, i = 0, numFormat = 0; i < NUM_FORMATS; i++) {
         numVisuals = pScreen->numVisuals;
@@ -246,10 +246,10 @@ xwl_glamor_xv_add_ports(XvAdaptorPtr pa)
     int nPorts;
     int i;
 
-    pPorts = xnfcalloc(NUM_PORTS, sizeof(XvPortRec));
+    pPorts = XNFcallocarray(NUM_PORTS, sizeof(XvPortRec));
     xwlXvScreen = dixLookupPrivate(&(pa->pScreen)->devPrivates,
                                    xwlXvScreenPrivateKey);
-    xwlXvScreen->port_privates = xnfcalloc(NUM_PORTS,
+    xwlXvScreen->port_privates = XNFcallocarray(NUM_PORTS,
                                            sizeof(glamor_port_private));
 
     PortResource = XvGetRTPort();
@@ -280,7 +280,7 @@ xwl_glamor_xv_add_attributes(XvAdaptorPtr pa)
 {
     int i;
 
-    pa->pAttributes = xnfcalloc(glamor_xv_num_attributes, sizeof(XvAttributeRec));
+    pa->pAttributes = XNFcallocarray(glamor_xv_num_attributes, sizeof(XvAttributeRec));
     memcpy(pa->pAttributes, glamor_xv_attributes,
            glamor_xv_num_attributes * sizeof(XvAttributeRec));
 
@@ -293,7 +293,7 @@ xwl_glamor_xv_add_attributes(XvAdaptorPtr pa)
 static void
 xwl_glamor_xv_add_images(XvAdaptorPtr pa)
 {
-    pa->pImages = xnfcalloc(glamor_xv_num_images, sizeof(XvImageRec));
+    pa->pImages = XNFcallocarray(glamor_xv_num_images, sizeof(XvImageRec));
     memcpy(pa->pImages, glamor_xv_images, glamor_xv_num_images * sizeof(XvImageRec));
 
     pa->nImages = glamor_xv_num_images;
@@ -307,7 +307,7 @@ xwl_glamor_xv_add_encodings(XvAdaptorPtr pa)
 
     glGetIntegerv(GL_MAX_TEXTURE_SIZE, &texsize);
 
-    pe = xnfcalloc(1, sizeof(XvEncodingRec));
+    pe = XNFcallocarray(1, sizeof(XvEncodingRec));
     pe->id = 0;
     pe->pScreen = pa->pScreen;
     pe->name = strdup(ENCODER_NAME);
@@ -337,7 +337,7 @@ xwl_glamor_xv_add_adaptors(ScreenPtr pScreen)
     XvScreen->nAdaptors = 0;
     XvScreen->pAdaptors = NULL;
 
-    pa = xnfcalloc(1, sizeof(XvAdaptorRec));
+    pa = XNFcallocarray(1, sizeof(XvAdaptorRec));
     pa->pScreen = pScreen;
     pa->type = (unsigned char) (XvInputMask | XvImageMask);
     pa->ddStopVideo = xwl_glamor_xv_stop_video;

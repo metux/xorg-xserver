@@ -1053,7 +1053,7 @@ xwl_window_enter_output(struct xwl_window *xwl_window, struct xwl_output *xwl_ou
 {
     struct xwl_window_output *window_output;
 
-    window_output = xnfcalloc(1, sizeof(struct xwl_window_output));
+    window_output = XNFcallocarray(1, sizeof(struct xwl_window_output));
     window_output->xwl_output = xwl_output;
     xorg_list_add(&window_output->link, &xwl_window->xwl_output_list);
 }
@@ -1609,7 +1609,7 @@ release_wl_surface_for_window_legacy_delay(struct xwl_window *xwl_window)
      * and Wayland processing so that the compositor has the time to
      * establish the association before the wl_surface is destroyed.
      */
-    xwl_wl_surface = xnfcalloc(1, sizeof *xwl_wl_surface);
+    xwl_wl_surface = XNFcallocarray(1, sizeof *xwl_wl_surface);
     xwl_wl_surface->wl_surface = xwl_window->surface;
     xorg_list_add(&xwl_wl_surface->link,
                   &xwl_window->xwl_screen->pending_wl_surface_destroy);

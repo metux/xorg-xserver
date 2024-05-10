@@ -240,7 +240,7 @@ CheckMode(ScrnInfoPtr pScrn, vbeInfoPtr pVbe, VbeInfoBlock * vbe, int id,
         VBEFreeModeInfo(mode);
         return NULL;
     }
-    pMode = xnfcalloc(sizeof(DisplayModeRec), 1);
+    pMode = XNFcallocarray(sizeof(DisplayModeRec), 1);
 
     pMode->status = MODE_OK;
     pMode->type = M_T_BUILTIN;
@@ -249,7 +249,7 @@ CheckMode(ScrnInfoPtr pScrn, vbeInfoPtr pVbe, VbeInfoBlock * vbe, int id,
     pMode->HDisplay = mode->XResolution;
     pMode->VDisplay = mode->YResolution;
 
-    data = xnfcalloc(sizeof(VbeModeInfoData), 1);
+    data = XNFcallocarray(sizeof(VbeModeInfoData), 1);
     data->mode = id;
     data->data = mode;
     pMode->PrivSize = sizeof(VbeModeInfoData);

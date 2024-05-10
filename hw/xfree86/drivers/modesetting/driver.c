@@ -396,7 +396,7 @@ ms_setup_entity(ScrnInfoPtr scrn, int entity_num)
     xf86SetEntityInstanceForScreen(scrn, entity_num, xf86GetNumEntityInstances(entity_num) - 1);
 
     if (!pPriv->ptr)
-        pPriv->ptr = xnfcalloc(sizeof(modesettingEntRec), 1);
+        pPriv->ptr = XNFcallocarray(sizeof(modesettingEntRec), 1);
 }
 
 #ifdef XSERVER_LIBPCIACCESS
@@ -515,7 +515,7 @@ GetRec(ScrnInfoPtr pScrn)
     if (pScrn->driverPrivate)
         return TRUE;
 
-    pScrn->driverPrivate = xnfcalloc(sizeof(modesettingRec), 1);
+    pScrn->driverPrivate = XNFcallocarray(sizeof(modesettingRec), 1);
 
     return TRUE;
 }

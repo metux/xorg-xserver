@@ -403,7 +403,7 @@ autoConfigDevice(GDevPtr preconf_device)
              * minus one for the already existing first one
              * plus one for the terminating NULL */
             for (; slp[num_screens].screen; num_screens++);
-            xf86ConfigLayout.screens = xnfcalloc(num_screens + md.nmatches,
+            xf86ConfigLayout.screens = XNFcallocarray(num_screens + md.nmatches,
                                                  sizeof(screenLayoutRec));
             xf86ConfigLayout.screens[0] = slp[0];
 

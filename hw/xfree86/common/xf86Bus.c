@@ -299,9 +299,9 @@ xf86AllocateEntity(void)
     xf86NumEntities++;
     xf86Entities = XNFreallocarray(xf86Entities,
                                    xf86NumEntities, sizeof(EntityPtr));
-    xf86Entities[xf86NumEntities - 1] = xnfcalloc(1, sizeof(EntityRec));
+    xf86Entities[xf86NumEntities - 1] = XNFcallocarray(1, sizeof(EntityRec));
     xf86Entities[xf86NumEntities - 1]->entityPrivates =
-        xnfcalloc(xf86EntityPrivateCount, sizeof(DevUnion));
+        XNFcallocarray(xf86EntityPrivateCount, sizeof(DevUnion));
     return xf86NumEntities - 1;
 }
 
@@ -500,7 +500,7 @@ xf86GetEntityInfo(int entityIndex)
     if (entityIndex >= xf86NumEntities)
         return NULL;
 
-    pEnt = xnfcalloc(1, sizeof(EntityInfoRec));
+    pEnt = XNFcallocarray(1, sizeof(EntityInfoRec));
     pEnt->index = entityIndex;
     pEnt->location = xf86Entities[entityIndex]->bus;
     pEnt->active = xf86Entities[entityIndex]->active;

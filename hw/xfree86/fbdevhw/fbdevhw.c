@@ -94,7 +94,7 @@ fbdevHWGetRec(ScrnInfoPtr pScrn)
     if (FBDEVHWPTR(pScrn) != NULL)
         return TRUE;
 
-    FBDEVHWPTRLVAL(pScrn) = xnfcalloc(sizeof(fbdevHWRec), 1);
+    FBDEVHWPTRLVAL(pScrn) = XNFcallocarray(sizeof(fbdevHWRec), 1);
     return TRUE;
 }
 

@@ -2573,7 +2573,7 @@ drmmode_crtc_init(ScrnInfoPtr pScrn, drmmode_ptr drmmode, drmModeResPtr mode_res
     crtc = xf86CrtcCreate(pScrn, &drmmode_crtc_funcs);
     if (crtc == NULL)
         return 0;
-    drmmode_crtc = xnfcalloc(sizeof(drmmode_crtc_private_rec), 1);
+    drmmode_crtc = XNFcallocarray(sizeof(drmmode_crtc_private_rec), 1);
     crtc->driver_private = drmmode_crtc;
     drmmode_crtc->mode_crtc =
         drmModeGetCrtc(drmmode->fd, mode_res->crtcs[num]);
