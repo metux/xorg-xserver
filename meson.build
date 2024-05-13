@@ -225,7 +225,6 @@ if (host_machine.system() != 'darwin' and
         dependency('wayland-protocols', version: wayland_protocols_req, required: xwayland_required),
         dependency('libxcvt', fallback: ['libxcvt', 'libxcvt_dep'], required: xwayland_required),
     ]
-
     if build_glamor
         xwayland_dep += dependency('xshmfence', version: xshmfence_req, required: xwayland_required)
         xwayland_dep += dependency('libdrm', version: libdrm_req, required: xwayland_required)
@@ -241,23 +240,21 @@ if (host_machine.system() != 'darwin' and
     endforeach
 endif
 
-build_xnest = false
-if get_option('xnest') != 'false'
-        xnest_required = get_option('xnest') == 'true'
-
-        xnest_dep = [
-            dependency('xext', version: xext_req, required: xnest_required),
-            dependency('x11', required: xnest_required),
-            dependency('xau', required: xnest_required),
-        ]
-
-        build_xnest = true
-        # check for all the deps being found, to handle 'auto' mode.
-        foreach d: xnest_dep
-            if not d.found()
-                build_xnest = false
-            endif
-        endforeach
+## configure Xnest - nesting X server
+build_xnest = get_option('xnest') != 'false'
+xnest_required = get_option('xnest') == 'true'
+xnest_dep = [
+    dependency('xext', version: xext_req, required: xnest_required),
+    dependency('x11', required: xnest_required),
+    dependency('xau', required: xnest_required),
+]
+if get_option('xnest') == 'auto'
+    # check for all the deps being found, to handle 'auto' mode.
+    foreach d: xnest_dep
+        if not d.found()
+            build_xnest = false
+        endif
+    endforeach
 endif
 
 build_xwin = false
