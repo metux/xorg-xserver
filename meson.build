@@ -242,8 +242,7 @@ if (host_machine.system() != 'darwin' and
 endif
 
 build_xnest = false
-if (host_machine.system() != 'windows')
-    if get_option('xnest') != 'false'
+if get_option('xnest') != 'false'
         xnest_required = get_option('xnest') == 'true'
 
         xnest_dep = [
@@ -259,7 +258,6 @@ if (host_machine.system() != 'windows')
                 build_xnest = false
             endif
         endforeach
-    endif
 endif
 
 build_xwin = false
