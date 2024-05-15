@@ -34,9 +34,7 @@
 #include <X11/XF86keysym.h>
 #endif
 #include <stdio.h>
-#ifdef __sun
 #include <sys/file.h>           /* needed for FNONBLOCK & FASYNC */
-#endif
 
 #include "xkbsrv.h"
 
