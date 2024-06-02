@@ -78,7 +78,7 @@ NAMES section of the \fIX\fP(@miscmansuffix@) manual page to learn how to
 specify which display number clients should try to use.
 .TP 8
 .B \-a \fInumber\fP
-sets pointer acceleration (i.e.\& the ratio of how much is reported to how much
+sets pointer acceleration (i.e., the ratio of how much is reported to how much
 the user actually moved the pointer).
 .TP 8
 .B \-ac
@@ -116,12 +116,14 @@ This is the default unless \-retro or \-wr is specified.
 .B \-bs
 disables backing store support on all screens.
 .TP 8
-.B \+byteswappedclients
-Allow connections from clients with an endianess different to that of the server.
+.B +byteswappedclients
+Allow connections from clients with an endianess different to that of the
+server.
 .TP 8
 .B \-byteswappedclients
-Prohibit connections from clients with an endianess different to that of the server.
-This is the default unless \fB\+byteswappedclients\fP is specified.
+Prohibit connections from clients with an endianess different to that of the
+server.
+This is the default unless \fB+byteswappedclients\fP is specified.
 .TP 8
 .B \-c
 turns off key-click.
@@ -274,7 +276,7 @@ used to limit the server to expose only a specific subset of devices
 connected to the system.
 .TP 8
 .B \-t \fInumber\fP
-sets pointer acceleration threshold in pixels (i.e.\& after how many pixels
+sets pointer acceleration threshold in pixels (i.e., after how many pixels
 pointer acceleration should take effect).
 .TP 8
 .BR \-terminate " ["\c
@@ -472,7 +474,7 @@ If no other authorization mechanism is being used,
 this list initially consists of the host on which the server is running as
 well as any machines listed in the file \fI/etc/X\fBn\fI.hosts\fR, where
 \fBn\fP is the display number of the server.  Each line of the file should
-contain either an Internet hostname (e.g.\& expo.lcs.mit.edu)
+contain either an Internet hostname (e.g., expo.lcs.mit.edu)
 or a complete name in the format
 \fIfamily\fP:\fIname\fP as described in the \fIxhost\fP(1) manual page.
 There should be no leading or trailing spaces on any lines.  For example:
@@ -596,7 +598,7 @@ Unix domain socket for display number \fBn\fP
 .I /usr/adm/X\fBn\fPmsgs
 Error log file for display number \fBn\fP if run from \fIinit\fP(@adminmansuffix@)
 .TP 30
-.I @projectroot@/lib/X11/xdm/xdm-errors
+.I @projectroot@/lib/X11/xdm/xdm\-errors
 Default error log file if the server is run from \fIxdm\fP(1)
 .SH "SEE ALSO"
 General information: \fIX\fP(@miscmansuffix@)
@@ -610,7 +612,7 @@ Fonts: \fIbdftopcf\fP(1), \fImkfontdir\fP(1), \fImkfontscale\fP(1),
 \fIxfs\fP(1), \fIxlsfonts\fP(1), \fIxfontsel\fP(1), \fIxfd\fP(1),
 .I "X Logical Font Description Conventions"
 .PP
-Keyboards: \fIxkeyboard-config\fP(@miscmansuffix@)
+Keyboards: \fIxkeyboard\-config\fP(@miscmansuffix@)
 .PP
 Security: \fIXsecurity\fP(@miscmansuffix@), \fIxauth\fP(1), \fIXau\fP(1),
 \fIxdm\fP(1), \fIxhost\fP(1), \fIxfwp\fP(1),
