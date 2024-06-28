@@ -28,9 +28,8 @@
 
 #include <dix-config.h>
 
-#include "extinit_priv.h"
-
 #include "dix/screen_hooks_priv.h"
+#include "miext/extinit_priv.h"
 #include "randr/randrstr_priv.h"
 #include "randr/rrdispatch_priv.h"
 
