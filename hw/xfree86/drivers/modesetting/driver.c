@@ -1023,7 +1023,7 @@ ms_unwrap_property_requests(ScrnInfoPtr scrn)
 }
 
 static void
-FreeRec(ScrnInfoPtr pScrn)
+FreeScreen(ScrnInfoPtr pScrn)
 {
     modesettingPtr ms;
 
@@ -2212,12 +2212,6 @@ AdjustFrame(ScrnInfoPtr pScrn, int x, int y)
     modesettingPtr ms = modesettingPTR(pScrn);
 
     drmmode_adjust_frame(pScrn, &ms->drmmode, x, y);
-}
-
-static void
-FreeScreen(ScrnInfoPtr pScrn)
-{
-    FreeRec(pScrn);
 }
 
 static void
