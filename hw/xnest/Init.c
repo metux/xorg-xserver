@@ -16,10 +16,12 @@ is" without express or implied warranty.
 #include <xnest-config.h>
 #endif
 
+#include <stddef.h>
 #include <X11/X.h>
 #include <X11/Xdefs.h>
 #include <X11/Xproto.h>
 #include <X11/fonts/fontstruct.h>
+#include <X11/fonts/libxfont2.h>
 
 #include "dix/screenint_priv.h"
 #include "os/ddx_priv.h"
