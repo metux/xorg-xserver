@@ -416,7 +416,6 @@ int
 ProcRRListOutputProperties(ClientPtr client)
 {
     REQUEST(xRRListOutputPropertiesReq);
-    Atom *pAtoms = NULL;
     int numProps = 0;
     RROutputPtr output;
     RRPropertyPtr prop;
@@ -427,9 +426,6 @@ ProcRRListOutputProperties(ClientPtr client)
 
     for (prop = output->properties; prop; prop = prop->next)
         numProps++;
-    if (numProps)
-        if (!(pAtoms = xallocarray(numProps, sizeof(Atom))))
-            return BadAlloc;
 
     xRRListOutputPropertiesReply rep = {
         .type = X_Reply,
@@ -442,18 +438,25 @@ ProcRRListOutputProperties(ClientPtr client)
         swapl(&rep.length);
         swaps(&rep.nAtoms);
     }
-    WriteToClient(client, sizeof(xRRListOutputPropertiesReply), &rep);
 
+    Atom* pAtoms = calloc(sizeof(Atom), numProps);
     if (numProps) {
+        if (!pAtoms)
+            return BadAlloc;
+
         /* Copy property name atoms to reply buffer */
         Atom *temppAtoms = pAtoms;
         for (prop = output->properties; prop; prop = prop->next)
             *temppAtoms++ = prop->propertyName;
 
-        client->pSwapReplyFunc = (ReplySwapPtr) Swap32Write;
-        WriteSwappedDataToClient(client, numProps * sizeof(Atom), pAtoms);
-        free(pAtoms);
+        if (client->swapped)
+            SwapLongs(pAtoms, numProps);
     }
+
+    WriteToClient(client, sizeof(xRRListOutputPropertiesReply), &rep);
+    WriteToClient(client, sizeof(Atom) * numProps, pAtoms);
+    free(pAtoms);
+
     return Success;
 }
 
