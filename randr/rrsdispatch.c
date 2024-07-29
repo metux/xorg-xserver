@@ -603,60 +603,69 @@ SProcRRFreeLease(ClientPtr client) {
     return ProcRRFreeLease(client);
 }
 
-int (*SProcRandrVector[RRNumberRequests]) (ClientPtr) = {
-    SProcRRQueryVersion,        /* 0 */
-/* we skip 1 to make old clients fail pretty immediately */
-        NULL,                   /* 1 SProcRandrOldGetScreenInfo */
-/* V1.0 apps share the same set screen config request id */
-        SProcRRSetScreenConfig, /* 2 */
-        NULL,                   /* 3 SProcRandrOldScreenChangeSelectInput */
-/* 3 used to be ScreenChangeSelectInput; deprecated */
-        SProcRRSelectInput,     /* 4 */
-        SProcRRGetScreenInfo,   /* 5 */
-/* V1.2 additions */
-        SProcRRGetScreenSizeRange,      /* 6 */
-        SProcRRSetScreenSize,   /* 7 */
-        SProcRRGetScreenResources,      /* 8 */
-        SProcRRGetOutputInfo,   /* 9 */
-        SProcRRListOutputProperties,    /* 10 */
-        SProcRRQueryOutputProperty,     /* 11 */
-        SProcRRConfigureOutputProperty, /* 12 */
-        SProcRRChangeOutputProperty,    /* 13 */
-        SProcRRDeleteOutputProperty,    /* 14 */
-        SProcRRGetOutputProperty,       /* 15 */
-        SProcRRCreateMode,      /* 16 */
-        SProcRRDestroyMode,     /* 17 */
-        SProcRRAddOutputMode,   /* 18 */
-        SProcRRDeleteOutputMode,        /* 19 */
-        SProcRRGetCrtcInfo,     /* 20 */
-        SProcRRSetCrtcConfig,   /* 21 */
-        SProcRRGetCrtcGammaSize,        /* 22 */
-        SProcRRGetCrtcGamma,    /* 23 */
-        SProcRRSetCrtcGamma,    /* 24 */
-/* V1.3 additions */
-        SProcRRGetScreenResourcesCurrent,      /* 25 */
-        SProcRRSetCrtcTransform,        /* 26 */
-        SProcRRGetCrtcTransform,        /* 27 */
-        SProcRRGetPanning,      /* 28 */
-        SProcRRSetPanning,      /* 29 */
-        SProcRRSetOutputPrimary,        /* 30 */
-        SProcRRGetOutputPrimary,        /* 31 */
-/* V1.4 additions */
-        SProcRRGetProviders,            /* 32 */
-        SProcRRGetProviderInfo,         /* 33 */
-        SProcRRSetProviderOffloadSink,  /* 34 */
-        SProcRRSetProviderOutputSource, /* 35 */
-        SProcRRListProviderProperties,  /* 36 */
-        SProcRRQueryProviderProperty,   /* 37 */
-        SProcRRConfigureProviderProperty, /* 38 */
-        SProcRRChangeProviderProperty,  /* 39 */
-        SProcRRDeleteProviderProperty,  /* 40 */
-        SProcRRGetProviderProperty,     /* 41 */
-/* V1.5 additions */
-        SProcRRGetMonitors,            /* 42 */
-        SProcRRSetMonitor,             /* 43 */
-        SProcRRDeleteMonitor,          /* 44 */
-/* V1.6 additions */
-        SProcRRCreateLease,            /* 45 */
-        SProcRRFreeLease,              /* 46 */
-};
+int
+SProcRRDispatch(ClientPtr client)
+{
+    REQUEST(xReq);
+    UpdateCurrentTimeIf();
+
+    switch (stuff->data) {
+        case X_RRQueryVersion:              return SProcRRQueryVersion(client);
+        case X_RRSetScreenConfig:           return SProcRRSetScreenConfig(client);
+        case X_RRSelectInput:               return SProcRRSelectInput(client);
+        case X_RRGetScreenInfo:             return SProcRRGetScreenInfo(client);
+
+        /* V1.2 additions */
+        case X_RRGetScreenSizeRange:        return SProcRRGetScreenSizeRange(client);
+        case X_RRSetScreenSize:             return SProcRRSetScreenSize(client);
+        case X_RRGetScreenResources:        return SProcRRGetScreenResources(client);
+        case X_RRGetOutputInfo:             return SProcRRGetOutputInfo(client);
+        case X_RRListOutputProperties:      return SProcRRListOutputProperties(client);
+        case X_RRQueryOutputProperty:       return SProcRRQueryOutputProperty(client);
+        case X_RRConfigureOutputProperty:   return SProcRRConfigureOutputProperty(client);
+        case X_RRChangeOutputProperty:      return SProcRRChangeOutputProperty(client);
+        case X_RRDeleteOutputProperty:      return SProcRRDeleteOutputProperty(client);
+        case X_RRGetOutputProperty:         return SProcRRGetOutputProperty(client);
+        case X_RRCreateMode:                return SProcRRCreateMode(client);
+        case X_RRDestroyMode:               return SProcRRDestroyMode(client);
+        case X_RRAddOutputMode:             return SProcRRAddOutputMode(client);
+        case X_RRDeleteOutputMode:          return SProcRRDeleteOutputMode(client);
+        case X_RRGetCrtcInfo:               return SProcRRGetCrtcInfo(client);
+        case X_RRSetCrtcConfig:             return SProcRRSetCrtcConfig(client);
+        case X_RRGetCrtcGammaSize:          return SProcRRGetCrtcGammaSize(client);
+        case X_RRGetCrtcGamma:              return SProcRRGetCrtcGamma(client);
+        case X_RRSetCrtcGamma:              return SProcRRSetCrtcGamma(client);
+
+        /* V1.3 additions */
+        case X_RRGetScreenResourcesCurrent: return SProcRRGetScreenResourcesCurrent(client);
+        case X_RRSetCrtcTransform:          return SProcRRSetCrtcTransform(client);
+        case X_RRGetCrtcTransform:          return SProcRRGetCrtcTransform(client);
+        case X_RRGetPanning:                return SProcRRGetPanning(client);
+        case X_RRSetPanning:                return SProcRRSetPanning(client);
+        case X_RRSetOutputPrimary:          return SProcRRSetOutputPrimary(client);
+        case X_RRGetOutputPrimary:          return SProcRRGetOutputPrimary(client);
+
+        /* V1.4 additions */
+        case X_RRGetProviders:              return SProcRRGetProviders(client);
+        case X_RRGetProviderInfo:           return SProcRRGetProviderInfo(client);
+        case X_RRSetProviderOffloadSink:    return SProcRRSetProviderOffloadSink(client);
+        case X_RRSetProviderOutputSource:   return SProcRRSetProviderOutputSource(client);
+        case X_RRListProviderProperties:    return SProcRRListProviderProperties(client);
+        case X_RRQueryProviderProperty:     return SProcRRQueryProviderProperty(client);
+        case X_RRConfigureProviderProperty: return SProcRRConfigureProviderProperty(client);
+        case X_RRChangeProviderProperty:    return SProcRRChangeProviderProperty(client);
+        case X_RRDeleteProviderProperty:    return SProcRRDeleteProviderProperty(client);
+        case X_RRGetProviderProperty:       return SProcRRGetProviderProperty(client);
+
+        /* V1.5 additions */
+        case X_RRGetMonitors:               return SProcRRGetMonitors(client);
+        case X_RRSetMonitor:                return SProcRRSetMonitor(client);
+        case X_RRDeleteMonitor:             return SProcRRDeleteMonitor(client);
+
+        /* V1.6 additions */
+        case X_RRCreateLease:               return SProcRRCreateLease(client);
+        case X_RRFreeLease:                 return SProcRRFreeLease(client);
+    }
+
+    return BadRequest;
+}
