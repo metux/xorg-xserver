@@ -25,6 +25,7 @@ is" without express or implied warranty.
 #include "misc.h"
 #include "scrnintstr.h"
 #include "servermd.h"
+#include "extinit.h"
 
 #include "Xnest.h"
 
@@ -54,6 +55,19 @@ Window xnestParentWindow = 0;
 int
 ddxProcessArgument(int argc, char *argv[], int i)
 {
+    /* disable some extensions we currently don't support yet */
+#ifdef MITSHM
+    noMITShmExtension = TRUE;
+#endif
+
+#ifdef COMPOSITE
+    noCompositeExtension = TRUE;
+#endif
+
+#ifdef DPMSExtension
+    noDPMSExtension = TRUE;
+#endif
+
     if (!strcmp(argv[i], "-display")) {
         if (++i < argc) {
             xnestDisplayName = argv[i];
