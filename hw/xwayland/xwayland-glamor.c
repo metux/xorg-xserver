@@ -104,7 +104,8 @@ xwl_glamor_check_flip(WindowPtr present_window, PixmapPtr pixmap)
     }
 
     if (surface_window->redirectDraw == RedirectDrawAutomatic &&
-        surface_window->drawable.depth != 32)
+        surface_window->drawable.depth != 32 &&
+        surface_window->parent->drawable.depth == 32)
         xwl_present_maybe_redirect_window(surface_window);
 
     return TRUE;
