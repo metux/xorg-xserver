@@ -1308,6 +1308,7 @@ xwl_present_maybe_redirect_window(WindowPtr window)
         compUnredirectWindow(serverClient, window, CompositeRedirectManual);
         xwl_present_window->redirected = FALSE;
         xwl_present_window->redirect_failed = TRUE;
+        xwl_window_update_surface_window(xwl_window);
         return FALSE;
     }
 
