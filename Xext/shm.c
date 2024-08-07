@@ -1387,12 +1387,6 @@ SShmCompletionEvent(xShmCompletionEvent * from, xShmCompletionEvent * to)
 }
 
 static int _X_COLD
-SProcShmQueryVersion(ClientPtr client)
-{
-    return ProcShmQueryVersion(client);
-}
-
-static int _X_COLD
 SProcShmAttach(ClientPtr client)
 {
     REQUEST(xShmAttachReq);
@@ -1489,7 +1483,7 @@ SProcShmDispatch(ClientPtr client)
     REQUEST(xReq);
 
     if (stuff->data == X_ShmQueryVersion)
-        return SProcShmQueryVersion(client);
+        return ProcShmQueryVersion(client);
 
     if (!client->local)
         return BadRequest;
