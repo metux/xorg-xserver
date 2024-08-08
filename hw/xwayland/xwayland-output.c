@@ -404,9 +404,18 @@ xwl_output_find_mode(struct xwl_output *xwl_output,
     RROutputPtr output = xwl_output->randr_output;
     int i;
 
-    /* width & height -1 means we want the actual output mode, which is idx 0 */
-    if (width == -1 && height == -1 && output->modes)
-        return output->modes[0];
+    /* width & height -1 means we want the actual output mode */
+    if (width == -1 && height == -1) {
+        if (xwl_output->mode_width > 0 && xwl_output->mode_height > 0) {
+            /* If running rootful, use the current mode size to search for the mode */
+            width = xwl_output->mode_width;
+            height = xwl_output->mode_height;
+        }
+        else if (output->modes) {
+            /* else return the mode at first idx 0 */
+            return output->modes[0];
+        }
+    }
 
     for (i = 0; i < output->numModes; i++) {
         if (output->modes[i]->mode.width == width && output->modes[i]->mode.height == height)
