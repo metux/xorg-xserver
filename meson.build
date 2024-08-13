@@ -511,7 +511,7 @@ else
    epoll_dep = []
 endif
 
-have_eventfd = cc.has_header('sys/eventfd.h')
+have_eventfd = cc.has_header('sys/eventfd.h', dependencies: epoll_dep)
 if get_option('dri3') == 'auto'
     build_dri3 = dri3proto_dep.found() and xshmfence_dep.found() and libdrm_dep.found() and have_eventfd
 else
