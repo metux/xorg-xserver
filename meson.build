@@ -505,6 +505,12 @@ else
     build_dri2 = get_option('dri2') == 'true'
 endif
 
+if host_machine.system() in ['freebsd', 'openbsd']
+   epoll_dep = dependency('epoll-shim')
+else
+   epoll_dep = []
+endif
+
 have_eventfd = cc.has_header('sys/eventfd.h')
 if get_option('dri3') == 'auto'
     build_dri3 = dri3proto_dep.found() and xshmfence_dep.found() and libdrm_dep.found() and have_eventfd
