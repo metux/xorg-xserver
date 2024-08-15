@@ -984,6 +984,12 @@ xwl_screen_init(ScreenPtr pScreen, int argc, char **argv)
         return FALSE;
     }
 
+    xwl_screen->display = wl_display_connect(NULL);
+    if (xwl_screen->display == NULL) {
+        ErrorF("could not connect to wayland server\n");
+        return FALSE;
+    }
+
 #ifdef XWL_HAS_GLAMOR
     if (xwl_screen->glamor && !xwl_glamor_init_gbm(xwl_screen)) {
         ErrorF("xwayland glamor: failed to setup GBM backend, falling back to sw accel\n");
@@ -1011,12 +1017,6 @@ xwl_screen_init(ScreenPtr pScreen, int argc, char **argv)
 
     if (!monitorResolution)
         monitorResolution = DEFAULT_DPI;
-
-    xwl_screen->display = wl_display_connect(NULL);
-    if (xwl_screen->display == NULL) {
-        ErrorF("could not connect to wayland server\n");
-        return FALSE;
-    }
 
     if (use_fixed_size) {
         if (!xwl_screen_init_randr_fixed(xwl_screen))
