@@ -320,7 +320,7 @@ ms_dri2_copy_region2(ScreenPtr screen, DrawablePtr drawable, RegionPtr pRegion,
      * callback chain so we know that will happen before the client
      * tries to render again.
      */
-    gc->ops->CopyArea(src, dst, gc,
+    (void) gc->ops->CopyArea(src, dst, gc,
                       0, 0,
                       drawable->width, drawable->height,
                       off_x, off_y);

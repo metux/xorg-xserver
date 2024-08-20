@@ -465,7 +465,7 @@ miOpqStipDrawable(DrawablePtr pDraw, GCPtr pGC, RegionPtr prgnSrc,
     gcv[0].val = GXinvert;
     ChangeGC(NullClient, pGCT, GCFunction, gcv);
     ValidateGC((DrawablePtr) pPixmap, pGCT);
-    (*pGCT->ops->CopyArea) ((DrawablePtr) pPixmap, (DrawablePtr) pPixmap,
+    (void) (*pGCT->ops->CopyArea) ((DrawablePtr) pPixmap, (DrawablePtr) pPixmap,
                             pGCT, 0, 0, w + srcx, h, 0, 0);
 
     /* Swap foreground and background colors on the GC for the drawable.
