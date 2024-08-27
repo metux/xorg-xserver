@@ -482,8 +482,8 @@ doShmPutImage(DrawablePtr dst, GCPtr pGC,
                                          PixmapBytePad(w, depth), data);
         if (!pPixmap)
             return;
-        (void) pGC->ops->CopyArea((DrawablePtr) pPixmap, dst, pGC, sx, sy, sw, sh, dx,
-                           dy);
+        (void) pGC->ops->CopyArea((DrawablePtr) pPixmap, dst, pGC,
+                                  sx, sy, sw, sh, dx, dy);
         FreeScratchPixmapHeader(pPixmap);
     }
     else {
