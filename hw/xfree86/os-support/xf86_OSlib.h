@@ -81,9 +81,9 @@
 #include <stddef.h>
 
 /**************************************************************************/
-/* SYSV386 (SVR3, SVR4), including Solaris                                */
+/* SVR4, including Solaris                                                */
 /**************************************************************************/
-#if (defined(SYSV) || defined(SVR4)) && \
+#if (defined(SVR4)) && \
     (defined(__sun) || defined(__i386__))
 #include <sys/ioctl.h>
 #include <signal.h>
@@ -110,14 +110,12 @@
 #define VT_ACKACQ 2
 #endif                          /* !VT_ACKACQ */
 
-#if defined(SVR4)
 #if !(defined(__sun) && defined (SVR4))
 #define DEV_MEM "/dev/pmem"
 #endif
 #define CLEARDTR_SUPPORT
-#endif                          /* SVR4 */
 
-#endif                          /* (SYSV || SVR4) */
+#endif                          /* SVR4 */
 
 /**************************************************************************/
 /* Linux or Glibc-based system                                            */

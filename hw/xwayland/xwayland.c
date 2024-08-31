@@ -25,7 +25,7 @@
 
 #include <xwayland-config.h>
 
-#if !defined(SYSV) && !defined(WIN32)
+#if !defined(WIN32)
 #include <sys/resource.h>
 #endif
 

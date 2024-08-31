@@ -91,7 +91,7 @@ __stdcall unsigned long GetTickCount(void);
 #ifndef WIN32
 #include <sys/wait.h>
 #endif
-#if !defined(SYSV) && !defined(WIN32)
+#if !defined(WIN32)
 #include <sys/resource.h>
 #endif
 #include <sys/stat.h>

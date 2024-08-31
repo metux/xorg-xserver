@@ -71,7 +71,7 @@ SOFTWARE.
 #include "dixstruct.h"
 #include "dixstruct_priv.h"
 
-#if !defined(SYSV) && !defined(WIN32)
+#if !defined(WIN32)
 #include <sys/resource.h>
 #endif
 
@@ -254,7 +254,7 @@ OsInit(void)
                 dup2(fileno(err), 2);
                 fclose(err);
             }
-#if defined(SYSV) || defined(SVR4) || defined(WIN32) || defined(__CYGWIN__)
+#if defined(SVR4) || defined(WIN32) || defined(__CYGWIN__)
             {
                 static char buf[BUFSIZ];
 

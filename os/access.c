@@ -124,11 +124,8 @@ SOFTWARE.
 #include <sys/un.h>
 #endif
 
-#if defined(SVR4) ||  (defined(SYSV) && defined(__i386__)) || defined(__GNU__)
+#if defined(SVR4) || defined(__GNU__)
 #include <sys/utsname.h>
-#endif
-#if defined(SYSV) &&  defined(__i386__)
-#include <sys/stream.h>
 #endif
 #ifdef __GNU__
 #undef SIOCGIFCONF

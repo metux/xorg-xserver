@@ -798,7 +798,7 @@ OsVendorInit(void)
 /*
  * ddxGiveUp --
  *      Device dependent cleanup. Called by by dix before normal server death.
- *      For SYSV386 we must switch the terminal back to normal mode. No error-
+ *      On some OSes we must switch the terminal back to normal mode. No error-
  *      checking here, since there should be restored as much as possible.
  */
 

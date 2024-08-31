@@ -34,8 +34,7 @@
 #include "xf86_OSlib.h"
 
 /*
- * Handle the VT-switching interface for OSs that use USL-style ioctl()s
- * (the bsd, sysv, sco, and linux subdirs).
+ * Handle the VT-switching interface for BSD OSs that use USL-style ioctl()s.
  */
 
 /*
