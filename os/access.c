@@ -156,20 +156,13 @@ SOFTWARE.
 
 #ifdef HAVE_GETIFADDRS
 #include <ifaddrs.h>
-#endif
+#else
 
-/* Solaris provides an extended interface SIOCGLIFCONF.  Other systems
- * may have this as well, but the code has only been tested on Solaris
- * so far, so we only enable it there.  Other platforms may be added as
- * needed.
- *
- * Test for Solaris commented out  --  TSI @ UQV  2003.06.13
- */
+/* Solaris provides an extended interface SIOCGLIFCONF. */
 #ifdef SIOCGLIFCONF
-/* #if defined(__sun) */
 #define USE_SIOCGLIFCONF
-/* #endif */
 #endif
+#endif /* HAVE_GETIFADDRS */
 
 #include <arpa/inet.h>
 
@@ -395,38 +388,6 @@ AccessUsingXdmcp(void)
     UsingXdmcp = TRUE;
     LocalHostEnabled = FALSE;
 }
-
-#if  defined(SVR4) && !defined(__sun)  && defined(SIOCGIFCONF) && !defined(USE_SIOCGLIFCONF)
-
-/* Deal with different SIOCGIFCONF ioctl semantics on these OSs */
-
-static int
-ifioctl(int fd, int cmd, char *arg)
-{
-    struct strioctl ioc;
-    int ret;
-
-    memset((char *) &ioc, 0, sizeof(ioc));
-    ioc.ic_cmd = cmd;
-    ioc.ic_timout = 0;
-    if (cmd == SIOCGIFCONF) {
-        ioc.ic_len = ((struct ifconf *) arg)->ifc_len;
-        ioc.ic_dp = ((struct ifconf *) arg)->ifc_buf;
-    }
-    else {
-        ioc.ic_len = sizeof(struct ifreq);
-        ioc.ic_dp = arg;
-    }
-    ret = ioctl(fd, I_STR, (char *) &ioc);
-    if (ret >= 0 && cmd == SIOCGIFCONF)
-#ifdef SVR4
-        ((struct ifconf *) arg)->ifc_len = ioc.ic_len;
-#endif
-    return ret;
-}
-#else
-#define ifioctl ioctl
-#endif
 
 /*
  * DefineSelf (fd):
@@ -656,7 +617,7 @@ DefineSelf(int fd)
 #define IFR_IFR_NAME ifr->ifr_name
 #endif
 
-    if (ifioctl(fd, IFC_IOCTL_REQ, (void *) &ifc) < 0)
+    if (ioctl(fd, IFC_IOCTL_REQ, (void *) &ifc) < 0)
         ErrorF("Getting interface configuration (4): %s\n", strerror(errno));
 
     cplim = (char *) IFC_IFC_REQ + IFC_IFC_LEN;
@@ -760,12 +721,12 @@ DefineSelf(int fd)
                 struct ifreq broad_req;
 
                 broad_req = *ifr;
-                if (ifioctl(fd, SIOCGIFFLAGS, (void *) &broad_req) != -1 &&
+                if (ioctl(fd, SIOCGIFFLAGS, (void *) &broad_req) != -1 &&
                     (broad_req.ifr_flags & IFF_BROADCAST) &&
                     (broad_req.ifr_flags & IFF_UP)
                     ) {
                     broad_req = *ifr;
-                    if (ifioctl(fd, SIOCGIFBRDADDR, (void *) &broad_req) != -1)
+                    if (ioctl(fd, SIOCGIFBRDADDR, (void *) &broad_req) != -1)
                         broad_addr = broad_req.ifr_addr;
                     else
                         continue;
