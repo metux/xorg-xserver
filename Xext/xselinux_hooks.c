@@ -34,6 +34,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #include "dix/input_priv.h"
 #include "dix/registry_priv.h"
+#include "dix/resource_priv.h"
 #include "os/client_priv.h"
 
 #include "selection.h"
@@ -772,7 +773,7 @@ SELinuxResourceState(CallbackListPtr *pcbl, void *unused, void *calldata)
         return;
 
     pWin = (WindowPtr) rec->value;
-    subj = dixLookupPrivate(&wClient(pWin)->devPrivates, subjectKey);
+    subj = dixLookupPrivate(&dixClientForWindow(pWin)->devPrivates, subjectKey);
 
     if (subj->sid) {
         char *ctx;
