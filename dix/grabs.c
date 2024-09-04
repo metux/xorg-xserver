@@ -257,7 +257,8 @@ CreateGrab(int client, DeviceIntPtr device, DeviceIntPtr modDevice,
 void
 FreeGrab(GrabPtr pGrab)
 {
-    BUG_RETURN(!pGrab);
+    if (!pGrab)
+        return;
 
     free(pGrab->modifiersDetail.pMask);
     free(pGrab->detail.pMask);

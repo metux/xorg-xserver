@@ -114,10 +114,8 @@ void
 GestureEndGesture(GestureInfoPtr gi)
 {
     if (gi->has_listener) {
-        if (gi->listener.grab) {
-            FreeGrab(gi->listener.grab);
-            gi->listener.grab = NULL;
-        }
+        FreeGrab(gi->listener.grab);
+        gi->listener.grab = NULL;
         gi->listener.listener = 0;
         gi->has_listener = FALSE;
     }
