@@ -160,7 +160,7 @@ cd ..
 rm -rf wayland-protocols
 
 # Install libdecor for Xwayland
-git clone https://gitlab.freedesktop.org/libdecor/libdecor.git --depth 1 --branch=0.1.0
+git clone https://gitlab.freedesktop.org/libdecor/libdecor.git --depth 1 --branch=0.1.1
 cd libdecor
 meson _build -D{demo,install_demo}=false
 ninja -C _build -j${FDO_CI_CONCURRENT:-4} install
