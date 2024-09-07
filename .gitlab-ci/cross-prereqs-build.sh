@@ -68,9 +68,9 @@ build 'https://gitlab.freedesktop.org/xorg/lib/libfontenc.git' 'libfontenc-1.1.4
 build 'https://gitlab.freedesktop.org/xorg/lib/libXfont.git'  'libXfont2-2.0.3'
 build 'https://gitlab.freedesktop.org/xorg/lib/libXdmcp.git' 'libXdmcp-1.1.3'
 build 'https://gitlab.freedesktop.org/xorg/lib/libXfixes.git' 'libXfixes-5.0.3'
-build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git' '0.4.0'
-build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-image.git' '0.4.0'
-build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git' '0.4.1'
+build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-util.git' 'xcb-util-0.4.1-gitlab'
+build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-image.git' 'xcb-util-image-0.4.1-gitlab'
+build 'https://gitlab.freedesktop.org/xorg/lib/libxcb-wm.git' 'xcb-util-wm-0.4.2'
 
 # workaround xcb_windefs.h leaking all Windows API types into X server build
 # (some of which clash which types defined by Xmd.h) XXX: This is a bit of a
