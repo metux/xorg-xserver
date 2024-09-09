@@ -15,7 +15,7 @@ EPHEMERAL="
 	xvfb
 	"
 
-# Add bullseye-backports for the newer linux-libc-dev package
+# Add bullseye-backports for the newer linux-libc-dev & meson packages
 echo 'deb http://deb.debian.org/debian bullseye-backports main' >> /etc/apt/sources.list
 apt update
 
@@ -99,7 +99,7 @@ apt-get install -y \
 	libz-mingw-w64-dev \
 	linux-libc-dev/bullseye-backports \
 	mesa-common-dev \
-	meson \
+	meson/bullseye-backports \
 	mingw-w64-tools \
 	nettle-dev \
 	pkg-config \
