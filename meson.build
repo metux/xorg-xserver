@@ -4,7 +4,7 @@ project('xserver', 'c',
             'c_std=gnu99',
         ],
         version: '21.1.99.1',
-        meson_version: '>= 0.56.0',
+        meson_version: '>= 0.58.0',
 )
 release_date = '2021-07-05'
 
@@ -63,6 +63,7 @@ add_project_arguments(common_wflags, language : ['c', 'objc'])
 libdrm_req = '>= 2.4.116'
 libselinux_req = '>= 2.0.86'
 xext_req = '>= 1.0.99.4'
+xproto_req = '>= 7.0.31'
 wayland_req = '>= 1.21.0'
 wayland_protocols_req = '>= 1.34'
 gbm_req = '>= 10.2'
@@ -70,7 +71,7 @@ xf86dgaproto_req = '>= 2.0.99.1'
 xshmfence_req = '>= 1.1'
 
 x11_dep = dependency('x11')
-xproto_dep = dependency('xproto', version: '>= 7.0.31', fallback: ['xorgproto', 'ext_xorgproto'])
+xproto_dep = dependency('xproto', version: xproto_req, fallback: ['xorgproto', 'ext_xorgproto'])
 randrproto_dep = dependency('randrproto', version: '>= 1.6.0', fallback: ['xorgproto', 'ext_xorgproto'])
 renderproto_dep = dependency('renderproto', version: '>= 0.11', fallback: ['xorgproto', 'ext_xorgproto'])
 xextproto_dep = dependency('xextproto', version: '>= 7.2.99.901', fallback: ['xorgproto', 'ext_xorgproto'])
@@ -867,6 +868,7 @@ if build_xorg
 
     sdk_required_modules = [
       'pixman-1 >= 0.27.2',
+      f'xproto @xproto_req@',
     ]
 
     # XXX this isn't trying very hard, but hard enough.
