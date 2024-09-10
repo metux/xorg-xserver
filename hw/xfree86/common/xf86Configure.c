@@ -696,8 +696,8 @@ DoConfigure(void)
              home, addslash);
 
     if (xf86writeConfigFile(filename, xf86config) == 0) {
-        xf86Msg(X_ERROR, "Unable to write config file: \"%s\": %s\n",
-                filename, strerror(errno));
+        LogMessageVerb(X_ERROR, 1, "Unable to write config file: \"%s\": %s\n",
+                       filename, strerror(errno));
         goto bail;
     }
 
@@ -802,8 +802,8 @@ DoConfigure(void)
     }
 
     if (xf86writeConfigFile(filename, xf86config) == 0) {
-        xf86Msg(X_ERROR, "Unable to write config file: \"%s\": %s\n",
-                filename, strerror(errno));
+        LogMessageVerb(X_ERROR, 1, "Unable to write config file: \"%s\": %s\n",
+                       filename, strerror(errno));
         goto bail;
     }
 
