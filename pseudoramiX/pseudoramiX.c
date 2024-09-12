@@ -404,8 +404,6 @@ ProcPseudoramiXDispatch(ClientPtr client)
 static int
 SProcPseudoramiXQueryVersion(ClientPtr client)
 {
-    REQUEST(xPanoramiXQueryVersionReq);
-
     TRACE;
 
     REQUEST_SIZE_MATCH(xPanoramiXQueryVersionReq);
@@ -415,8 +413,6 @@ SProcPseudoramiXQueryVersion(ClientPtr client)
 static int
 SProcPseudoramiXGetState(ClientPtr client)
 {
-    REQUEST(xPanoramiXGetStateReq);
-
     TRACE;
 
     REQUEST_SIZE_MATCH(xPanoramiXGetStateReq);
@@ -426,8 +422,6 @@ SProcPseudoramiXGetState(ClientPtr client)
 static int
 SProcPseudoramiXGetScreenCount(ClientPtr client)
 {
-    REQUEST(xPanoramiXGetScreenCountReq);
-
     TRACE;
 
     REQUEST_SIZE_MATCH(xPanoramiXGetScreenCountReq);
@@ -437,8 +431,6 @@ SProcPseudoramiXGetScreenCount(ClientPtr client)
 static int
 SProcPseudoramiXGetScreenSize(ClientPtr client)
 {
-    REQUEST(xPanoramiXGetScreenSizeReq);
-
     TRACE;
 
     REQUEST_SIZE_MATCH(xPanoramiXGetScreenSizeReq);
@@ -448,8 +440,6 @@ SProcPseudoramiXGetScreenSize(ClientPtr client)
 static int
 SProcPseudoramiXIsActive(ClientPtr client)
 {
-    REQUEST(xXineramaIsActiveReq);
-
     TRACE;
 
     REQUEST_SIZE_MATCH(xXineramaIsActiveReq);
@@ -459,8 +449,6 @@ SProcPseudoramiXIsActive(ClientPtr client)
 static int
 SProcPseudoramiXQueryScreens(ClientPtr client)
 {
-    REQUEST(xXineramaQueryScreensReq);
-
     TRACE;
 
     REQUEST_SIZE_MATCH(xXineramaQueryScreensReq);
