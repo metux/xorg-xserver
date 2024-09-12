@@ -853,9 +853,9 @@ UnloadModule(ModuleDescPtr mod)
         const char *name = mod->VersionInfo->modname;
 
         if (mod->parent)
-            LogMessageVerbSigSafe(X_INFO, 3, "UnloadSubModule: \"%s\"\n", name);
+            LogMessageVerb(X_INFO, 3, "UnloadSubModule: \"%s\"\n", name);
         else
-            LogMessageVerbSigSafe(X_INFO, 3, "UnloadModule: \"%s\"\n", name);
+            LogMessageVerb(X_INFO, 3, "UnloadModule: \"%s\"\n", name);
 
         if (mod->TearDownData != ModuleDuplicated) {
             if ((mod->TearDownProc) && (mod->TearDownData))
