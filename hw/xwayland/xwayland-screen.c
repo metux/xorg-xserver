@@ -40,6 +40,7 @@
 #include "dix/dix_priv.h"
 #include "dix/input_priv.h"
 #include "dix/property_priv.h"
+#include "dix/screen_hooks_priv.h"
 #include "os/client_priv.h"
 #include "os/osdep.h"
 #include "os/xserver_poll.h"
@@ -1136,8 +1137,7 @@ xwl_screen_init(ScreenPtr pScreen, int argc, char **argv)
     xwl_screen->UnrealizeWindow = pScreen->UnrealizeWindow;
     pScreen->UnrealizeWindow = xwl_unrealize_window;
 
-    xwl_screen->DestroyWindow = pScreen->DestroyWindow;
-    pScreen->DestroyWindow = xwl_destroy_window;
+    dixScreenHookWindowDestroy(pScreen, xwl_window_destroy);
 
     xwl_screen->CloseScreen = pScreen->CloseScreen;
     pScreen->CloseScreen = xwl_close_screen;
