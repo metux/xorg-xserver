@@ -284,6 +284,18 @@ void dixFreeScreen(ScreenPtr pScreen);
 int dixScreenRaiseWindowDestroy(WindowPtr pWin);
 
 /*
+ * @brief call screen's window position notification hooks
+ * @see dixScreenHookWindowPosition
+ * @param pWin the window to notify on
+ *
+ * Call the pluggable window position hooks that extensions might have registered on
+ * the screen, and finally call ScreenRec's PositionWindow proc.
+ *
+ * Should only be called by DIX itself.
+ */
+void dixScreenRaiseWindowPosition(WindowPtr pWin, uint32_t x, uint32_t y);
+
+/*
  * @brief mark event ID as critical
  * @param event the event to add to the critical events bitmap
  */
