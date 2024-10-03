@@ -1516,16 +1516,15 @@ xwl_glamor_gbm_wait_syncpts(PixmapPtr pixmap)
 #ifdef DRI3
     struct xwl_screen *xwl_screen = xwl_screen_get(pixmap->drawable.pScreen);
     struct xwl_pixmap *xwl_pixmap = xwl_pixmap_get(pixmap);
-    int fence_fd;
 
     if (!xwl_screen->glamor || !xwl_pixmap)
         return;
 
     if (xwl_pixmap->syncobj) {
-        fence_fd = xwl_pixmap->syncobj->export_fence(xwl_pixmap->syncobj,
-                                                     xwl_pixmap->timeline_point);
+        int fence_fd = xwl_pixmap->syncobj->export_fence(xwl_pixmap->syncobj,
+                                                         xwl_pixmap->timeline_point);
+
         xwl_glamor_wait_fence(xwl_screen, fence_fd);
-        close(fence_fd);
     }
 #endif /* DRI3 */
 }
