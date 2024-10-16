@@ -1890,12 +1890,6 @@ vgaHWddc1SetSpeedWeak(void)
     return vgaHWddc1SetSpeed;
 }
 
-SaveScreenProcPtr
-vgaHWSaveScreenWeak(void)
-{
-    return vgaHWSaveScreen;
-}
-
 /*
  * xf86GetClocks -- get the dot-clocks via a BIG BAD hack ...
  */
