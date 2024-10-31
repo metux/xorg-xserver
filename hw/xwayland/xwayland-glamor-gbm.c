@@ -1318,6 +1318,7 @@ xwl_drm_handle_device(void *data, struct wl_drm *drm, const char *device)
 
    if (!xwl_gbm->device_name) {
        xwl_glamor_gbm_cleanup(xwl_screen);
+       xwl_screen->expecting_event--;
        return;
    }
 
@@ -1326,12 +1327,14 @@ xwl_drm_handle_device(void *data, struct wl_drm *drm, const char *device)
        ErrorF("wayland-egl: could not open %s (%s)\n",
               xwl_gbm->device_name, strerror(errno));
        xwl_glamor_gbm_cleanup(xwl_screen);
+       xwl_screen->expecting_event--;
        return;
    }
 
    if (drmGetDevice2(xwl_gbm->drm_fd, 0, &xwl_gbm->device) != 0) {
        ErrorF("wayland-egl: Could not fetch DRM device %s\n",
               xwl_gbm->device_name);
+       xwl_screen->expecting_event--;
        return;
    }
 
