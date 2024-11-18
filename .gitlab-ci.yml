@@ -169,6 +169,7 @@ meson:
         - .gitlab-ci/meson-build.sh --run-test
         - .gitlab-ci/check-piglit-results.sh
         - .gitlab-ci/manpages-check
+        - .gitlab-ci/check-ddx-build.sh
     variables:
       XTEST_DIR: /root/xts
       PIGLIT_DIR: /root/piglit
