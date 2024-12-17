@@ -244,7 +244,7 @@ xf86SbusProbe(void)
  * in the correct format for a SBUS bus id.
  */
 
-Bool
+static Bool
 xf86ParseSbusBusString(const char *busID, int *fbNum)
 {
     /*
@@ -316,7 +316,7 @@ xf86ParseSbusBusString(const char *busID, int *fbNum)
  * Compare a BUS ID string with a SBUS bus id.  Return TRUE if they match.
  */
 
-Bool
+static Bool
 xf86CompareSbusBusString(const char *busID, int fbNum)
 {
     int iFbNum;
@@ -333,7 +333,7 @@ xf86CompareSbusBusString(const char *busID, int fbNum)
  * Check if the slot requested is free.  If it is already in use, return FALSE.
  */
 
-Bool
+static Bool
 xf86CheckSbusSlot(int fbNum)
 {
     int i;
@@ -354,7 +354,7 @@ xf86CheckSbusSlot(int fbNum)
  * Otherwise, claim the slot for the screen requesting it.
  */
 
-int
+static int
 xf86ClaimSbusSlot(sbusDevicePtr psdp, DriverPtr drvp, GDevPtr dev, Bool active)
 {
     EntityPtr p = NULL;
