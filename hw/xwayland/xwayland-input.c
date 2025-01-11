@@ -1187,9 +1187,20 @@ keyboard_handle_keymap(void *data, struct wl_keyboard *keyboard,
 
     XkbUpdateDescActions(xkb, xkb->min_key_code, XkbNumKeys(xkb), &changes);
 
-    if (xwl_seat->keyboard->key)
+    memcpy(
+        xwl_seat->keyboard->kbdfeed->ctrl.autoRepeats,
+        xkb->ctrls->per_key_repeat,
+        XkbPerKeyBitArraySize
+    );
+    if (xwl_seat->keyboard->key) {
         /* Keep the current controls */
         XkbCopyControls(xkb, xwl_seat->keyboard->key->xkbInfo->desc);
+        memcpy(
+            xkb->ctrls->per_key_repeat,
+            xwl_seat->keyboard->kbdfeed->ctrl.autoRepeats,
+            XkbPerKeyBitArraySize
+        );
+    }
 
     XkbDeviceApplyKeymap(xwl_seat->keyboard, xkb);
 
