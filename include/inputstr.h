@@ -631,6 +631,8 @@ typedef struct _DeviceIntRec {
     DeviceSendEventsProc sendEventsProc;
 
     struct _SyncCounter *idle_counter;
+
+    Bool ignoreXkbActionsBehaviors; /* TRUE if keys don't trigger behaviors and actions */
 } DeviceIntRec;
 
 typedef struct {
