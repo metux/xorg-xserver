@@ -561,17 +561,14 @@ glamor_back_pixmap_from_fd(PixmapPtr pixmap,
 
     glamor_egl = glamor_egl_get_screen_private(scrn);
 
-    if (bpp != 32 || !(depth == 24 || depth == 32 || depth == 30) || width == 0 || height == 0)
+    if (!gbm_format_for_depth(depth, &import_data.format) ||
+        width == 0 || height == 0)
         return FALSE;
 
     import_data.fd = fd;
     import_data.width = width;
     import_data.height = height;
     import_data.stride = stride;
-    if (depth == 30)
-        import_data.format = GBM_FORMAT_ARGB2101010;
-    else
-        import_data.format = GBM_FORMAT_ARGB8888;
     bo = gbm_bo_import(glamor_egl->gbm, GBM_BO_IMPORT_FD, &import_data, 0);
     if (!bo)
         return FALSE;
