@@ -631,6 +631,9 @@ xwl_glamor_gbm_cleanup(struct xwl_screen *xwl_screen)
 {
     struct xwl_gbm_private *xwl_gbm = xwl_gbm_get(xwl_screen);
 
+    if (!xwl_gbm)
+        return;
+
     if (xwl_gbm->device_name)
         free(xwl_gbm->device_name);
     drmFreeDevice(&xwl_gbm->device);
@@ -643,6 +646,8 @@ xwl_glamor_gbm_cleanup(struct xwl_screen *xwl_screen)
     if (xwl_screen->explicit_sync)
         wp_linux_drm_syncobj_manager_v1_destroy(xwl_screen->explicit_sync);
 
+    dixSetPrivate(&xwl_screen->screen->devPrivates, &xwl_gbm_private_key,
+                  NULL);
     free(xwl_gbm);
 }
 
