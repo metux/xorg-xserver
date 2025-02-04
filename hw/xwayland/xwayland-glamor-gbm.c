@@ -634,6 +634,10 @@ xwl_glamor_gbm_cleanup(struct xwl_screen *xwl_screen)
     if (!xwl_gbm)
         return;
 
+    /* Cannot use GBM after clean-up, disable GLAMOR support from now on */
+    ErrorF("XWAYLAND: Disabling GLAMOR support\n");
+    xwl_screen->glamor = XWL_GLAMOR_NONE;
+
     if (xwl_gbm->device_name)
         free(xwl_gbm->device_name);
     drmFreeDevice(&xwl_gbm->device);
