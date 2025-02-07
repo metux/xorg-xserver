@@ -154,6 +154,7 @@ extern _X_EXPORT void *LoadSubModule(void *, const char *, const char **,
 extern _X_EXPORT void *LoaderSymbol(const char *);
 extern _X_EXPORT void *LoaderSymbolFromModule(void *, const char *);
 extern _X_EXPORT void LoaderErrorMsg(const char *, const char *, int, int);
+extern _X_EXPORT int LoaderGetABIVersion(const char *abiclass);
 
 typedef void *(*ModuleSetupProc) (void *, void *, int *, int *);
 typedef void (*ModuleTearDownProc) (void *);
