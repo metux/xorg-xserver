@@ -726,8 +726,15 @@ miPointerSetPosition(DeviceIntPtr pDev, int mode, double *screenx,
 void
 miPointerGetPosition(DeviceIntPtr pDev, int *x, int *y)
 {
-    *x = MIPOINTER(pDev)->x;
-    *y = MIPOINTER(pDev)->y;
+    miPointerPtr pPointer = MIPOINTER(pDev);
+    if (pPointer) {
+        *x = pPointer->x;
+        *y = pPointer->y;
+    }
+    else {
+        *x = 0;
+        *y = 0;
+    }
 }
 
 /**
