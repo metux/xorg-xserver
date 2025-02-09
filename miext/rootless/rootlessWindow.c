@@ -37,6 +37,7 @@
 #include <X11/Xatom.h>
 
 #include "mi/mi_priv.h"
+#include "dix_priv.h"
 
 #ifdef __APPLE__
 #include <Xplugin.h>

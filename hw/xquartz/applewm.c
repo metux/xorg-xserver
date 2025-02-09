@@ -387,7 +387,7 @@ ProcAppleWMSetWindowMenu(register ClientPtr client)
         return BadAlloc;
     }
 
-    max_len = (client->req-len << 2) - sizeof(xAppleWMSetWindowMenuReq);
+    max_len = (client->req_len << 2) - sizeof(xAppleWMSetWindowMenuReq);
     bytes = (char *)&stuff[1];
 
     for (i = j = 0; i < max_len && j < nitems;) {
