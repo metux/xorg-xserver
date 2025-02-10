@@ -276,7 +276,7 @@ xf86-driver-build-test:
         - git clone "$REPO" "$DRIVER"
         - git -C "$DRIVER" checkout "$SHA"
         - |
-          if [[ -e "$DRIVER/meson.build" ]]; then
+          if [[ -e "$DRIVER/meson.build" ]] && [[ "$DRIVER" != "xf86-video-intel" ]]; then
             .gitlab-ci/meson-build.sh -C "$DRIVER" --skip-test
           else
              pushd "$DRIVER" || exit 1
