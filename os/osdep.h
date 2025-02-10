@@ -153,13 +153,11 @@ static inline void uname(struct utsname *uts) {
 
 const char *Win32TempDir(void);
 
-int System(const char *cmdline);
 static inline void Fclose(void *f) { fclose(f); }
 static inline void *Fopen(const char *a, const char *b) { return fopen(a,b); }
 
 #else /* WIN32 */
 
-int System(const char *);
 void *Popen(const char *, const char *);
 void *Fopen(const char *, const char *);
 int Fclose(void *f);

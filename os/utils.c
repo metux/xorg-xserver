@@ -1241,49 +1241,6 @@ Win32TempDir(void)
     else
         return "/tmp";
 }
-
-int
-System(const char *cmdline)
-{
-    STARTUPINFO si = (STARTUPINFO) {
-        .cb = sizeof(si),
-    };
-    PROCESS_INFORMATION pi = (PROCESS_INFORMATION){0};
-    DWORD dwExitCode;
-    char *cmd = strdup(cmdline);
-
-    if (!CreateProcess(NULL, cmd, NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi)) {
-        LPVOID buffer;
-
-        if (!FormatMessage(FORMAT_MESSAGE_ALLOCATE_BUFFER |
-                           FORMAT_MESSAGE_FROM_SYSTEM |
-                           FORMAT_MESSAGE_IGNORE_INSERTS,
-                           NULL,
-                           GetLastError(),
-                           MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-                           (LPTSTR) &buffer, 0, NULL)) {
-            ErrorF("[xkb] Starting '%s' failed!\n", cmdline);
-        }
-        else {
-            ErrorF("[xkb] Starting '%s' failed: %s", cmdline, (char *) buffer);
-            LocalFree(buffer);
-        }
-
-        free(cmd);
-        return -1;
-    }
-    /* Wait until child process exits. */
-    WaitForSingleObject(pi.hProcess, INFINITE);
-
-    GetExitCodeProcess(pi.hProcess, &dwExitCode);
-
-    /* Close process and thread handles. */
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
-    free(cmd);
-
-    return dwExitCode;
-}
 #endif
 
 Bool
