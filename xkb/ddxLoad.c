@@ -184,7 +184,7 @@ RunXkbComp(xkbcomp_buffer_callback callback, void *userdata)
 #ifndef WIN32
         if (Pclose(out) == 0)
 #else
-        if (fclose(out) == 0 && System(buf) >= 0)
+        if (fclose(out) == 0 && system(buf) >= 0)
 #endif
         {
             if (xkbDebugFlags)
