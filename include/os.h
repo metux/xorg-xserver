@@ -410,4 +410,15 @@ typedef _sigset_t sigset_t;
 #define VErrorFSigSafe(...) VErrorF(__VA_ARGS__)
 #define VErrorF(...) LogVMessageVerb(X_NONE, -1, __VA_ARGS__)
 
+/* only for backwards compat with drivers that haven't kept up yet
+   (xf86-video-intel)
+
+   @todo revise after next stable release
+*/
+_X_DEPRECATED
+static inline int System(const char* cmdline)
+{
+    return system(cmdline);
+}
+
 #endif                          /* OS_H */
