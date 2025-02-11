@@ -407,4 +407,15 @@ IsFloating(DeviceIntPtr dev);
 
 extern _X_EXPORT void *lastGLContext;
 
+/**
+ * @brief get display string for given screen
+ *
+ * Entry point for drivers/modules that really need to know what
+ * display ID we're running on (eg. xrdp).
+ *
+ * @param pScreen pointer to ScreenRec to query.
+ * @return pointer to string, valid as long as the pScreen is, owned by DIX.
+ */
+_X_EXPORT const char *dixGetDisplayName(ScreenPtr *pScreen);
+
 #endif                          /* DIX_H */

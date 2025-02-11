@@ -5,6 +5,7 @@ srcs_dix = [
     'cursor.c',
     'devices.c',
     'dispatch.c',
+    'display.c',
     'dixfonts.c',
     'main.c',
     'dixutils.c',
