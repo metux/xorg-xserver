@@ -7,6 +7,7 @@
 #define _XSERVER_DIX_CLIENT_PRIV_H
 
 #include <sys/types.h>
+#include <X11/Xdefs.h>
 
 /* Client IDs. Use GetClientPid, GetClientCmdName and GetClientCmdArgs
  * instead of accessing the fields directly. */
@@ -31,5 +32,7 @@ void DetermineClientCmd(pid_t, const char **cmdname, const char **cmdargs);
 pid_t GetClientPid(struct _Client *client);
 const char *GetClientCmdName(struct _Client *client);
 const char *GetClientCmdArgs(struct _Client *client);
+
+Bool ClientIsLocal(struct _Client *client);
 
 #endif /* _XSERVER_DIX_CLIENT_PRIV_H */

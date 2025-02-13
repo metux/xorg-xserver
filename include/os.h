@@ -252,9 +252,6 @@ PrivsElevated(void);
 extern _X_EXPORT int
 GetClientFd(ClientPtr);
 
-extern _X_EXPORT Bool
-ClientIsLocal(ClientPtr client);
-
 /* stuff for ReplyCallback */
 extern _X_EXPORT CallbackListPtr ReplyCallback;
 typedef struct {
