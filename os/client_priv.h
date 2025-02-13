@@ -40,5 +40,6 @@ const char *ClientAuthorized(struct _Client *client,
                              char *auth_proto,
                              unsigned int string_n,
                              char *auth_string);
+Bool AddClientOnOpenFD(int fd);
 
 #endif /* _XSERVER_DIX_CLIENT_PRIV_H */
