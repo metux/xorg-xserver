@@ -115,8 +115,6 @@ extern _X_EXPORT void ResetWellKnownSockets(void);
 
 extern _X_EXPORT void CloseWellKnownConnections(void);
 
-extern _X_EXPORT XID AuthorizationIDOfClient(ClientPtr /*client */ );
-
 extern _X_EXPORT const char *ClientAuthorized(ClientPtr /*client */ ,
                                               unsigned int /*proto_n */ ,
                                               char * /*auth_proto */ ,
