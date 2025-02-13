@@ -94,4 +94,36 @@ extern _X_EXPORT DevPrivateKeyRec miPointerScreenKeyRec;
 
 #define miPointerScreenKey (&miPointerScreenKeyRec)
 
+/**
+ * @brief initialize pointer cursor with custom handling
+ *
+ * For DDX'es that need their own handling of pointer cursors,
+ * and can't use the generic "soft cursor" that's created via
+ * miDCInitialize().
+ *
+ * That can be the case on certain video HW with it's own sprite support,
+ * or on remote display protocols like RDP, where the client get the cursor
+ * pixmaps sent over the wire and is responsible for painting it on his side.
+ *
+ * Overwrites ScreenPtr vectors:
+ *
+ *     ConstrainCursor, CursorLimits, DisplayCursor, RealizeCursor,
+ *     UnrealizeCursor, SetCursorPosition, RecolorCursor, DeviceCursorCleanup
+ *     DeviceCursorInitialize
+ *
+ * Hooks to ScreenPtr vectors: CloseScreen
+ *
+ * @param pScreen       pointer to ScreenRec the pointer handling applies to
+ * @param spireFuncs    pointer to miPointerSpriteFuncPtr call vectors
+ * @param screenFuncs   pointer to miPointerScreenFuncPtr call vectors
+ * @param waitForUpdate TRUE if MI shouldn't redraw the pointer immediately,
+                        but wait for somebody else triggering it explicitly
+ * @return TRUE on success, FALSE usually indicates allocation failure
+ */
+_X_EXPORT Bool
+miPointerInitialize(ScreenPtr pScreen,
+                    miPointerSpriteFuncPtr spriteFuncs,
+                    miPointerScreenFuncPtr screenFuncs,
+                    Bool waitForUpdate);
+
 #endif                          /* MIPOINTER_H */
