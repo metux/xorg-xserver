@@ -44,5 +44,6 @@ Bool AddClientOnOpenFD(int fd);
 void ListenOnOpenFD(int fd, int noxauth);
 int ReadRequestFromClient(struct _Client *client);
 int WriteFdToClient(struct _Client *client, int fd, Bool do_close);
+Bool InsertFakeRequest(struct _Client *client, char *data, int count);
 
 #endif /* _XSERVER_DIX_CLIENT_PRIV_H */
