@@ -84,8 +84,6 @@ typedef struct _NewClientRec *NewClientPtr;
 #include <stdio.h>
 #include <stdarg.h>
 
-extern _X_EXPORT int ReadRequestFromClient(ClientPtr /*client */ );
-
 extern _X_EXPORT int ReadFdFromClient(ClientPtr client);
 
 extern _X_EXPORT int WriteFdToClient(ClientPtr client, int fd, Bool do_close);

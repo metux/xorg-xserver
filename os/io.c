@@ -75,9 +75,10 @@ SOFTWARE.
 
 #include "dix/dix_priv.h"
 #include "os/bug_priv.h"
+#include "os/client_priv.h"
+#include "os/osdep.h"
 
 #include "os.h"
-#include "osdep.h"
 #include "opaque.h"
 #include "dixstruct.h"
 #include "misc.h"
