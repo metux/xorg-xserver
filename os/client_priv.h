@@ -35,5 +35,10 @@ const char *GetClientCmdArgs(struct _Client *client);
 
 Bool ClientIsLocal(struct _Client *client);
 XID AuthorizationIDOfClient(struct _Client *client);
+const char *ClientAuthorized(struct _Client *client,
+                             unsigned int proto_n,
+                             char *auth_proto,
+                             unsigned int string_n,
+                             char *auth_string);
 
 #endif /* _XSERVER_DIX_CLIENT_PRIV_H */
