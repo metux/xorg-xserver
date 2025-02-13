@@ -41,5 +41,6 @@ const char *ClientAuthorized(struct _Client *client,
                              unsigned int string_n,
                              char *auth_string);
 Bool AddClientOnOpenFD(int fd);
+void ListenOnOpenFD(int fd, int noxauth);
 
 #endif /* _XSERVER_DIX_CLIENT_PRIV_H */
