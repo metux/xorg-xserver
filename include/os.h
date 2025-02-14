@@ -91,8 +91,6 @@ extern _X_EXPORT void SetCriticalOutputPending(void);
 extern _X_EXPORT int WriteToClient(ClientPtr /*who */ , int /*count */ ,
                                    const void * /*buf */ );
 
-extern _X_EXPORT void CloseWellKnownConnections(void);
-
 typedef void (*NotifyFdProcPtr)(int fd, int ready, void *data);
 
 #define X_NOTIFY_NONE   0x0

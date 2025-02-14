@@ -78,6 +78,7 @@ __stdcall unsigned long GetTickCount(void);
 #include <X11/Xtrans/Xtrans.h>
 
 #include "os/audit.h"
+#include "os/client_priv.h"
 
 #include "input.h"
 #include "dixfont.h"
