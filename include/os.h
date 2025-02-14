@@ -86,8 +86,6 @@ typedef struct _NewClientRec *NewClientPtr;
 
 extern _X_EXPORT int ReadFdFromClient(ClientPtr client);
 
-extern _X_EXPORT void FlushAllOutput(void);
-
 extern _X_EXPORT void FlushIfCriticalOutputPending(void);
 
 extern _X_EXPORT void SetCriticalOutputPending(void);
