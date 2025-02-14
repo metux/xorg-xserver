@@ -35,6 +35,9 @@
 #endif
 
 #include <errno.h>
+
+#include "os/client_priv.h"
+
 #ifdef WITH_LIBDRM
 #include <xf86drm.h>
 #endif

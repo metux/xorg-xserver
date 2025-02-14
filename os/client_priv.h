@@ -8,6 +8,7 @@
 
 #include <sys/types.h>
 #include <X11/Xdefs.h>
+#include <X11/Xfuncproto.h>
 
 /* Client IDs. Use GetClientPid, GetClientCmdName and GetClientCmdArgs
  * instead of accessing the fields directly. */
@@ -45,5 +46,8 @@ void ListenOnOpenFD(int fd, int noxauth);
 int ReadRequestFromClient(struct _Client *client);
 int WriteFdToClient(struct _Client *client, int fd, Bool do_close);
 Bool InsertFakeRequest(struct _Client *client, char *data, int count);
+
+/* exported only for DRI module, but should not be used by external drivers */
+_X_EXPORT void ResetCurrentRequest(struct _Client *client);
 
 #endif /* _XSERVER_DIX_CLIENT_PRIV_H */
