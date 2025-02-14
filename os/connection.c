@@ -122,8 +122,6 @@ struct ospoll   *server_poll;
 Bool NewOutputPending;          /* not yet attempted to write some new output */
 Bool NoListenAll;               /* Don't establish any listening sockets */
 
-Bool RunFromSigStopParent;      /* send SIGSTOP to our own process; Upstart (or
-                                   equivalent) will send SIGCONT back. */
 static char dynamic_display[7]; /* display name */
 Bool PartialNetwork;            /* continue even if unable to bind all addrs */
 #if !defined(WIN32)
@@ -206,8 +204,6 @@ NotifyParentProcess(void)
             kill(ParentProcess, SIGUSR1);
         }
     }
-    if (RunFromSigStopParent)
-        raise(SIGSTOP);
 #ifdef HAVE_SYSTEMD_DAEMON
     /* If we have been started as a systemd service, tell systemd that
        we are ready. Otherwise sd_notify() won't do anything. */
