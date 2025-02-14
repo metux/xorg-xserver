@@ -47,6 +47,7 @@ int ReadRequestFromClient(struct _Client *client);
 int WriteFdToClient(struct _Client *client, int fd, Bool do_close);
 Bool InsertFakeRequest(struct _Client *client, char *data, int count);
 void FlushAllOutput(void);
+void FlushIfCriticalOutputPending(void);
 
 /* exported only for DRI module, but should not be used by external drivers */
 _X_EXPORT void ResetCurrentRequest(struct _Client *client);
