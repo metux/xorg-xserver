@@ -50,6 +50,7 @@ void FlushAllOutput(void);
 void FlushIfCriticalOutputPending(void);
 void ResetOsBuffers(void);
 void NotifyParentProcess(void);
+void CreateWellKnownSockets(void);
 
 /* exported only for DRI module, but should not be used by external drivers */
 _X_EXPORT void ResetCurrentRequest(struct _Client *client);
