@@ -91,8 +91,6 @@ extern _X_EXPORT void SetCriticalOutputPending(void);
 extern _X_EXPORT int WriteToClient(ClientPtr /*who */ , int /*count */ ,
                                    const void * /*buf */ );
 
-extern _X_EXPORT void NotifyParentProcess(void);
-
 extern _X_EXPORT void CreateWellKnownSockets(void);
 
 extern _X_EXPORT void ResetWellKnownSockets(void);
