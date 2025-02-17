@@ -377,8 +377,6 @@ extern _X_EXPORT void SwapLongs(CARD32 *list, unsigned long count);
 
 extern _X_EXPORT void SwapShorts(short *list, unsigned long count);
 
-extern _X_EXPORT void MakePredeclaredAtoms(void);
-
 typedef struct _xPoint *DDXPointPtr;
 typedef struct pixman_box16 *BoxPtr;
 typedef struct _xEvent *xEventPtr;
