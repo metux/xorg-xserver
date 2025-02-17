@@ -250,9 +250,6 @@ version_compare(uint32_t a_major, uint32_t a_minor,
 
 /* some macros to help swap requests, replies, and events */
 
-#define LengthRestB(stuff) \
-    ((client->req_len << 2) - sizeof(*stuff))
-
 #define LengthRestS(stuff) \
     ((client->req_len << 1) - (sizeof(*stuff) >> 1))
 
