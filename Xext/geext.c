@@ -33,8 +33,6 @@
 
 #define MAXEXTENSIONS   128
 
-Bool noGEExtension = FALSE;
-
 DevPrivateKeyRec GEClientPrivateKeyRec;
 
 #define GEClientPrivateKey (&GEClientPrivateKeyRec)
