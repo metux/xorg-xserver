@@ -27,7 +27,6 @@
 #include "windowstr.h"
 #include <X11/extensions/ge.h>
 
-#include "geint.h"
 #include "geext.h"
 #include "protocol-versions.h"
 #include "extinit_priv.h"
@@ -36,6 +35,8 @@ Bool noGEExtension = FALSE;
 
 DevPrivateKeyRec GEClientPrivateKeyRec;
 
+#define GEClientPrivateKey (&GEClientPrivateKeyRec)
+
 /** Struct to keep information about registered extensions */
 typedef struct _GEExtension {
     /** Event swapping routine */
@@ -43,6 +44,13 @@ typedef struct _GEExtension {
 } GEExtension, *GEExtensionPtr;
 
 static GEExtension GEExtensions[MAXEXTENSIONS];
+
+typedef struct _GEClientInfo {
+    CARD32 major_version;
+    CARD32 minor_version;
+} GEClientInfoRec, *GEClientInfoPtr;
+
+#define GEGetClient(pClient)    ((GEClientInfoPtr)(dixLookupPrivate(&((pClient)->devPrivates), GEClientPrivateKey)))
 
 /* Forward declarations */
 static void SGEGenericEvent(xEvent *from, xEvent *to);
