@@ -36,6 +36,12 @@ Bool noGEExtension = FALSE;
 
 DevPrivateKeyRec GEClientPrivateKeyRec;
 
+/** Struct to keep information about registered extensions */
+typedef struct _GEExtension {
+    /** Event swapping routine */
+    void (*evswap) (xGenericEvent *from, xGenericEvent *to);
+} GEExtension, *GEExtensionPtr;
+
 static GEExtension GEExtensions[MAXEXTENSIONS];
 
 /* Forward declarations */
