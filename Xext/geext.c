@@ -93,7 +93,7 @@ SProcGEQueryVersion(ClientPtr client)
     REQUEST_SIZE_MATCH(xGEQueryVersionReq);
     swaps(&stuff->majorVersion);
     swaps(&stuff->minorVersion);
-    return SProcGEQueryVersion(client);
+    return ProcGEQueryVersion(client);
 }
 
 /************************************************************/
