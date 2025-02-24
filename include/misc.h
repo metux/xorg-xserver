@@ -89,7 +89,6 @@ OF THIS SOFTWARE.
 #endif
 #define MAXCLIENTS	2048
 #define LIMITCLIENTS	256     /* Must be a power of 2 and <= MAXCLIENTS */
-#define MAXEXTENSIONS   128
 #define MAXFORMATS	8
 #ifndef MAXDEVICES
 #define MAXDEVICES	256      /* input devices */
