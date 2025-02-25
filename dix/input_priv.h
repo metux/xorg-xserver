@@ -509,4 +509,13 @@ void LastEventTimeToggleResetFlag(int deviceid, Bool state);
 
 void LastEventTimeToggleResetAll(Bool state);
 
+/*
+ * @brief count the bits set in the given bitmask
+ *
+ * @param mask pointer to bitmask
+ * @param len size of bitmask in bits (may span multiple bytes)
+ * @return number of bits set in the given bitmask
+ */
+int CountBits(const uint8_t * mask, int len);
+
 #endif /* _XSERVER_INPUT_PRIV_H */
