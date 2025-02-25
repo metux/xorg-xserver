@@ -499,18 +499,6 @@ typedef struct _XIPropertyHandler {
     int (*DeleteProperty) (DeviceIntPtr dev, Atom property);
 } XIPropertyHandler, *XIPropertyHandlerPtr;
 
-/* states for devices */
-
-#define NOT_GRABBED		0
-#define THAWED			1
-#define THAWED_BOTH		2       /* not a real state */
-#define FREEZE_NEXT_EVENT	3
-#define FREEZE_BOTH_NEXT_EVENT	4
-#define FROZEN			5       /* any state >= has device frozen */
-#define FROZEN_NO_EVENT		5
-#define FROZEN_WITH_EVENT	6
-#define THAW_OTHERS		7
-
 typedef struct _GrabInfoRec {
     TimeStamp grabTime;
     Bool fromPassiveGrab;       /* true if from passive grab */
