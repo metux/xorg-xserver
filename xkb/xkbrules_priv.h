@@ -10,6 +10,12 @@
 
 #include "include/xkbrules.h"
 
+typedef struct _XkbRF_Group {
+    int number;
+    const char *name;
+    char *words;
+} XkbRF_GroupRec, *XkbRF_GroupPtr;
+
 typedef struct _XkbRF_Rules {
     unsigned short sz_rules;
     unsigned short num_rules;

@@ -61,10 +61,4 @@ typedef struct _XkbRF_Rule {
     unsigned flags;
 } XkbRF_RuleRec, *XkbRF_RulePtr;
 
-typedef struct _XkbRF_Group {
-    int number;
-    const char *name;
-    char *words;
-} XkbRF_GroupRec, *XkbRF_GroupPtr;
-
 #endif                          /* _XKBRULES_H_ */
