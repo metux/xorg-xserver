@@ -11,6 +11,11 @@ typedef Bool (*miOverlayInOverlayFunc) (WindowPtr);
 
 extern _X_EXPORT Bool
 
+miInitOverlay(ScreenPtr pScreen,
+              miOverlayInOverlayFunc inOverlay, miOverlayTransFunc trans);
+
+extern _X_EXPORT Bool
+
 miOverlayGetPrivateClips(WindowPtr pWin,
                          RegionPtr *borderClip, RegionPtr *clipList);
 
