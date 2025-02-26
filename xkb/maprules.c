@@ -969,7 +969,7 @@ XkbRF_LoadRules(FILE * file, XkbRF_RulesPtr rules)
 }
 
 void
-XkbRF_Free(XkbRF_RulesPtr rules, Bool freeRules)
+XkbRF_Free(XkbRF_RulesPtr rules)
 {
     int i;
     XkbRF_RulePtr rule;
@@ -988,11 +988,8 @@ XkbRF_Free(XkbRF_RulesPtr rules, Bool freeRules)
             free((void *) rule->types);
             free((void *) rule->compat);
             free((void *) rule->geometry);
-            memset((char *) rule, 0, sizeof(XkbRF_RuleRec));
         }
         free(rules->rules);
-        rules->num_rules = rules->sz_rules = 0;
-        rules->rules = NULL;
     }
 
     if (rules->groups) {
@@ -1001,10 +998,8 @@ XkbRF_Free(XkbRF_RulesPtr rules, Bool freeRules)
             free(group->words);
         }
         free(rules->groups);
-        rules->num_groups = 0;
-        rules->groups = NULL;
     }
-    if (freeRules)
-        free(rules);
+
+    free(rules);
     return;
 }

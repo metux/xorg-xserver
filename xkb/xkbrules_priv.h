@@ -56,6 +56,6 @@ static inline XkbRF_RulesPtr XkbRF_Create(void)
     return calloc(1, sizeof(XkbRF_RulesRec));
 }
 
-void XkbRF_Free(XkbRF_RulesPtr rules, Bool freeRules);
+void XkbRF_Free(XkbRF_RulesPtr rules);
 
 #endif /* _XSERVER_XKB_XKBRULES_PRIV_H */
