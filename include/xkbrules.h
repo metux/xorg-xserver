@@ -76,13 +76,4 @@ typedef struct _XkbRF_Rules {
     XkbRF_GroupPtr groups;
 } XkbRF_RulesRec, *XkbRF_RulesPtr;
 
-/***====================================================================***/
-
-_XFUNCPROTOBEGIN
-
-extern _X_EXPORT void XkbRF_Free(XkbRF_RulesPtr /* rules */ ,
-                                 Bool   /* freeRules */
-    );
-
-_XFUNCPROTOEND
 #endif                          /* _XKBRULES_H_ */
