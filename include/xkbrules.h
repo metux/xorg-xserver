@@ -107,7 +107,6 @@ extern _X_EXPORT void XkbRF_Free(XkbRF_RulesPtr /* rules */ ,
 /***====================================================================***/
 
 #define	_XKB_RF_NAMES_PROP_ATOM		"_XKB_RULES_NAMES"
-#define	_XKB_RF_NAMES_PROP_MAXLEN	1024
 
 _XFUNCPROTOEND
 #endif                          /* _XKBRULES_H_ */
