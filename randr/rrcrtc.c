@@ -1831,7 +1831,7 @@ ProcRRGetCrtcTransform(ClientPtr client)
     xRRGetCrtcTransformReply rep = {
         .type = X_Reply,
         .sequenceNumber = client->sequence,
-        .length = bytes_to_int32(sizeof(xRRGetCrtcTransformReply) - sizeof(xReq)),
+        .length = bytes_to_int32(sizeof(xRRGetCrtcTransformReply) - sizeof(xReq) + nextra),
         .hasTransforms = crtc->transforms,
     };
 
