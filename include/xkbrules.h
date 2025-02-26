@@ -80,10 +80,6 @@ typedef struct _XkbRF_Rules {
 
 _XFUNCPROTOBEGIN
 
-extern _X_EXPORT Bool XkbRF_LoadRules(FILE * /* file */ ,
-                                      XkbRF_RulesPtr    /* rules */
-    );
-
 extern _X_EXPORT XkbRF_RulesPtr XkbRF_Create(void);
 
 extern _X_EXPORT void XkbRF_Free(XkbRF_RulesPtr /* rules */ ,
