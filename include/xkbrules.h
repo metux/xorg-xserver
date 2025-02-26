@@ -80,14 +80,6 @@ typedef struct _XkbRF_Rules {
 
 _XFUNCPROTOBEGIN
 
-/* Seems preferable to dragging xkbstr.h in. */
-    struct _XkbComponentNames;
-
-extern _X_EXPORT Bool XkbRF_GetComponents(XkbRF_RulesPtr /* rules */ ,
-                                          XkbRF_VarDefsPtr /* var_defs */ ,
-                                          struct _XkbComponentNames *   /* names */
-    );
-
 extern _X_EXPORT Bool XkbRF_LoadRules(FILE * /* file */ ,
                                       XkbRF_RulesPtr    /* rules */
     );
