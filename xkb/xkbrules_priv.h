@@ -10,6 +10,15 @@
 
 #include "include/xkbrules.h"
 
+typedef struct _XkbRF_Rules {
+    unsigned short sz_rules;
+    unsigned short num_rules;
+    XkbRF_RulePtr rules;
+    unsigned short sz_groups;
+    unsigned short num_groups;
+    XkbRF_GroupPtr groups;
+} XkbRF_RulesRec, *XkbRF_RulesPtr;
+
 struct _XkbComponentNames;
 
 Bool XkbRF_GetComponents(XkbRF_RulesPtr rules,
