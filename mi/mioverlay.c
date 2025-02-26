@@ -58,9 +58,14 @@ typedef struct {
 static DevPrivateKeyRec miOverlayWindowKeyRec;
 
 #define miOverlayWindowKey (&miOverlayWindowKeyRec)
+static DevPrivateKeyRec miOverlayScreenKeyRec;
+
+#define miOverlayScreenKey (&miOverlayScreenKeyRec)
 
 static void MarkUnderlayWindow(WindowPtr);
 
+#define MIOVERLAY_GET_SCREEN_PRIVATE(pScreen) ((miOverlayScreenPtr) \
+	dixLookupPrivate(&(pScreen)->devPrivates, miOverlayScreenKey))
 #define MIOVERLAY_GET_WINDOW_PRIVATE(pWin) ((miOverlayWindowPtr) \
 	dixLookupPrivate(&(pWin)->devPrivates, miOverlayWindowKey))
 #define MIOVERLAY_GET_WINDOW_TREE(pWin) \
@@ -96,6 +101,12 @@ miOverlaySetRootClip(ScreenPtr pScreen, Bool enable)
 }
 
 /****************************************************************/
+
+Bool
+miOverlayCopyUnderlay(ScreenPtr pScreen)
+{
+    return MIOVERLAY_GET_SCREEN_PRIVATE(pScreen)->copyUnderlay;
+}
 
 static void
 MarkUnderlayWindow(WindowPtr pWin)
