@@ -971,31 +971,34 @@ XkbRF_LoadRules(FILE * file, XkbRF_RulesPtr rules)
 void
 XkbRF_Free(XkbRF_RulesPtr rules)
 {
-    int i;
-    XkbRF_RulePtr rule;
-    XkbRF_GroupPtr group;
-
     if (!rules)
         return;
+
     if (rules->rules) {
-        for (i = 0, rule = rules->rules; i < rules->num_rules; i++, rule++) {
-            free((void *) rule->model);
-            free((void *) rule->layout);
-            free((void *) rule->variant);
-            free((void *) rule->option);
-            free((void *) rule->keycodes);
-            free((void *) rule->symbols);
-            free((void *) rule->types);
-            free((void *) rule->compat);
-            free((void *) rule->geometry);
+        XkbRF_RulePtr r = rules->rules;
+        int num = rules->num_rules;
+        for (int i = 0; i < num; i++) {
+            // the typecast on free() is necessary because the pointers are const
+            free((void *) r[i].model);
+            free((void *) r[i].layout);
+            free((void *) r[i].variant);
+            free((void *) r[i].option);
+            free((void *) r[i].keycodes);
+            free((void *) r[i].symbols);
+            free((void *) r[i].types);
+            free((void *) r[i].compat);
+            free((void *) r[i].geometry);
         }
         free(rules->rules);
     }
 
     if (rules->groups) {
-        for (i = 0, group = rules->groups; i < rules->num_groups; i++, group++) {
-            free((void *) group->name);
-            free(group->words);
+        XkbRF_GroupPtr g = rules->groups;
+        int num = rules->num_groups;
+        for (int i = 0; i < num; i++) {
+            // the typecast on free() is necessary because the pointers are const
+            free((void *) g[i].name);
+            free(g[i].words);
         }
         free(rules->groups);
     }
