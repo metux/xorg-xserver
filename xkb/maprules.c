@@ -47,7 +47,11 @@
 #include "xkbstr.h"
 #include <xkbsrv.h>
 
-/***====================================================================***/
+
+#define XkbRF_PendingMatch      (1L<<1)
+#define XkbRF_Option            (1L<<2)
+#define XkbRF_Append            (1L<<3)
+#define XkbRF_Normal            (1L<<4)
 
 #define DFLT_LINE_SIZE	128
 

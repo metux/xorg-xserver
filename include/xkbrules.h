@@ -67,11 +67,6 @@ typedef struct _XkbRF_Group {
     char *words;
 } XkbRF_GroupRec, *XkbRF_GroupPtr;
 
-#define	XkbRF_PendingMatch	(1L<<1)
-#define	XkbRF_Option		(1L<<2)
-#define	XkbRF_Append		(1L<<3)
-#define	XkbRF_Normal		(1L<<4)
-
 typedef struct _XkbRF_Rules {
     unsigned short sz_rules;
     unsigned short num_rules;
