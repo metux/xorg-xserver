@@ -63,6 +63,7 @@ static DevPrivateKeyRec miOverlayScreenKeyRec;
 #define miOverlayScreenKey (&miOverlayScreenKeyRec)
 
 static void MarkUnderlayWindow(WindowPtr);
+static Bool CollectUnderlayChildrenRegions(WindowPtr, RegionPtr);
 
 #define MIOVERLAY_GET_SCREEN_PRIVATE(pScreen) ((miOverlayScreenPtr) \
 	dixLookupPrivate(&(pScreen)->devPrivates, miOverlayScreenKey))
@@ -162,6 +163,63 @@ miOverlayComputeCompositeClip(GCPtr pGC, WindowPtr pWin)
                         -(pWin->drawable.x + pGC->clipOrg.x),
                         -(pWin->drawable.y + pGC->clipOrg.y));
     }
+}
+
+Bool
+miOverlayCollectUnderlayRegions(WindowPtr pWin, RegionPtr *region)
+{
+    miOverlayTreePtr pTree = MIOVERLAY_GET_WINDOW_TREE(pWin);
+
+    if (pTree) {
+        *region = &pTree->borderClip;
+        return FALSE;
+    }
+
+    *region = RegionCreate(NullBox, 0);
+
+    CollectUnderlayChildrenRegions(pWin, *region);
+
+    return TRUE;
+}
+
+static Bool
+CollectUnderlayChildrenRegions(WindowPtr pWin, RegionPtr pReg)
+{
+    WindowPtr pChild;
+    miOverlayTreePtr pTree;
+    Bool hasUnderlay;
+
+    if (!(pChild = pWin->firstChild))
+        return FALSE;
+
+    hasUnderlay = FALSE;
+
+    while (1) {
+        if ((pTree = MIOVERLAY_GET_WINDOW_TREE(pChild))) {
+            RegionAppend(pReg, &pTree->borderClip);
+            hasUnderlay = TRUE;
+        }
+        else if (pChild->firstChild) {
+            pChild = pChild->firstChild;
+            continue;
+        }
+
+        while (!pChild->nextSib && (pWin != pChild))
+            pChild = pChild->parent;
+
+        if (pChild == pWin)
+            break;
+
+        pChild = pChild->nextSib;
+    }
+
+    if (hasUnderlay) {
+        Bool overlap;
+
+        RegionValidate(pReg, &overlap);
+    }
+
+    return hasUnderlay;
 }
 
 static void
