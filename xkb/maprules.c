@@ -970,16 +970,6 @@ XkbRF_LoadRules(FILE * file, XkbRF_RulesPtr rules)
     return TRUE;
 }
 
-/***====================================================================***/
-
-XkbRF_RulesPtr
-XkbRF_Create(void)
-{
-    return calloc(1, sizeof(XkbRF_RulesRec));
-}
-
-/***====================================================================***/
-
 void
 XkbRF_Free(XkbRF_RulesPtr rules, Bool freeRules)
 {
