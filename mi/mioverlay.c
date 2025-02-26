@@ -103,6 +103,24 @@ miOverlaySetRootClip(ScreenPtr pScreen, Bool enable)
 
 /****************************************************************/
 
+/* not used */
+Bool
+miOverlayGetPrivateClips(WindowPtr pWin,
+                         RegionPtr *borderClip, RegionPtr *clipList)
+{
+    miOverlayTreePtr pTree = MIOVERLAY_GET_WINDOW_TREE(pWin);
+
+    if (pTree) {
+        *borderClip = &(pTree->borderClip);
+        *clipList = &(pTree->clipList);
+        return TRUE;
+    }
+
+    *borderClip = *clipList = NULL;
+
+    return FALSE;
+}
+
 Bool
 miOverlayCopyUnderlay(ScreenPtr pScreen)
 {
