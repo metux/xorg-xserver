@@ -963,37 +963,6 @@ XkbRF_LoadRules(FILE * file, XkbRF_RulesPtr rules)
     return TRUE;
 }
 
-Bool
-XkbRF_LoadRulesByName(char *base, char *locale, XkbRF_RulesPtr rules)
-{
-    FILE *file;
-    char buf[PATH_MAX];
-    Bool ok;
-
-    if ((!base) || (!rules))
-        return FALSE;
-    if (locale) {
-        if (snprintf(buf, PATH_MAX, "%s-%s", base, locale) >= PATH_MAX)
-            return FALSE;
-    }
-    else {
-        if (strlen(base) + 1 > PATH_MAX)
-            return FALSE;
-        strcpy(buf, base);
-    }
-
-    file = fopen(buf, "r");
-    if ((!file) && (locale)) {  /* fallback if locale was specified */
-        strcpy(buf, base);
-        file = fopen(buf, "r");
-    }
-    if (!file)
-        return FALSE;
-    ok = XkbRF_LoadRules(file, rules);
-    fclose(file);
-    return ok;
-}
-
 /***====================================================================***/
 
 XkbRF_RulesPtr
