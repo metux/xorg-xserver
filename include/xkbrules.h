@@ -44,21 +44,4 @@ typedef struct _XkbRF_VarDefs {
     const char *options;
 } XkbRF_VarDefsRec, *XkbRF_VarDefsPtr;
 
-typedef struct _XkbRF_Rule {
-    int number;
-    int layout_num;
-    int variant_num;
-    const char *model;
-    const char *layout;
-    const char *variant;
-    const char *option;
-    /* yields */
-    const char *keycodes;
-    const char *symbols;
-    const char *types;
-    const char *compat;
-    const char *geometry;
-    unsigned flags;
-} XkbRF_RuleRec, *XkbRF_RulePtr;
-
 #endif                          /* _XKBRULES_H_ */
