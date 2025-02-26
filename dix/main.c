@@ -108,8 +108,6 @@ Equipment Corporation.
 #include "dixstruct.h"
 #include "gcstruct.h"
 #include "extension.h"
-#include "colormap.h"
-#include "colormapst.h"
 #include "cursorstr.h"
 #include "selection.h"
 #include "servermd.h"
