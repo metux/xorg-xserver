@@ -71,7 +71,6 @@ typedef struct _XkbRF_Group {
 #define	XkbRF_Option		(1L<<2)
 #define	XkbRF_Append		(1L<<3)
 #define	XkbRF_Normal		(1L<<4)
-#define	XkbRF_Invalid		(1L<<5)
 
 typedef struct _XkbRF_Rules {
     unsigned short sz_rules;
