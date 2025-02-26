@@ -103,9 +103,5 @@ extern _X_EXPORT void XkbRF_Free(XkbRF_RulesPtr /* rules */ ,
                                  Bool   /* freeRules */
     );
 
-/***====================================================================***/
-
-#define	_XKB_RF_NAMES_PROP_ATOM		"_XKB_RULES_NAMES"
-
 _XFUNCPROTOEND
 #endif                          /* _XKBRULES_H_ */
