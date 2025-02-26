@@ -376,7 +376,6 @@ CheckLine(InputLine * line,
 {
     char *str, *tok;
     register int nread;
-    FileSpec tmp;
     _Xstrtokparams strtok_buf;
     Bool append = FALSE;
 
@@ -419,7 +418,9 @@ CheckLine(InputLine * line,
         DebugF("Illegal line of data ignored\n");
         return FALSE;
     }
-    memset((char *) &tmp, 0, sizeof(FileSpec));
+
+    FileSpec tmp = { 0 };
+
     str = line->line;
     for (nread = 0; (tok = _XStrtok(str, " ", strtok_buf)) != NULL; nread++) {
         str = NULL;
