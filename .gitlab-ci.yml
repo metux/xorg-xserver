@@ -242,7 +242,7 @@ meson-dist:
         - .gitlab-ci/meson-build.sh -C xserver-tarball --skip-test --skip-dist --run-install
     variables:
       MESON_DIST_ARGS: --no-tests
-      DESTDIR: xserver-tarball/install/
+      MESON_EXTRA_ARGS: -Dprefix=$CI_PROJECT_DIR/xserver-tarball/install/
 
 xf86-driver-build-test:
     extends:
