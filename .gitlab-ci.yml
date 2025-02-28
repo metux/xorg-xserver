@@ -273,8 +273,9 @@ xf86-driver-build-test:
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
               SHA: xf86-video-vmware-13.4.0
     script:
-        # Install the server first
-        - .gitlab-ci/meson-build.sh --skip-test --run-install
+        # built xserver is taken from meson-dist job
+        - export PKG_CONFIG_PATH=$(pwd)/xserver-tarball/install/lib/x86_64-linux-gnu/pkgconfig
+        - export ACLOCAL_PATH=$(pwd)/xserver-tarball/install/share/aclocal/
         - unset MESON_EXTRA_ARGS
         - DRIVER=$(basename $REPO)
         - git clone "$REPO" "$DRIVER"
@@ -287,7 +288,9 @@ xf86-driver-build-test:
              ./autogen.sh && make
           fi
     needs:
-        - "meson"
+        - meson-dist
+    dependencies:
+        - meson-dist
     variables:
         GIT_DEPTH: 1
         MESON_ARGS: -Dprefix=/usr/
