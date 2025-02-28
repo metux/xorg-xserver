@@ -235,6 +235,7 @@ meson-dist:
         paths:
             - $MESON_BUILDDIR/meson-logs/
             - $MESON_BUILDDIR/xserver-*/$MESON_BUILDDIR/meson-logs/
+            - xserver-tarball/install/
     script:
         - .gitlab-ci/meson-build.sh --run-dist
         - mkdir xserver-tarball
