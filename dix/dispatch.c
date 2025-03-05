@@ -2446,8 +2446,8 @@ ProcCreateColormap(ClientPtr client)
          i < pScreen->numVisuals; i++, pVisual++) {
         if (pVisual->vid != stuff->visual)
             continue;
-        return CreateColormap(mid, pScreen, pVisual, &pmap,
-                              (int) stuff->alloc, client->index);
+        return dixCreateColormap(mid, pScreen, pVisual, &pmap,
+                                 (int) stuff->alloc, client);
     }
     client->errorValue = stuff->visual;
     return BadMatch;
