@@ -37,6 +37,7 @@ and Jim Haggerty of Metheus.
 #include "dix/cursor_priv.h"
 #include "dix/eventconvert.h"
 #include "dix/input_priv.h"
+#include "dix/resource_priv.h"
 #include "os/client_priv.h"
 
 #include "dixstruct.h"
@@ -865,7 +866,7 @@ RecordInstallHooks(RecordClientsAndProtocolPtr pRCAP, XID oneclient)
             if (pRCAP->pRequestMajorOpSet) {
                 RecordSetIteratePtr pIter = NULL;
                 RecordSetInterval interval;
-                ClientPtr pClient = clients[CLIENT_ID(client)];
+                ClientPtr pClient = clients[dixClientIdForXID(client)];
 
                 if (pClient && !RecordClientPrivate(pClient)) {
                     RecordClientPrivatePtr pClientPriv;
@@ -948,7 +949,7 @@ RecordUninstallHooks(RecordClientsAndProtocolPtr pRCAP, XID oneclient)
     while (client) {
         if (client != XRecordFutureClients) {
             if (pRCAP->pRequestMajorOpSet) {
-                ClientPtr pClient = clients[CLIENT_ID(client)];
+                ClientPtr pClient = clients[dixClientIdForXID(client)];
                 int c;
                 Bool otherRCAPwantsProcVector = FALSE;
                 RecordClientPrivatePtr pClientPriv = NULL;
@@ -1153,7 +1154,7 @@ RecordSanityCheckClientSpecifiers(ClientPtr client, XID *clientspecs,
             continue;
         if (errorspec && (CLIENT_BITS(clientspecs[i]) == errorspec))
             return BadMatch;
-        clientIndex = CLIENT_ID(clientspecs[i]);
+        clientIndex = dixClientIdForXID(clientspecs[i]);
         if (clientIndex && clients[clientIndex] &&
             clients[clientIndex]->clientState == ClientStateRunning) {
             if (clientspecs[i] == clients[clientIndex]->clientAsMask)
