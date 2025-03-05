@@ -81,6 +81,9 @@ ProcXIGrabDevice(ClientPtr client)
     if (ret != Success)
         return ret;
 
+    if (!dev->enabled)
+        return AlreadyGrabbed;
+
     if (!IsMaster(dev))
         stuff->paired_device_mode = GrabModeAsync;
 
