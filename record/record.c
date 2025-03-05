@@ -866,7 +866,7 @@ RecordInstallHooks(RecordClientsAndProtocolPtr pRCAP, XID oneclient)
             if (pRCAP->pRequestMajorOpSet) {
                 RecordSetIteratePtr pIter = NULL;
                 RecordSetInterval interval;
-                ClientPtr pClient = clients[dixClientIdForXID(client)];
+                ClientPtr pClient = dixClientForXID(client);
 
                 if (pClient && !RecordClientPrivate(pClient)) {
                     RecordClientPrivatePtr pClientPriv;
@@ -949,7 +949,7 @@ RecordUninstallHooks(RecordClientsAndProtocolPtr pRCAP, XID oneclient)
     while (client) {
         if (client != XRecordFutureClients) {
             if (pRCAP->pRequestMajorOpSet) {
-                ClientPtr pClient = clients[dixClientIdForXID(client)];
+                ClientPtr pClient = dixClientForXID(client);
                 int c;
                 Bool otherRCAPwantsProcVector = FALSE;
                 RecordClientPrivatePtr pClientPriv = NULL;
@@ -1143,7 +1143,6 @@ RecordSanityCheckClientSpecifiers(ClientPtr client, XID *clientspecs,
                                   int nspecs, XID errorspec)
 {
     int i;
-    int clientIndex;
     int rc;
     void *value;
 
@@ -1154,10 +1153,10 @@ RecordSanityCheckClientSpecifiers(ClientPtr client, XID *clientspecs,
             continue;
         if (errorspec && (CLIENT_BITS(clientspecs[i]) == errorspec))
             return BadMatch;
-        clientIndex = dixClientIdForXID(clientspecs[i]);
-        if (clientIndex && clients[clientIndex] &&
-            clients[clientIndex]->clientState == ClientStateRunning) {
-            if (clientspecs[i] == clients[clientIndex]->clientAsMask)
+        ClientPtr pClient = dixClientForXID(clientspecs[i]);
+        if (pClient && pClient->index != 0 &&
+            pClient->clientState == ClientStateRunning) {
+            if (clientspecs[i] == pClient->clientAsMask)
                 continue;
             rc = dixLookupResourceByClass(&value, clientspecs[i], RC_ANY,
                                           client, DixGetAttrAccess);
