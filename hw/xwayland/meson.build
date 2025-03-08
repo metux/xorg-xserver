@@ -190,6 +190,7 @@ pkgconfig.generate(
         'exec_prefix=${prefix}',
         'xwayland=' + xwayland_path / xwayland_server.name(),
     ] + xwayland_vars,
+    url: 'https://gitlab.freedesktop.org/xorg/xserver/',
 )
 
 xwayland_manpage = configure_file(
