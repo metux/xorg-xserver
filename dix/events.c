@@ -2867,6 +2867,9 @@ DeliverOneEvent(InternalEvent *event, DeviceIntPtr dev, enum InputLevel level,
  * For focused events, DeliverFocusedEvent is called first, and _may_ call
  * DeliverDeviceEvents.
  *
+ * If the event can't be delivered to the given window itself, trying it's
+ * parents, up until we find one that's taking the event.
+ *
  * @param pWin Window to deliver event to.
  * @param event The events to deliver, not yet in wire format.
  * @param grab Possible grab on a device.
@@ -2886,6 +2889,7 @@ DeliverDeviceEvents(WindowPtr pWin, InternalEvent *event, GrabPtr grab,
 
     verify_internal_event(event);
 
+    // try the window and all its parent, whichever one first wants the event
     while (pWin) {
         if ((mask = EventIsDeliverable(dev, event->any.type, pWin))) {
             /* XI2 events first */
@@ -2910,7 +2914,6 @@ DeliverDeviceEvents(WindowPtr pWin, InternalEvent *event, GrabPtr grab,
                 if (deliveries > 0)
                     break;
             }
-
         }
 
         if ((deliveries < 0) || (pWin == stopAt) ||
