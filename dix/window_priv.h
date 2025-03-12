@@ -2,8 +2,8 @@
  *
  * Copyright © 2025 Enrico Weigelt, metux IT consult <info@metux.net>
  */
-#ifndef _XSERVER_DIX_WINDOW_H
-#define _XSERVER_DIX_WINDOW_H
+#ifndef _XSERVER_DIX_WINDOW_PRIV_H
+#define _XSERVER_DIX_WINDOW_PRIV_H
 
 #include <X11/X.h>
 
@@ -32,4 +32,4 @@ WindowPtr dixCreateWindow(Window wid,
                           VisualID visual,
                           int * error);
 
-#endif /* _XSERVER_DIX_WINDOW_H */
+#endif /* _XSERVER_DIX_WINDOW_PRIV_H */
