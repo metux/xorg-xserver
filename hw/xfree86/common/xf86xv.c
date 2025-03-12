@@ -486,7 +486,7 @@ xf86XVInitAdaptors(ScreenPtr pScreen, XF86VideoAdaptorPtr * infoPtr, int number)
         }
         for (pp = pPort, i = 0, numPort = 0; i < adaptorPtr->nPorts; i++) {
 
-            if (!(pp->id = FakeClientID(0)))
+            if (!(pp->id = dixAllocServerXID()))
                 continue;
 
             if (!(portPriv = calloc(1, sizeof(XvPortRecPrivate))))

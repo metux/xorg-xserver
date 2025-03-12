@@ -500,7 +500,7 @@ miInitVisuals(VisualPtr * visualp, DepthPtr * depthp, int *nvisualp,
             visual->bitsPerRGBValue = visuals->bitsPerRGB;
             visual->ColormapEntries = 1 << d;
             visual->nplanes = d;
-            visual->vid = FakeClientID(0);
+            visual->vid = dixAllocServerXID();
             if (vid)
                 *vid = visual->vid;
             else

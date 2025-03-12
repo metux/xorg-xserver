@@ -368,7 +368,7 @@ XdmAddCookie(unsigned short data_length, const char *data)
     xdmAuth = new;
     memcpy(new->key.data, key_bits, 8);
     memcpy(new->rho.data, rho_bits, 8);
-    new->id = FakeClientID(0);
+    new->id = dixAllocServerXID();
     return new->id;
 }
 

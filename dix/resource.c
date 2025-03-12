@@ -1276,3 +1276,9 @@ dixLookupResourceByClass(void **result, XID id, RESTYPE rclass,
     *result = res->value;
     return Success;
 }
+
+/* new API - try not to call FakeClientID() directly anymore */
+XID dixAllocServerXID(void)
+{
+    return FakeClientID(0);
+}

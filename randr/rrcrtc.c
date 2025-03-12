@@ -80,7 +80,7 @@ RRCrtcCreate(ScreenPtr pScreen, void *devPrivate)
     crtc = calloc(1, sizeof(RRCrtcRec));
     if (!crtc)
         return NULL;
-    crtc->id = FakeClientID(0);
+    crtc->id = dixAllocServerXID();
     crtc->pScreen = pScreen;
     crtc->rotation = RR_Rotate_0;
     crtc->rotations = RR_Rotate_0;

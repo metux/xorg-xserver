@@ -588,7 +588,7 @@ DPMSExtensionInit(void)
 
     ClientType = CreateNewResourceType(DPMSFreeClient, "DPMSClient");
     DPMSEventType = CreateNewResourceType(DPMSFreeEvents, "DPMSEvent");
-    eventResource = FakeClientID(0);
+    eventResource = dixAllocServerXID();
 
     if (DPMSEnabled && ClientType && DPMSEventType &&
         (extEntry = AddExtension(DPMSExtensionName, 0, 0,

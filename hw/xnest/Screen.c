@@ -243,7 +243,7 @@ xnestOpenScreen(ScreenPtr pScreen, int argc, char *argv[])
                 .offsetRed = offset(vts[x].red_mask),
                 .offsetGreen = offset(vts[x].green_mask),
                 .offsetBlue = offset(vts[x].blue_mask),
-                .vid = FakeClientID(0),
+                .vid = dixAllocServerXID(),
             };
 
             xnestVisualMap[xnestNumVisualMap] = (xnest_visual_t) {
@@ -310,7 +310,7 @@ breakout:
                       numVisuals, visuals))
         return FALSE;
 
-    pScreen->defColormap = (Colormap) FakeClientID(0);
+    pScreen->defColormap = (Colormap) dixAllocServerXID();
     pScreen->minInstalledCmaps = MINCMAPS;
     pScreen->maxInstalledCmaps = MAXCMAPS;
     pScreen->backingStoreSupport = XCB_BACKING_STORE_NOT_USEFUL;

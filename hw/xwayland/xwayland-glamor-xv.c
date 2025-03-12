@@ -254,7 +254,7 @@ xwl_glamor_xv_add_ports(XvAdaptorPtr pa)
 
     PortResource = XvGetRTPort();
     for (pp = pPorts, i = 0, nPorts = 0; i < NUM_PORTS; i++) {
-        if (!(pp->id = FakeClientID(0)))
+        if (!(pp->id = dixAllocServerXID()))
             continue;
 
         pp->pAdaptor = pa;

@@ -288,7 +288,7 @@ PictureCreateDefaultFormats(ScreenPtr pScreen, int *nformatp)
     if (!pFormats)
         return 0;
     for (f = 0; f < nformats; f++) {
-        pFormats[f].id = FakeClientID(0);
+        pFormats[f].id = dixAllocServerXID();
         pFormats[f].depth = formats[f].depth;
         format = formats[f].format;
         pFormats[f].format = format;
@@ -420,8 +420,8 @@ PictureInitIndexedFormat(ScreenPtr pScreen, PictFormatPtr format)
         if (pVisual == NULL)
             return FALSE;
 
-        if (dixCreateColormap(FakeClientID(0), pScreen, pVisual,
-                              &format->index.pColormap, AllocNone, serverClient)
+        if (dixCreateColormap(dixAllocServerXID(), pScreen, pVisual,
+                              &format->index.pColormap, AllocNone, 0)
             != Success)
             return FALSE;
     }

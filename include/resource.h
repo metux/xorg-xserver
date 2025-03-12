@@ -243,4 +243,16 @@ extern _X_EXPORT int dixLookupResourceByClass(void **result,
 extern _X_EXPORT RESTYPE lastResourceType;
 extern _X_EXPORT RESTYPE TypeMask;
 
+/*
+ * @brief allocate a XID (resource ID) for the server itself
+ *
+ * This is mostly for resource types that don't have their own API yet
+ * The XID is allocated within server's ID space and then can be used
+ * for registering a resource with it (@see AddResource())
+ *
+ * @obsoletes FakeClientID
+ * @return XID the newly allocated XID
+ */
+_X_EXPORT XID dixAllocServerXID(void);
+
 #endif /* RESOURCE_H */

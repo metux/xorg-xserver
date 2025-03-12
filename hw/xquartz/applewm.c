@@ -720,7 +720,7 @@ AppleWMExtensionInit(AppleWMProcsPtr procsPtr)
 
     ClientType = CreateNewResourceType(WMFreeClient, "WMClient");
     EventType = CreateNewResourceType(WMFreeEvents, "WMEvent");
-    eventResource = FakeClientID(0);
+    eventResource = dixAllocServerXID();
 
     if (ClientType && EventType &&
         (extEntry = AddExtension(APPLEWMNAME,

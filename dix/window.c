@@ -562,7 +562,7 @@ CreateRootWindow(ScreenPtr pScreen)
         return FALSE;
 
     pScreen->screensaver.pWindow = NULL;
-    pScreen->screensaver.wid = FakeClientID(0);
+    pScreen->screensaver.wid = dixAllocServerXID();
     pScreen->screensaver.ExternalScreenSaver = NULL;
     screenIsSaved = SCREEN_SAVER_OFF;
 
@@ -601,7 +601,7 @@ CreateRootWindow(ScreenPtr pScreen)
 
     pWin->nextSib = NullWindow;
 
-    pWin->drawable.id = FakeClientID(0);
+    pWin->drawable.id = dixAllocServerXID();
 
     pWin->origin.x = pWin->origin.y = 0;
     pWin->drawable.height = pScreen->height;
@@ -3249,7 +3249,7 @@ TileScreenSaver(ScreenPtr pScreen, int kind)
         result = AllocARGBCursor(srcbits, mskbits, NULL, &cm, 0, 0, 0, 0, 0, 0,
                                  &cursor, serverClient, (XID) 0);
         if (cursor) {
-            cursorID = FakeClientID(0);
+            cursorID = dixAllocServerXID();
             if (AddResource(cursorID, X11_RESTYPE_CURSOR, (void *) cursor)) {
                 attributes[attri] = cursorID;
                 mask |= CWCursor;

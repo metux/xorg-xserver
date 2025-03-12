@@ -497,7 +497,7 @@ CreateRootCursor(void)
     XID fontID;
     const char defaultCursorFont[] = "cursor";
 
-    fontID = FakeClientID(0);
+    fontID = dixAllocServerXID();
     err = OpenFont(serverClient, fontID, FontLoadAll | FontOpenSync,
                    (unsigned) strlen(defaultCursorFont), defaultCursorFont);
     if (err != Success)
@@ -511,7 +511,7 @@ CreateRootCursor(void)
                          &curs, serverClient, (XID) 0) != Success)
         return NullCursor;
 
-    if (!AddResource(FakeClientID(0), X11_RESTYPE_CURSOR, (void *) curs))
+    if (!AddResource(dixAllocServerXID(), X11_RESTYPE_CURSOR, (void *) curs))
         return NullCursor;
 
     return curs;

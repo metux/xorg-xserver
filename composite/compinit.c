@@ -323,7 +323,7 @@ compScreenInit(ScreenPtr pScreen)
     if (!cs)
         return FALSE;
 
-    cs->overlayWid = FakeClientID(0);
+    cs->overlayWid = dixAllocServerXID();
     cs->pOverlayWin = NULL;
     cs->pOverlayClients = NULL;
 

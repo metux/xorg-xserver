@@ -142,7 +142,7 @@ SetDefaultFont(const char *defaultfontname)
     FontPtr pf;
     XID fid;
 
-    fid = FakeClientID(0);
+    fid = dixAllocServerXID();
     err = OpenFont(serverClient, fid, FontLoadAll | FontOpenSync,
                    (unsigned) strlen(defaultfontname), defaultfontname);
     if (err != Success)
@@ -1914,7 +1914,7 @@ find_old_font(XID id)
 static Font
 get_new_font_client_id(void)
 {
-    return FakeClientID(0);
+    return dixAllocServerXID();
 }
 
 static int

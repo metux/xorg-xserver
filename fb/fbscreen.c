@@ -100,7 +100,7 @@ fbSetupScreen(ScreenPtr pScreen, void *pbits, /* pointer to screen bitmap */
 {                               /* bits per pixel for screen */
     if (!fbAllocatePrivates(pScreen))
         return FALSE;
-    pScreen->defColormap = FakeClientID(0);
+    pScreen->defColormap = dixAllocServerXID();
     if (bpp > 1) {
 	/* let CreateDefColormap do whatever it wants for pixels */
 	pScreen->blackPixel = pScreen->whitePixel = (Pixel) 0;

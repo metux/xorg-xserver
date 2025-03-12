@@ -87,7 +87,7 @@ RROutputCreate(ScreenPtr pScreen,
     output = calloc(1, sizeof(RROutputRec) + nameLength + 1);
     if (!output)
         return NULL;
-    output->id = FakeClientID(0);
+    output->id = dixAllocServerXID();
     output->pScreen = pScreen;
     output->name = (char *) (output + 1);
     output->nameLength = nameLength;

@@ -91,7 +91,7 @@ RRModeCreate(xRRModeInfo * modeInfo, const char *name, ScreenPtr userScreen)
         return NULL;
     }
 
-    mode->mode.id = FakeClientID(0);
+    mode->mode.id = dixAllocServerXID();
     if (!AddResource(mode->mode.id, RRModeType, (void *) mode)) {
         free(newModes);
         return NULL;
