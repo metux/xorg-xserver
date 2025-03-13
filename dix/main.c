@@ -125,6 +125,7 @@ Equipment Corporation.
 extern void Dispatch(void);
 
 CallbackListPtr RootWindowFinalizeCallback = NULL;
+CallbackListPtr PostInitRootWindowCallback = NULL;
 
 int
 dix_main(int argc, char *argv[], char *envp[])
@@ -247,8 +248,10 @@ dix_main(int argc, char *argv[], char *envp[])
             PanoramiXConsolidate();
 #endif /* XINERAMA */
 
-        for (i = 0; i < screenInfo.numScreens; i++)
+        for (i = 0; i < screenInfo.numScreens; i++) {
             InitRootWindow(screenInfo.screens[i]->root);
+            CallCallbacks(&PostInitRootWindowCallback, screenInfo.screens[i]);
+        }
 
         LogMessageVerb(X_INFO, 1, "Screen(s) initialized\n");
 

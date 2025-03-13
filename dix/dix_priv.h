@@ -53,6 +53,19 @@ extern HWEventQueuePtr checkForInput[2];
  /* -retro mode */
 extern Bool party_like_its_1989;
 
+/*
+ * @brief callback right after one screen's root window has been initialized
+ *
+ * For extensions that need additional setup after root window is completely
+ * initialized (eg. possible to create new windows), but before any client
+ * can connect. Called once per screen (supplied as arg) - the screen's
+ * CreateWindow proc already had been called on the root window.
+ *
+ * Not for DDXs / drivers: those already informed by screen's CreateWindow
+ * proc being called on the root window.
+ */
+extern CallbackListPtr PostInitRootWindowCallback;
+
 static inline _X_NOTSAN Bool
 InputCheckPending(void)
 {
