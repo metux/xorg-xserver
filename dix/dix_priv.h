@@ -268,6 +268,8 @@ extern Bool enableBackingStore;
 /* in generated BuiltInAtoms.c */
 void MakePredeclaredAtoms(void);
 
+void dixFreeScreen(ScreenPtr pScreen);
+
 /*
  * @brief mark event ID as critical
  * @param event the event to add to the critical events bitmap
