@@ -31,5 +31,14 @@ WindowPtr dixCreateWindow(Window wid,
                           ClientPtr client,
                           VisualID visual,
                           int * error);
+/*
+ * @brief Make sure the window->optional structure exists.
+ *
+ * allocate if window->optional == NULL, otherwise do nothing.
+ *
+ * @param pWin the window to operate on
+ * @return FALSE if allocation failed, otherwise TRUE
+ */
+Bool MakeWindowOptional(WindowPtr pWin);
 
 #endif /* _XSERVER_DIX_WINDOW_PRIV_H */

@@ -56,6 +56,7 @@ SOFTWARE.
 #include "dix/dixgrabs_priv.h"
 #include "dix/exevents_priv.h"
 #include "dix/resource_priv.h"
+#include "dix/window_priv.h"
 #include "os/auth.h"
 #include "os/client_priv.h"
 

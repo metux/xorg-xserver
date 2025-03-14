@@ -190,8 +190,6 @@ extern _X_EXPORT WindowPtr FindWindowWithOptional(WindowPtr /*w */ );
 
 extern _X_EXPORT void CheckWindowOptionalNeed(WindowPtr /*w */ );
 
-extern _X_EXPORT Bool MakeWindowOptional(WindowPtr /*pWin */ );
-
 extern _X_EXPORT WindowPtr MoveWindowInStack(WindowPtr /*pWin */ ,
                                              WindowPtr /*pNextSib */ );
 
