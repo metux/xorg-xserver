@@ -2740,7 +2740,7 @@ AddExtensionClient(WindowPtr pWin, ClientPtr client, Mask mask, int mskidx)
 {
     InputClientsPtr others;
 
-    if (!pWin->optional && !MakeWindowOptional(pWin))
+    if (!MakeWindowOptional(pWin))
         return BadAlloc;
     others = AllocInputClient();
     if (!others)

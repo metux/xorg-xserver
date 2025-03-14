@@ -4587,7 +4587,7 @@ XRetCode EventSelectForWindow(WindowPtr pWin, ClientPtr client, Mask mask)
             }
         }
         check = 0;
-        if (!pWin->optional && !MakeWindowOptional(pWin))
+        if (!MakeWindowOptional(pWin))
             return BadAlloc;
         others = calloc(1, sizeof(OtherClients));
         if (!others)
@@ -4646,7 +4646,7 @@ EventSuppressForWindow(WindowPtr pWin, ClientPtr client,
         }
     }
     else {
-        if (!pWin->optional && !MakeWindowOptional(pWin)) {
+        if (!MakeWindowOptional(pWin)) {
             if (pWin->dontPropagate)
                 DontPropagateRefCnts[pWin->dontPropagate]++;
             return BadAlloc;

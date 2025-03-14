@@ -564,7 +564,7 @@ AddPassiveGrabToList(ClientPtr client, GrabPtr pGrab)
         }
     }
 
-    if (!pGrab->window->optional && !MakeWindowOptional(pGrab->window)) {
+    if (!MakeWindowOptional(pGrab->window)) {
         FreeGrab(pGrab);
         return BadAlloc;
     }
@@ -663,8 +663,7 @@ DeletePassiveGrabFromList(GrabPtr pMinuendGrab)
                        DeleteDetailFromMask(grab->modifiersDetail.pMask,
                                             pMinuendGrab->modifiersDetail.
                                             exact))
-                     || (!pNewGrab->window->optional &&
-                         !MakeWindowOptional(pNewGrab->window))) {
+                     || (!MakeWindowOptional(pNewGrab->window))) {
                 FreeGrab(pNewGrab);
                 ok = FALSE;
             }

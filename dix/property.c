@@ -316,7 +316,7 @@ dixChangeWindowProperty(ClientPtr pClient, WindowPtr pWin, Atom property,
     rc = dixLookupProperty(&pProp, pWin, property, pClient, access_mode);
 
     if (rc == BadMatch) {       /* just add to list */
-        if (!pWin->optional && !MakeWindowOptional(pWin))
+        if (!MakeWindowOptional(pWin))
             return BadAlloc;
         pProp = dixAllocateObjectWithPrivates(PropertyRec, PRIVATE_PROPERTY);
         if (!pProp)

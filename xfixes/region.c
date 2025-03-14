@@ -658,8 +658,8 @@ SingleXFixesSetWindowShapeRegion(ClientPtr client, xXFixesSetWindowShapeRegionRe
         pRegion = XFixesRegionCopy(pRegion);
         if (!pRegion)
             return BadAlloc;
-        if (!pWin->optional)
-            MakeWindowOptional(pWin);
+        if (!MakeWindowOptional(pWin))
+            return BadAlloc;
         switch (stuff->destKind) {
         default:
         case ShapeBounding:

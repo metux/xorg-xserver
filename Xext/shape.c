@@ -268,8 +268,9 @@ ShapeRectangles(ClientPtr client, xShapeRectanglesReq *stuff)
         return BadMatch;
     srcRgn = RegionFromRects(nrects, prects, ctype);
 
-    if (!pWin->optional)
-        MakeWindowOptional(pWin);
+    if (!MakeWindowOptional(pWin))
+        return BadAlloc;
+
     switch (stuff->destKind) {
     case ShapeBounding:
         destRgn = &pWin->optional->boundingShape;
@@ -364,8 +365,9 @@ ShapeMask(ClientPtr client, xShapeMaskReq *stuff)
             return BadAlloc;
     }
 
-    if (!pWin->optional)
-        MakeWindowOptional(pWin);
+    if (!MakeWindowOptional(pWin))
+        return BadAlloc;
+
     switch (stuff->destKind) {
     case ShapeBounding:
         destRgn = &pWin->optional->boundingShape;
@@ -441,8 +443,9 @@ ShapeCombine(ClientPtr client, xShapeCombineReq *stuff)
     rc = dixLookupWindow(&pDestWin, stuff->dest, client, DixSetAttrAccess);
     if (rc != Success)
         return rc;
-    if (!pDestWin->optional)
-        MakeWindowOptional(pDestWin);
+    if (!MakeWindowOptional(pDestWin))
+        return BadAlloc;
+
     switch (stuff->destKind) {
     case ShapeBounding:
         createDefault = CreateBoundingShape;
@@ -490,8 +493,9 @@ ShapeCombine(ClientPtr client, xShapeCombineReq *stuff)
     else
         srcRgn = (*createSrc) (pSrcWin);
 
-    if (!pDestWin->optional)
-        MakeWindowOptional(pDestWin);
+    if (!MakeWindowOptional(pDestWin))
+        return BadAlloc;
+
     switch (stuff->destKind) {
     case ShapeBounding:
         destRgn = &pDestWin->optional->boundingShape;

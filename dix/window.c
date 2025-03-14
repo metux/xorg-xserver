@@ -1317,7 +1317,7 @@ ChangeWindowAttributes(WindowPtr pWin, Mask vmask, XID *vlist, ClientPtr client)
             break;
         case CWBackingPlanes:
             if (pWin->optional || ((CARD32) *pVlist != (CARD32) ~0L)) {
-                if (!pWin->optional && !MakeWindowOptional(pWin)) {
+                if (!MakeWindowOptional(pWin)) {
                     error = BadAlloc;
                     goto PatchUp;
                 }
@@ -1329,7 +1329,7 @@ ChangeWindowAttributes(WindowPtr pWin, Mask vmask, XID *vlist, ClientPtr client)
             break;
         case CWBackingPixel:
             if (pWin->optional || (CARD32) *pVlist) {
-                if (!pWin->optional && !MakeWindowOptional(pWin)) {
+                if (!MakeWindowOptional(pWin)) {
                     error = BadAlloc;
                     goto PatchUp;
                 }
@@ -1430,7 +1430,7 @@ ChangeWindowAttributes(WindowPtr pWin, Mask vmask, XID *vlist, ClientPtr client)
 
                 for (pChild = pWin->firstChild; pChild;
                      pChild = pChild->nextSib) {
-                    if (!pChild->optional && !MakeWindowOptional(pChild)) {
+                    if (!MakeWindowOptional(pChild)) {
                         error = BadAlloc;
                         goto PatchUp;
                     }
@@ -3430,7 +3430,7 @@ ChangeWindowDeviceCursor(WindowPtr pWin, DeviceIntPtr pDev, CursorPtr pCursor)
     ScreenPtr pScreen;
     WindowPtr pChild;
 
-    if (!pWin->optional && !MakeWindowOptional(pWin))
+    if (!MakeWindowOptional(pWin))
         return BadAlloc;
 
     /* 1) Check if window has device cursor set
