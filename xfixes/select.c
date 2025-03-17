@@ -23,6 +23,7 @@
 #include <dix-config.h>
 
 #include "dix/dix_priv.h"
+#include "dix/selection_priv.h"
 
 #include "xfixesint.h"
 #include "xace.h"
@@ -78,13 +79,25 @@ XFixesSelectionCallback(CallbackListPtr *callbacks, void *data, void *args)
     UpdateCurrentTimeIf();
     for (e = selectionEvents; e; e = e->next) {
         if (e->selection == selection && (e->eventMask & eventMask)) {
+
+            /* allow extensions to intercept */
+            SelectionFilterParamRec param = {
+                .client = e->pClient,
+                .selection = selection->selection,
+                .owner = (subtype == XFixesSetSelectionOwnerNotify) ?
+                            selection->window : 0,
+                .op = SELECTION_FILTER_NOTIFY,
+            };
+            CallCallbacks(&SelectionFilterCallback, &param);
+            if (param.skip)
+                continue;
+
             xXFixesSelectionNotifyEvent ev = {
                 .type = XFixesEventBase + XFixesSelectionNotify,
                 .subtype = subtype,
                 .window = e->pWindow->drawable.id,
-                .owner = (subtype == XFixesSetSelectionOwnerNotify) ?
-                            selection->window : 0,
-                .selection = e->selection->selection,
+                .owner = param.owner,
+                .selection = param.selection,
                 .timestamp = currentTime.milliseconds,
                 .selectionTimestamp = selection->lastTimeChanged.milliseconds
             };
@@ -122,8 +135,22 @@ ProcXFixesSelectSelectionInput(ClientPtr client)
     REQUEST(xXFixesSelectSelectionInputReq);
     REQUEST_SIZE_MATCH(xXFixesSelectSelectionInputReq);
 
+    /* allow extensions to intercept */
+    SelectionFilterParamRec param = {
+        .client = client,
+        .selection = stuff->selection,
+        .owner = stuff->window,
+        .op = SELECTION_FILTER_LISTEN,
+    };
+    CallCallbacks(&SelectionFilterCallback, &param);
+    if (param.skip) {
+        if (param.status != Success)
+            client->errorValue = param.selection;
+        return param.status;
+    }
+
     WindowPtr pWindow;
-    int rc = dixLookupWindow(&pWindow, stuff->window, client, DixGetAttrAccess);
+    int rc = dixLookupWindow(&pWindow, param.owner, param.client, DixGetAttrAccess);
     if (rc != Success)
         return rc;
     if (stuff->eventMask & ~SelectionAllEvents) {
@@ -135,13 +162,13 @@ ProcXFixesSelectSelectionInput(ClientPtr client)
     SelectionEventPtr *prev, e;
     Selection *selection;
 
-    rc = dixLookupSelection(&selection, stuff->selection, client, DixGetAttrAccess);
+    rc = dixLookupSelection(&selection, param.selection, param.client, DixGetAttrAccess);
     if (rc != Success)
         return rc;
 
     for (prev = &selectionEvents; (e = *prev); prev = &e->next) {
         if (e->selection == selection &&
-            e->pClient == client && e->pWindow == pWindow) {
+            e->pClient == param.client && e->pWindow == pWindow) {
             break;
         }
     }
@@ -158,9 +185,9 @@ ProcXFixesSelectSelectionInput(ClientPtr client)
 
         e->next = 0;
         e->selection = selection;
-        e->pClient = client;
+        e->pClient = param.client;
         e->pWindow = pWindow;
-        e->clientResource = FakeClientID(client->index);
+        e->clientResource = FakeClientID(param.client->index);
 
         /*
          * Add a resource hanging from the window to
