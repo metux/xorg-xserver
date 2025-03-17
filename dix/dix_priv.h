@@ -18,6 +18,7 @@
 #include <X11/extensions/XI.h>
 
 #include "dix/input_priv.h"
+#include "dix/resource_priv.h"
 
 #include "include/callback.h"
 #include "include/cursor.h"
@@ -671,5 +672,18 @@ void WakeupHandler(int result);
  * @brief initialize the block and wakeup handlers
  */
 void InitBlockAndWakeupHandlers(void);
+
+/*
+ * @brief retrieve owning client for given XID
+ *
+ * just lookup by ID space, the resource doens't need to actually exist
+ */
+static inline ClientPtr dixLookupXIDOwner(XID xid)
+{
+    int clientId = dixClientIdForXID(xid);
+    if (clientId < currentMaxClients)
+        return clients[clientId];
+    return NullClient;
+}
 
 #endif /* _XSERVER_DIX_PRIV_H */
