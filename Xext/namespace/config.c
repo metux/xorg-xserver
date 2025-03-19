@@ -8,6 +8,7 @@
 struct Xnamespace ns_root = {
     .allowMouseMotion = TRUE,
     .allowShape = TRUE,
+    .allowTransparency = TRUE,
     .allowXInput = TRUE,
     .allowXKeyboard = TRUE,
     .builtin = TRUE,

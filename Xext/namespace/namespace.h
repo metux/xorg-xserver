@@ -16,6 +16,7 @@ struct Xnamespace {
     Bool builtin;
     Bool allowMouseMotion;
     Bool allowShape;
+    Bool allowTransparency;
     Bool allowXInput;
     Bool allowXKeyboard;
     Bool superPower;
