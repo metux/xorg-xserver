@@ -38,6 +38,7 @@ NamespaceExtensionInit(void)
           XaceRegisterCallback(XACE_DEVICE_ACCESS, hookDevice, NULL) &&
           XaceRegisterCallback(XACE_EXT_DISPATCH, hookExtDispatch, NULL) &&
           XaceRegisterCallback(XACE_EXT_ACCESS, hookExtAccess, NULL) &&
+          XaceRegisterCallback(XACE_PROPERTY_ACCESS, hookPropertyAccess, NULL) &&
           XaceRegisterCallback(XACE_RECEIVE_ACCESS, hookReceive, NULL) &&
           XaceRegisterCallback(XACE_RESOURCE_ACCESS, hookResourceAccess, NULL) &&
           XaceRegisterCallback(XACE_SEND_ACCESS, hookSend, NULL) &&

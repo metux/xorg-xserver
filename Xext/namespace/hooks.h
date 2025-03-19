@@ -30,6 +30,7 @@ void hookDevice(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookExtAccess(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookExtDispatch(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookInitRootWindow(CallbackListPtr *pcbl, void *unused, void *calldata);
+void hookPropertyAccess(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookReceive(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookSelectionFilter(CallbackListPtr *pcbl, void *unused, void *calldata);
