@@ -4,6 +4,7 @@
 #include <X11/Xmd.h>
 
 #include "dix/dix_priv.h"
+#include "dix/property_priv.h"
 #include "dix/selection_priv.h"
 #include "include/os.h"
 #include "miext/extinit_priv.h"
@@ -30,6 +31,7 @@ NamespaceExtensionInit(void)
             sizeof(struct XnamespaceClientPriv)) &&
           AddCallback(&ClientStateCallback, hookClientState, NULL) &&
           AddCallback(&PostInitRootWindowCallback, hookInitRootWindow, NULL) &&
+          AddCallback(&PropertyFilterCallback, hookWindowProperty, NULL) &&
           AddCallback(&SelectionFilterCallback, hookSelectionFilter, NULL)))
         FatalError("NamespaceExtensionInit: allocation failure\n");
 
