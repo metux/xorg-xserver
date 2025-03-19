@@ -6,6 +6,7 @@
 #include "namespace.h"
 
 struct Xnamespace ns_root = {
+    .allowMouseMotion = TRUE,
     .builtin = TRUE,
     .name = NS_NAME_ROOT,
     .refcnt = 1,

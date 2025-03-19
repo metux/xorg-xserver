@@ -14,6 +14,7 @@ struct Xnamespace {
     struct xorg_list entry;
     const char *name;
     Bool builtin;
+    Bool allowMouseMotion;
     Bool superPower;
     const char *authProto;
     char *authTokenData;
