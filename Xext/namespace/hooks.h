@@ -32,6 +32,7 @@ void hookInitRootWindow(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookReceive(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookSelectionFilter(CallbackListPtr *pcbl, void *unused, void *calldata);
+void hookSend(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookServerAccess(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookWindowProperty(CallbackListPtr *pcbl, void *unused, void *calldata);
 
