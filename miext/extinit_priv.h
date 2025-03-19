@@ -25,6 +25,8 @@ extern Bool noXFixesExtension;
 extern Bool noXFree86BigfontExtension;
 extern Bool noNamespaceExtension;
 
+extern char *namespaceConfigFile;
+
 void CompositeExtensionInit(void);
 void DamageExtensionInit(void);
 void DbeExtensionInit(void);

@@ -294,6 +294,9 @@ UseMsg(void)
     ErrorF("+iglx                  Allow creating indirect GLX contexts\n");
     ErrorF("-iglx                  Prohibit creating indirect GLX contexts (default)\n");
     ErrorF("-I                     ignore all remaining arguments\n");
+#ifdef CONFIG_NAMESPACE
+    ErrorF("-namespace <conf>      Enable NAMESPACE extension with given config file\n");
+#endif /* CONFIG_NAMESPACE */
     LockServerUseMsg();
     ErrorF("-maxclients n          set maximum number of clients (power of two)\n");
     ErrorF("-nolisten string       don't listen on protocol\n");
@@ -692,6 +695,16 @@ ProcessCommandLine(int argc, char *argv[])
                 UseMsg();
             }
         }
+#ifdef CONFIG_NAMESPACE
+        else if (strcmp(argv[i], "-namespace") == 0) {
+            if (++i < argc) {
+                namespaceConfigFile = argv[i];
+                noNamespaceExtension = FALSE;
+            }
+            else
+                UseMsg();
+        }
+#endif
 #ifdef XINERAMA
         else if (strcmp(argv[i], "+xinerama") == 0) {
             noPanoramiXExtension = FALSE;

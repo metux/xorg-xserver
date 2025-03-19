@@ -1,0 +1,13 @@
+
+# auth <proto> <hex-key>
+  auth MIT-MAGIC-COOKIE-1 46f8e62b78e58962de0ceefc05ad90b0
+
+# container <name> <parent_name>
+container xeyes root
+  auth MIT-MAGIC-COOKIE-1 46f8e62b78e58962de0ceefc05ad90b8
+  allow mouse-motion
+  allow shape
+  allow xinput
+
+container xclock root
+  auth MIT-MAGIC-COOKIE-1 46f8e62b78e58962de0ceefc05ad90b7
