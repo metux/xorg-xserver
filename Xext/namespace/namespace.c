@@ -34,6 +34,7 @@ NamespaceExtensionInit(void)
           AddCallback(&PostInitRootWindowCallback, hookInitRootWindow, NULL) &&
           AddCallback(&PropertyFilterCallback, hookWindowProperty, NULL) &&
           AddCallback(&SelectionFilterCallback, hookSelectionFilter, NULL) &&
+          XaceRegisterCallback(XACE_DEVICE_ACCESS, hookDevice, NULL) &&
           XaceRegisterCallback(XACE_EXT_DISPATCH, hookExtDispatch, NULL) &&
           XaceRegisterCallback(XACE_EXT_ACCESS, hookExtAccess, NULL) &&
           XaceRegisterCallback(XACE_RECEIVE_ACCESS, hookReceive, NULL) &&

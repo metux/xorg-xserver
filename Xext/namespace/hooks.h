@@ -25,6 +25,7 @@
     struct XnamespaceClientPriv *subj = XnsClientPriv(client);
 
 void hookClientState(CallbackListPtr *pcbl, void *unused, void *calldata);
+void hookDevice(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookExtAccess(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookExtDispatch(CallbackListPtr *pcbl, void *unused, void *calldata);
 void hookInitRootWindow(CallbackListPtr *pcbl, void *unused, void *calldata);
