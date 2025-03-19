@@ -8,6 +8,7 @@
 #include "include/list.h"
 #include "include/privates.h"
 #include "include/window.h"
+#include "include/windowstr.h"
 
 struct Xnamespace {
     struct xorg_list entry;
@@ -18,6 +19,7 @@ struct Xnamespace {
     char *authTokenData;
     size_t authTokenLen;
     size_t refcnt;
+    WindowPtr rootWindow;
 };
 
 extern struct xorg_list ns_list;

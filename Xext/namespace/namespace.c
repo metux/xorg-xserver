@@ -29,6 +29,7 @@ NamespaceExtensionInit(void)
     if (!(dixRegisterPrivateKey(&namespaceClientPrivKeyRec, PRIVATE_CLIENT,
             sizeof(struct XnamespaceClientPriv)) &&
           AddCallback(&ClientStateCallback, hookClientState, NULL) &&
+          AddCallback(&PostInitRootWindowCallback, hookInitRootWindow, NULL) &&
           AddCallback(&SelectionFilterCallback, hookSelectionFilter, NULL)))
         FatalError("NamespaceExtensionInit: allocation failure\n");
 
