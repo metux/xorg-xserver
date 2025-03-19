@@ -38,7 +38,8 @@ NamespaceExtensionInit(void)
           XaceRegisterCallback(XACE_EXT_DISPATCH, hookExtDispatch, NULL) &&
           XaceRegisterCallback(XACE_EXT_ACCESS, hookExtAccess, NULL) &&
           XaceRegisterCallback(XACE_RECEIVE_ACCESS, hookReceive, NULL) &&
-          XaceRegisterCallback(XACE_RESOURCE_ACCESS, hookResourceAccess, NULL)))
+          XaceRegisterCallback(XACE_RESOURCE_ACCESS, hookResourceAccess, NULL) &&
+          XaceRegisterCallback(XACE_SERVER_ACCESS, hookServerAccess, NULL)))
         FatalError("NamespaceExtensionInit: allocation failure\n");
 
     /* Do the serverClient */

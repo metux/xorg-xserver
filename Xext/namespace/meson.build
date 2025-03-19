@@ -10,6 +10,7 @@ libxserver_namespace = static_library(
 		'hook-receive.c',
 		'hook-resource.c',
 		'hook-selection.c',
+		'hook-server.c',
 		'hook-windowproperty.c',
 		'namespace.c',
 	],
