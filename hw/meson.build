@@ -1,8 +1,8 @@
-if get_option('xephyr')
+if build_xephyr
     subdir('kdrive')
 endif
 
-if get_option('xvfb')
+if build_xvfb
     subdir('vfb')
 endif
 

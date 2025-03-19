@@ -287,6 +287,21 @@ if build_xquartz
     build_rootless = true
 endif
 
+build_xephyr = get_option('xephyr')
+build_xvfb = get_option('xvfb')
+
+summary({
+        'Xorg': build_xorg,
+        'Xwayland': build_xwayland,
+        'Xnest': build_xnest,
+        'Xvfb': build_xvfb,
+        'Xwin': build_xwin,
+        'Xquartz': build_xquartz,
+    },
+    section: 'DDX',
+    bool_yn: true,
+)
+
 # IPv6 support
 have_AF_INET6 = cc.compiles('''
 #ifdef WIN32
