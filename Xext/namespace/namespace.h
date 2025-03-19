@@ -15,6 +15,9 @@ struct Xnamespace {
     const char *name;
     Bool builtin;
     Bool allowMouseMotion;
+    Bool allowShape;
+    Bool allowXInput;
+    Bool allowXKeyboard;
     Bool superPower;
     const char *authProto;
     char *authTokenData;

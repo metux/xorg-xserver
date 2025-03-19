@@ -7,6 +7,9 @@
 
 struct Xnamespace ns_root = {
     .allowMouseMotion = TRUE,
+    .allowShape = TRUE,
+    .allowXInput = TRUE,
+    .allowXKeyboard = TRUE,
     .builtin = TRUE,
     .name = NS_NAME_ROOT,
     .refcnt = 1,
