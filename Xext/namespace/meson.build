@@ -2,6 +2,7 @@ libxserver_namespace = static_library(
 	'libxserver_namespace',
 	[
 		'config.c',
+		'hook-client.c',
 		'hook-clientstate.c',
 		'hook-device.c',
 		'hook-ext-access.c',
