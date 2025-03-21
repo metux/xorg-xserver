@@ -9,6 +9,10 @@
 #include "namespace.h"
 #include "hooks.h"
 
+static int checkAllowed(Mask requested, Mask allowed) {
+    return ((requested & allowed) == requested);
+}
+
 void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata)
 {
     XNS_HOOK_HEAD(XaceResourceAccessRec);
@@ -33,6 +37,48 @@ void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata)
     if (XnsClientSameNS(subj, obj))
         goto pass;
 
+    // check for root windows (screen or ns-virtual)
+    if (param->rtype == X11_RESTYPE_WINDOW) {
+        WindowPtr pWindow = (WindowPtr) param->res;
+
+        /* white-listed operations on actual root window */
+        if (pWindow && (pWindow == pWindow->drawable.pScreen->root)) {
+            switch (client->majorOp) {
+                case X_CreateWindow:
+                    if (checkAllowed(param->access_mode, DixAddAccess))
+                        goto pass;
+                break;
+
+                case X_CreateGC:
+                case X_CreatePixmap:
+                    if (checkAllowed(param->access_mode, DixGetAttrAccess))
+                        goto pass;
+                break;
+
+                // we reach here when destroying a top-level window:
+                // ProcDestroyWindow() checks whether one may remove a child
+                // from it's parent.
+                case X_DestroyWindow:
+                    if (param->access_mode == DixRemoveAccess)
+                        goto pass;
+                break;
+
+                case X_TranslateCoords:
+                case X_QueryTree:
+                    goto pass;
+
+                case X_ChangeWindowAttributes:
+                case X_QueryPointer:
+                    goto reject;
+
+                case X_SendEvent:
+                    /* send hook needs to take care of this */
+                    goto pass;
+            }
+        }
+    }
+
+reject: ;
     char accModeStr[128];
     LookupDixAccessName(param->access_mode, (char*)&accModeStr, sizeof(accModeStr));
 
