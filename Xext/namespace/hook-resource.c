@@ -41,6 +41,19 @@ void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata)
     if (param->rtype == X11_RESTYPE_WINDOW) {
         WindowPtr pWindow = (WindowPtr) param->res;
 
+        /* white-listed operations on namespace's virtual root window */
+        if (pWindow == subj->ns->rootWindow) {
+            switch (client->majorOp) {
+                case X_DeleteProperty:
+                case X_ChangeProperty:
+                case X_GetProperty:
+                case X_RotateProperties:
+                case X_QueryTree:
+                    goto pass;
+            }
+            XNS_HOOK_LOG("unhandled access to NS' virtual root window 0x%0x\n", pWindow->drawable.id);
+        }
+
         /* white-listed operations on actual root window */
         if (pWindow && (pWindow == pWindow->drawable.pScreen->root)) {
             switch (client->majorOp) {

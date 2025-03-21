@@ -40,8 +40,13 @@ void hookWindowProperty(CallbackListPtr *pcbl, void *unused, void *calldata)
     if (XnsClientSameNS(subj, obj))
         return;
 
+    // allow access to namespace virtual root
+    if (param->window == subj->ns->rootWindow->drawable.id)
+        return;
+
     // redirect root window access to namespace's virtual root
     if (dixWindowIsRoot(param->window)) {
         param->window = subj->ns->rootWindow->drawable.id;
+        return;
     }
 }
