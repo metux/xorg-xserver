@@ -15,6 +15,10 @@ void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata)
     ClientPtr owner = dixLookupXIDOwner(param->id);
     struct XnamespaceClientPriv *obj = XnsClientPriv(owner);
 
+    // server can do anything
+    if (param->client == serverClient)
+        goto pass;
+
     // special filtering for windows: block transparency for untrusted clients
     if (param->rtype == X11_RESTYPE_WINDOW) {
         WindowPtr pWindow = (WindowPtr) param->res;
