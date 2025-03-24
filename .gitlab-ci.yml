@@ -105,6 +105,8 @@ stages:
     FDO_DISTRIBUTION_TAG:       '$XORG_DEBIAN_TAG'
 
 .freebsd:
+  tags:
+    - kvm
   variables:
     FDO_DISTRIBUTION_TAG:       '$XORG_FREEBSD_TAG'
     FDO_DISTRIBUTION_VERSION:   '$XORG_FREEBSD_VERSION'
