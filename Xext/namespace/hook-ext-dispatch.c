@@ -6,6 +6,7 @@
 #include <X11/Xdefs.h> // syncproto.h is broken
 #include <X11/Xmd.h>
 #include <X11/extensions/syncproto.h>
+#include <X11/extensions/XIproto.h>
 #include <X11/extensions/XKB.h>
 #include <X11/extensions/xfixeswire.h>
 
@@ -61,6 +62,10 @@ void hookExtDispatch(CallbackListPtr *pcbl, void *unused, void *calldata)
         case EXTENSION_MAJOR_XINPUT:
             if (subj->ns->allowXInput)
                 goto pass;
+            switch (client->minorOp) {
+                case X_ListInputDevices:
+                    goto pass;
+            }
         break;
 
         case EXTENSION_MAJOR_XFIXES:

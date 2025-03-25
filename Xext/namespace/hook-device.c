@@ -2,6 +2,8 @@
 
 #include <dix-config.h>
 
+#include <X11/extensions/XIproto.h>
+#include <X11/extensions/XI2proto.h>
 #include <X11/extensions/XKB.h>
 
 #include "dix/dix_priv.h"
@@ -39,6 +41,15 @@ void hookDevice(CallbackListPtr *pcbl, void *unused, void *calldata)
                     goto pass;
                 default:
                     XNS_HOOK_LOG("BLOCKED unhandled XKEYBOARD %s\n", LookupRequestName(client->majorOp, client->minorOp));
+                    goto block;
+            }
+        case EXTENSION_MAJOR_XINPUT:
+            switch (client->minorOp) {
+                case X_ListInputDevices:
+                case X_XIQueryDevice:
+                    goto pass;
+                default:
+                    XNS_HOOK_LOG("BLOCKED unhandled Xinput request\n");
                     goto block;
             }
     }

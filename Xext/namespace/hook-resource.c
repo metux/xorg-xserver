@@ -2,7 +2,10 @@
 
 #include <dix-config.h>
 
+#include <X11/extensions/XI2proto.h>
+
 #include "dix/dix_priv.h"
+#include "dix/extension_priv.h"
 #include "dix/window_priv.h"
 #include "Xext/xacestr.h"
 
@@ -87,6 +90,15 @@ void hookResourceAccess(CallbackListPtr *pcbl, void *unused, void *calldata)
                 case X_SendEvent:
                     /* send hook needs to take care of this */
                     goto pass;
+
+                case EXTENSION_MAJOR_XINPUT:
+                    switch(client->minorOp) {
+                        // needed by xeyes. we should filter the mask
+                        case X_XISelectEvents:
+                            goto pass;
+                    }
+                    XNS_HOOK_LOG("unhandled XI operation on (real) root window\n");
+                    goto reject;
             }
         }
     }
