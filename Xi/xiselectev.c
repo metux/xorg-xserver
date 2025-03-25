@@ -161,6 +161,11 @@ ProcXISelectEvents(ClientPtr client)
         return BadValue;
 
     rc = dixLookupWindow(&win, stuff->win, client, DixReceiveAccess);
+
+    // when access to the window is denied, just pretend everything's okay
+    if (rc == BadAccess)
+        return Success;
+
     if (rc != Success)
         return rc;
 
