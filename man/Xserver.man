@@ -491,15 +491,6 @@ local:
 Users can add or remove hosts from this list and enable or disable access
 control using the \fIxhost\fP command from the same machine as the server.
 .PP
-If the X FireWall Proxy (\fIxfwp\fP) is being used without a sitepolicy,
-host-based authorization must be turned on for clients to be able to
-connect to the X server via the \fIxfwp\fP.  If \fIxfwp\fP is run without
-a configuration file and thus no sitepolicy is defined, if \fIxfwp\fP
-is using an X server where xhost + has been run to turn off host-based
-authorization checks, when a client tries to connect to this X server
-via \fIxfwp\fP, the X server will deny the connection.  See \fIxfwp\fP(1)
-for more information about this proxy.
-.PP
 The X protocol intrinsically does not have any notion of window operation
 permissions or place any restrictions on what a client can do; if a program can
 connect to a display, it has full run of the screen.
@@ -615,7 +606,7 @@ Fonts: \fIbdftopcf\fP(1), \fImkfontdir\fP(1), \fImkfontscale\fP(1),
 Keyboards: \fIxkeyboard\-config\fP(@miscmansuffix@)
 .PP
 Security: \fIXsecurity\fP(@miscmansuffix@), \fIxauth\fP(1), \fIXau\fP(1),
-\fIxdm\fP(1), \fIxhost\fP(1), \fIxfwp\fP(1),
+\fIxdm\fP(1), \fIxhost\fP(1)
 .I "Security Extension Specification"
 .PP
 Starting the server: \fIstartx\fP(1), \fIxdm\fP(1), \fIxinit\fP(1)
