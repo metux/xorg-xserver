@@ -15,9 +15,9 @@ is a utility for calculating VESA GTF modes.  Given the desired
 horizontal and vertical resolutions and refresh rate (in Hz), the parameters
 for a matching VESA GTF mode are printed out.  Two output formats are
 supported: mode lines suitable for the Xorg
-.B xorg.conf(@filemansuffix@)
+.BR xorg.conf (@filemansuffix@)
 file, and mode parameters suitable for the Linux
-.B fbset(8)
+.BR fbset (8)
 utility.
 
 .SH OPTIONS
@@ -32,9 +32,10 @@ default format.
 .TP 8
 .BR \-f | \-\-fbset
 Print the mode parameters in a format suitable for
-.BR fbset(8) .
+.BR fbset (8).
 .SH "SEE ALSO"
-xorg.conf(@filemansuffix@), cvt(@appmansuffix@)
+.BR xorg.conf (@filemansuffix@),
+.BR cvt (@appmansuffix@)
 .SH AUTHOR
 Andy Ritger.
 .PP

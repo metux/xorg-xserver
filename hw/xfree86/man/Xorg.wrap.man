@@ -64,4 +64,5 @@ graphics cards and some are not kms capable auto-detection may fail,
 in this case manual configuration should be used.
 
 .SH "SEE ALSO"
-Xorg X server information: \fIXorg\fP(1)
+Xorg X server information:
+.BR Xorg (1)

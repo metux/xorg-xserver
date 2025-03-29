@@ -39,13 +39,15 @@ frequently a link or a copy of the appropriate server binary for
 driving the most frequently used server on a given machine.
 .SH "STARTING THE SERVER"
 The X server is usually started from the X Display Manager program
-\fIxdm\fP(1) or a similar display manager program.
+.BR xdm (1)
+or a similar display manager program.
 This utility is run from the system boot files and takes care of keeping
 the server running, prompting for usernames and passwords, and starting up
 the user sessions.
 .PP
 Installations that run more than one window system may need to use the
-\fIxinit\fP(1) utility instead of a display manager.  However, \fIxinit\fP is
+.BR xinit (1)
+utility instead of a display manager.  However, \fIxinit\fP is
 to be considered a tool for building startup scripts and is not
 intended for use by end users.  Site administrators are \fBstrongly\fP
 urged to use a display manager, or build other interfaces for novice users.
@@ -73,8 +75,10 @@ should override values specified via other mechanisms.
 .B :\fIdisplaynumber\fP
 The X server runs as the given \fIdisplaynumber\fP, which by default is 0.
 If multiple X servers are to run simultaneously on a host, each must have
-a unique display number.  See the DISPLAY
-NAMES section of the \fIX\fP(@miscmansuffix@) manual page to learn how to
+a unique display number.
+See the DISPLAY NAMES section of the
+.BR X (@miscmansuffix@)
+manual page to learn how to
 specify which display number clients should try to use.
 .TP 8
 .B \-a \fInumber\fP
@@ -98,8 +102,12 @@ Audit lines are sent as standard error output.
 .TP 8
 .B \-auth \fIauthorization-file\fP
 specifies a file which contains a collection of authorization records used
-to authenticate access.  See also the \fIxdm\fP(1) and
-\fIXsecurity\fP(@miscmansuffix@) manual pages.
+to authenticate access.
+See also the
+.BR xdm (1)
+and
+.BR Xsecurity (@miscmansuffix@)
+manual pages.
 .TP 8
 .B \-background none
 Asks the driver not to clear the background on startup,
@@ -446,15 +454,17 @@ loads keyboard description in \fIfilename\fP on server startup.
 .SH "NETWORK CONNECTIONS"
 The X server supports client connections via a platform-dependent subset of
 the following transport types: TCP/IP, Unix Domain sockets,
-and several varieties of SVR4 local connections.  See the DISPLAY
-NAMES section of the \fIX\fP(@miscmansuffix@) manual page to learn how to
+and several varieties of SVR4 local connections.
+See the DISPLAY NAMES section of the
+.BR X (@miscmansuffix@)
+manual page to learn how to
 specify which transport type clients should try to use.
 .SH GRANTING ACCESS
 The X server implements a platform-dependent subset of the following
 authorization protocols: MIT-MAGIC-COOKIE-1, XDM-AUTHORIZATION-1,
 XDM-AUTHORIZATION-2, SUN-DES-1, and MIT-KERBEROS-5.  See the
-\fIXsecurity\fP(@miscmansuffix@) manual page for information on the
-operation of these protocols.
+.BR Xsecurity (@miscmansuffix@)
+manual page for information on the operation of these protocols.
 .PP
 Authorization data required by the above protocols is passed to the
 server in a private file named with the \fB\-auth\fP command line
@@ -464,9 +474,10 @@ If this file contains any authorization records, the local host is not
 automatically allowed access to the server, and only clients which
 send one of the authorization records contained in the file in the
 connection setup information will be allowed access.  See the
-\fIXau\fP manual page for a description of the binary format of this
-file.  See \fIxauth\fP(1) for maintenance of this file, and distribution
-of its contents to remote hosts.
+.BR Xau (3)
+manual page for a description of the binary format of this file.  See
+.BR xauth (1)
+for maintenance of this file, and distribution of its contents to remote hosts.
 .PP
 The X server also uses a host-based access control list for deciding
 whether or not to accept connections from clients on a particular machine.
@@ -476,7 +487,9 @@ well as any machines listed in the file \fI/etc/X\fBn\fI.hosts\fR, where
 \fBn\fP is the display number of the server.  Each line of the file should
 contain either an Internet hostname (e.g., expo.lcs.mit.edu)
 or a complete name in the format
-\fIfamily\fP:\fIname\fP as described in the \fIxhost\fP(1) manual page.
+\fIfamily\fP:\fIname\fP as described in the
+.BR xhost (1)
+manual page.
 There should be no leading or trailing spaces on any lines.  For example:
 .sp
 .in +8
@@ -495,8 +508,9 @@ The X protocol intrinsically does not have any notion of window operation
 permissions or place any restrictions on what a client can do; if a program can
 connect to a display, it has full run of the screen.
 X servers that support the SECURITY extension fare better because clients
-can be designated untrusted via the authorization they use to connect; see
-the \fIxauth\fP(1) manual page for details.  Restrictions are imposed
+can be designated untrusted via the authorization they use to connect; see the
+.BR xauth (1)
+manual page for details.  Restrictions are imposed
 on untrusted clients that curtail the mischief they can do.  See the SECURITY
 extension specification for a complete list of these restrictions.
 .PP
@@ -537,7 +551,8 @@ A special kind of directory can be specified using the \fBcatalogue\fP:
 prefix.  Directories specified this way can contain symlinks pointing to the
 real font directories.  See the FONTPATH.D section for details.
 .LP
-The font path can be set with the \fB\-fp\fP option or by \fIxset\fP(1)
+The font path can be set with the \fB\-fp\fP option or by
+.BR xset (1)
 after the server has started.
 .SH "FONTPATH.D"
 You can specify a special kind of font path in the form \fBcatalogue:<dir>\fR.
@@ -587,36 +602,61 @@ Outline font directories
 Unix domain socket for display number \fBn\fP
 .TP 30
 .I /usr/adm/X\fBn\fPmsgs
-Error log file for display number \fBn\fP if run from \fIinit\fP(@adminmansuffix@)
+Error log file for display number \fBn\fP if run from
+.BR init (@adminmansuffix@)
 .TP 30
 .I @projectroot@/lib/X11/xdm/xdm\-errors
-Default error log file if the server is run from \fIxdm\fP(1)
+Default error log file if the server is run from
+.BR xdm (1)
 .SH "SEE ALSO"
-General information: \fIX\fP(@miscmansuffix@)
+General information:
+.BR X (@miscmansuffix@)
 .PP
 Protocols:
 .I "X Window System Protocol,"
 .I "The X Font Service Protocol,"
 .I "X Display Manager Control Protocol"
 .PP
-Fonts: \fIbdftopcf\fP(1), \fImkfontdir\fP(1), \fImkfontscale\fP(1),
-\fIxfs\fP(1), \fIxlsfonts\fP(1), \fIxfontsel\fP(1), \fIxfd\fP(1),
+Fonts: 
+.BR bdftopcf (1), 
+.BR mkfontdir (1), 
+.BR mkfontscale (1),
+.BR xfs (1), 
+.BR xlsfonts (1), 
+.BR xfontsel (1), 
+.BR xfd (1),
 .I "X Logical Font Description Conventions"
 .PP
-Keyboards: \fIxkeyboard\-config\fP(@miscmansuffix@)
+Keyboards: 
+.BR xkeyboard\-config (@miscmansuffix@)
 .PP
-Security: \fIXsecurity\fP(@miscmansuffix@), \fIxauth\fP(1), \fIXau\fP(1),
-\fIxdm\fP(1), \fIxhost\fP(1)
+Security: 
+.BR Xsecurity (@miscmansuffix@), 
+.BR xauth (1), 
+.BR Xau (3),
+.BR xdm (1), 
+.BR xhost (1),
 .I "Security Extension Specification"
 .PP
-Starting the server: \fIstartx\fP(1), \fIxdm\fP(1), \fIxinit\fP(1)
+Starting the server: 
+.BR startx (1), 
+.BR xdm (1), 
+.BR xinit (1)
 .PP
-Controlling the server once started: \fIxset\fP(1), \fIxsetroot\fP(1),
-\fIxhost\fP(1), \fIxinput\fP(1), \fIxrandr\fP(1)
+Controlling the server once started: 
+.BR xset (1), 
+.BR xsetroot (1),
+.BR xhost (1), 
+.BR xinput (1), 
+.BR xrandr (1)
 .PP
 Server-specific man pages:
-\fIXorg\fP(1), \fIXephyr\fP(1), \fIXnest\fP(1),
-\fIXvfb\fP(1), \fIXquartz\fP(1), \fIXWin\fP(1).
+.BR Xorg (1), 
+.BR Xephyr (1), 
+.BR Xnest (1),
+.BR Xvfb (1), 
+.BR Xquartz (1), 
+.BR XWin (1).
 .PP
 Server internal documentation:
 .I "Definition of the Porting Layer for the X v11 Sample Server"

@@ -14,7 +14,9 @@ X11 display is the size of the screen and contains all the other
 windows. The X11 root window is not displayed in rootless mode as Mac
 OS X handles the desktop background.
 .SH CUSTOMIZATION
-\fIXquartz\fP can be customized using the defaults(1) command. The available options are:
+\fIXquartz\fP can be customized using the
+.BR defaults (1)
+command. The available options are:
 .TP 8
 .B defaults write @bundle_id_prefix@.X11 enable_fake_buttons -boolean true
 Emulates a 3 button mouse using modifier keys. By default, the Command modifier
@@ -43,11 +45,13 @@ Disables the alert dialog displayed when attempting to quit X11.
 .TP 8
 .B defaults write @bundle_id_prefix@.X11 no_auth -boolean true
 Stops the X server requiring that clients authenticate themselves when
-connecting.  See Xsecurity(@miscmansuffix@).
+connecting.  See
+.BR Xsecurity (@miscmansuffix@).
 .TP 8
 .B defaults write @bundle_id_prefix@.X11 nolisten_tcp -boolean false
-This will tell the server to listen and accept TCP connections.  Doing this without enabling
-xauth is a possible security concern.  See Xsecurity(@miscmansuffix@).
+This will tell the server to listen and accept TCP connections.
+Doing this without enabling xauth is a possible security concern.  See
+.BR Xsecurity (@miscmansuffix@).
 .TP 8
 .B defaults write @bundle_id_prefix@.X11 enable_system_beep -boolean false
 Don't use the standard system beep effect for X11 alerts.
@@ -88,7 +92,8 @@ This option defaults to false and is only accessible through the command line.  
 This option defaults to false.  Enable this option to ensure that X11 scroll events are always in the direction of the device.  This overrides the related option in the Mouse/Trackpad section of System Preferences.
 .SH OPTIONS
 .PP
-In addition to the normal server options described in the \fIXserver(1)\fP
+In addition to the normal server options described in the
+.BR Xserver (1)
 manual page, \fIXquartz\fP accepts the following command line switches:
 .TP 8
 .B \-fakebuttons
@@ -110,9 +115,14 @@ XQuartz stores a server log at ~/Library/Logs/X11.@bundle_id_prefix@.log which
 is analogous to /var/log/Xorg.#.log on systems that use the XFree86 DDX such as
 Linux, BSD, and Solaris.
 .PP
-In addition to this server log, XQuartz sends messages to syslogd(8) using
-asl(3).  These logs are sent to the @bundle_id_prefix@ facility, and you can
-watch these logs using the following syslog(1) command:
+In addition to this server log, XQuartz sends messages to
+.BR syslogd (8)
+using
+.BR asl (3).
+These logs are sent to the @bundle_id_prefix@ facility, and you can
+watch these logs using the following
+.BR syslog (1)
+command:
 .TP 8
 .B $ syslog -w -k Facility eq @bundle_id_prefix@
 .PP
@@ -123,7 +133,9 @@ or you can include extra information such as the file, line, and function where 
 By default, XQuartz sets an ASL mask which prevents it from logging messages
 below the ASL_LEVEL_WARNING level (meaning almost all logging is done strictly
 to the file referenced above).  To force XQuartz to send all log messages to
-syslogd(8), you can adjust this mask using the following syslog(1) command:
+.BR syslogd (8), you can adjust this mask using the following
+.BR syslog (1)
+command:
 .TP 8
 .B $ syslog -c X11.bin -d
 .PP
@@ -134,7 +146,12 @@ you will need to adjust XQuartz's asl mask as above but using -i or -n
 instead of -d.
 .SH "SEE ALSO"
 .PP
-X(@miscmansuffix@), Xserver(1), xdm(1), xinit(1), syslog(1), syslogd(8)
+.BR X (@miscmansuffix@),
+.BR Xserver (1),
+.BR xdm (1),
+.BR xinit (1),
+.BR syslog (1),
+.BR syslogd (8)
 .PP
 https://www.xquartz.org/
 .PP

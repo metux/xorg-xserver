@@ -31,7 +31,8 @@ containing the whole screen but this root window (traditionally covered with an 
 pattern) is hidden from view, so only top-level X windows are seen.
 
 .SH OPTIONS
-In addition to the normal server options described in the \fIXserver(1)\fP
+In addition to the normal server options described in the
+.BR Xserver (1)
 manual page, \fIXWin\fP accepts the following command line switches,
 \fIall\fP of which are optional:
 
@@ -110,7 +111,8 @@ Currently \fB\-fullscreen\fP may only be applied to one X screen.
 .TP 8
 .B "\-icon" \fIicon-specifier\fP
 Override the window icon for the screen window from the default.
-The \fIicon-specifier\fP is as defined in \fIXWinrc(@filemansuffix@)\fP.
+The \fIicon-specifier\fP is as defined in
+.BR XWinrc (@filemansuffix@).
 .TP 8
 .B \-nodecoration
 Do not give the Cygwin/X window a \fIWindows\fP window border, title bar,
@@ -292,8 +294,9 @@ fullscreen with a DirectDraw engine.  This parameter is ignored if
 \fB\-fullscreen\fP is not specified.
 
 .SH MISCELLANEOUS OPTIONS
-See also the normal server options described in the \fIXserver(1)\fP
-manual page
+See also the normal server options described in the
+.BR Xserver (1)
+manual page.
 
 .TP 8
 .B \-help
@@ -328,21 +331,27 @@ values will yield a still more detailed debug output.
 .TP 8
 .B "\-xkbvariant \fIvariant\fp"
 These options configure the xkeyboard extension to load
-a particular keyboard map as the X server starts.  The behavior is similar
-to the \fIsetxkbmap\fP(1) program.
+a particular keyboard map as the X server starts.
+The behavior is similar to the
+.BR setxkbmap (1)
+program.
 
-See the \fIxkeyboard-config\fP(@miscmansuffix@) manual page for a list of
-keyboard configurations.
+See the
+.BR xkeyboard\-config (@miscmansuffix@)
+manual page for a list of keyboard configurations.
 
-The keyboard layout data is located at \fI@datadir@/X11/xkb/\fP.  Additional information
-can be found in the README files there and in the \fIsetxkbmap\fP(1) manual page.
+The keyboard layout data is located at \fI@datadir@/X11/xkb/\fP.
+Additional information can be found in the README files there and in the
+.BR setxkbmap (1)
+manual page.
 
 For example, in order to load a German layout for a pc105 keyboard, use the options:
 .br
 .I " \-xkblayout de \-xkbmodel pc105"
 
-Alternatively, you can use the \fIsetxkbmap\fP(1) program after \fIXWin\fP is
-running.
+Alternatively, you can use the
+.BR setxkbmap (1)
+program after \fIXWin\fP is running.
 
 The default is to select a keyboard configuration matching your current layout as
 reported by \fIWindows\fP, if known, or the default X server configuration
@@ -387,15 +396,22 @@ window, in both the generic case and for particular programs.
 * To change the style that is associated to the \fIWindows\fP window that
 \fXWin I-multiwindow\fP produces for each top-level X window.
 .PP
-The format of the \fI.XWinrc\fP file is given in the XWinrc(5) manual page.
+The format of the \fI.XWinrc\fP file is given in the
+.BR XWinrc (5)
+manual page.
 
 .SH EXAMPLES
 Need some examples
 
 
 .SH "SEE ALSO"
-X(@miscmansuffix@), Xserver(1), xdm(1), xinit(1), XWinrc(@filemansuffix@),
-setxkbmap(1), xkeyboard-config(@miscmansuffix@).
+.BR X (@miscmansuffix@),
+.BR Xserver (1),
+.BR xdm (1),
+.BR xinit (1),
+.BR XWinrc (@filemansuffix@),
+.BR setxkbmap (1),
+.BR xkeyboard-config (@miscmansuffix@).
 
 
 .SH BUGS

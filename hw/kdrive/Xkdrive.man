@@ -16,7 +16,8 @@ servers; for information on a specific X server, please refer to the
 relevant manual page.
 .SH OPTIONS
 In addition to the standard options accepted by all X servers (see
-Xserver(1)), all the 
+.BR Xserver (1)),
+all the 
 .B Xkdrive
 servers accept the following options:
 .TP 8
@@ -44,7 +45,12 @@ enable emulation of a middle mouse button by chording.
 .B -3button
 disable emulation of a middle mouse button by chording.
 .SH SEE ALSO
-X(@miscmansuffix@), Xserver(1), xdm(1), xinit(1), Xvesa(1), Xfbdev(1).
+.BR X (@miscmansuffix@),
+.BR Xserver (1),
+.BR xdm (1),
+.BR xinit (1),
+.BR Xvesa (1),
+.BR Xfbdev (1).
 .SH AUTHORS
 The Xkdrive common core was written by Keith Packard,
 and is based on the Sample Implementation of X.

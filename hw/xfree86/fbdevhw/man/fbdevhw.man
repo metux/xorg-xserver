@@ -10,13 +10,17 @@ A
 .B fbdevhw
 module is currently available for linux framebuffer devices.
 .PP
-fbdev(@drivermansuffix@) is a non-accelerated driver which runs on top of the
+.BR fbdev (@drivermansuffix@)
+is a non-accelerated driver which runs on top of the
 fbdevhw module.  fbdevhw can be used by other drivers too, this
 is usually activated with `Option "UseFBDev"' in the device section.
 .SH "SEE ALSO"
-Xorg(@appmansuffix@), xorg.conf(@filemansuffix@),
-xorgconfig(@appmansuffix@), Xserver(@appmansuffix@), X(@miscmansuffix@),
-fbdev(@drivermansuffix@)
+.BR Xorg (@appmansuffix@),
+.BR xorg.conf (@filemansuffix@),
+.BR xorgconfig (@appmansuffix@),
+.BR Xserver (@appmansuffix@),
+.BR X (@miscmansuffix@),
+.BR fbdev (@drivermansuffix@)
 .SH AUTHORS
 Authors include: Gerd Knorr, based on the XF68_FBDev Server code
 (Martin Schaller, Geert Uytterhoeven).

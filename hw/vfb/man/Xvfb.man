@@ -49,7 +49,8 @@ new platform, and providing an unobtrusive way to run applications
 that don't really need an X server but insist on having one anyway.
 .SH OPTIONS
 .PP
-In addition to the normal server options described in the \fIXserver(1)\fP
+In addition to the normal server options described in the
+.BR Xserver (1)
 manual page, \fIXvfb\fP accepts the following command line switches:
 .TP 4
 .B "\-screen \fIscreennum\fP \fIWxHxD\fP"
@@ -119,6 +120,10 @@ xwud -in /var/tmp/Xvfb_screen0
 Displays screen 0 of the server started by the preceding example.
 .SH "SEE ALSO"
 .PP
-X(@miscmansuffix@), Xserver(1), xwd(1), xwud(1), XWDFile.h
+.BR X (@miscmansuffix@),
+.BR Xserver (1),
+.BR xwd (1),
+.BR xwud (1),
+.B XWDFile.h
 .SH AUTHORS
 David P. Wiggins, The Open Group, Inc.
