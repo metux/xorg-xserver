@@ -373,7 +373,7 @@ ProcXwlQueryVersion(ClientPtr client)
         swaps(&reply.minorVersion);
     }
 
-    WriteReplyToClient(client, sizeof(reply), &reply);
+    WriteToClient(client, sizeof(reply), &reply);
     return Success;
 }
 
