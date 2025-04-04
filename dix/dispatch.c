@@ -3009,7 +3009,7 @@ ProcLookupColor(ClientPtr client)
                                   &exactRed,
                                   &exactGreen,
                                   &exactBlue)) {
-            xLookupColorReply lcr = {
+            xLookupColorReply rep = {
                 .type = X_Reply,
                 .sequenceNumber = client->sequence,
                 .length = 0,
@@ -3020,10 +3020,19 @@ ProcLookupColor(ClientPtr client)
                 .screenGreen = exactGreen,
                 .screenBlue = exactBlue
             };
-            (*pcmp->pScreen->ResolveColor) (&lcr.screenRed,
-                                            &lcr.screenGreen,
-                                            &lcr.screenBlue, pcmp->pVisual);
-            WriteReplyToClient(client, sizeof(xLookupColorReply), &lcr);
+            (*pcmp->pScreen->ResolveColor) (&rep.screenRed,
+                                            &rep.screenGreen,
+                                            &rep.screenBlue, pcmp->pVisual);
+            if (client->swapped) {
+                swaps(&rep.sequenceNumber);
+                swaps(&rep.exactRed);
+                swaps(&rep.exactGreen);
+                swaps(&rep.exactBlue);
+                swaps(&rep.screenRed);
+                swaps(&rep.screenGreen);
+                swaps(&rep.screenBlue);
+            }
+            WriteToClient(client, sizeof(rep), &rep);
             return Success;
         }
         return BadName;
