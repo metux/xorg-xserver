@@ -5013,7 +5013,6 @@ ProcGetInputFocus(ClientPtr client)
 int
 ProcGrabPointer(ClientPtr client)
 {
-    xGrabPointerReply rep;
     DeviceIntPtr device = PickPointer(client);
     GrabPtr grab;
     GrabMask mask;
@@ -5053,13 +5052,17 @@ ProcGrabPointer(ClientPtr client)
     if (rc != Success)
         return rc;
 
-    rep = (xGrabPointerReply) {
+    xGrabPointerReply rep = {
         .type = X_Reply,
         .status = status,
         .sequenceNumber = client->sequence,
         .length = 0
     };
-    WriteReplyToClient(client, sizeof(xGrabPointerReply), &rep);
+
+    if (client->swapped) {
+        swaps(&rep.sequenceNumber);
+    }
+    WriteToClient(client, sizeof(rep), &rep);
     return Success;
 }
 
