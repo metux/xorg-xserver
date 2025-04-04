@@ -3193,7 +3193,6 @@ ProcFreeCursor(ClientPtr client)
 int
 ProcQueryBestSize(ClientPtr client)
 {
-    xQueryBestSizeReply reply;
     DrawablePtr pDraw;
     ScreenPtr pScreen;
     int rc;
@@ -3219,14 +3218,21 @@ ProcQueryBestSize(ClientPtr client)
         return rc;
     (*pScreen->QueryBestSize) (stuff->class, &stuff->width,
                                &stuff->height, pScreen);
-    reply = (xQueryBestSizeReply) {
+
+    xQueryBestSizeReply rep = {
         .type = X_Reply,
         .sequenceNumber = client->sequence,
         .length = 0,
         .width = stuff->width,
         .height = stuff->height
     };
-    WriteReplyToClient(client, sizeof(xQueryBestSizeReply), &reply);
+
+    if (client->swapped) {
+        swaps(&rep.sequenceNumber);
+        swaps(&rep.width);
+        swaps(&rep.height);
+    }
+    WriteToClient(client, sizeof(rep), &rep);
     return Success;
 }
 
