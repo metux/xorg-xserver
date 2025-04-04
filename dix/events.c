@@ -5349,7 +5349,6 @@ ProcUngrabKeyboard(ClientPtr client)
 int
 ProcQueryPointer(ClientPtr client)
 {
-    xQueryPointerReply rep;
     WindowPtr pWin, t;
     DeviceIntPtr mouse = PickPointer(client);
     DeviceIntPtr keyboard;
@@ -5371,7 +5370,8 @@ ProcQueryPointer(ClientPtr client)
     pSprite = mouse->spriteInfo->sprite;
     if (mouse->valuator->motionHintWindow)
         MaybeStopHint(mouse, client);
-    rep = (xQueryPointerReply) {
+
+    xQueryPointerReply rep = {
         .type = X_Reply,
         .sequenceNumber = client->sequence,
         .length = 0,
@@ -5417,8 +5417,17 @@ ProcQueryPointer(ClientPtr client)
         rep.winY = 0;
     }
 
-    WriteReplyToClient(client, sizeof(xQueryPointerReply), &rep);
-
+    if (client->swapped) {
+        swaps(&rep.sequenceNumber);
+        swapl(&rep.root);
+        swapl(&rep.child);
+        swaps(&rep.rootX);
+        swaps(&rep.rootY);
+        swaps(&rep.winX);
+        swaps(&rep.winY);
+        swaps(&rep.mask);
+    }
+    WriteToClient(client, sizeof(rep), &rep);
     return Success;
 }
 
