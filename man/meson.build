@@ -27,7 +27,8 @@ manpage_config.set('modulepath', module_dir)
 # wtf doesn't this work
 # manpage_config.set('suid_wrapper_dir', join_paths(get_option('prefix'), libexecdir))
 manpage_config.set('suid_wrapper_dir', join_paths(get_option('prefix'), 'libexec'))
-manpage_config.set('default_font_path', default_font_path)
+# \: allows nroff to insert a line break at that position
+manpage_config.set('default_font_path', default_font_path.replace(',', ',\\:'))
 
 install_man(configure_file(
     input: 'Xserver.man',
