@@ -1204,7 +1204,7 @@ ProcRRGetCrtcInfo(ClientPtr client)
         rep.length = bytes_to_int32(extraLen);
 
         if (extraLen) {
-            extra = malloc(extraLen);
+            extra = calloc(1, extraLen);
             if (!extra)
                 return BadAlloc;
         }
@@ -1658,7 +1658,7 @@ ProcRRGetCrtcGamma(ClientPtr client)
     len = crtc->gammaSize * 3 * 2;
 
     if (crtc->gammaSize) {
-        extra = malloc(len);
+        extra = calloc(1, len);
         if (!extra)
             return BadAlloc;
     }
@@ -1954,7 +1954,7 @@ RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enable)
     PixmapPtr *saved_scanout_pixmap;
     int i;
 
-    saved_scanout_pixmap = malloc(sizeof(PixmapPtr)*pScrPriv->numCrtcs);
+    saved_scanout_pixmap = calloc(pScrPriv->numCrtcs, sizeof(PixmapPtr));
     if (saved_scanout_pixmap == NULL)
         return FALSE;
 

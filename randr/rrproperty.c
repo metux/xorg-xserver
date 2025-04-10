@@ -108,9 +108,7 @@ RRInitOutputPropertyValue(RRPropertyValuePtr property_value)
 static RRPropertyPtr
 RRCreateOutputProperty(Atom property)
 {
-    RRPropertyPtr prop;
-
-    prop = (RRPropertyPtr) malloc(sizeof(RRPropertyRec));
+    RRPropertyPtr prop = calloc(1, sizeof(RRPropertyRec));
     if (!prop)
         return NULL;
     prop->next = NULL;
@@ -705,7 +703,7 @@ ProcRRGetOutputProperty(ClientPtr client)
     len = min(n - ind, 4 * stuff->longLength);
 
     if (len) {
-        extra = malloc(len);
+        extra = calloc(1, len);
         if (!extra)
             return BadAlloc;
     }

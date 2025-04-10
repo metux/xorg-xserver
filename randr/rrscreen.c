@@ -422,7 +422,7 @@ rrGetMultiScreenResources(ClientPtr client, Bool query, ScreenPtr pScreen)
 
     extraLen = rep.length << 2;
     if (extraLen) {
-        extra = malloc(extraLen);
+        extra = calloc(1, extraLen);
         if (!extra) {
             return BadAlloc;
         }
@@ -649,7 +649,6 @@ typedef struct _RR10Data {
 static RR10DataPtr
 RR10GetData(ScreenPtr pScreen, RROutputPtr output)
 {
-    RR10DataPtr data;
     RRScreenSizePtr size;
     int nmode = output->numModes + output->numUserModes;
     int o, os, l, r;
@@ -659,7 +658,7 @@ RR10GetData(ScreenPtr pScreen, RROutputPtr output)
     Bool *used;
 
     /* Make sure there is plenty of space for any combination */
-    data = malloc(sizeof(RR10DataRec) +
+    RR10DataPtr data = calloc(1, sizeof(RR10DataRec) +
                   sizeof(RRScreenSize) * nmode +
                   sizeof(RRScreenRate) * nmode + sizeof(Bool) * nmode);
     if (!data)
