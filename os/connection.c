@@ -102,6 +102,7 @@ SOFTWARE.
 
 #include "misc.h"               /* for typedef of pointer */
 #include "dixstruct_priv.h"
+#include "globals.h"
 #include "xace.h"
 
 #ifdef HAVE_GETPEERUCRED
