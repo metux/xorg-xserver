@@ -92,7 +92,7 @@ test_xorg_list_add(void)
     c = xorg_list_first_entry(&parent.children, struct child, node);
 
     assert(memcmp(c, &child[2], sizeof(struct child)) == 0);
-};
+}
 
 static void
 test_xorg_list_append(void)
@@ -134,7 +134,7 @@ test_xorg_list_append(void)
     xorg_list_for_each_entry(c, &parent.children, node) {
         assert(memcmp(c, &child[i++], sizeof(struct child)) == 0);
     }
-};
+}
 
 static void
 test_xorg_list_del(void)
