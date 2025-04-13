@@ -23,9 +23,6 @@
 
 #include <dix-config.h>
 
-#ifndef _MIINDEX_H_
-#define _MIINDEX_H_
-
 #include "dix/colormap_priv.h"
 
 #include "scrnintstr.h"
@@ -328,5 +325,3 @@ miUpdateIndexed(ScreenPtr pScreen,
         }
     }
 }
-
-#endif                          /* _MIINDEX_H_ */
