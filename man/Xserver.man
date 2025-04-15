@@ -462,7 +462,8 @@ specify which transport type clients should try to use.
 .SH GRANTING ACCESS
 The X server implements a platform-dependent subset of the following
 authorization protocols: MIT-MAGIC-COOKIE-1, XDM-AUTHORIZATION-1,
-XDM-AUTHORIZATION-2, SUN-DES-1, and MIT-KERBEROS-5.  See the
+Host Access, and Server Interpreted.
+See the
 .BR Xsecurity (@miscmansuffix@)
 manual page for information on the operation of these protocols.
 .PP
