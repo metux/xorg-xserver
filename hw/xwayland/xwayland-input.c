@@ -616,9 +616,11 @@ pointer_handle_leave(void *data, struct wl_pointer *pointer,
 {
     struct xwl_seat *xwl_seat = data;
     struct xwl_screen *xwl_screen = xwl_seat->xwl_screen;
-    Bool focus_lost = FALSE;
 
     xwl_screen->serial = serial;
+
+    if (xwl_screen->rootless)
+        xwl_seat_leave_ptr(xwl_seat, !!xwl_seat->focus_window);
 
     /* The pointer has left a known xwindow, save it for a possible match
      * in sprite_check_lost_focus()
@@ -626,11 +628,7 @@ pointer_handle_leave(void *data, struct wl_pointer *pointer,
     if (xwl_seat->focus_window) {
         xwl_seat->last_focus_window = xwl_seat->focus_window;
         xwl_seat->focus_window = NULL;
-        focus_lost = TRUE;
     }
-
-    if (xwl_screen->rootless)
-        xwl_seat_leave_ptr(xwl_seat, focus_lost);
 }
 
 static void
