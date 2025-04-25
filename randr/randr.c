@@ -29,6 +29,8 @@
 #include <dix-config.h>
 
 #include "extinit_priv.h"
+
+#include "dix/screen_hooks_priv.h"
 #include "randr/randrstr_priv.h"
 #include "randr/rrdispatch_priv.h"
 
@@ -82,14 +84,13 @@ RRClientCallback(CallbackListPtr *list, void *closure, void *data)
     }
 }
 
-static Bool
-RRCloseScreen(ScreenPtr pScreen)
+static void RRCloseScreen(CallbackListPtr *pcbl, ScreenPtr pScreen, void *unused)
 {
     rrScrPriv(pScreen);
     int j;
     RRLeasePtr lease, next;
 
-    unwrap(pScrPriv, pScreen, CloseScreen);
+    dixScreenUnhookClose(pScreen, RRCloseScreen);
 
     xorg_list_for_each_entry_safe(lease, next, &pScrPriv->leases, list)
         RRTerminateLease(lease);
@@ -107,7 +108,6 @@ RRCloseScreen(ScreenPtr pScreen)
     free(pScrPriv->outputs);
     free(pScrPriv);
     RRNScreens -= 1;            /* ok, one fewer screen with RandR running */
-    return (*pScreen->CloseScreen) (pScreen);
 }
 
 static void
@@ -338,7 +338,7 @@ RRScreenInit(ScreenPtr pScreen)
     pScrPriv->lastSetTime = currentTime;
     pScrPriv->lastConfigTime = currentTime;
 
-    wrap(pScrPriv, pScreen, CloseScreen, RRCloseScreen);
+    dixScreenHookClose(pScreen, RRCloseScreen);
 
     pScreen->ConstrainCursorHarder = RRConstrainCursorHarder;
     pScreen->ReplaceScanoutPixmap = RRReplaceScanoutPixmap;
