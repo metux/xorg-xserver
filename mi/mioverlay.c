@@ -2,13 +2,15 @@
 #include <dix-config.h>
 
 #include <X11/X.h>
+#include <X11/Xmd.h>
+#include <X11/extensions/shapeproto.h>
 
 #include "dix/cursor_priv.h"
 #include "dix/dix_priv.h"
+#include "dix/screen_hooks_priv.h"
 #include "mi/mi_priv.h"
 
 #include "scrnintstr.h"
-#include <X11/extensions/shapeproto.h>
 #include "validate.h"
 #include "windowstr.h"
 #include "gcstruct.h"
@@ -45,7 +47,6 @@ typedef struct {
 } miOverlayWindowRec, *miOverlayWindowPtr;
 
 typedef struct {
-    CloseScreenProcPtr CloseScreen;
     CreateWindowProcPtr CreateWindow;
     DestroyWindowProcPtr DestroyWindow;
     UnrealizeWindowProcPtr UnrealizeWindow;
@@ -68,7 +69,7 @@ static Bool HasUnderlayChildren(WindowPtr);
 static void MarkUnderlayWindow(WindowPtr);
 static Bool CollectUnderlayChildrenRegions(WindowPtr, RegionPtr);
 
-static Bool miOverlayCloseScreen(ScreenPtr);
+static void miOverlayCloseScreen(CallbackListPtr *pcbl, ScreenPtr pScreen, void *unused);
 static Bool miOverlayCreateWindow(WindowPtr);
 static Bool miOverlayDestroyWindow(WindowPtr);
 static Bool miOverlayUnrealizeWindow(WindowPtr);
@@ -127,18 +128,17 @@ miInitOverlay(ScreenPtr pScreen,
         return FALSE;
 
     dixSetPrivate(&pScreen->devPrivates, miOverlayScreenKey, pScreenPriv);
+    dixScreenHookClose(pScreen, miOverlayCloseScreen);
 
     pScreenPriv->InOverlay = inOverlayFunc;
     pScreenPriv->MakeTransparent = transFunc;
     pScreenPriv->underlayMarked = FALSE;
 
-    pScreenPriv->CloseScreen = pScreen->CloseScreen;
     pScreenPriv->CreateWindow = pScreen->CreateWindow;
     pScreenPriv->DestroyWindow = pScreen->DestroyWindow;
     pScreenPriv->UnrealizeWindow = pScreen->UnrealizeWindow;
     pScreenPriv->RealizeWindow = pScreen->RealizeWindow;
 
-    pScreen->CloseScreen = miOverlayCloseScreen;
     pScreen->CreateWindow = miOverlayCreateWindow;
     pScreen->DestroyWindow = miOverlayDestroyWindow;
     pScreen->UnrealizeWindow = miOverlayUnrealizeWindow;
@@ -161,20 +161,21 @@ miInitOverlay(ScreenPtr pScreen,
     return TRUE;
 }
 
-static Bool
-miOverlayCloseScreen(ScreenPtr pScreen)
+static void miOverlayCloseScreen(CallbackListPtr *pcbl, ScreenPtr pScreen, void *unused)
 {
-    miOverlayScreenPtr pScreenPriv = MIOVERLAY_GET_SCREEN_PRIVATE(pScreen);
+    dixScreenUnhookClose(pScreen, miOverlayCloseScreen);
 
-    pScreen->CloseScreen = pScreenPriv->CloseScreen;
+    miOverlayScreenPtr pScreenPriv = MIOVERLAY_GET_SCREEN_PRIVATE(pScreen);
+    if (!pScreenPriv)
+        return;
+
     pScreen->CreateWindow = pScreenPriv->CreateWindow;
     pScreen->DestroyWindow = pScreenPriv->DestroyWindow;
     pScreen->UnrealizeWindow = pScreenPriv->UnrealizeWindow;
     pScreen->RealizeWindow = pScreenPriv->RealizeWindow;
 
     free(pScreenPriv);
-
-    return (*pScreen->CloseScreen) (pScreen);
+    dixSetPrivate(&pScreen->devPrivates, miOverlayScreenKey, NULL);
 }
 
 static Bool
