@@ -29,6 +29,7 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "dix/screen_hooks_priv.h"
 #include "randr/randrstr_priv.h"
 
 #include "xf86.h"
@@ -768,9 +769,11 @@ xf86CrtcCreateScreenResources(ScreenPtr screen)
 /*
  * Clean up config on server reset
  */
-static Bool
-xf86CrtcCloseScreen(ScreenPtr screen)
+static void xf86CrtcCloseScreen(CallbackListPtr *pcbl,
+                                ScreenPtr screen, void *unused)
 {
+    dixScreenUnhookClose(screen, xf86CrtcCloseScreen);
+
     ScrnInfoPtr scrn = xf86ScreenToScrn(screen);
     xf86CrtcConfigPtr config = XF86_CRTC_CONFIG_PTR(scrn);
     int o, c;
@@ -791,20 +794,15 @@ xf86CrtcCloseScreen(ScreenPtr screen)
         crtc->randr_crtc = NULL;
     }
 
-    screen->CloseScreen = config->CloseScreen;
-
     xf86RotateCloseScreen(screen);
 
     xf86RandR12CloseScreen(screen);
-
-    screen->CloseScreen(screen);
 
     /* detach any providers */
     if (config->randr_provider) {
         RRProviderDestroy(config->randr_provider);
         config->randr_provider = NULL;
     }
-    return TRUE;
 }
 
 /*
@@ -846,8 +844,7 @@ xf86CrtcScreenInit(ScreenPtr screen)
     config->CreateScreenResources = screen->CreateScreenResources;
     screen->CreateScreenResources = xf86CrtcCreateScreenResources;
 
-    config->CloseScreen = screen->CloseScreen;
-    screen->CloseScreen = xf86CrtcCloseScreen;
+    dixScreenHookClose(screen, xf86CrtcCloseScreen);
 
     /* This might still be marked wrapped from a previous generation */
     config->BlockHandler = NULL;
