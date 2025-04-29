@@ -37,7 +37,7 @@
 #include "xf86Modes.h"
 #include "xf86Opt_priv.h"
 #include "xf86Priv.h"
-#include "xf86RandR12.h"
+#include "xf86RandR12_priv.h"
 #include "X11/extensions/render.h"
 #include "X11/extensions/dpmsconst.h"
 #include "X11/Xatom.h"
