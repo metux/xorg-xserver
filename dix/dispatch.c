@@ -2184,10 +2184,8 @@ DoGetImage(ClientPtr client, int format, Drawable drawable,
             PixmapPtr pPix = (*pDraw->pScreen->GetWindowPixmap) (pWin);
 
             pBoundingDraw = &pPix->drawable;
-#if defined(COMPOSITE) || defined(ROOTLESS)
             relx -= pPix->screen_x;
             rely -= pPix->screen_y;
-#endif
         }
         else {
             pBoundingDraw = (DrawablePtr) pDraw->pScreen->root;
