@@ -42,6 +42,8 @@
 #include "linux-dmabuf-unstable-v1-client-protocol.h"
 #include "linux-drm-syncobj-v1-client-protocol.h"
 
+#include "mi/mi_priv.h"
+
 #include "xwayland-dmabuf.h"
 #include "xwayland-glamor.h"
 #include "xwayland-glamor-gbm.h"
@@ -143,15 +145,9 @@ static Bool
 xwl_glamor_create_screen_resources(ScreenPtr screen)
 {
     struct xwl_screen *xwl_screen = xwl_screen_get(screen);
-    int ret;
 
-    screen->CreateScreenResources = xwl_screen->CreateScreenResources;
-    ret = (*screen->CreateScreenResources) (screen);
-    xwl_screen->CreateScreenResources = screen->CreateScreenResources;
-    screen->CreateScreenResources = xwl_glamor_create_screen_resources;
-
-    if (!ret)
-        return ret;
+    if (!miCreateScreenResources(screen))
+        return FALSE;
 
     if (xwl_screen->rootless) {
         screen->devPrivate =
@@ -256,7 +252,6 @@ xwl_glamor_init(struct xwl_screen *xwl_screen)
         return FALSE;
     }
 
-    xwl_screen->CreateScreenResources = screen->CreateScreenResources;
     screen->CreateScreenResources = xwl_glamor_create_screen_resources;
 
 #ifdef XV
