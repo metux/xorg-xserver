@@ -77,7 +77,7 @@ PrintPropertys(WindowPtr pWin)
     PropertyPtr pProp;
     int j;
 
-    pProp = pWin->userProps;
+    pProp = pWin->properties;
     while (pProp) {
         ErrorF("[dix] %x %x\n", pProp->propertyName, pProp->type);
         ErrorF("[dix] property format: %d\n", pProp->format);
@@ -98,7 +98,7 @@ dixLookupProperty(PropertyPtr *result, WindowPtr pWin, Atom propertyName,
 
     client->errorValue = propertyName;
 
-    for (pProp = wUserProps(pWin); pProp; pProp = pProp->next)
+    for (pProp = pWin->properties; pProp; pProp = pProp->next)
         if (pProp->propertyName == propertyName)
             break;
 
@@ -299,8 +299,8 @@ dixChangeWindowProperty(ClientPtr pClient, WindowPtr pWin, Atom property,
             pClient->errorValue = property;
             return rc;
         }
-        pProp->next = pWin->optional->userProps;
-        pWin->optional->userProps = pProp;
+        pProp->next = pWin->properties;
+        pWin->properties = pProp;
     }
     else if (rc == Success) {
         /* To append or prepend to a property the request format and type
@@ -384,14 +384,14 @@ DeleteProperty(ClientPtr client, WindowPtr pWin, Atom propName)
         return Success;         /* Succeed if property does not exist */
 
     if (rc == Success) {
-        if (pWin->optional->userProps == pProp) {
+        if (pWin->properties == pProp) {
             /* Takes care of head */
-            if (!(pWin->optional->userProps = pProp->next))
+            if (!(pWin->properties = pProp->next))
                 CheckWindowOptionalNeed(pWin);
         }
         else {
             /* Need to traverse to find the previous element */
-            prevProp = pWin->optional->userProps;
+            prevProp = pWin->properties;
             while (prevProp->next != pProp)
                 prevProp = prevProp->next;
             prevProp->next = pProp->next;
@@ -407,19 +407,17 @@ DeleteProperty(ClientPtr client, WindowPtr pWin, Atom propName)
 void
 DeleteAllWindowProperties(WindowPtr pWin)
 {
-    PropertyPtr pProp, pNextProp;
+    PropertyPtr pProp = pWin->properties;
 
-    pProp = wUserProps(pWin);
     while (pProp) {
         deliverPropertyNotifyEvent(pWin, PropertyDelete, pProp);
-        pNextProp = pProp->next;
+        PropertyPtr pNextProp = pProp->next;
         free(pProp->data);
         dixFreeObjectWithPrivates(pProp, PRIVATE_PROPERTY);
         pProp = pNextProp;
     }
 
-    if (pWin->optional)
-        pWin->optional->userProps = NULL;
+    pWin->properties = NULL;
 }
 
 static int
@@ -554,14 +552,14 @@ ProcGetProperty(ClientPtr client)
 
     if (stuff->delete && (reply.bytesAfter == 0)) {
         /* Delete the Property */
-        if (pWin->optional->userProps == pProp) {
+        if (pWin->properties == pProp) {
             /* Takes care of head */
-            if (!(pWin->optional->userProps = pProp->next))
+            if (!(pWin->properties = pProp->next))
                 CheckWindowOptionalNeed(pWin);
         }
         else {
             /* Need to traverse to find the previous element */
-            prevProp = pWin->optional->userProps;
+            prevProp = pWin->properties;
             while (prevProp->next != pProp)
                 prevProp = prevProp->next;
             prevProp->next = pProp->next;
@@ -589,7 +587,7 @@ ProcListProperties(ClientPtr client)
     if (rc != Success)
         return rc;
 
-    for (pProp = wUserProps(pWin); pProp; pProp = pProp->next)
+    for (pProp = pWin->properties; pProp; pProp = pProp->next)
         numProps++;
 
     if (numProps) {
@@ -599,7 +597,7 @@ ProcListProperties(ClientPtr client)
 
         numProps = 0;
         temppAtoms = pAtoms;
-        for (pProp = wUserProps(pWin); pProp; pProp = pProp->next) {
+        for (pProp = pWin->properties; pProp; pProp = pProp->next) {
             realProp = pProp;
             rc = XaceHookPropertyAccess(client, pWin, &realProp, DixGetAttrAccess);
             if (rc == Success && realProp == pProp) {
