@@ -833,7 +833,8 @@ VBEVesaSaveRestore(vbeInfoPtr pVbe, vbeSaveRestorePtr vbe_sr,
                 vbe_sr->stateMode = -1; /* invalidate */
                 /* don't rely on the memory not being touched */
                 if (vbe_sr->pstate == NULL)
-                    vbe_sr->pstate = malloc(vbe_sr->stateSize);
+                    vbe_sr->pstate = calloc(1, vbe_sr->stateSize);
+                assert(vbe_sr->pstate);
                 memcpy(vbe_sr->pstate, vbe_sr->state, vbe_sr->stateSize);
             }
             ErrorF("VBESaveRestore done with success\n");
