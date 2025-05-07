@@ -313,7 +313,8 @@ xwl_cursor_warped_to(DeviceIntPtr device,
         window = XYToWindow(sprite, x, y);
 
     xwl_window = xwl_window_from_window(window);
-    if (!xwl_window && xwl_seat->focus_window) {
+
+    if (!xwl_window && xwl_seat && xwl_seat->focus_window) {
         focus = xwl_seat->focus_window->toplevel;
 
         /* Warps on non wl_surface backed Windows are only allowed
@@ -525,7 +526,7 @@ registry_global(void *data, struct wl_registry *registry, uint32_t id,
     }
     else if (strcmp(interface, wp_drm_lease_device_v1_interface.name) == 0) {
         if (xwl_screen->screen->root == NULL) {
-            struct xwl_queued_drm_lease_device *queued = malloc(sizeof(struct xwl_queued_drm_lease_device));
+            struct xwl_queued_drm_lease_device *queued = XNFcallocarray(1, sizeof(struct xwl_queued_drm_lease_device));
             queued->id = id;
             xorg_list_append(&queued->link, &xwl_screen->queued_drm_lease_devices);
         } else {
