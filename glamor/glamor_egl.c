@@ -43,6 +43,7 @@
 #include <drm_fourcc.h>
 
 #include "glamor/glamor_priv.h"
+#include "os/bug_priv.h"
 
 #include "glamor_egl.h"
 #include "glamor_glx_provider.h"
@@ -151,6 +152,8 @@ glamor_egl_set_pixmap_image(PixmapPtr pixmap, EGLImageKHR image,
     struct glamor_pixmap_private *pixmap_priv =
         glamor_get_pixmap_private(pixmap);
     EGLImageKHR old;
+
+    BUG_RETURN(!pixmap_priv);
 
     old = pixmap_priv->image;
     if (old) {
@@ -261,6 +264,8 @@ glamor_make_pixmap_exportable(PixmapPtr pixmap, Bool modifiers_ok)
     PixmapPtr exported;
     GCPtr scratch_gc;
 
+    BUG_RETURN_VAL(!pixmap_priv, FALSE);
+
     if (pixmap_priv->image &&
         (modifiers_ok || !pixmap_priv->used_modifiers))
         return TRUE;
@@ -362,6 +367,8 @@ glamor_gbm_bo_from_pixmap_internal(ScreenPtr screen, PixmapPtr pixmap)
         glamor_egl_get_screen_private(xf86ScreenToScrn(screen));
     struct glamor_pixmap_private *pixmap_priv =
         glamor_get_pixmap_private(pixmap);
+
+    BUG_RETURN_VAL(!pixmap_priv, NULL);
 
     if (!pixmap_priv->image)
         return NULL;
@@ -753,6 +760,8 @@ glamor_egl_destroy_pixmap(PixmapPtr pixmap)
         struct glamor_pixmap_private *pixmap_priv =
             glamor_get_pixmap_private(pixmap);
 
+        BUG_RETURN_VAL(!pixmap_priv, FALSE);
+
         if (pixmap_priv->image)
             eglDestroyImageKHR(glamor_egl->display, pixmap_priv->image);
     }
@@ -780,8 +789,10 @@ glamor_egl_exchange_buffers(PixmapPtr front, PixmapPtr back)
 
     temp_img = back_priv->image;
     temp_mod = back_priv->used_modifiers;
+    BUG_RETURN(!back_priv);
     back_priv->image = front_priv->image;
     back_priv->used_modifiers = front_priv->used_modifiers;
+    BUG_RETURN(!front_priv);
     front_priv->image = temp_img;
     front_priv->used_modifiers = temp_mod;
 
@@ -800,7 +811,9 @@ glamor_egl_close_screen(ScreenPtr screen)
     scrn = xf86ScreenToScrn(screen);
     glamor_egl = glamor_egl_get_screen_private(scrn);
     screen_pixmap = screen->GetScreenPixmap(screen);
+
     pixmap_priv = glamor_get_pixmap_private(screen_pixmap);
+    BUG_RETURN_VAL(!pixmap_priv, FALSE);
 
     eglDestroyImageKHR(glamor_egl->display, pixmap_priv->image);
     pixmap_priv->image = NULL;

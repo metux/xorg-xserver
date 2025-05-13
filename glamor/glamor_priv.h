@@ -31,6 +31,8 @@
 
 #include <X11/Xfuncproto.h>
 
+#include "os/bug_priv.h"
+
 #include "glamor.h"
 #include "xvdix.h"
 
@@ -463,7 +465,7 @@ static inline Bool
 glamor_pixmap_drm_only(PixmapPtr pixmap)
 {
     glamor_pixmap_private *priv = glamor_get_pixmap_private(pixmap);
-
+    BUG_RETURN_VAL(!priv, FALSE);
     return priv->type == GLAMOR_DRM_ONLY;
 }
 
@@ -474,7 +476,7 @@ static inline Bool
 glamor_pixmap_is_memory(PixmapPtr pixmap)
 {
     glamor_pixmap_private *priv = glamor_get_pixmap_private(pixmap);
-
+    BUG_RETURN_VAL(!priv, FALSE);
     return priv->type == GLAMOR_MEMORY;
 }
 
@@ -484,12 +486,14 @@ glamor_pixmap_is_memory(PixmapPtr pixmap)
 static inline Bool
 glamor_pixmap_priv_is_large(glamor_pixmap_private *priv)
 {
+    BUG_RETURN_VAL(!priv, FALSE);
     return priv->block_wcnt > 1 || priv->block_hcnt > 1;
 }
 
 static inline Bool
 glamor_pixmap_priv_is_small(glamor_pixmap_private *priv)
 {
+    BUG_RETURN_VAL(!priv, FALSE);
     return priv->block_wcnt <= 1 && priv->block_hcnt <= 1;
 }
 
@@ -507,7 +511,7 @@ static inline Bool
 glamor_pixmap_has_fbo(PixmapPtr pixmap)
 {
     glamor_pixmap_private *priv = glamor_get_pixmap_private(pixmap);
-
+    BUG_RETURN_VAL(!priv, FALSE);
     return priv->gl_fbo == GLAMOR_FBO_NORMAL;
 }
 
@@ -515,6 +519,7 @@ static inline void
 glamor_set_pixmap_fbo_current(glamor_pixmap_private *priv, int idx)
 {
     if (glamor_pixmap_priv_is_large(priv)) {
+        BUG_RETURN(!priv);
         priv->fbo = priv->fbo_array[idx];
         priv->box = priv->box_array[idx];
     }
@@ -523,6 +528,7 @@ glamor_set_pixmap_fbo_current(glamor_pixmap_private *priv, int idx)
 static inline glamor_pixmap_fbo *
 glamor_pixmap_fbo_at(glamor_pixmap_private *priv, int box)
 {
+    assert(priv);
     assert(box < priv->block_wcnt * priv->block_hcnt);
     return priv->fbo_array[box];
 }
@@ -530,6 +536,7 @@ glamor_pixmap_fbo_at(glamor_pixmap_private *priv, int box)
 static inline BoxPtr
 glamor_pixmap_box_at(glamor_pixmap_private *priv, int box)
 {
+    assert(priv);
     assert(box < priv->block_wcnt * priv->block_hcnt);
     return &priv->box_array[box];
 }
@@ -537,12 +544,14 @@ glamor_pixmap_box_at(glamor_pixmap_private *priv, int box)
 static inline int
 glamor_pixmap_wcnt(glamor_pixmap_private *priv)
 {
+    BUG_RETURN_VAL(!priv, 0);
     return priv->block_wcnt;
 }
 
 static inline int
 glamor_pixmap_hcnt(glamor_pixmap_private *priv)
 {
+    BUG_RETURN_VAL(!priv, 0);
     return priv->block_hcnt;
 }
 
