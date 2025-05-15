@@ -220,10 +220,11 @@ ProcRRGetProviderInfo (ClientPtr client)
     }
     if (provider->output_source) {
         providers[i] = provider->output_source->id;
-        if (client->swapped)
-            swapl(&providers[i]);
         prov_cap[i] = RR_Capability_SourceOutput;
+        if (client->swapped) {
+            swapl(&providers[i]);
             swapl(&prov_cap[i]);
+        }
         i++;
     }
     xorg_list_for_each_entry(provscreen, &pScreen->secondary_list, secondary_head) {
@@ -245,7 +246,7 @@ ProcRRGetProviderInfo (ClientPtr client)
 
     memcpy(name, provider->name, rep.nameLength);
     if (client->swapped) {
-              swaps(&rep.sequenceNumber);
+        swaps(&rep.sequenceNumber);
         swapl(&rep.length);
         swapl(&rep.capabilities);
         swaps(&rep.nCrtcs);
