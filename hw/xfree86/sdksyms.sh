@@ -251,7 +251,6 @@ cat > sdksyms.c << EOF
 #include "pixmapstr.h"
 #include "privates.h"
 #include "property.h"
-#include "propertyst.h"
 #include "ptrveloc.h"
 #include "region.h"
 #include "regionstr.h"
