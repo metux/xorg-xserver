@@ -720,6 +720,17 @@ rrCheckEmulated(RROutputPtr output)
     return FALSE;
 }
 
+
+/*
+ * Check whether the pending and current transforms are the same
+ */
+static inline Bool
+RRCrtcPendingTransform(RRCrtcPtr crtc)
+{
+    return !RRTransformEqual(&crtc->client_current_transform,
+                             &crtc->client_pending_transform);
+}
+
 /*
  * Request that the Crtc be reconfigured
  */
@@ -852,16 +863,6 @@ RRCrtcGetTransform(RRCrtcPtr crtc)
     if (pixman_transform_is_identity(&transform->transform))
         return NULL;
     return transform;
-}
-
-/*
- * Check whether the pending and current transforms are the same
- */
-Bool
-RRCrtcPendingTransform(RRCrtcPtr crtc)
-{
-    return !RRTransformEqual(&crtc->client_current_transform,
-                             &crtc->client_pending_transform);
 }
 
 /*

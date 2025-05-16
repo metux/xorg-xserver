@@ -662,12 +662,6 @@ extern _X_EXPORT void
 extern _X_EXPORT RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
 
 /*
- * Check whether the pending and current transforms are the same
- */
-extern _X_EXPORT Bool
- RRCrtcPendingTransform(RRCrtcPtr crtc);
-
-/*
  * Destroy a Crtc at shutdown
  */
 extern _X_EXPORT void
