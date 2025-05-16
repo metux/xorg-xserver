@@ -259,4 +259,11 @@ Bool RRHasScanoutPixmap(ScreenPtr pScreen);
  */
 Bool RRClientKnowsRates(ClientPtr pClient);
 
+/*
+ * Called by DIX to notify RANDR extension that a lease had been terminated.
+ *
+ * @param lease   the lease that had been terminated
+ */
+void RRLeaseTerminated(RRLeasePtr lease);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
