@@ -371,4 +371,11 @@ void RROutputInitErrorValue(void);
  */
 void RRPointerScreenConfigured(ScreenPtr pScreen);
 
+/*
+ * Delete all properties on given output
+ *
+ * @param output  the output whose properties shall be deleted
+ */
+void RRDeleteAllOutputProperties(RROutputPtr output);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

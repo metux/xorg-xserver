@@ -650,11 +650,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
-/* rrproperty.c */
-
-extern _X_EXPORT void
- RRDeleteAllOutputProperties(RROutputPtr output);
-
 extern _X_EXPORT RRPropertyValuePtr
 RRGetOutputProperty(RROutputPtr output, Atom property, Bool pending);
 
