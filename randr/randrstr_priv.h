@@ -388,6 +388,15 @@ void RRPointerScreenConfigured(ScreenPtr pScreen);
 RRPropertyValuePtr RRGetOutputProperty(RROutputPtr output, Atom property, Bool pending);
 
 /*
+ * Retrieve full property structure from output
+ *
+ * @param output    the output to query
+ * @param property  Atom ID of the property to query
+ * @return pointer to property structure, or NULL if not found
+ */
+RRPropertyPtr RRQueryOutputProperty(RROutputPtr output, Atom property);
+
+/*
  * Delete all properties on given output
  *
  * @param output  the output whose properties shall be deleted
