@@ -555,11 +555,6 @@ RRSetCurrentConfig(ScreenPtr pScreen,
 extern _X_EXPORT RRCrtcPtr RRCrtcCreate(ScreenPtr pScreen, void *devPrivate);
 
 /*
- * Tests if findCrtc belongs to pScreen or secondary screens
- */
-extern _X_EXPORT Bool RRCrtcExists(ScreenPtr pScreen, RRCrtcPtr findCrtc);
-
-/*
  * Set the allowed rotations on a CRTC
  */
 extern _X_EXPORT void

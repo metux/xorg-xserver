@@ -167,4 +167,13 @@ Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
  */
 CARD16 RRVerticalRefresh(xRRModeInfo * mode);
 
+/*
+ * Tests if findCrtc belongs to pScreen or secondary screens
+ *
+ * @param pScreen the screen to check on
+ * @param findCrtc the Crtc to check for
+ * @return TRUE if given CRTC belongs to pScreen / secondard screens
+ */
+Bool RRCrtcExists(ScreenPtr pScreen, RRCrtcPtr findCrtc);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
