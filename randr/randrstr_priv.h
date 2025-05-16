@@ -401,4 +401,12 @@ void RRProviderInitErrorValue(void);
 RRProviderPtr RRProviderCreate(ScreenPtr pScreen, const char *name,
                                int nameLen);
 
+/*
+ * Set provider capabilities field
+ *
+ * @param provider      the provider whose capabilities are to be set
+ * @param capabilities  the new capabilities
+ */
+void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
