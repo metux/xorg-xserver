@@ -650,9 +650,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
-extern _X_EXPORT void
- RRPointerScreenConfigured(ScreenPtr pScreen);
-
 /* rrproperty.c */
 
 extern _X_EXPORT void

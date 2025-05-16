@@ -363,4 +363,12 @@ Bool RROutputInit(void);
  */
 void RROutputInitErrorValue(void);
 
+/*
+ * When the screen is reconfigured, move all pointers to the nearest
+ * CRTC
+ *
+ * @param pScreen the screen that had been reconfigured
+ */
+void RRPointerScreenConfigured(ScreenPtr pScreen);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
