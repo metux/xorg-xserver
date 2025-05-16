@@ -657,15 +657,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaGet(RRCrtcPtr crtc);
 
 /*
- * Notify the extension that the Crtc gamma has been changed
- * The driver calls this whenever it has changed the gamma values
- * in the RRCrtcRec
- */
-
-extern _X_EXPORT Bool
- RRCrtcGammaNotify(RRCrtcPtr crtc);
-
-/*
  * Set the size of the gamma table at server startup time
  */
 

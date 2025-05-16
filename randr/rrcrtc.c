@@ -1005,19 +1005,6 @@ Bool RRCrtcExists(ScreenPtr pScreen, RRCrtcPtr findCrtc)
     return FALSE;
 }
 
-
-/*
- * Notify the extension that the Crtc gamma has been changed
- * The driver calls this whenever it has changed the gamma values
- * in the RRCrtcRec
- */
-
-Bool
-RRCrtcGammaNotify(RRCrtcPtr crtc)
-{
-    return TRUE;                /* not much going on here */
-}
-
 static void
 RRModeGetScanoutSize(RRModePtr mode, PictTransformPtr transform,
                      int *width, int *height)
