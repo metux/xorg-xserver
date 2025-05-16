@@ -499,27 +499,6 @@ extern _X_EXPORT void
  RRSendConfigNotify(ScreenPtr pScreen);
 
 /*
- * screen dispatch
- */
-extern _X_EXPORT int
- ProcRRGetScreenSizeRange(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRSetScreenSize(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetScreenResources(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetScreenResourcesCurrent(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRSetScreenConfig(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetScreenInfo(ClientPtr client);
-
-/*
  * Deliver a ScreenNotify event
  */
 extern _X_EXPORT void
