@@ -281,4 +281,12 @@ void RRLeaseFree(RRLeasePtr lease);
  */
 Bool RRCrtcIsLeased(RRCrtcPtr crtc);
 
+/*
+ * Check whether given output is leased
+ *
+ * @param output  the output to check
+ * @return TRUE if theere is any active lease on that output
+ */
+Bool RROutputIsLeased(RROutputPtr output);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
