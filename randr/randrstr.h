@@ -561,12 +561,6 @@ extern _X_EXPORT void
  RRCrtcSetRotations(RRCrtcPtr crtc, Rotation rotations);
 
 /*
- * Set whether transforms are allowed on a CRTC
- */
-extern _X_EXPORT void
- RRCrtcSetTransformSupport(RRCrtcPtr crtc, Bool transforms);
-
-/*
  * Notify the extension that the Crtc has been reconfigured,
  * the driver calls this whenever it has updated the mode
  */
