@@ -218,4 +218,9 @@ RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
  */
 void RRCrtcDestroy(RRCrtcPtr crtc);
 
+/*
+ * Initialize crtc resource type
+ */
+Bool RRCrtcInit(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

@@ -596,12 +596,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
 /*
- * Initialize crtc type
- */
-extern _X_EXPORT Bool
- RRCrtcInit(void);
-
-/*
  * Initialize crtc type error value
  */
 extern _X_EXPORT void
