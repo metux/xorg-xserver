@@ -648,9 +648,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
-extern _X_EXPORT RRPropertyValuePtr
-RRGetOutputProperty(RROutputPtr output, Atom property, Bool pending);
-
 extern _X_EXPORT RRPropertyPtr
 RRQueryOutputProperty(RROutputPtr output, Atom property);
 
