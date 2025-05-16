@@ -385,4 +385,9 @@ void RRDeleteAllOutputProperties(RROutputPtr output);
  */
 Bool RRProviderInit(void);
 
+/*
+ * Initialize RR provider error values
+ */
+void RRProviderInitErrorValue(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
