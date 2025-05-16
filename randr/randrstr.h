@@ -675,10 +675,6 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 /* rrprovider.c */
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
 
-extern _X_EXPORT RRProviderPtr
-RRProviderCreate(ScreenPtr pScreen, const char *name,
-                 int nameLength);
-
 extern _X_EXPORT void
 RRProviderDestroy (RRProviderPtr provider);
 
