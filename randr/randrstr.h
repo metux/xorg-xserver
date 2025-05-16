@@ -595,9 +595,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
-extern _X_EXPORT void
-RRLeaseFree(RRLeasePtr lease);
-
 extern _X_EXPORT Bool
 RRCrtcIsLeased(RRCrtcPtr crtc);
 

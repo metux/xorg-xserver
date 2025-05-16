@@ -266,4 +266,11 @@ Bool RRClientKnowsRates(ClientPtr pClient);
  */
 void RRLeaseTerminated(RRLeasePtr lease);
 
+/*
+ * Free a RRLease structure
+ *
+ * @param lease   pointer to the lease to be freed
+ */
+void RRLeaseFree(RRLeasePtr lease);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
