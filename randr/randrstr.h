@@ -589,13 +589,6 @@ RRSetCurrentConfig(ScreenPtr pScreen,
 /* rrcrtc.c */
 
 /*
- * Notify the CRTC of some change; layoutChanged indicates that
- * some position or size element changed
- */
-extern _X_EXPORT void
- RRCrtcChanged(RRCrtcPtr crtc, Bool layoutChanged);
-
-/*
  * Create a CRTC
  */
 extern _X_EXPORT RRCrtcPtr RRCrtcCreate(ScreenPtr pScreen, void *devPrivate);

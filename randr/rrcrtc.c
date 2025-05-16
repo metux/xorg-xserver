@@ -32,7 +32,7 @@ RESTYPE RRCrtcType = 0;
 /*
  * Notify the CRTC of some change
  */
-void
+static void
 RRCrtcChanged(RRCrtcPtr crtc, Bool layoutChanged)
 {
     ScreenPtr pScreen = crtc->pScreen;
