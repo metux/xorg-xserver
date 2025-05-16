@@ -651,12 +651,6 @@ extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
 /*
- * Initialize output type
- */
-extern _X_EXPORT Bool
- RROutputInit(void);
-
-/*
  * Initialize output type error value
  */
 extern _X_EXPORT void

@@ -351,4 +351,11 @@ void RROutputSetSubpixelOrder(RROutputPtr output, int order);
  */
 void RRDeliverOutputEvent(ClientPtr pClient, WindowPtr pWin, RROutputPtr output);
 
+/*
+ * Initialize output resource type
+ *
+ * @return TRUE on success
+ */
+Bool RROutputInit(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
