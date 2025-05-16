@@ -595,12 +595,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
-/*
- * Return if the screen has any scanout_pixmap's attached
- */
-extern _X_EXPORT Bool
- RRHasScanoutPixmap(ScreenPtr pScreen);
-
 /* rrdispatch.c */
 extern _X_EXPORT Bool
  RRClientKnowsRates(ClientPtr pClient);

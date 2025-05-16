@@ -242,4 +242,12 @@ void RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
  */
 Bool RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enable);
 
+/*
+ * Check whether given screen has any scanout pixmap attached
+ *
+ * @param pScreen the screen to check
+ * @return TRUE if the screen has a scanout pixmap attached
+ */
+Bool RRHasScanoutPixmap(ScreenPtr pScreen);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
