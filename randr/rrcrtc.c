@@ -946,7 +946,7 @@ RRCrtcGammaSet(RRCrtcPtr crtc, CARD16 *red, CARD16 *green, CARD16 *blue)
  * Request current gamma back from the DDX (if possible).
  * This includes gamma size.
  */
-Bool
+static Bool
 RRCrtcGammaGet(RRCrtcPtr crtc)
 {
     Bool ret = TRUE;

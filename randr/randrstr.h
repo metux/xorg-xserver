@@ -642,14 +642,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaSet(RRCrtcPtr crtc, CARD16 *red, CARD16 *green, CARD16 *blue);
 
 /*
- * Request current gamma back from the DDX (if possible).
- * This includes gamma size.
- */
-
-extern _X_EXPORT Bool
- RRCrtcGammaGet(RRCrtcPtr crtc);
-
-/*
  * Set the size of the gamma table at server startup time
  */
 
