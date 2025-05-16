@@ -301,4 +301,11 @@ Bool RROutputIsLeased(RROutputPtr output);
  */
 RRModePtr *RRModesForScreen(ScreenPtr pScreen, int *num_ret);
 
+/*
+ * Initialize mode resource type
+ *
+ * @return TRUE on success
+ */
+Bool RRModeInit(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

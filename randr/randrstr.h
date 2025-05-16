@@ -610,12 +610,6 @@ extern _X_EXPORT void
  RRModeDestroy(RRModePtr mode);
 
 /*
- * Initialize mode type
- */
-extern _X_EXPORT Bool
- RRModeInit(void);
-
-/*
  * Initialize mode type error value
  */
 extern _X_EXPORT void
