@@ -32,4 +32,15 @@ int ProcRRDestroyMode(ClientPtr client);
 int ProcRRAddOutputMode(ClientPtr client);
 int ProcRRDeleteOutputMode(ClientPtr client);
 
+/* output related dispatch */
+int ProcRRGetOutputInfo(ClientPtr client);
+int ProcRRSetOutputPrimary(ClientPtr client);
+int ProcRRGetOutputPrimary(ClientPtr client);
+int ProcRRChangeOutputProperty(ClientPtr client);
+int ProcRRGetOutputProperty(ClientPtr client);
+int ProcRRListOutputProperties(ClientPtr client);
+int ProcRRQueryOutputProperty(ClientPtr client);
+int ProcRRConfigureOutputProperty(ClientPtr client);
+int ProcRRDeleteOutputProperty(ClientPtr client);
+
 #endif /* _XSERVER_RANDR_RRDISPATCH_H */

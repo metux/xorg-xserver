@@ -773,15 +773,6 @@ extern _X_EXPORT void
 extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
-extern _X_EXPORT int
- ProcRRGetOutputInfo(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRSetOutputPrimary(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetOutputPrimary(ClientPtr client);
-
 /*
  * Initialize output type
  */
@@ -823,23 +814,6 @@ extern _X_EXPORT int
 RRConfigureOutputProperty(RROutputPtr output, Atom property,
                           Bool pending, Bool range, Bool immutable,
                           int num_values, const INT32 *values);
-extern _X_EXPORT int
- ProcRRChangeOutputProperty(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetOutputProperty(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRListOutputProperties(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRQueryOutputProperty(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRConfigureOutputProperty(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRDeleteOutputProperty(ClientPtr client);
 
 /* rrprovider.c */
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
