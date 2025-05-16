@@ -334,4 +334,12 @@ int RROutputAddUserMode(RROutputPtr output, RRModePtr mode);
  */
 int RROutputDeleteUserMode(RROutputPtr output, RRModePtr mode);
 
+/*
+ * Set subpixel order on given output
+ *
+ * @param output  the output to set subpixel order on
+ * @param order   subpixel order value to set
+ */
+void RROutputSetSubpixelOrder(RROutputPtr output, int order);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

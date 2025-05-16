@@ -287,15 +287,13 @@ RROutputSetConnection(RROutputPtr output, CARD8 connection)
     return TRUE;
 }
 
-Bool
-RROutputSetSubpixelOrder(RROutputPtr output, int subpixelOrder)
+void RROutputSetSubpixelOrder(RROutputPtr output, int subpixelOrder)
 {
     if (output->subpixelOrder == subpixelOrder)
-        return TRUE;
+        return;
 
     output->subpixelOrder = subpixelOrder;
     RROutputChanged(output, FALSE);
-    return TRUE;
 }
 
 Bool

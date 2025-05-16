@@ -645,9 +645,6 @@ extern _X_EXPORT Bool
  RROutputSetConnection(RROutputPtr output, CARD8 connection);
 
 extern _X_EXPORT Bool
- RROutputSetSubpixelOrder(RROutputPtr output, int subpixelOrder);
-
-extern _X_EXPORT Bool
  RROutputSetPhysicalSize(RROutputPtr output, int mmWidth, int mmHeight);
 
 extern _X_EXPORT void
