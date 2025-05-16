@@ -596,11 +596,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
 /*
- * Return crtc transform
- */
-extern _X_EXPORT RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
-
-/*
  * Destroy a Crtc at shutdown
  */
 extern _X_EXPORT void

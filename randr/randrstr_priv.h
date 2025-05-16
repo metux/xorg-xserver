@@ -203,4 +203,12 @@ void RRDeliverCrtcEvent(ClientPtr pClient, WindowPtr pWin, RRCrtcPtr crtc);
  */
 void RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
 
+/*
+ * Retrieve CRTCs current transform
+ *
+ * @param crtc    the CRTC to query
+ * @return        pointer to CRTCs current transform
+ */
+RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
