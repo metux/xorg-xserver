@@ -43,4 +43,16 @@ int ProcRRQueryOutputProperty(ClientPtr client);
 int ProcRRConfigureOutputProperty(ClientPtr client);
 int ProcRRDeleteOutputProperty(ClientPtr client);
 
+/* provider related dispatch */
+int ProcRRGetProviders(ClientPtr client);
+int ProcRRGetProviderInfo(ClientPtr client);
+int ProcRRSetProviderOutputSource(ClientPtr client);
+int ProcRRSetProviderOffloadSink(ClientPtr client);
+int ProcRRGetProviderProperty(ClientPtr client);
+int ProcRRListProviderProperties(ClientPtr client);
+int ProcRRQueryProviderProperty(ClientPtr client);
+int ProcRRConfigureProviderProperty(ClientPtr client);
+int ProcRRChangeProviderProperty(ClientPtr client);
+int ProcRRDeleteProviderProperty(ClientPtr client);
+
 #endif /* _XSERVER_RANDR_RRDISPATCH_H */

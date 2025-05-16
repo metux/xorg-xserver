@@ -820,18 +820,6 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 extern _X_EXPORT void
 RRProviderInitErrorValue(void);
 
-extern _X_EXPORT int
-ProcRRGetProviders(ClientPtr client);
-
-extern _X_EXPORT int
-ProcRRGetProviderInfo(ClientPtr client);
-
-extern _X_EXPORT int
-ProcRRSetProviderOutputSource(ClientPtr client);
-
-extern _X_EXPORT int
-ProcRRSetProviderOffloadSink(ClientPtr client);
-
 extern _X_EXPORT Bool
 RRProviderInit(void);
 
@@ -869,24 +857,6 @@ extern _X_EXPORT int
  RRConfigureProviderProperty(RRProviderPtr provider, Atom property,
                              Bool pending, Bool range, Bool immutable,
                              int num_values, INT32 *values);
-
-extern _X_EXPORT int
- ProcRRGetProviderProperty(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRListProviderProperties(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRQueryProviderProperty(ClientPtr client);
-
-extern _X_EXPORT int
-ProcRRConfigureProviderProperty(ClientPtr client);
-
-extern _X_EXPORT int
-ProcRRChangeProviderProperty(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRDeleteProviderProperty(ClientPtr client);
 
 /* rrxinerama.c */
 #ifdef XINERAMA
