@@ -38,6 +38,12 @@ extern int RREventBase, RRErrorBase;
 extern RESTYPE RRClientType, RREventType;     /* resource types for event masks */
 extern DevPrivateKeyRec RRClientPrivateKeyRec;
 
+extern RESTYPE RRCrtcType;      /* X resource type: Randr CRTC */
+extern RESTYPE RRModeType;      /* X resource type: Randr MODE */
+extern RESTYPE RROutputType;    /* X resource type: Randr OUTPUT */
+extern RESTYPE RRProviderType;  /* X resource type: Randr PROVIDER */
+extern RESTYPE RRLeaseType;     /* X resource type: Randr LEASE */
+
 #define RRClientPrivateKey (&RRClientPrivateKeyRec)
 
 #define VERIFY_RR_OUTPUT(id, ptr, a)\

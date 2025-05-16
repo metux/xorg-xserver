@@ -462,8 +462,6 @@ typedef struct _RRClient {
 /*  RRTimesRec	times[0]; */
 } RRClientRec, *RRClientPtr;
 
-extern _X_EXPORT RESTYPE RRCrtcType, RRModeType, RROutputType, RRProviderType, RRLeaseType;
-
 #ifdef RANDR_12_INTERFACE
 /*
  * Set the range of sizes for the screen
