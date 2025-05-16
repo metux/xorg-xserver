@@ -523,4 +523,11 @@ int RRConfigureProviderProperty(RRProviderPtr provider, Atom property,
  */
 void RRXineramaExtensionInit(void);
 
+/*
+ * Init transform structure
+ *
+ * @param transform   the transform structure to initialized
+ */
+void RRTransformInit(RRTransformPtr transform);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

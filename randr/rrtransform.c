@@ -19,9 +19,10 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
  * OF THIS SOFTWARE.
  */
+#include <dix-config.h>
 
-#include "randrstr.h"
-#include "rrtransform.h"
+#include "randr/randrstr_priv.h"
+#include "randr/rrtransform.h"
 
 void
 RRTransformInit(RRTransformPtr transform)

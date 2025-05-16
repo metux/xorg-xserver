@@ -39,9 +39,6 @@ struct _rrTransform {
     int height;
 };
 
-extern _X_EXPORT void
- RRTransformInit(RRTransformPtr transform);
-
 extern _X_EXPORT Bool
  RRTransformEqual(RRTransformPtr a, RRTransformPtr b);
 
