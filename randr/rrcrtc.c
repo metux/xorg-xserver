@@ -21,7 +21,9 @@
  * OF THIS SOFTWARE.
  */
 
-#include "randrstr_priv.h"
+#include "randr/randrstr_priv.h"
+#include "randr/rrdispatch_priv.h"
+
 #include "swaprep.h"
 #include "mipointer.h"
 

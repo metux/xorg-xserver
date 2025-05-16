@@ -673,31 +673,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  RRHasScanoutPixmap(ScreenPtr pScreen);
 
-/*
- * Crtc dispatch
- */
-
-extern _X_EXPORT int
- ProcRRGetCrtcInfo(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRSetCrtcConfig(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetCrtcGammaSize(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetCrtcGamma(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRSetCrtcGamma(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRSetCrtcTransform(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRGetCrtcTransform(ClientPtr client);
-
 /* rrdispatch.c */
 extern _X_EXPORT Bool
  RRClientKnowsRates(ClientPtr pClient);
