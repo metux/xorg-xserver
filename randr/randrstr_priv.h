@@ -29,6 +29,8 @@
 #ifndef _XSERVER_RANDRSTR_PRIV_H_
 #define _XSERVER_RANDRSTR_PRIV_H_
 
+#include <X11/Xdefs.h>
+
 #include "randrstr.h"
 
 extern int RREventBase, RRErrorBase;
@@ -134,5 +136,12 @@ void RRDeliverScreenEvent(ClientPtr pClient, WindowPtr pWin, ScreenPtr pScreen);
  * @param pScreen the screen where changes occoured
  */
 void RRResourcesChanged(ScreenPtr pScreen);
+
+/*
+ * Initialize randr subsystem
+ *
+ * @return TRUE on success
+ */
+Bool RRInit(void);
 
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

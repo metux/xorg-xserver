@@ -20,6 +20,7 @@
  * TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
  * OF THIS SOFTWARE.
  */
+#include <dix-config.h>
 
 #include "randr/randrstr_priv.h"
 #include "randr/rrdispatch_priv.h"
