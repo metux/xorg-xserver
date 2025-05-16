@@ -498,9 +498,6 @@ RRScreenSizeSet(ScreenPtr pScreen,
 extern _X_EXPORT void
  RRSendConfigNotify(ScreenPtr pScreen);
 
-extern _X_EXPORT void
- RRResourcesChanged(ScreenPtr pScreen);
-
 /* randr.c */
 /* set a screen change on the primary screen */
 extern _X_EXPORT void

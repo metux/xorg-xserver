@@ -128,4 +128,11 @@ void RRMonitorFree(RRMonitorPtr monitor);
  */
 void RRDeliverScreenEvent(ClientPtr pClient, WindowPtr pWin, ScreenPtr pScreen);
 
+/*
+ * Mark screen resources as changed, so listeners will get updates on them.
+ *
+ * @param pScreen the screen where changes occoured
+ */
+void RRResourcesChanged(ScreenPtr pScreen);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

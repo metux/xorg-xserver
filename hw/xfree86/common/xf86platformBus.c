@@ -39,6 +39,7 @@
 
 #include "config/hotplug_priv.h"
 #include "dix/screenint_priv.h"
+#include "randr/randrstr_priv.h"
 
 #include "os.h"
 #include "systemd-logind.h"
@@ -56,7 +57,6 @@
 #include "xf86Config.h"
 #include "xf86Crtc.h"
 
-#include "randrstr.h"
 int platformSlotClaimed;
 
 int xf86_num_platform_devices;
