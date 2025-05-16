@@ -416,4 +416,13 @@ void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
  */
 void RRProviderDestroy (RRProviderPtr provider);
 
+/*
+ * Deliver provider ProviderChangeNotify event to client
+ *
+ * @param pClient   the client to send even to
+ * @param pWin      the window whose screen was changed
+ * @param provider  the provider which was changed
+ */
+void RRDeliverProviderEvent(ClientPtr pClient, WindowPtr pWin, RRProviderPtr provider);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
