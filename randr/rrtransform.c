@@ -34,12 +34,6 @@ RRTransformInit(RRTransformPtr transform)
     transform->nparams = 0;
 }
 
-void
-RRTransformFini(RRTransformPtr transform)
-{
-    free(transform->params);
-}
-
 Bool
 RRTransformEqual(RRTransformPtr a, RRTransformPtr b)
 {

@@ -42,9 +42,6 @@ struct _rrTransform {
 extern _X_EXPORT void
  RRTransformInit(RRTransformPtr transform);
 
-extern _X_EXPORT void
- RRTransformFini(RRTransformPtr transform);
-
 extern _X_EXPORT Bool
  RRTransformEqual(RRTransformPtr a, RRTransformPtr b);
 
