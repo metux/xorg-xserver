@@ -342,4 +342,13 @@ int RROutputDeleteUserMode(RROutputPtr output, RRModePtr mode);
  */
 void RROutputSetSubpixelOrder(RROutputPtr output, int order);
 
+/*
+ * Deliver RROutputChangeNotify event to client
+ *
+ * @param pClient the client to send notify even to
+ * @param pWin    the window who's screen is acted on
+ * @param output  the output who's changes are delivered
+ */
+void RRDeliverOutputEvent(ClientPtr pClient, WindowPtr pWin, RROutputPtr output);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

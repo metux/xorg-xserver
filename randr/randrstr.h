@@ -648,9 +648,6 @@ extern _X_EXPORT Bool
  RROutputSetPhysicalSize(RROutputPtr output, int mmWidth, int mmHeight);
 
 extern _X_EXPORT void
- RRDeliverOutputEvent(ClientPtr client, WindowPtr pWin, RROutputPtr output);
-
-extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
 /*
