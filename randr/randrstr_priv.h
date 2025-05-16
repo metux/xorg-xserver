@@ -433,4 +433,14 @@ void RRDeliverProviderEvent(ClientPtr pClient, WindowPtr pWin, RRProviderPtr pro
  */
 void RRProviderAutoConfigGpuScreen(ScreenPtr pScreen, ScreenPtr primaryScreen);
 
+/*
+ * Retrieve property value from provider
+ *
+ * @param provider  the provider to query
+ * @param property  Atom ID of the property to retrieve
+ * @param pending   TRUE if pending (instead of current) value shall be fetched
+ * @return pointer to property value if found, otherwise NULL
+ */
+RRPropertyValuePtr RRGetProviderProperty(RRProviderPtr provider, Atom property, Bool pending);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
