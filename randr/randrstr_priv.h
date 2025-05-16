@@ -324,4 +324,14 @@ void RRModeInitErrorValue(void);
  */
 int RROutputAddUserMode(RROutputPtr output, RRModePtr mode);
 
+/*
+ * Delete user-given mode (that had been added via RROutputAddUserMode)
+ * from output.
+ *
+ * @param output  the output from which the mode is to be removed
+ * @param mode    the mode to be removed from output
+ * @return X error code
+ */
+int RROutputDeleteUserMode(RROutputPtr output, RRModePtr mode);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

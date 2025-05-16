@@ -638,9 +638,6 @@ extern _X_EXPORT Bool
 RROutputSetModes(RROutputPtr output,
                  RRModePtr * modes, int numModes, int numPreferred);
 
-extern _X_EXPORT int
- RROutputDeleteUserMode(RROutputPtr output, RRModePtr mode);
-
 extern _X_EXPORT Bool
  RROutputSetCrtcs(RROutputPtr output, RRCrtcPtr * crtcs, int numCrtcs);
 
