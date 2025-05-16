@@ -595,12 +595,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
-/*
- * Detach and free a scanout pixmap
- */
-extern _X_EXPORT void
- RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
-
 extern _X_EXPORT Bool
  RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enable);
 

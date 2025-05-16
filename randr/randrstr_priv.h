@@ -229,4 +229,11 @@ Bool RRCrtcInit(void);
  */
 void RRCrtcInitErrorValue(void);
 
+/*
+ * Detach and free a scanout pixmap
+ *
+ * @param crtc    the CRTC to act on
+ */
+void RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

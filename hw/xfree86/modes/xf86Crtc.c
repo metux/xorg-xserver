@@ -29,6 +29,8 @@
 #include <string.h>
 #include <stdio.h>
 
+#include "randr/randrstr_priv.h"
+
 #include "xf86.h"
 #include "xf86DDC_priv.h"
 #include "xf86Crtc.h"
