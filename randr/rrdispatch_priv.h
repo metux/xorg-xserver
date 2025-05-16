@@ -26,4 +26,10 @@ int ProcRRSetCrtcGamma(ClientPtr client);
 int ProcRRSetCrtcTransform(ClientPtr client);
 int ProcRRGetCrtcTransform(ClientPtr client);
 
+/* mode related dispatch */
+int ProcRRCreateMode(ClientPtr client);
+int ProcRRDestroyMode(ClientPtr client);
+int ProcRRAddOutputMode(ClientPtr client);
+int ProcRRDeleteOutputMode(ClientPtr client);
+
 #endif /* _XSERVER_RANDR_RRDISPATCH_H */

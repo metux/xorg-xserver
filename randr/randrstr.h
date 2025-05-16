@@ -720,18 +720,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT void
  RRModeInitErrorValue(void);
 
-extern _X_EXPORT int
- ProcRRCreateMode(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRDestroyMode(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRAddOutputMode(ClientPtr client);
-
-extern _X_EXPORT int
- ProcRRDeleteOutputMode(ClientPtr client);
-
 /* rroutput.c */
 
 /*
