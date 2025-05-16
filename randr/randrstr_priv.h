@@ -308,4 +308,11 @@ RRModePtr *RRModesForScreen(ScreenPtr pScreen, int *num_ret);
  */
 Bool RRModeInit(void);
 
+/*
+ * Initialize mode type error value
+ *
+ * @return TRUE on success
+ */
+void RRModeInitErrorValue(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

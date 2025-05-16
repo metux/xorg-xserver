@@ -609,12 +609,6 @@ extern _X_EXPORT RRModePtr RRModeGet(xRRModeInfo * modeInfo, const char *name);
 extern _X_EXPORT void
  RRModeDestroy(RRModePtr mode);
 
-/*
- * Initialize mode type error value
- */
-extern _X_EXPORT void
- RRModeInitErrorValue(void);
-
 /* rroutput.c */
 
 /*
