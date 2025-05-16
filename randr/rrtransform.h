@@ -40,12 +40,6 @@ struct _rrTransform {
 };
 
 extern _X_EXPORT Bool
-
-RRTransformSetFilter(RRTransformPtr dst,
-                     PictFilterPtr filter,
-                     xFixed * params, int nparams, int width, int height);
-
-extern _X_EXPORT Bool
  RRTransformCopy(RRTransformPtr dst, RRTransformPtr src);
 
 /*

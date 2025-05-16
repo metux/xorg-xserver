@@ -539,4 +539,10 @@ void RRTransformInit(RRTransformPtr transform);
  */
 Bool RRTransformEqual(RRTransformPtr a, RRTransformPtr b);
 
+/*
+ * Set filter on transform structure
+ */
+Bool RRTransformSetFilter(RRTransformPtr dst, PictFilterPtr filter,
+                          xFixed *params, int nparams, int width, int height);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
