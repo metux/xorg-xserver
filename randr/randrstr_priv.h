@@ -119,4 +119,13 @@ int RRMonitorAdd(ClientPtr client, ScreenPtr screen, RRMonitorPtr monitor);
 
 void RRMonitorFree(RRMonitorPtr monitor);
 
+/*
+ * Deliver a ScreenChangeNotity event to given client
+ *
+ * @param pClient the client to notify
+ * @param pWin    the window to refer to in the event
+ * @param pScreen the screen where the change happened
+ */
+void RRDeliverScreenEvent(ClientPtr pClient, WindowPtr pWin, ScreenPtr pScreen);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

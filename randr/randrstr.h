@@ -498,12 +498,6 @@ RRScreenSizeSet(ScreenPtr pScreen,
 extern _X_EXPORT void
  RRSendConfigNotify(ScreenPtr pScreen);
 
-/*
- * Deliver a ScreenNotify event
- */
-extern _X_EXPORT void
- RRDeliverScreenEvent(ClientPtr client, WindowPtr pWin, ScreenPtr pScreen);
-
 extern _X_EXPORT void
  RRResourcesChanged(ScreenPtr pScreen);
 
