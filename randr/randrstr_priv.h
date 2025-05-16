@@ -184,4 +184,13 @@ Bool RRCrtcExists(ScreenPtr pScreen, RRCrtcPtr findCrtc);
  */
 void RRCrtcSetTransformSupport(RRCrtcPtr crtc, Bool transforms);
 
+/*
+ * Deliver CRTC update event to given client
+ *
+ * @param pClient the client to send event to
+ * @param pWin    the window whose screen had been changed
+ * @param crtc    the CRTC that had been changed
+ */
+void RRDeliverCrtcEvent(ClientPtr pClient, WindowPtr pWin, RRCrtcPtr crtc);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

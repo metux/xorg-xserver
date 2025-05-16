@@ -572,9 +572,6 @@ RRCrtcNotify(RRCrtcPtr crtc,
              Rotation rotation,
              RRTransformPtr transform, int numOutputs, RROutputPtr * outputs);
 
-extern _X_EXPORT void
- RRDeliverCrtcEvent(ClientPtr client, WindowPtr pWin, RRCrtcPtr crtc);
-
 /*
  * Request that the Crtc be reconfigured
  */
