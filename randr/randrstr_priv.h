@@ -443,4 +443,14 @@ void RRProviderAutoConfigGpuScreen(ScreenPtr pScreen, ScreenPtr primaryScreen);
  */
 RRPropertyValuePtr RRGetProviderProperty(RRProviderPtr provider, Atom property, Bool pending);
 
+/*
+ * Retrieve full property structure
+ * (instead of just the value -- @see RRGetProviderProperty)
+ *
+ * @param provider  the provider to query
+ * @param property  Atom ID of the property to retrieve
+ * @return pointer to render property structure if found, otherwise NULL
+ */
+RRPropertyPtr  RRQueryProviderProperty(RRProviderPtr provider, Atom property);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
