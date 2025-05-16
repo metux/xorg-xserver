@@ -675,9 +675,6 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 /* rrprovider.c */
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
 
-extern _X_EXPORT void
- RRDeleteProviderProperty(RRProviderPtr provider, Atom property);
-
 extern _X_EXPORT int
 RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
                        int format, int mode, unsigned long len,

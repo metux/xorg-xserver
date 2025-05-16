@@ -453,4 +453,12 @@ RRPropertyValuePtr RRGetProviderProperty(RRProviderPtr provider, Atom property, 
  */
 RRPropertyPtr  RRQueryProviderProperty(RRProviderPtr provider, Atom property);
 
+/*
+ * Delete property from provider
+ *
+ * @param provider  the provider to remove property from
+ * @param property  Atom ID of the property to remove
+ */
+void RRDeleteProviderProperty(RRProviderPtr provider, Atom property);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
