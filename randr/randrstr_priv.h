@@ -478,4 +478,19 @@ int RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
                              int format, int mode, unsigned long len,
                              void *value, Bool sendevent, Bool pending);
 
+/*
+ * Configure a (custom) property in given provider
+ *
+ * @param provider  the provider to configure property in
+ * @param property  Atom ID of the property
+ * @param pending   TRUE on pending value
+ * @param range     TRUE when limited range
+ * @param immutable TRUE when it's immutable
+ * @param num_values number of allowed values
+ * @param values     allowed values (array of num_values length)
+ */
+int RRConfigureProviderProperty(RRProviderPtr provider, Atom property,
+                                Bool pending, Bool range, Bool immutable,
+                                int num_values, INT32 *values);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
