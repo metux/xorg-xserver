@@ -237,46 +237,6 @@ RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
     return Success;
 }
 
-Bool
-RRPostProviderPendingProperties(RRProviderPtr provider)
-{
-    RRPropertyValuePtr pending_value;
-    RRPropertyValuePtr current_value;
-    RRPropertyPtr property;
-    Bool ret = TRUE;
-
-    if (!provider->pendingProperties)
-        return TRUE;
-
-    provider->pendingProperties = FALSE;
-    for (property = provider->properties; property; property = property->next) {
-        /* Skip non-pending properties */
-        if (!property->is_pending)
-            continue;
-
-        pending_value = &property->pending;
-        current_value = &property->current;
-
-        /*
-         * If the pending and current values are equal, don't mark it
-         * as changed (which would deliver an event)
-         */
-        if (pending_value->type == current_value->type &&
-            pending_value->format == current_value->format &&
-            pending_value->size == current_value->size &&
-            !memcmp(pending_value->data, current_value->data,
-                    pending_value->size * (pending_value->format / 8)))
-            continue;
-
-        if (RRChangeProviderProperty(provider, property->propertyName,
-                                   pending_value->type, pending_value->format,
-                                   PropModeReplace, pending_value->size,
-                                   pending_value->data, TRUE, FALSE) != Success)
-            ret = FALSE;
-    }
-    return ret;
-}
-
 RRPropertyPtr
 RRQueryProviderProperty(RRProviderPtr provider, Atom property)
 {

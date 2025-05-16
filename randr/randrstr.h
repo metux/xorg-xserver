@@ -986,9 +986,6 @@ extern _X_EXPORT int
                              Bool pending, Bool range, Bool immutable,
                              int num_values, INT32 *values);
 
-extern _X_EXPORT Bool
- RRPostProviderPendingProperties(RRProviderPtr provider);
-
 extern _X_EXPORT int
  ProcRRGetProviderProperty(ClientPtr client);
 
