@@ -519,9 +519,6 @@ extern _X_EXPORT Bool RRScreenInit(ScreenPtr pScreen);
 
 extern _X_EXPORT RROutputPtr RRFirstOutput(ScreenPtr pScreen);
 
-extern _X_EXPORT CARD16
- RRVerticalRefresh(xRRModeInfo * mode);
-
 #ifdef RANDR_10_INTERFACE
 /*
  * This is the old interface, deprecated but left

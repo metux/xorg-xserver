@@ -159,4 +159,12 @@ RRCrtcPtr RRFirstEnabledCrtc(ScreenPtr pScreen);
  */
 Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
 
+/*
+ * Compute vertical refresh rate from randr mode information
+ *
+ * @param mode pointer to randr mode info
+ * @return vertical refresh rate
+ */
+CARD16 RRVerticalRefresh(xRRModeInfo * mode);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
