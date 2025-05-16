@@ -144,4 +144,12 @@ void RRResourcesChanged(ScreenPtr pScreen);
  */
 Bool RRInit(void);
 
+/*
+ * Retrieve the first enabled CRTC on given screen
+ *
+ * @param pScreen the screen to query
+ * @return pointer to CRTC structure or NULL
+ */
+RRCrtcPtr RRFirstEnabledCrtc(ScreenPtr pScreen);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
