@@ -297,17 +297,6 @@ RRRegisterRate(ScreenPtr pScreen, RRScreenSizePtr pSize, int rate)
     return TRUE;
 }
 
-Rotation
-RRGetRotation(ScreenPtr pScreen)
-{
-    RROutputPtr output = RRFirstOutput(pScreen);
-
-    if (!output)
-        return RR_Rotate_0;
-
-    return output->crtc->rotation;
-}
-
 void
 RRSetCurrentConfig(ScreenPtr pScreen,
                    Rotation rotation, int rate, RRScreenSizePtr pSize)

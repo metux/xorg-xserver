@@ -584,8 +584,6 @@ extern _X_EXPORT void
 RRSetCurrentConfig(ScreenPtr pScreen,
                    Rotation rotation, int rate, RRScreenSizePtr pSize);
 
-extern _X_EXPORT Rotation RRGetRotation(ScreenPtr pScreen);
-
 #endif
 
 /* rrcrtc.c */
