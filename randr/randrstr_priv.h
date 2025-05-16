@@ -273,4 +273,12 @@ void RRLeaseTerminated(RRLeasePtr lease);
  */
 void RRLeaseFree(RRLeasePtr lease);
 
+/*
+ * Check whether given CRTC has an active lease
+ *
+ * @param crtc    the CRTC to check
+ * @return TRUE if there is any active lease on that CRTC
+ */
+Bool RRCrtcIsLeased(RRCrtcPtr crtc);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

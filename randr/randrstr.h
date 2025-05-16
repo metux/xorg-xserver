@@ -596,9 +596,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
 extern _X_EXPORT Bool
-RRCrtcIsLeased(RRCrtcPtr crtc);
-
-extern _X_EXPORT Bool
 RROutputIsLeased(RROutputPtr output);
 
 /* rrmode.c */
