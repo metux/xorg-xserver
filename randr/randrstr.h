@@ -961,9 +961,6 @@ RRProviderDestroy (RRProviderPtr provider);
 extern _X_EXPORT void
 RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
 
-extern _X_EXPORT Bool
-RRProviderLookup(XID id, RRProviderPtr *provider_p);
-
 extern _X_EXPORT void
 RRDeliverProviderEvent(ClientPtr client, WindowPtr pWin, RRProviderPtr provider);
 

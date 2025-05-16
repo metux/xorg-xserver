@@ -459,16 +459,6 @@ RRProviderInit(void)
     return TRUE;
 }
 
-Bool
-RRProviderLookup(XID id, RRProviderPtr *provider_p)
-{
-    int rc = dixLookupResourceByType((void **)provider_p, id,
-                                   RRProviderType, NullClient, DixReadAccess);
-    if (rc == Success)
-        return TRUE;
-    return FALSE;
-}
-
 void
 RRDeliverProviderEvent(ClientPtr client, WindowPtr pWin, RRProviderPtr provider)
 {
