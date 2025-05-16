@@ -223,4 +223,10 @@ void RRCrtcDestroy(RRCrtcPtr crtc);
  */
 Bool RRCrtcInit(void);
 
+
+/*
+ * Initialize crtc type error value
+ */
+void RRCrtcInitErrorValue(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
