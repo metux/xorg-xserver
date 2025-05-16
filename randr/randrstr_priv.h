@@ -378,4 +378,11 @@ void RRPointerScreenConfigured(ScreenPtr pScreen);
  */
 void RRDeleteAllOutputProperties(RROutputPtr output);
 
+/*
+ * Initialize render provider resource type
+ *
+ * @return TRUE on success
+ */
+Bool RRProviderInit(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
