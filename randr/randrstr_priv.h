@@ -211,4 +211,11 @@ void RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
  */
 RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
 
+/*
+ * Destroy a Crtc at shutdown
+ *
+ * @param crtc    the CRTC to destroy
+ */
+void RRCrtcDestroy(RRCrtcPtr crtc);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

@@ -27,13 +27,13 @@
 #include <xwayland-config.h>
 
 #include "os/client_priv.h"
+#include "randr/randrstr_priv.h"
 
 #ifdef WITH_LIBDRM
 #include <xf86drm.h>
 #include <xf86drmMode.h>
 #endif
 
-#include "randrstr_priv.h"
 #include "xwayland-drm-lease.h"
 #include "xwayland-screen.h"
 #include "xwayland-output.h"

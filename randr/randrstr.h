@@ -596,12 +596,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
 /*
- * Destroy a Crtc at shutdown
- */
-extern _X_EXPORT void
- RRCrtcDestroy(RRCrtcPtr crtc);
-
-/*
  * Initialize crtc type
  */
 extern _X_EXPORT Bool
