@@ -358,4 +358,9 @@ void RRDeliverOutputEvent(ClientPtr pClient, WindowPtr pWin, RROutputPtr output)
  */
 Bool RROutputInit(void);
 
+/*
+ * Initialize output type error value
+ */
+void RROutputInitErrorValue(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

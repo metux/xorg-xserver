@@ -650,12 +650,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT void
  RROutputDestroy(RROutputPtr output);
 
-/*
- * Initialize output type error value
- */
-extern _X_EXPORT void
- RROutputInitErrorValue(void);
-
 extern _X_EXPORT void
  RRPointerScreenConfigured(ScreenPtr pScreen);
 
