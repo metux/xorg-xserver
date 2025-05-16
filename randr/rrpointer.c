@@ -23,6 +23,7 @@
 
 #include "dix/cursor_priv.h"
 #include "dix/input_priv.h"
+#include "randr/randrstr_priv.h"
 
 #include "randrstr.h"
 #include "inputstr.h"

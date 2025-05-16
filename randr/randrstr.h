@@ -596,14 +596,6 @@ extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
 /*
- * Return the area of the frame buffer scanned out by the crtc,
- * taking into account the current mode and rotation
- */
-
-extern _X_EXPORT void
- RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
-
-/*
  * Return crtc transform
  */
 extern _X_EXPORT RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
