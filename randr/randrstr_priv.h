@@ -518,4 +518,9 @@ int RRConfigureProviderProperty(RRProviderPtr provider, Atom property,
                                 Bool pending, Bool range, Bool immutable,
                                 int num_values, INT32 *values);
 
+/*
+ * Init xinerama specific extension parts
+ */
+void RRXineramaExtensionInit(void);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

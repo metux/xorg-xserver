@@ -667,12 +667,6 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 /* rrprovider.c */
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
 
-/* rrxinerama.c */
-#ifdef XINERAMA
-extern _X_EXPORT void
- RRXineramaExtensionInit(void);
-#endif
-
 #endif                          /* _RANDRSTR_H_ */
 
 /*
