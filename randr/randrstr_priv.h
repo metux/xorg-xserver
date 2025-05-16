@@ -461,4 +461,21 @@ RRPropertyPtr  RRQueryProviderProperty(RRProviderPtr provider, Atom property);
  */
 void RRDeleteProviderProperty(RRProviderPtr provider, Atom property);
 
+/*
+ * Change property of provider
+ *
+ * @param provider  the provider to change property on
+ * @param property  Atom ID of the property to change
+ * @param type      type Atom ID of the new property value
+ * @param format    format (8/16/32) of the new property value
+ * @param len       length in (format specific) units of the new property value
+ * @param value     pointer to value data
+ * @param sendevent TRUE when change notify event shall be sent
+ * @param pending   TRUE when pending instead of current value shall be changed
+ * @return X error code
+ */
+int RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
+                             int format, int mode, unsigned long len,
+                             void *value, Bool sendevent, Bool pending);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

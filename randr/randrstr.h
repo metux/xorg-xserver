@@ -676,11 +676,6 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
 
 extern _X_EXPORT int
-RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
-                       int format, int mode, unsigned long len,
-                       void *value, Bool sendevent, Bool pending);
-
-extern _X_EXPORT int
  RRConfigureProviderProperty(RRProviderPtr provider, Atom property,
                              Bool pending, Bool range, Bool immutable,
                              int num_values, INT32 *values);
