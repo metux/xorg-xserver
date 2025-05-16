@@ -236,4 +236,10 @@ void RRCrtcInitErrorValue(void);
  */
 void RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
 
+/*
+ * Handler for the ReplaceScanoutPixmap screen proc
+ * Should not be called directly.
+ */
+Bool RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enable);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

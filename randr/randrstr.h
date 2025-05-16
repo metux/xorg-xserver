@@ -595,9 +595,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
-extern _X_EXPORT Bool
- RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enable);
-
 /*
  * Return if the screen has any scanout_pixmap's attached
  */
