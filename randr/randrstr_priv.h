@@ -425,4 +425,12 @@ void RRProviderDestroy (RRProviderPtr provider);
  */
 void RRDeliverProviderEvent(ClientPtr pClient, WindowPtr pWin, RRProviderPtr provider);
 
+/*
+ * Auto configure a GPU screen
+ *
+ * @param pScreen         the GPU screen to configure
+ * @param primaryScreen   the associated primary screen
+ */
+void RRProviderAutoConfigGpuScreen(ScreenPtr pScreen, ScreenPtr primaryScreen);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

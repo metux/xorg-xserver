@@ -675,9 +675,6 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 /* rrprovider.c */
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
 
-extern _X_EXPORT void
-RRProviderAutoConfigGpuScreen(ScreenPtr pScreen, ScreenPtr primaryScreen);
-
 extern _X_EXPORT RRPropertyValuePtr
  RRGetProviderProperty(RRProviderPtr provider, Atom property, Bool pending);
 

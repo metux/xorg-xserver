@@ -59,6 +59,7 @@
 #include "os/cmdline.h"
 #include "os/ddx_priv.h"
 #include "os/osdep.h"
+#include "randr/randrstr_priv.h"
 
 #include "servermd.h"
 #include "windowstr.h"
@@ -82,7 +83,6 @@
 #include "xf86InPriv.h"
 #include "xf86Crtc.h"
 #include "picturestr.h"
-#include "randrstr.h"
 #include "xf86Bus.h"
 #include "globals.h"
 #include "xserver-properties.h"
