@@ -545,4 +545,13 @@ Bool RRTransformEqual(RRTransformPtr a, RRTransformPtr b);
 Bool RRTransformSetFilter(RRTransformPtr dst, PictFilterPtr filter,
                           xFixed *params, int nparams, int width, int height);
 
+/*
+ * Copy transform structure to another
+ *
+ * @param dst destination structure pointer
+ * @param src source structure pointer
+ * @return TRUE on success
+ */
+Bool RRTransformCopy(RRTransformPtr dst, RRTransformPtr src);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

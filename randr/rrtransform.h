@@ -39,9 +39,6 @@ struct _rrTransform {
     int height;
 };
 
-extern _X_EXPORT Bool
- RRTransformCopy(RRTransformPtr dst, RRTransformPtr src);
-
 /*
  * Compute the complete transformation matrix including
  * client-specified transform, rotation/reflection values and the crtc
