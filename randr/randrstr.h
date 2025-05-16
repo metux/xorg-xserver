@@ -668,17 +668,6 @@ extern _X_EXPORT void
  RRCrtcDestroy(RRCrtcPtr crtc);
 
 /*
- * Set the pending CRTC transformation
- */
-
-extern _X_EXPORT int
-RRCrtcTransformSet(RRCrtcPtr crtc,
-                   PictTransformPtr transform,
-                   struct pixman_f_transform *f_transform,
-                   struct pixman_f_transform *f_inverse,
-                   char *filter, int filter_len, xFixed * params, int nparams);
-
-/*
  * Initialize crtc type
  */
 extern _X_EXPORT Bool

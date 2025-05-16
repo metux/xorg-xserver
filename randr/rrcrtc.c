@@ -1065,7 +1065,7 @@ RRCrtcGammaSetSize(RRCrtcPtr crtc, int size)
  * Set the pending CRTC transformation
  */
 
-int
+static int
 RRCrtcTransformSet(RRCrtcPtr crtc,
                    PictTransformPtr transform,
                    struct pixman_f_transform *f_transform,
