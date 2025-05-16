@@ -530,4 +530,13 @@ void RRXineramaExtensionInit(void);
  */
 void RRTransformInit(RRTransformPtr transform);
 
+/*
+ * Compare two transform structures
+ *
+ * @param a   first transform
+ * @param b   second transform
+ * @return TRUE if both transforms are equal
+ */
+Bool RRTransformEqual(RRTransformPtr a, RRTransformPtr b);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

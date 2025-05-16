@@ -40,9 +40,6 @@ struct _rrTransform {
 };
 
 extern _X_EXPORT Bool
- RRTransformEqual(RRTransformPtr a, RRTransformPtr b);
-
-extern _X_EXPORT Bool
 
 RRTransformSetFilter(RRTransformPtr dst,
                      PictFilterPtr filter,
