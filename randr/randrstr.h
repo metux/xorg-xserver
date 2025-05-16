@@ -967,11 +967,6 @@ RRDeliverProviderEvent(ClientPtr client, WindowPtr pWin, RRProviderPtr provider)
 extern _X_EXPORT void
 RRProviderAutoConfigGpuScreen(ScreenPtr pScreen, ScreenPtr primaryScreen);
 
-/* rrproviderproperty.c */
-
-extern _X_EXPORT void
- RRDeleteAllProviderProperties(RRProviderPtr provider);
-
 extern _X_EXPORT RRPropertyValuePtr
  RRGetProviderProperty(RRProviderPtr provider, Atom property, Bool pending);
 

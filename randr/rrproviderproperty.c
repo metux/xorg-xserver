@@ -82,17 +82,6 @@ RRDeleteProperty(RRProviderRec * provider, RRPropertyRec * prop)
     RRDestroyProviderProperty(prop);
 }
 
-void
-RRDeleteAllProviderProperties(RRProviderPtr provider)
-{
-    RRPropertyPtr prop, next;
-
-    for (prop = provider->properties; prop; prop = next) {
-        next = prop->next;
-        RRDeleteProperty(provider, prop);
-    }
-}
-
 static void
 RRInitProviderPropertyValue(RRPropertyValuePtr property_value)
 {
