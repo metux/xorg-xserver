@@ -409,4 +409,11 @@ RRProviderPtr RRProviderCreate(ScreenPtr pScreen, const char *name,
  */
 void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
 
+/*
+ * Destroy a provider and free it's memory
+ *
+ * @param provider  the provider to be destroyed
+ */
+void RRProviderDestroy (RRProviderPtr provider);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
