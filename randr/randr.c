@@ -28,8 +28,9 @@
 
 #include <dix-config.h>
 
-#include "randrstr_priv.h"
 #include "extinit_priv.h"
+#include "randr/randrstr_priv.h"
+#include "randr/rrdispatch_priv.h"
 
 /* From render.h */
 #ifndef SubPixelUnknown

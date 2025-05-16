@@ -91,10 +91,6 @@ extern DevPrivateKeyRec RRClientPrivateKeyRec;
 #define GetRRClient(pClient)    ((RRClientPtr)dixLookupPrivate(&(pClient)->devPrivates, RRClientPrivateKey))
 #define rrClientPriv(pClient)	RRClientPtr pRRClient = GetRRClient(pClient)
 
-int ProcRRGetPanning(ClientPtr client);
-
-int ProcRRSetPanning(ClientPtr client);
-
 void RRConstrainCursorHarder(DeviceIntPtr, ScreenPtr, int, int *, int *);
 
 /* rrlease.c */
@@ -122,23 +118,5 @@ RRMonitorPtr RRMonitorAlloc(int noutput);
 int RRMonitorAdd(ClientPtr client, ScreenPtr screen, RRMonitorPtr monitor);
 
 void RRMonitorFree(RRMonitorPtr monitor);
-
-int ProcRRGetMonitors(ClientPtr client);
-
-int ProcRRSetMonitor(ClientPtr client);
-
-int ProcRRDeleteMonitor(ClientPtr client);
-
-int ProcRRCreateLease(ClientPtr client);
-
-int ProcRRFreeLease(ClientPtr client);
-
-int ProcRRQueryVersion(ClientPtr client);
-
-int ProcRRSelectInput(ClientPtr client);
-
-int ProcRRDispatch(ClientPtr client);
-
-int SProcRRDispatch(ClientPtr client);
 
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

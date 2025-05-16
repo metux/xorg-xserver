@@ -55,4 +55,21 @@ int ProcRRConfigureProviderProperty(ClientPtr client);
 int ProcRRChangeProviderProperty(ClientPtr client);
 int ProcRRDeleteProviderProperty(ClientPtr client);
 
+/* monitor related dispatch */
+int ProcRRGetMonitors(ClientPtr client);
+int ProcRRSetMonitor(ClientPtr client);
+int ProcRRDeleteMonitor(ClientPtr client);
+
+int ProcRRGetPanning(ClientPtr client);
+int ProcRRSetPanning(ClientPtr client);
+
+int ProcRRCreateLease(ClientPtr client);
+int ProcRRFreeLease(ClientPtr client);
+
+int ProcRRQueryVersion(ClientPtr client);
+int ProcRRSelectInput(ClientPtr client);
+
+int ProcRRDispatch(ClientPtr client);
+int SProcRRDispatch(ClientPtr client);
+
 #endif /* _XSERVER_RANDR_RRDISPATCH_H */
