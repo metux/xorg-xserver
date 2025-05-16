@@ -884,10 +884,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT void
  RROutputInitErrorValue(void);
 
-/* rrpointer.c */
-extern _X_EXPORT void
- RRPointerMoved(ScreenPtr pScreen, int x, int y);
-
 extern _X_EXPORT void
  RRPointerScreenConfigured(ScreenPtr pScreen);
 
