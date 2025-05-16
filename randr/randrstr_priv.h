@@ -289,4 +289,16 @@ Bool RRCrtcIsLeased(RRCrtcPtr crtc);
  */
 Bool RROutputIsLeased(RROutputPtr output);
 
+/*
+ * Query a list of modes valid for some output in given screen
+ *
+ + The list is allocated by that function and must be freed by caller.
+ * `num_ret` holds the number of entries (the buffer might be larger)
+ *
+ * @param pScreen the screen to query
+ * @param num_ret return buffer for number of returned modes
+ * @return pointer to array of RRModePtr's
+ */
+RRModePtr *RRModesForScreen(ScreenPtr pScreen, int *num_ret);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

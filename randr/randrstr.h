@@ -610,11 +610,6 @@ extern _X_EXPORT void
  RRModeDestroy(RRModePtr mode);
 
 /*
- * Return a list of modes that are valid for some output in pScreen
- */
-extern _X_EXPORT RRModePtr *RRModesForScreen(ScreenPtr pScreen, int *num_ret);
-
-/*
  * Initialize mode type
  */
 extern _X_EXPORT Bool
