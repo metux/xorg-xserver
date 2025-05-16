@@ -250,4 +250,13 @@ Bool RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enabl
  */
 Bool RRHasScanoutPixmap(ScreenPtr pScreen);
 
+/*
+ * Check whether client is operating on recent enough protocol version
+ * to know about refresh rates. This has influence on reply packet formats
+ *
+ * @param pClient the client to check
+ * @return TRUE if client using recent enough protocol version
+ */
+Bool RRClientKnowsRates(ClientPtr pClient);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */

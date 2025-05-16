@@ -595,10 +595,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  RRCrtcGammaSetSize(RRCrtcPtr crtc, int size);
 
-/* rrdispatch.c */
-extern _X_EXPORT Bool
- RRClientKnowsRates(ClientPtr pClient);
-
 extern _X_EXPORT void
 RRLeaseTerminated(RRLeasePtr lease);
 
