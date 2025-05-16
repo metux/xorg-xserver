@@ -639,9 +639,6 @@ RROutputSetModes(RROutputPtr output,
                  RRModePtr * modes, int numModes, int numPreferred);
 
 extern _X_EXPORT int
- RROutputAddUserMode(RROutputPtr output, RRModePtr mode);
-
-extern _X_EXPORT int
  RROutputDeleteUserMode(RROutputPtr output, RRModePtr mode);
 
 extern _X_EXPORT Bool

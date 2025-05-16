@@ -315,4 +315,13 @@ Bool RRModeInit(void);
  */
 void RRModeInitErrorValue(void);
 
+/*
+ * Add user-given mode to output
+ *
+ * @param output  the output where to which a mode should be added
+ * @param mode    the mode to add to the output
+ * @return X error code
+ */
+int RROutputAddUserMode(RROutputPtr output, RRModePtr mode);
+
 #endif /* _XSERVER_RANDRSTR_PRIV_H_ */
