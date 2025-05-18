@@ -34,6 +34,7 @@
 
 #include "dix/colormap_priv.h"
 #include "mi/mi_priv.h"
+#include "os/osdep.h"
 
 #include "scrnintstr.h"
 #include "colormapst.h"
@@ -329,7 +330,6 @@ miSetVisualTypesAndMasks(int depth, int visuals, int bitsPerRGB,
                          Pixel redMask, Pixel greenMask, Pixel blueMask)
 {
     miVisualsPtr new, *prev, v;
-    int count;
 
     new = malloc(sizeof *new);
     if (!new)
@@ -347,10 +347,7 @@ miSetVisualTypesAndMasks(int depth, int visuals, int bitsPerRGB,
     new->redMask = redMask;
     new->greenMask = greenMask;
     new->blueMask = blueMask;
-    count = (visuals >> 1) & 033333333333;
-    count = visuals - count - ((count >> 1) & 033333333333);
-    count = (((count + (count >> 3)) & 030707070707) % 077);    /* HAKMEM 169 */
-    new->count = count;
+    new->count = Ones(visuals);
     for (prev = &miVisuals; (v = *prev); prev = &v->next);
     *prev = new;
     return TRUE;
