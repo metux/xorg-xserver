@@ -12,4 +12,7 @@ extern InputInfoPtr xf86InputDevs;
 int xf86NewInputDevice(InputInfoPtr pInfo, DeviceIntPtr *pdev, BOOL is_auto);
 InputInfoPtr xf86AllocateInput(void);
 
+void xf86PostButtonEventM(DeviceIntPtr device, int is_absolute, int button,
+                          int is_down, const ValuatorMask *mask);
+
 #endif /* _XSERVER__XF86XINPUT_H */

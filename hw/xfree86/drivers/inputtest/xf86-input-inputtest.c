@@ -33,7 +33,7 @@
 #include <input.h>
 #include <xkbsrv.h>
 #include <xf86.h>
-#include <xf86Xinput.h>
+#include <xf86Xinput_priv.h>
 #include "xorgVersion.h"
 #include <xserver-properties.h>
 #include <os.h>
