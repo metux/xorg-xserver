@@ -369,12 +369,6 @@ extern _X_EXPORT Bool glamor_egl_init_textured_pixmap(ScreenPtr screen);
 extern _X_EXPORT Bool glamor_egl_create_textured_screen(ScreenPtr screen,
                                                         int handle, int stride);
 
-/* Obsolete entrypoint, temporarily left here for API compatibility
- * for xf86-video-ati.
- */
-#define glamor_egl_create_textured_screen_ext(a, b, c, d) \
-    glamor_egl_create_textured_screen(a, b, c)
-
 /*
  * @glamor_egl_create_textured_pixmap: Try to create a textured pixmap from
  * 				       a BO handle.
