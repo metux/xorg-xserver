@@ -990,6 +990,8 @@ void glamor_set_pixmap_type(PixmapPtr pixmap, glamor_pixmap_type_t type);
  * but before adding a glamor GLX provider */
 void glamor_set_glvnd_vendor(ScreenPtr screen, const char *vendor);
 
+void glamor_pixmap_exchange_fbos(PixmapPtr front, PixmapPtr back);
+
 #include "glamor_utils.h"
 
 #if 0

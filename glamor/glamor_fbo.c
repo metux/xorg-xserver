@@ -28,7 +28,7 @@
 
 #include <stdlib.h>
 
-#include "glamor_priv.h"
+#include "glamor/glamor_priv.h"
 
 void
 glamor_destroy_fbo(glamor_screen_private *glamor_priv,

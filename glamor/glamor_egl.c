@@ -42,10 +42,9 @@
 #include <gbm.h>
 #include <drm_fourcc.h>
 
-#include "glamor_egl.h"
+#include "glamor/glamor_priv.h"
 
-#include "glamor.h"
-#include "glamor_priv.h"
+#include "glamor_egl.h"
 #include "glamor_glx_provider.h"
 #include "dri3.h"
 
