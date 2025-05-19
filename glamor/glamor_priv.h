@@ -1057,6 +1057,8 @@ Bool glamor_get_drawable_modifiers(DrawablePtr draw,
 void glamor_egl_screen_init(ScreenPtr screen,
                             struct glamor_context *glamor_ctx);
 
+Bool glamor_change_window_attributes(WindowPtr pWin, unsigned long mask);
+
 #include "glamor_utils.h"
 
 #if 0
