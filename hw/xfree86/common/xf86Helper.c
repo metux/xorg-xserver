@@ -126,15 +126,6 @@ xf86AddInputDriver(InputDriverPtr driver, void *module, int flags)
     xf86InputDriverList[xf86NumInputDrivers - 1]->module = module;
 }
 
-void
-xf86DeleteInputDriver(int drvIndex)
-{
-    if (xf86InputDriverList[drvIndex] && xf86InputDriverList[drvIndex]->module)
-        UnloadModule(xf86InputDriverList[drvIndex]->module);
-    free(xf86InputDriverList[drvIndex]);
-    xf86InputDriverList[drvIndex] = NULL;
-}
-
 InputDriverPtr
 xf86LookupInputDriver(const char *name)
 {
