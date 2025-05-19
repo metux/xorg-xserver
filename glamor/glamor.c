@@ -957,17 +957,6 @@ glamor_set_glvnd_vendor(ScreenPtr screen, const char *vendor_name)
     glamor_priv->glvnd_vendor = XNFstrdup(vendor_name);
 }
 
-const char *
-glamor_get_glvnd_vendor(ScreenPtr screen)
-{
-    glamor_screen_private *glamor_priv = glamor_get_screen_private(screen);
-
-    if (!glamor_priv)
-        return NULL;
-
-    return glamor_priv->glvnd_vendor;
-}
-
 void
 glamor_enable_dri3(ScreenPtr screen)
 {
