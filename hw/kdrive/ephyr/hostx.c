@@ -37,6 +37,14 @@
 #include <sys/time.h>
 #include <sys/mman.h>
 
+// workaround for name clash between Xlib and Xserver:
+// GL might pull in Xlib.h (why ?), which is definining a type "GC", that's
+// conflicting with Xserver's "GC" type.
+#define GC XlibGC
+#include <X11/Xlib.h>
+#include <X11/Xutil.h>
+#undef GC
+
 #include "dix/input_priv.h"
 
 #include "hostx.h"
