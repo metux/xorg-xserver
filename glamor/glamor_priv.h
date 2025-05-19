@@ -1049,6 +1049,11 @@ Bool glamor_get_modifiers(ScreenPtr screen,
                           uint32_t *num_modifiers,
                           uint64_t **modifiers);
 
+Bool glamor_get_drawable_modifiers(DrawablePtr draw,
+                                   uint32_t format,
+                                   uint32_t *num_modifiers,
+                                   uint64_t **modifiers);
+
 #include "glamor_utils.h"
 
 #if 0
