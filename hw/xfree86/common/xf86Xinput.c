@@ -1398,12 +1398,6 @@ xf86PostButtonEventM(DeviceIntPtr device,
 void
 xf86PostKeyEvent(DeviceIntPtr device, unsigned int key_code, int is_down)
 {
-    xf86PostKeyEventM(device, key_code, is_down);
-}
-
-void
-xf86PostKeyEventM(DeviceIntPtr device, unsigned int key_code, int is_down)
-{
 #ifdef XFreeXDGA
     DeviceIntPtr pointer;
 
@@ -1427,7 +1421,7 @@ xf86PostKeyboardEvent(DeviceIntPtr device, unsigned int key_code, int is_down)
     ValuatorMask mask;
 
     valuator_mask_zero(&mask);
-    xf86PostKeyEventM(device, key_code, is_down);
+    xf86PostKeyEvent(device, key_code, is_down);
 }
 
 InputInfoPtr
