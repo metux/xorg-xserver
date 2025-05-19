@@ -25,6 +25,8 @@
 
 #include <xwayland-config.h>
 
+#include "glamor/glamor_priv.h"
+
 #define MESA_EGL_NO_X11_HEADERS
 #define EGL_NO_X11
 #include <glamor_egl.h>

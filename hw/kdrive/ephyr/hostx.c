@@ -46,6 +46,7 @@
 #undef GC
 
 #include "dix/input_priv.h"
+#include "glamor/glamor_priv.h"
 
 #include "hostx.h"
 
@@ -66,7 +67,6 @@
 #include <xcb/glx.h>
 #include <epoxy/common.h>
 #include <epoxy/gl.h>
-#include "glamor.h"
 #include "glamor_glx_provider.h"
 #include "ephyr_glamor.h"
 #endif
