@@ -357,18 +357,6 @@ extern _X_EXPORT Bool glamor_egl_init(ScrnInfoPtr scrn, int fd);
 
 extern _X_EXPORT Bool glamor_egl_init_textured_pixmap(ScreenPtr screen);
 
-/* @glamor_egl_create_textured_screen: Create textured screen pixmap.
- *
- * @screen: screen pointer to be processed.
- * @handle: screen pixmap's BO handle.
- * @stride: screen pixmap's stride in bytes.
- *
- * This function is similar with the create_textured_pixmap. As the
- * screen pixmap is a special, we handle it separately in this function.
- */
-extern _X_EXPORT Bool glamor_egl_create_textured_screen(ScreenPtr screen,
-                                                        int handle, int stride);
-
 /*
  * @glamor_egl_create_textured_pixmap: Try to create a textured pixmap from
  * 				       a BO handle.

@@ -145,22 +145,6 @@ glamor_egl_get_gbm_device(ScreenPtr screen)
     return glamor_egl->gbm;
 }
 
-Bool
-glamor_egl_create_textured_screen(ScreenPtr screen, int handle, int stride)
-{
-    ScrnInfoPtr scrn = xf86ScreenToScrn(screen);
-    PixmapPtr screen_pixmap;
-
-    screen_pixmap = screen->GetScreenPixmap(screen);
-
-    if (!glamor_egl_create_textured_pixmap(screen_pixmap, handle, stride)) {
-        xf86DrvMsg(scrn->scrnIndex, X_ERROR,
-                   "Failed to create textured screen.");
-        return FALSE;
-    }
-    return TRUE;
-}
-
 static void
 glamor_egl_set_pixmap_image(PixmapPtr pixmap, EGLImageKHR image,
                             Bool used_modifiers)
