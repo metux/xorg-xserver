@@ -398,8 +398,6 @@ extern _X_EXPORT int glamor_create_gc(GCPtr gc);
 extern _X_EXPORT void glamor_validate_gc(GCPtr gc, unsigned long changes,
                                          DrawablePtr drawable);
 
-extern _X_EXPORT void glamor_destroy_gc(GCPtr gc);
-
 #define HAS_GLAMOR_DESTROY_GC 1
 
 extern Bool _X_EXPORT glamor_change_window_attributes(WindowPtr pWin, unsigned long mask);

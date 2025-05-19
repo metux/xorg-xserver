@@ -248,7 +248,7 @@ glamor_validate_gc(GCPtr gc, unsigned long changes, DrawablePtr drawable)
     gc->ops = &glamor_gc_ops;
 }
 
-void
+static void
 glamor_destroy_gc(GCPtr gc)
 {
     glamor_gc_private *gc_priv = glamor_get_gc_private(gc);
