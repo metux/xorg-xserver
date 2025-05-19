@@ -982,6 +982,8 @@ int glamor_xv_put_image(glamor_port_private *port_priv,
 void glamor_xv_core_init(ScreenPtr screen);
 void glamor_xv_render(glamor_port_private *port_priv, int id);
 
+Bool glamor_set_pixmap_texture(PixmapPtr pixmap, unsigned int tex);
+
 #include "glamor_utils.h"
 
 #if 0
