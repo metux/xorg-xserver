@@ -1002,6 +1002,21 @@ int glamor_egl_fd_name_from_pixmap(ScreenPtr pScreen, PixmapPtr pPixmap,
 
 int glamor_egl_fd_from_pixmap(ScreenPtr, PixmapPtr, CARD16 *, CARD32 *);
 
+/* @glamor_fds_from_pixmap: Get a dma-buf fd from a pixmap.
+ *
+ * @screen: Current screen pointer.
+ * @pixmap: The pixmap from which we want the fd.
+ * @fds, @strides, @offsets: Pointers to fill info of each plane.
+ * @modifier: Pointer to fill the modifier of the buffer.
+ *
+ * the pixmap and the buffer associated by the fds will share the same
+ * content. The caller is responsible to close the returned file descriptors.
+ * Returns the number of planes, -1 on error.
+ * */
+int glamor_fds_from_pixmap(ScreenPtr screen,  PixmapPtr pixmap, int *fds,
+                           uint32_t *strides, uint32_t *offsets,
+                           uint64_t *modifier);
+
 #include "glamor_utils.h"
 
 #if 0

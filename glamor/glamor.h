@@ -153,23 +153,6 @@ extern _X_EXPORT struct gbm_device *glamor_egl_get_gbm_device(ScreenPtr screen);
  * */
 extern _X_EXPORT Bool glamor_supports_pixmap_import_export(ScreenPtr screen);
 
-/* @glamor_fds_from_pixmap: Get a dma-buf fd from a pixmap.
- *
- * @screen: Current screen pointer.
- * @pixmap: The pixmap from which we want the fd.
- * @fds, @strides, @offsets: Pointers to fill info of each plane.
- * @modifier: Pointer to fill the modifier of the buffer.
- *
- * the pixmap and the buffer associated by the fds will share the same
- * content. The caller is responsible to close the returned file descriptors.
- * Returns the number of planes, -1 on error.
- * */
-extern _X_EXPORT int glamor_fds_from_pixmap(ScreenPtr screen,
-                                            PixmapPtr pixmap,
-                                            int *fds,
-                                            uint32_t *strides, uint32_t *offsets,
-                                            uint64_t *modifier);
-
 /* @glamor_fd_from_pixmap: Get a dma-buf fd from a pixmap.
  *
  * @screen: Current screen pointer.
