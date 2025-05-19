@@ -1042,6 +1042,8 @@ PixmapPtr glamor_pixmap_from_fds(ScreenPtr screen,
                                  CARD8 bpp,
                                  uint64_t modifier);
 
+Bool glamor_get_formats(ScreenPtr screen, CARD32 *num_formats, CARD32 **formats);
+
 #include "glamor_utils.h"
 
 #if 0
