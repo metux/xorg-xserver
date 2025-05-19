@@ -994,10 +994,11 @@ void glamor_pixmap_exchange_fbos(PixmapPtr front, PixmapPtr back);
 
 /* The DDX is not supposed to call these four functions */
 void glamor_enable_dri3(ScreenPtr screen);
-
 int glamor_egl_fds_from_pixmap(ScreenPtr pScreen, PixmapPtr pPixmap, int *fds,
                                uint32_t *strides, uint32_t *offsets,
                                uint64_t *modifier);
+int glamor_egl_fd_name_from_pixmap(ScreenPtr pScreen, PixmapPtr pPixmap,
+                                   CARD16 *stride, CARD32 *size);
 
 #include "glamor_utils.h"
 

@@ -136,10 +136,6 @@ extern _X_EXPORT Bool glamor_destroy_pixmap(PixmapPtr pixmap);
 extern _X_EXPORT void glamor_egl_exchange_buffers(PixmapPtr front,
                                                   PixmapPtr back);
 
-/* The DDX is not supposed to call these four functions */
-extern _X_EXPORT int glamor_egl_fd_name_from_pixmap(ScreenPtr, PixmapPtr,
-                                                    CARD16 *, CARD32 *);
-
 extern _X_EXPORT struct gbm_device *glamor_egl_get_gbm_device(ScreenPtr screen);
 extern _X_EXPORT int glamor_egl_fd_from_pixmap(ScreenPtr, PixmapPtr, CARD16 *, CARD32 *);
 
