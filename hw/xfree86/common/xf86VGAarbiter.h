@@ -30,8 +30,4 @@
 #include "misc.h"
 #include "xf86.h"
 
-/* DRI and arbiter are really not possible together,
- * you really want to remove the card from arbitration if you can */
-extern _X_EXPORT Bool xf86VGAarbiterAllowDRI(ScreenPtr pScreen);
-
 #endif                          /* __XF86VGAARBITER_H */

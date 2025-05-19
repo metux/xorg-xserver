@@ -29,4 +29,6 @@ static inline void xf86VGAarbiterUnlock(ScrnInfoPtr pScrn) {}
 
 #endif /* XSERVER_LIBPCIACCESS */
 
+Bool xf86VGAarbiterAllowDRI(ScreenPtr pScreen);
+
 #endif /* _XSERVER_XF86VGAARBITERPRIV_H */

@@ -72,7 +72,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "xf86_os_support.h"
 #include "xf86_OSproc.h"
 #include "inputstr.h"
-#include "xf86VGAarbiter.h"
+#include "xf86VGAarbiter_priv.h"
 #include "xf86Extensions.h"
 
 static int DRIEntPrivIndex = -1;
