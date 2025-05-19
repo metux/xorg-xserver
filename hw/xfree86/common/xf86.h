@@ -122,8 +122,6 @@ extern _X_EXPORT ScrnInfoPtr xf86ConfigPciEntity(ScrnInfoPtr pScrn,
                                                  EntityProc enter,
                                                  EntityProc leave,
                                                  void *private);
-#else
-#define xf86VGAarbiterDeviceDecodes() do {} while (0)
 #endif
 
 /* xf86Bus.c */

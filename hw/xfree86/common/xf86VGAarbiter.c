@@ -137,15 +137,6 @@ xf86VGAarbiterScrnInit(ScrnInfoPtr pScrn)
     pScrn->vgaDev = dev;
 }
 
-void
-xf86VGAarbiterDeviceDecodes(ScrnInfoPtr pScrn, int rsrc)
-{
-    if (vga_no_arb)
-        return;
-    pci_device_vgaarb_set_target(pScrn->vgaDev);
-    pci_device_vgaarb_decodes(rsrc);
-}
-
 Bool
 xf86VGAarbiterWrapFunctions(void)
 {
