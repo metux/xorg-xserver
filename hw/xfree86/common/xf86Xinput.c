@@ -1195,20 +1195,6 @@ xf86PostMotionEvent(DeviceIntPtr device,
     xf86PostMotionEventM(device, is_absolute, &mask);
 }
 
-void
-xf86PostMotionEventP(DeviceIntPtr device,
-                     int is_absolute,
-                     int first_valuator,
-                     int num_valuators, const int *valuators)
-{
-    ValuatorMask mask;
-
-    XI_VERIFY_VALUATORS(num_valuators);
-
-    valuator_mask_set_range(&mask, first_valuator, num_valuators, valuators);
-    xf86PostMotionEventM(device, is_absolute, &mask);
-}
-
 static int
 xf86CheckMotionEvent4DGA(DeviceIntPtr device, int is_absolute,
                          const ValuatorMask *mask)
