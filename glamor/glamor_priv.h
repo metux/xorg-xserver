@@ -992,6 +992,9 @@ void glamor_set_glvnd_vendor(ScreenPtr screen, const char *vendor);
 
 void glamor_pixmap_exchange_fbos(PixmapPtr front, PixmapPtr back);
 
+/* The DDX is not supposed to call these four functions */
+void glamor_enable_dri3(ScreenPtr screen);
+
 #include "glamor_utils.h"
 
 #if 0

@@ -137,7 +137,6 @@ extern _X_EXPORT void glamor_egl_exchange_buffers(PixmapPtr front,
                                                   PixmapPtr back);
 
 /* The DDX is not supposed to call these four functions */
-extern _X_EXPORT void glamor_enable_dri3(ScreenPtr screen);
 extern _X_EXPORT int glamor_egl_fds_from_pixmap(ScreenPtr, PixmapPtr, int *,
                                                 uint32_t *, uint32_t *,
                                                 uint64_t *);
