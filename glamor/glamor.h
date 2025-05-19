@@ -218,31 +218,6 @@ extern _X_EXPORT int glamor_name_from_pixmap(PixmapPtr pixmap,
 extern _X_EXPORT struct gbm_bo *glamor_gbm_bo_from_pixmap(ScreenPtr screen,
                                                           PixmapPtr pixmap);
 
-/* @glamor_pixmap_from_fds: Creates a pixmap to wrap a dma-buf fds.
- *
- * @screen: Current screen pointer.
- * @num_fds: Number of fds to import
- * @fds: The dma-buf fds to import.
- * @width: The width of the buffers.
- * @height: The height of the buffers.
- * @stride: The stride of the buffers.
- * @depth: The depth of the buffers.
- * @bpp: The bpp of the buffers.
- * @modifier: The modifier of the buffers.
- *
- * Returns a valid pixmap if the import succeeded, else NULL.
- * */
-extern _X_EXPORT PixmapPtr glamor_pixmap_from_fds(ScreenPtr screen,
-                                                  CARD8 num_fds,
-                                                  const int *fds,
-                                                  CARD16 width,
-                                                  CARD16 height,
-                                                  const CARD32 *strides,
-                                                  const CARD32 *offsets,
-                                                  CARD8 depth,
-                                                  CARD8 bpp,
-                                                  uint64_t modifier);
-
 /* @glamor_pixmap_from_fd: Creates a pixmap to wrap a dma-buf fd.
  *
  * @screen: Current screen pointer.

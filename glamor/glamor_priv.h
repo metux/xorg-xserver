@@ -1017,6 +1017,31 @@ int glamor_fds_from_pixmap(ScreenPtr screen,  PixmapPtr pixmap, int *fds,
                            uint32_t *strides, uint32_t *offsets,
                            uint64_t *modifier);
 
+/* @glamor_pixmap_from_fds: Creates a pixmap to wrap a dma-buf fds.
+ *
+ * @screen: Current screen pointer.
+ * @num_fds: Number of fds to import
+ * @fds: The dma-buf fds to import.
+ * @width: The width of the buffers.
+ * @height: The height of the buffers.
+ * @stride: The stride of the buffers.
+ * @depth: The depth of the buffers.
+ * @bpp: The bpp of the buffers.
+ * @modifier: The modifier of the buffers.
+ *
+ * Returns a valid pixmap if the import succeeded, else NULL.
+ * */
+PixmapPtr glamor_pixmap_from_fds(ScreenPtr screen,
+                                 CARD8 num_fds,
+                                 const int *fds,
+                                 CARD16 width,
+                                 CARD16 height,
+                                 const CARD32 *strides,
+                                 const CARD32 *offsets,
+                                 CARD8 depth,
+                                 CARD8 bpp,
+                                 uint64_t modifier);
+
 #include "glamor_utils.h"
 
 #if 0
