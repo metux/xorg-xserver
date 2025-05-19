@@ -720,4 +720,6 @@ void
 
 void exaMoveOutPixmap(PixmapPtr pPixmap);
 
+void ExaOffscreenMarkUsed(PixmapPtr pPixmap);
+
 #endif                          /* EXAPRIV_H */
