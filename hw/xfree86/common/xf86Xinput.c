@@ -1526,17 +1526,6 @@ xf86DisableDevice(DeviceIntPtr dev, Bool panic)
 }
 
 /**
- * Reactivate a device. Call this function from the driver if you just found
- * out that the read error wasn't quite that bad after all.
- * Device will be re-activated, and an event sent to the client.
- */
-void
-xf86EnableDevice(DeviceIntPtr dev)
-{
-    EnableDevice(dev, TRUE);
-}
-
-/**
  * Post a touch event with optional valuators.  If this is the first touch in
  * the sequence, at least x & y valuators must be provided. The driver is
  * responsible for maintaining the correct event sequence (TouchBegin, TouchUpdate,
