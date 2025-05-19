@@ -311,9 +311,6 @@ extern _X_EXPORT const char *glamor_egl_get_driver_name(ScreenPtr screen);
 
 #endif
 
-extern _X_EXPORT void glamor_egl_screen_init(ScreenPtr screen,
-                                             struct glamor_context *glamor_ctx);
-
 extern _X_EXPORT int glamor_create_gc(GCPtr gc);
 
 extern _X_EXPORT void glamor_validate_gc(GCPtr gc, unsigned long changes,

@@ -1054,6 +1054,9 @@ Bool glamor_get_drawable_modifiers(DrawablePtr draw,
                                    uint32_t *num_modifiers,
                                    uint64_t **modifiers);
 
+void glamor_egl_screen_init(ScreenPtr screen,
+                            struct glamor_context *glamor_ctx);
+
 #include "glamor_utils.h"
 
 #if 0
