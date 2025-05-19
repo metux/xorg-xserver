@@ -118,13 +118,6 @@ extern _X_EXPORT PixmapPtr glamor_create_pixmap(ScreenPtr screen, int w, int h,
                                                 int depth, unsigned int usage);
 extern _X_EXPORT Bool glamor_destroy_pixmap(PixmapPtr pixmap);
 
-#define GLAMOR_CREATE_PIXMAP_CPU        0x100
-#define GLAMOR_CREATE_PIXMAP_FIXUP      0x101
-#define GLAMOR_CREATE_FBO_NO_FBO        0x103
-#define GLAMOR_CREATE_NO_LARGE          0x105
-#define GLAMOR_CREATE_PIXMAP_NO_TEXTURE 0x106
-#define GLAMOR_CREATE_FORMAT_CBCR       0x107
-
 /* @glamor_egl_exchange_buffers: Exchange the underlying buffers(KHR image,fbo).
  *
  * @front: front pixmap.
