@@ -258,11 +258,6 @@ extern _X_EXPORT Bool glamor_back_pixmap_from_fd(PixmapPtr pixmap,
                                                  CARD8 depth,
                                                  CARD8 bpp);
 
-extern _X_EXPORT Bool glamor_get_modifiers(ScreenPtr screen,
-                                           uint32_t format,
-                                           uint32_t *num_modifiers,
-                                           uint64_t **modifiers);
-
 extern _X_EXPORT Bool glamor_get_drawable_modifiers(DrawablePtr draw,
                                                     uint32_t format,
                                                     uint32_t *num_modifiers,
