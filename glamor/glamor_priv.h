@@ -984,6 +984,8 @@ void glamor_xv_render(glamor_port_private *port_priv, int id);
 
 Bool glamor_set_pixmap_texture(PixmapPtr pixmap, unsigned int tex);
 
+void glamor_set_pixmap_type(PixmapPtr pixmap, glamor_pixmap_type_t type);
+
 #include "glamor_utils.h"
 
 #if 0
