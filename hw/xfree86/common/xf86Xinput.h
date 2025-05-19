@@ -123,10 +123,6 @@ extern _X_EXPORT void xf86PostMotionEventM(DeviceIntPtr device, int is_absolute,
 extern _X_EXPORT void xf86PostProximityEvent(DeviceIntPtr device, int is_in,
                                              int first_valuator,
                                              int num_valuators, ...);
-extern _X_EXPORT void xf86PostProximityEventP(DeviceIntPtr device, int is_in,
-                                              int first_valuator,
-                                              int num_valuators,
-                                              const int *valuators);
 extern _X_EXPORT void xf86PostProximityEventM(DeviceIntPtr device, int is_in,
                                               const ValuatorMask *mask);
 extern _X_EXPORT void xf86PostButtonEvent(DeviceIntPtr device, int is_absolute,

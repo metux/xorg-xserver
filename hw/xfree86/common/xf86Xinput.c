@@ -1322,20 +1322,6 @@ xf86PostProximityEvent(DeviceIntPtr device,
 }
 
 void
-xf86PostProximityEventP(DeviceIntPtr device,
-                        int is_in,
-                        int first_valuator,
-                        int num_valuators, const int *valuators)
-{
-    ValuatorMask mask;
-
-    XI_VERIFY_VALUATORS(num_valuators);
-
-    valuator_mask_set_range(&mask, first_valuator, num_valuators, valuators);
-    xf86PostProximityEventM(device, is_in, &mask);
-}
-
-void
 xf86PostProximityEventM(DeviceIntPtr device,
                         int is_in, const ValuatorMask *mask)
 {
