@@ -137,7 +137,6 @@ extern _X_EXPORT void glamor_egl_exchange_buffers(PixmapPtr front,
                                                   PixmapPtr back);
 
 extern _X_EXPORT struct gbm_device *glamor_egl_get_gbm_device(ScreenPtr screen);
-extern _X_EXPORT int glamor_egl_fd_from_pixmap(ScreenPtr, PixmapPtr, CARD16 *, CARD32 *);
 
 /* @glamor_supports_pixmap_import_export: Returns whether
  * glamor_fds_from_pixmap(), glamor_name_from_pixmap(), and

@@ -1000,6 +1000,8 @@ int glamor_egl_fds_from_pixmap(ScreenPtr pScreen, PixmapPtr pPixmap, int *fds,
 int glamor_egl_fd_name_from_pixmap(ScreenPtr pScreen, PixmapPtr pPixmap,
                                    CARD16 *stride, CARD32 *size);
 
+int glamor_egl_fd_from_pixmap(ScreenPtr, PixmapPtr, CARD16 *, CARD32 *);
+
 #include "glamor_utils.h"
 
 #if 0
