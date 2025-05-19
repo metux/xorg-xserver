@@ -39,7 +39,6 @@ xorg_sdk_headers = [
     'xisb.h',
     'xorgVersion.h',
     'xf86sbusBus.h',
-    'xf86VGAarbiter.h',
     'xf86Optionstr.h',
     'xf86platformBus.h',
     'xaarop.h',

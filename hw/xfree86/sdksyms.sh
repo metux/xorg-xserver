@@ -122,9 +122,6 @@ cat > sdksyms.c << EOF
 #include "xf86.h"
 #include "xf86Module.h"
 #include "xf86Opt.h"
-#ifdef XSERVER_LIBPCIACCESS
- #include "xf86VGAarbiter.h"
-#endif
 #include "xf86Priv.h"
 #include "xf86Privstr.h"
 #include "xf86cmap.h"

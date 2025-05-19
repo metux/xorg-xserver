@@ -7,7 +7,7 @@
 
 #include <X11/Xdefs.h>
 
-#include "xf86VGAarbiter.h"
+#include "xf86str.h"
 
 #ifdef XSERVER_LIBPCIACCESS
 
