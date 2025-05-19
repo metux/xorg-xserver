@@ -1402,14 +1402,6 @@ xf86PostKeyEvent(DeviceIntPtr device, unsigned int key_code, int is_down)
 }
 
 void
-xf86PostKeyEventP(DeviceIntPtr device,
-                  unsigned int key_code,
-                  int is_down)
-{
-    xf86PostKeyEventM(device, key_code, is_down);
-}
-
-void
 xf86PostKeyEventM(DeviceIntPtr device, unsigned int key_code, int is_down)
 {
 #ifdef XFreeXDGA

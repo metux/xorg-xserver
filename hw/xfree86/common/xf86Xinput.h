@@ -141,8 +141,6 @@ extern _X_EXPORT void xf86PostKeyEvent(DeviceIntPtr device,
                                        unsigned int key_code, int is_down);
 extern _X_EXPORT void xf86PostKeyEventM(DeviceIntPtr device,
                                         unsigned int key_code, int is_down);
-extern _X_EXPORT void xf86PostKeyEventP(DeviceIntPtr device,
-                                        unsigned int key_code, int is_down);
 extern _X_EXPORT void xf86PostKeyboardEvent(DeviceIntPtr device,
                                             unsigned int key_code, int is_down);
 extern _X_EXPORT void xf86PostTouchEvent(DeviceIntPtr dev, uint32_t touchid,
