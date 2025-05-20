@@ -181,9 +181,6 @@ extern _X_EXPORT void
 xf86IDrvMsg(InputInfoPtr dev, MessageType type, const char *format, ...)
 _X_ATTRIBUTE_PRINTF(3, 4);
 
-extern _X_EXPORT void xf86RemoveInputEventDrainCallback(CallbackProcPtr callback,
-                                                        void *param);
-
 /* xf86Option.c */
 extern _X_EXPORT void
 xf86CollectInputOptions(InputInfoPtr pInfo, const char **defaultOpts);
