@@ -73,7 +73,6 @@ extern _X_EXPORT int platformSlotClaimed;
 #endif
 
 extern _X_EXPORT confDRIRec xf86ConfigDRI;
-extern _X_EXPORT Bool xf86DRI2Enabled(void);
 
 #define XF86SCRNINFO(p) xf86ScreenToScrn(p)
 

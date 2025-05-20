@@ -972,12 +972,6 @@ configServerFlags(XF86ConfFlagsPtr flagsconf, XF86OptionPtr layoutopts)
 	    LimitClients, RESOURCE_ID_MASK);
 }
 
-Bool
-xf86DRI2Enabled(void)
-{
-    return xf86Info.dri2;
-}
-
 /**
  * Search for the pInfo in the null-terminated list given and remove (and
  * free) it if present. All other devices are moved forward.
