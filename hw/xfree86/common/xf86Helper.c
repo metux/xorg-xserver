@@ -1659,13 +1659,6 @@ xf86ScrnToScreen(ScrnInfoPtr pScrn)
 }
 
 void
-xf86UpdateDesktopDimensions(void)
-{
-    update_desktop_dimensions();
-}
-
-
-void
 xf86AddInputEventDrainCallback(CallbackProcPtr callback, void *param)
 {
     mieqAddCallbackOnDrained(callback, param);

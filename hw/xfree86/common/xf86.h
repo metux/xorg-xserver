@@ -341,10 +341,6 @@ extern _X_EXPORT ScreenPtr xf86ScrnToScreen(ScrnInfoPtr pScrn);
 /* flags passed to xf86 allocate screen */
 #define XF86_ALLOCATE_GPU_SCREEN 1
 
-/* Update the internal total dimensions of all ScreenRecs together */
-extern _X_EXPORT void
-xf86UpdateDesktopDimensions(void);
-
 /* only for backwards (source) compatibility */
 #define xf86MsgVerb LogMessageVerb
 #define xf86Msg(type, ...) LogMessageVerb(type, 1, __VA_ARGS__)
