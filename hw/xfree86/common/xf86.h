@@ -194,8 +194,6 @@ extern _X_EXPORT void xf86DeleteDriver(int drvIndex);
 extern _X_EXPORT ScrnInfoPtr xf86AllocateScreen(DriverPtr drv, int flags);
 extern _X_EXPORT void xf86DeleteScreen(ScrnInfoPtr pScrn);
 extern _X_EXPORT int xf86AllocateScrnInfoPrivateIndex(void);
-extern _X_EXPORT Bool xf86AddPixFormat(ScrnInfoPtr pScrn, int depth, int bpp,
-                                       int pad);
 extern _X_EXPORT Bool xf86SetDepthBpp(ScrnInfoPtr scrp, int depth, int bpp,
                                       int fbbpp, int depth24flags);
 extern _X_EXPORT void xf86PrintDepthBpp(ScrnInfoPtr scrp);

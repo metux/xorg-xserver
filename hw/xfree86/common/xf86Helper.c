@@ -304,7 +304,7 @@ xf86AllocateScrnInfoPrivateIndex(void)
     return idx;
 }
 
-Bool
+static Bool
 xf86AddPixFormat(ScrnInfoPtr pScrn, int depth, int bpp, int pad)
 {
     int i;
