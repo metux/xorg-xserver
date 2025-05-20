@@ -2602,18 +2602,6 @@ Several functions are provided to simplify resource registration:
 
 	  <blockquote><para>
 	      <programlisting>
-    Bool xf86IsScreenPrimary(ScrnInfoPtr pScrn);
-	      </programlisting>
-	      <blockquote><para>
-      This function returns <constant>TRUE</constant> if the primary entity
-      is registered with the screen referenced by
-      <parameter>pScrn</parameter>.
-		</para>
-
-	      </blockquote></para></blockquote>
-
-	  <blockquote><para>
-	      <programlisting>
     pciVideoPtr xf86GetPciInfoForEntity(int entityIndex);
 	      </programlisting>
 	      <blockquote><para>

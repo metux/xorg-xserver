@@ -1613,18 +1613,6 @@ xf86ConfigFbEntity(ScrnInfoPtr pScrn, int scrnFlag, int entityIndex,
 }
 
 Bool
-xf86IsScreenPrimary(ScrnInfoPtr pScrn)
-{
-    int i;
-
-    for (i = 0; i < pScrn->numEntities; i++) {
-        if (xf86IsEntityPrimary(i))
-            return TRUE;
-    }
-    return FALSE;
-}
-
-Bool
 xf86IsUnblank(int mode)
 {
     switch (mode) {

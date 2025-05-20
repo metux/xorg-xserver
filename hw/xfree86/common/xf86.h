@@ -280,8 +280,6 @@ xf86ConfigFbEntity(ScrnInfoPtr pScrn, int scrnFlag,
                    EntityProc enter, EntityProc leave, void *private);
 
 extern _X_EXPORT Bool
-xf86IsScreenPrimary(ScrnInfoPtr pScrn);
-extern _X_EXPORT Bool
 xf86IsUnblank(int mode);
 
 /* xf86Init.c */
