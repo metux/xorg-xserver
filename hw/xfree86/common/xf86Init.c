@@ -98,6 +98,8 @@
 #include <sys/sysmacros.h>
 #endif
 
+Bool xf86DoShowOptions = FALSE;
+
 void (*xf86OSPMClose) (void) = NULL;
 static Bool xorgHWOpenConsole = FALSE;
 
