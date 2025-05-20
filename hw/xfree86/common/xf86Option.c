@@ -272,12 +272,6 @@ xf86CheckIntOption(XF86OptionPtr optlist, const char *name, int deflt)
     return LookupIntOption(optlist, name, deflt, FALSE);
 }
 
-double
-xf86CheckRealOption(XF86OptionPtr optlist, const char *name, double deflt)
-{
-    return LookupRealOption(optlist, name, deflt, FALSE);
-}
-
 char *
 xf86CheckStrOption(XF86OptionPtr optlist, const char *name, const char *deflt)
 {
