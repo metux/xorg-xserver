@@ -249,8 +249,6 @@ xf86GetFlipPixels(void);
 extern _X_EXPORT Bool
 xf86ServerIsExiting(void);
 extern _X_EXPORT Bool
-xf86ServerIsResetting(void);
-extern _X_EXPORT Bool
 xf86ServerIsOnlyDetecting(void);
 extern _X_EXPORT Bool
 xf86GetVidModeAllowNonLocal(void);

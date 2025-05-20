@@ -1989,18 +1989,6 @@ functions is as follows:
 
       <blockquote><para>
 	  <programlisting>
-    Bool xf86ServerIsResetting();
-	  </programlisting>
-	  <blockquote><para>
-      Returns <constant>TRUE</constant> if the server is at the end of a
-      generation and is in the process of resetting, and
-      <constant>FALSE</constant> otherwise.
-	    </para></blockquote>
-
-	</para></blockquote>
-
-      <blockquote><para>
-	  <programlisting>
     Bool xf86ServerIsOnlyProbing();
 	  </programlisting>
 	  <blockquote><para>
