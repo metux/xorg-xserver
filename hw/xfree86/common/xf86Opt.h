@@ -140,9 +140,6 @@ extern _X_EXPORT char *xf86NormalizeName(const char *s);
 extern _X_EXPORT XF86OptionPtr xf86ReplaceIntOption(XF86OptionPtr optlist,
                                                     const char *name,
                                                     const int val);
-extern _X_EXPORT XF86OptionPtr xf86ReplaceRealOption(XF86OptionPtr optlist,
-                                                     const char *name,
-                                                     const double val);
 extern _X_EXPORT XF86OptionPtr xf86ReplaceBoolOption(XF86OptionPtr optlist,
                                                      const char *name,
                                                      const Bool val);

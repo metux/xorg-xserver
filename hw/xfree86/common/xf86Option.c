@@ -304,15 +304,6 @@ xf86ReplaceIntOption(XF86OptionPtr optlist, const char *name, const int val)
 }
 
 XF86OptionPtr
-xf86ReplaceRealOption(XF86OptionPtr optlist, const char *name, const double val)
-{
-    char tmp[32];
-
-    snprintf(tmp, sizeof(tmp), "%f", val);
-    return xf86AddNewOption(optlist, name, tmp);
-}
-
-XF86OptionPtr
 xf86ReplaceBoolOption(XF86OptionPtr optlist, const char *name, const Bool val)
 {
     return xf86AddNewOption(optlist, name, val ? "True" : "False");
