@@ -74,14 +74,6 @@ extern _X_EXPORT int platformSlotClaimed;
 
 #define XF86SCRNINFO(p) xf86ScreenToScrn(p)
 
-#define XF86FLIP_PIXELS() \
-	do { \
-	    if (xf86GetFlipPixels()) { \
-		pScreen->whitePixel = (pScreen->whitePixel) ? 0 : 1; \
-		pScreen->blackPixel = (pScreen->blackPixel) ? 0 : 1; \
-	   } \
-	while (0)
-
 #define BOOLTOSTRING(b) ((b) ? "TRUE" : "FALSE")
 
 /* Compatibility functions for pre-input-thread drivers */
