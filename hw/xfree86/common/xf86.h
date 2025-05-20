@@ -324,11 +324,6 @@ xf86CollectOptions(ScrnInfoPtr pScrn, XF86OptionPtr extraOpts);
 #ifdef RANDR
 extern _X_EXPORT Bool
 xf86RandRInit(ScreenPtr pScreen);
-extern _X_EXPORT Bool
-xf86RandRSetNewVirtualAndDimensions(ScreenPtr pScreen,
-                                    int newvirtX, int newvirtY,
-                                    int newmmWidth, int newmmHeight,
-                                    Bool resetMode);
 #endif
 
 /* xf86Extensions.c */
