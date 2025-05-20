@@ -68,5 +68,6 @@ int xf86AllocateEntity(void);
 BusType StringToBusType(const char *busID, const char **retID);
 
 extern Bool fbSlotClaimed;
+extern Bool sbusSlotClaimed;
 
 #endif                          /* _XF86_BUS_H */

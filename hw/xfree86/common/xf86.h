@@ -59,10 +59,6 @@ extern _X_EXPORT DevPrivateKeyRec xf86ScreenKeyRec;
 extern _X_EXPORT ScrnInfoPtr *xf86Screens;      /* List of pointers to ScrnInfoRecs */
 extern _X_EXPORT const unsigned char byte_reversed[256];
 
-#if (defined(__sparc__) || defined(__sparc)) && !defined(__OpenBSD__)
-extern _X_EXPORT Bool sbusSlotClaimed;
-#endif
-
 #if defined(XSERVER_PLATFORM_BUS)
 extern _X_EXPORT int platformSlotClaimed;
 #endif
