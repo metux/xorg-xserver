@@ -1043,9 +1043,14 @@ xf86DrvMsg(int scrnIndex, MessageType type, const char *format, ...)
     va_end(ap);
 }
 
+static void
+xf86VIDrvMsgVerb(InputInfoPtr dev, MessageType type, int verb,
+                 const char *format, va_list args)
+    _X_ATTRIBUTE_PRINTF(4, 0);
+
 /* Print input driver messages in the standard format of
    (<type>) <driver>: <device name>: <message> */
-void
+static void
 xf86VIDrvMsgVerb(InputInfoPtr dev, MessageType type, int verb,
                  const char *format, va_list args)
 {
