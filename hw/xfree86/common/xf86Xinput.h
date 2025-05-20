@@ -137,8 +137,6 @@ extern _X_EXPORT void xf86PostButtonEventP(DeviceIntPtr device, int is_absolute,
 extern _X_EXPORT void xf86PostButtonEventM(DeviceIntPtr device, int is_absolute,
                                            int button, int is_down,
                                            const ValuatorMask *mask);
-extern _X_EXPORT void xf86PostKeyEvent(DeviceIntPtr device,
-                                       unsigned int key_code, int is_down);
 extern _X_EXPORT void xf86PostKeyboardEvent(DeviceIntPtr device,
                                             unsigned int key_code, int is_down);
 extern _X_EXPORT void xf86PostTouchEvent(DeviceIntPtr dev, uint32_t touchid,
