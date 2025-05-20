@@ -38,7 +38,7 @@
 #include "os.h"
 #include "windowstr.h"
 #include "propertyst.h"
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86Priv.h"
 #include "xf86Parser.h"
 #include "xf86Xinput.h"

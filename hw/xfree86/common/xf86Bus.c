@@ -41,7 +41,7 @@
 #include "config/hotplug_priv.h"
 
 #include "os.h"
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86Priv.h"
 
 /* Bus-specific headers */
