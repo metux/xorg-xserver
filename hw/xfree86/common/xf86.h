@@ -178,7 +178,6 @@ extern _X_EXPORT void SetTimeSinceLastInputEvent(void);
 extern _X_EXPORT void *xf86AddGeneralHandler(int fd, InputHandlerProc proc,
                                                void *data);
 extern _X_EXPORT int xf86RemoveGeneralHandler(void *handler);
-extern _X_EXPORT void xf86EnableGeneralHandler(void *handler);
 extern _X_EXPORT InputHandlerProc xf86SetConsoleHandler(InputHandlerProc
                                                         handler, void *data);
 extern _X_EXPORT void xf86ProcessActionEvent(ActionEvent action, void *arg);
