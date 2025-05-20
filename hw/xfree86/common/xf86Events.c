@@ -567,16 +567,6 @@ addInputHandler(int fd, InputHandlerProc proc, void *data)
 }
 
 void *
-xf86AddInputHandler(int fd, InputHandlerProc proc, void *data)
-{
-    IHPtr ih = addInputHandler(fd, proc, data);
-
-    if (ih)
-        ih->is_input = TRUE;
-    return ih;
-}
-
-void *
 xf86AddGeneralHandler(int fd, InputHandlerProc proc, void *data)
 {
     IHPtr ih = addInputHandler(fd, proc, data);
