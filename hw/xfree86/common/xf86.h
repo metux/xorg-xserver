@@ -111,7 +111,6 @@ extern _X_EXPORT ScrnInfoPtr xf86ConfigPciEntity(ScrnInfoPtr pScrn,
 
 /* xf86Bus.c */
 
-extern _X_EXPORT int xf86GetFbInfoForScreen(int scrnIndex);
 extern _X_EXPORT int xf86ClaimFbSlot(DriverPtr drvp, int chipset, GDevPtr dev,
                                      Bool active);
 extern _X_EXPORT int xf86ClaimNoSlot(DriverPtr drvp, int chipset, GDevPtr dev,

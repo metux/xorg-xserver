@@ -77,22 +77,3 @@ xf86ClaimFbSlot(DriverPtr drvp, int chipset, GDevPtr dev, Bool active)
     fbSlotClaimed = TRUE;
     return num;
 }
-
-/*
- * Get the list of FB "slots" claimed by a screen
- */
-int
-xf86GetFbInfoForScreen(int scrnIndex)
-{
-    int num = 0;
-    int i;
-    EntityPtr p;
-
-    for (i = 0; i < xf86Screens[scrnIndex]->numEntities; i++) {
-        p = xf86Entities[xf86Screens[scrnIndex]->entityList[i]];
-        if (p->bus.type == BUS_NONE) {
-            num++;
-        }
-    }
-    return num;
-}
