@@ -9,5 +9,6 @@
 
 extern Bool xf86DoConfigure;
 extern Bool xf86DoConfigurePass1;
+extern Bool xf86ProbeIgnorePrimary;
 
 #endif /* _XSERVER_XF86_PRIV_H */
