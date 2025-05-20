@@ -761,7 +761,7 @@ ProcPanoramiXShmPutImage(ClientPtr client)
     orig_y = stuff->dstY;
     sendEvent = stuff->sendEvent;
     stuff->sendEvent = 0;
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         if (!j)
             stuff->sendEvent = sendEvent;
         stuff->drawable = draw->info[j].id;
@@ -985,7 +985,7 @@ ProcPanoramiXShmCreatePixmap(ClientPtr client)
 
     result = Success;
 
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         ShmScrPrivateRec *screen_priv;
 
         pScreen = screenInfo.screens[j];

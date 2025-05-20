@@ -3038,7 +3038,7 @@ SendVisibilityNotify(WindowPtr pWin)
 
         switch (visibility) {
         case VisibilityUnobscured:
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             if (i == Scrnum)
                 continue;
 
@@ -3063,7 +3063,7 @@ SendVisibilityNotify(WindowPtr pWin)
             }
             break;
         case VisibilityFullyObscured:
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             if (i == Scrnum)
                 continue;
 

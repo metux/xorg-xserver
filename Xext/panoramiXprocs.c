@@ -917,7 +917,7 @@ PanoramiXCopyGC(ClientPtr client)
     if (result != Success)
         return result;
 
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         stuff->srcGC = srcGC->info[j].id;
         stuff->dstGC = dstGC->info[j].id;
         result = (*SavedProcVector[X_CopyGC]) (client);
@@ -1102,7 +1102,7 @@ PanoramiXCopyArea(ClientPtr client)
         char *data;
         int pitch, rc;
 
-        FOR_NSCREENS(j) {
+        FOR_NSCREENS_BACKWARD(j) {
             rc = dixLookupDrawable(drawables + j, src->info[j].id, client, 0,
                                    DixGetAttrAccess);
             if (rc != Success)
@@ -1156,7 +1156,7 @@ PanoramiXCopyArea(ClientPtr client)
             RegionInit(&rgn, &sourceBox, 1);
 
             /* subtract the (screen-space) clips of the source drawables */
-            FOR_NSCREENS(j) {
+            FOR_NSCREENS_BACKWARD(j) {
                 ScreenPtr screen = screenInfo.screens[j];
                 RegionPtr sd;
 

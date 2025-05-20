@@ -1750,7 +1750,7 @@ XineramifyXv(void)
             if (!port)
                 break;
 
-            FOR_NSCREENS(k) {
+            FOR_NSCREENS_BACKWARD(k) {
                 if (MatchingAdaptors[k] && (MatchingAdaptors[k]->nPorts > j))
                     port->info[k].id = MatchingAdaptors[k]->base_id + j;
                 else

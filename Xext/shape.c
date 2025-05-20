@@ -309,7 +309,7 @@ ProcShapeRectangles(ClientPtr client)
     if (result != Success)
         return result;
 
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         stuff->dest = win->info[j].id;
         result = ShapeRectangles(client, stuff);
         if (result != Success)
@@ -414,7 +414,7 @@ ProcShapeMask(ClientPtr client)
     else
         pmap = NULL;
 
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         stuff->dest = win->info[j].id;
         if (pmap)
             stuff->src = pmap->info[j].id;
@@ -536,7 +536,7 @@ ProcShapeCombine(ClientPtr client)
     if (result != Success)
         return result;
 
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         stuff->dest = win->info[j].id;
         stuff->src = win2->info[j].id;
         result = ShapeCombine(client, stuff);
@@ -600,7 +600,7 @@ ProcShapeOffset(ClientPtr client)
     if (result != Success)
         return result;
 
-    FOR_NSCREENS(j) {
+    FOR_NSCREENS_BACKWARD(j) {
         stuff->dest = win->info[j].id;
         result = ShapeOffset(client, stuff);
         if (result != Success)

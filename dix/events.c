@@ -542,7 +542,7 @@ XineramaSetCursorPosition(DeviceIntPtr pDev, int x, int y, Bool generateEvent)
     y += screenInfo.screens[0]->y;
 
     if (!point_on_screen(pScreen, x, y)) {
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             if (i == pScreen->myNum)
                 continue;
             if (point_on_screen(screenInfo.screens[i], x, y)) {
@@ -589,7 +589,7 @@ XineramaSetWindowPntrs(DeviceIntPtr pDev, WindowPtr pWin)
     if (pWin == screenInfo.screens[0]->root) {
         int i;
 
-        FOR_NSCREENS(i)
+        FOR_NSCREENS_BACKWARD(i)
             pSprite->windows[i] = screenInfo.screens[i]->root;
     }
     else {
@@ -601,7 +601,7 @@ XineramaSetWindowPntrs(DeviceIntPtr pDev, WindowPtr pWin)
         if (rc != Success)
             return FALSE;
 
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             rc = dixLookupWindow(pSprite->windows + i, win->info[i].id,
                                  serverClient, DixReadAccess);
             if (rc != Success)  /* window is being unmapped */

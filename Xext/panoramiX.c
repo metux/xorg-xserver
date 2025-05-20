@@ -384,7 +384,7 @@ XineramaInitData(void)
     int i, w, h;
 
     RegionNull(&PanoramiXScreenRegion);
-    FOR_NSCREENS(i) {
+    FOR_NSCREENS_BACKWARD(i) {
         BoxRec TheBox;
         RegionRec ScreenRegion;
 
@@ -474,7 +474,7 @@ PanoramiXExtensionInit(void)
          *      run in non-PanoramiXeen mode.
          */
 
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             pScreen = screenInfo.screens[i];
             pScreenPriv = malloc(sizeof(PanoramiXScreenRec));
             dixSetPrivate(&pScreen->devPrivates, PanoramiXScreenKey,
@@ -827,7 +827,7 @@ PanoramiXConsolidate(void)
     saver = malloc(sizeof(PanoramiXRes));
     saver->type = XRT_WINDOW;
 
-    FOR_NSCREENS(i) {
+    FOR_NSCREENS_BACKWARD(i) {
         ScreenPtr scr = screenInfo.screens[i];
 
         root->info[i].id = scr->root->drawable.id;
@@ -1072,7 +1072,7 @@ ProcXineramaQueryScreens(ClientPtr client)
         xXineramaScreenInfo scratch;
         int i;
 
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             scratch.x_org = screenInfo.screens[i]->x;
             scratch.y_org = screenInfo.screens[i]->y;
             scratch.width = screenInfo.screens[i]->width;
@@ -1171,7 +1171,7 @@ XineramaGetImageData(DrawablePtr *pDrawables,
 
     depth = (format == XYPixmap) ? 1 : pDraw->depth;
 
-    FOR_NSCREENS(i) {
+    FOR_NSCREENS_BACKWARD(i) {
         BoxRec TheBox;
         ScreenPtr pScreen;
 

@@ -707,7 +707,7 @@ PanoramiXCompositeNameWindowPixmap(ClientPtr client)
     newPix->u.pix.shared = FALSE;
     panoramix_setup_ids(newPix, client, stuff->pixmap);
 
-    FOR_NSCREENS(i) {
+    FOR_NSCREENS_BACKWARD(i) {
         rc = dixLookupResourceByType((void **) &pWin, win->info[i].id,
                                      X11_RESTYPE_WINDOW, client,
                                      DixGetAttrAccess);
@@ -820,7 +820,7 @@ PanoramiXCompositeGetOverlayWindow(ClientPtr client)
     }
 
     if (overlayWin) {
-        FOR_NSCREENS(i) {
+        FOR_NSCREENS_BACKWARD(i) {
             cs = GetCompScreen(screenInfo.screens[i]);
             overlayWin->info[i].id = cs->pOverlayWin->drawable.id;
         }
