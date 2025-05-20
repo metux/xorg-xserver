@@ -116,7 +116,6 @@ xf86InfoRec xf86Info = {
     .vidModeEnabled = TRUE,
     .vidModeAllowNonLocal = FALSE,
     .miscModInDevEnabled = TRUE,
-    .miscModInDevAllowNonLocal = FALSE,
     .pmFlag = TRUE,
 #if defined(CONFIG_HAL) || defined(CONFIG_UDEV) || defined(CONFIG_WSCONS)
     .forceInputDevices = FALSE,

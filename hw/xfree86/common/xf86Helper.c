@@ -1402,12 +1402,6 @@ xf86GetVidModeEnabled(void)
 }
 
 Bool
-xf86GetModInDevAllowNonLocal(void)
-{
-    return xf86Info.miscModInDevAllowNonLocal;
-}
-
-Bool
 xf86GetModInDevEnabled(void)
 {
     return xf86Info.miscModInDevEnabled;
