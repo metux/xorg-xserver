@@ -1861,17 +1861,6 @@ functions:
 
      <blockquote><para>
 	  <programlisting>
-    int xf86GetDepth();
-	  </programlisting>
-	  <blockquote><para>
-      Returns the <option>-depth</option> command line setting.  If not
-      set on the command line, <constant>-1</constant> is returned.
-	    </para></blockquote>
-
-	</para></blockquote>
-
-     <blockquote><para>
-	  <programlisting>
     rgb xf86GetWeight();
 	  </programlisting>
 	  <blockquote><para>

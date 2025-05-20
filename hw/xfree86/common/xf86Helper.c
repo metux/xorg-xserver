@@ -1365,12 +1365,6 @@ xf86GetVerbosity(void)
     return max(xf86Verbose, xf86LogVerbose);
 }
 
-int
-xf86GetDepth(void)
-{
-    return xf86Depth;
-}
-
 rgb
 xf86GetWeight(void)
 {
