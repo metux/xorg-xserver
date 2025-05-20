@@ -128,8 +128,6 @@ extern _X_EXPORT Bool xf86GetOptValInteger(const OptionInfoRec * table,
                                            int token, int *value);
 extern _X_EXPORT Bool xf86GetOptValULong(const OptionInfoRec * table, int token,
                                          unsigned long *value);
-extern _X_EXPORT Bool xf86GetOptValReal(const OptionInfoRec * table, int token,
-                                        double *value);
 extern _X_EXPORT Bool xf86GetOptValFreq(const OptionInfoRec * table, int token,
                                         OptFreqUnits expectedUnits,
                                         double *value);

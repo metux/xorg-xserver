@@ -788,20 +788,6 @@ xf86GetOptValULong(const OptionInfoRec * table, int token, unsigned long *value)
 }
 
 Bool
-xf86GetOptValReal(const OptionInfoRec * table, int token, double *value)
-{
-    OptionInfoPtr p;
-
-    p = xf86TokenToOptinfo(table, token);
-    if (p && p->found) {
-        *value = p->value.realnum;
-        return TRUE;
-    }
-    else
-        return FALSE;
-}
-
-Bool
 xf86GetOptValFreq(const OptionInfoRec * table, int token,
                   OptFreqUnits expectedUnits, double *value)
 {
