@@ -102,7 +102,6 @@ extern _X_EXPORT XF86OptionPtr xf86OptionListDuplicate(XF86OptionPtr list);
 extern _X_EXPORT void xf86OptionListFree(XF86OptionPtr opt);
 extern _X_EXPORT char *xf86OptionName(XF86OptionPtr opt);
 extern _X_EXPORT char *xf86OptionValue(XF86OptionPtr opt);
-extern _X_EXPORT void xf86OptionListReport(XF86OptionPtr parm);
 extern _X_EXPORT XF86OptionPtr xf86FindOption(XF86OptionPtr options,
                                               const char *name);
 extern _X_EXPORT const char *xf86FindOptionValue(XF86OptionPtr options,

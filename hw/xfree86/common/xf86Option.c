@@ -40,7 +40,7 @@
 #include <X11/X.h>
 #include "os.h"
 #include "xf86.h"
-#include "xf86Opt.h"
+#include "xf86Opt_priv.h"
 #include "xf86Xinput.h"
 #include "xf86Optrec.h"
 #include "xf86Parser.h"
