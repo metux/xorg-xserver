@@ -33,6 +33,7 @@
 #include "xf86DDC_priv.h"
 #include "xf86Crtc.h"
 #include "xf86Modes.h"
+#include "xf86Opt_priv.h"
 #include "xf86Priv.h"
 #include "xf86RandR12.h"
 #include "X11/extensions/render.h"

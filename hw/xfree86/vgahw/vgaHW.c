@@ -20,6 +20,7 @@
 
 #include "xf86.h"
 #include "xf86_OSproc.h"
+#include "xf86Opt_priv.h"
 #include "vgaHW.h"
 
 #include "compiler.h"

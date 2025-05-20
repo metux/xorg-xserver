@@ -9,5 +9,6 @@
 
 void xf86OptionListReport(XF86OptionPtr parm);
 void xf86MarkOptionUsed(XF86OptionPtr option);
+void xf86MarkOptionUsedByName(XF86OptionPtr options, const char *name);
 
 #endif /* _XORG_XF86OPTION_PRIV_H */
