@@ -359,15 +359,6 @@ static void xf86RandRCloseScreen(CallbackListPtr *pcbl,
     dixSetPrivate(&pScreen->devPrivates, xf86RandRKey, NULL);
 }
 
-Rotation
-xf86GetRotation(ScreenPtr pScreen)
-{
-    if (xf86RandRKey == NULL)
-        return RR_Rotate_0;
-
-    return XF86RANDRINFO(pScreen)->rotation;
-}
-
 /* Function to change RandR's idea of the virtual screen size */
 Bool
 xf86RandRSetNewVirtualAndDimensions(ScreenPtr pScreen,
