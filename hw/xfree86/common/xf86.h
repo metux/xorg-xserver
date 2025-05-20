@@ -176,7 +176,6 @@ extern _X_EXPORT xf86SetDGAModeProc xf86SetDGAMode;
 typedef struct _InputInfoRec *InputInfoPtr;
 
 extern _X_EXPORT void SetTimeSinceLastInputEvent(void);
-extern _X_EXPORT int xf86RemoveInputHandler(void *handler);
 extern _X_EXPORT void xf86DisableInputHandler(void *handler);
 extern _X_EXPORT void xf86EnableInputHandler(void *handler);
 extern _X_EXPORT void *xf86AddGeneralHandler(int fd, InputHandlerProc proc,

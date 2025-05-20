@@ -615,23 +615,6 @@ removeInputHandler(IHPtr ih)
 }
 
 int
-xf86RemoveInputHandler(void *handler)
-{
-    IHPtr ih;
-    int fd;
-
-    if (!handler)
-        return -1;
-
-    ih = handler;
-    fd = ih->fd;
-
-    removeInputHandler(ih);
-
-    return fd;
-}
-
-int
 xf86RemoveGeneralHandler(void *handler)
 {
     IHPtr ih;
