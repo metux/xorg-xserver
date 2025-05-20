@@ -310,16 +310,6 @@ xf86ReplaceBoolOption(XF86OptionPtr optlist, const char *name, const Bool val)
 }
 
 XF86OptionPtr
-xf86ReplacePercentOption(XF86OptionPtr optlist, const char *name,
-                         const double val)
-{
-    char tmp[16];
-
-    snprintf(tmp, sizeof(tmp), "%lf%%", val);
-    return xf86AddNewOption(optlist, name, tmp);
-}
-
-XF86OptionPtr
 xf86ReplaceStrOption(XF86OptionPtr optlist, const char *name, const char *val)
 {
     return xf86AddNewOption(optlist, name, val);

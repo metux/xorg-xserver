@@ -143,9 +143,6 @@ extern _X_EXPORT XF86OptionPtr xf86ReplaceIntOption(XF86OptionPtr optlist,
 extern _X_EXPORT XF86OptionPtr xf86ReplaceBoolOption(XF86OptionPtr optlist,
                                                      const char *name,
                                                      const Bool val);
-extern _X_EXPORT XF86OptionPtr xf86ReplacePercentOption(XF86OptionPtr optlist,
-                                                        const char *name,
-                                                        const double val);
 extern _X_EXPORT XF86OptionPtr xf86ReplaceStrOption(XF86OptionPtr optlist,
                                                     const char *name,
                                                     const char *val);
