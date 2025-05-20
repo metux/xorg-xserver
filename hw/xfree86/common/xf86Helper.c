@@ -1570,36 +1570,6 @@ xf86SetSilkenMouse(ScreenPtr pScreen)
                    pScrn->silkenMouse ? "enabled" : "disabled");
 }
 
-/* Wrote this function for the PM2 Xv driver, preliminary. */
-
-void *
-xf86FindXvOptions(ScrnInfoPtr pScrn, int adaptor_index, const char *port_name,
-                  const char **adaptor_name, void **adaptor_options)
-{
-    confXvAdaptorPtr adaptor;
-    int i;
-
-    if (adaptor_index >= pScrn->confScreen->numxvadaptors) {
-        if (adaptor_name)
-            *adaptor_name = NULL;
-        if (adaptor_options)
-            *adaptor_options = NULL;
-        return NULL;
-    }
-
-    adaptor = &pScrn->confScreen->xvadaptors[adaptor_index];
-    if (adaptor_name)
-        *adaptor_name = adaptor->identifier;
-    if (adaptor_options)
-        *adaptor_options = adaptor->options;
-
-    for (i = 0; i < adaptor->numports; i++)
-        if (!xf86NameCmp(adaptor->ports[i].identifier, port_name))
-            return adaptor->ports[i].options;
-
-    return NULL;
-}
-
 static void
 xf86ConfigFbEntityInactive(EntityInfoPtr pEnt, EntityProc init,
                            EntityProc enter, EntityProc leave, void *private)
