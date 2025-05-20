@@ -186,7 +186,6 @@ extern _X_EXPORT void xf86EnableGeneralHandler(void *handler);
 extern _X_EXPORT InputHandlerProc xf86SetConsoleHandler(InputHandlerProc
                                                         handler, void *data);
 extern _X_EXPORT void xf86ProcessActionEvent(ActionEvent action, void *arg);
-extern _X_EXPORT void xf86PrintBacktrace(void);
 extern _X_EXPORT Bool xf86VTOwner(void);
 extern _X_EXPORT void xf86VTLeave(void);
 extern _X_EXPORT void xf86VTEnter(void);

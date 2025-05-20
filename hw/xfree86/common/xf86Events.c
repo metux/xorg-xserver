@@ -263,16 +263,6 @@ xf86RemoveEnabledDevice(InputInfoPtr pInfo)
     InputThreadUnregisterDev(pInfo->fd);
 }
 
-/*
- * xf86PrintBacktrace --
- *    Print a stack backtrace for debugging purposes.
- */
-void
-xf86PrintBacktrace(void)
-{
-    xorg_backtrace();
-}
-
 static void
 xf86ReleaseKeys(DeviceIntPtr pDev)
 {
