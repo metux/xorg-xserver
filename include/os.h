@@ -146,7 +146,7 @@ extern _X_EXPORT void GiveUp(int /*sig */ );
  * enough memory.
  */
 extern _X_EXPORT void *
-XNFalloc(unsigned long /*amount */ );
+XNFalloc(unsigned long /*amount */ ) __attribute__((returns_nonnull));;
 
 /*
  * This function calloc(3)s buffer, terminating the server if there is not
@@ -160,7 +160,7 @@ XNFcalloc(unsigned long /*amount */ ) _X_DEPRECATED;
  * enough memory or the arguments overflow when multiplied
  */
 extern _X_EXPORT void *
-XNFcallocarray(size_t nmemb, size_t size);
+XNFcallocarray(size_t nmemb, size_t size) __attribute__((returns_nonnull));;
 
 /*
  * This function realloc(3)s passed buffer, terminating the server if there is
