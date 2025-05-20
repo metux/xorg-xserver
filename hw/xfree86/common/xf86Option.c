@@ -345,12 +345,6 @@ xf86AddNewOption(XF86OptionPtr head, const char *name, const char *val)
 }
 
 XF86OptionPtr
-xf86NewOption(char *name, char *value)
-{
-    return xf86newOption(name, value);
-}
-
-XF86OptionPtr
 xf86NextOption(XF86OptionPtr list)
 {
     return xf86nextOption(list);

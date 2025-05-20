@@ -93,7 +93,6 @@ extern _X_EXPORT double xf86CheckPercentOption(XF86OptionPtr list,
 extern _X_EXPORT XF86OptionPtr xf86AddNewOption(XF86OptionPtr head,
                                                 const char *name,
                                                 const char *val);
-extern _X_EXPORT XF86OptionPtr xf86NewOption(char *name, char *value);
 extern _X_EXPORT XF86OptionPtr xf86NextOption(XF86OptionPtr list);
 extern _X_EXPORT XF86OptionPtr xf86OptionListCreate(const char **options,
                                                     int count, int used);
