@@ -295,8 +295,7 @@ xf86ReleaseKeys(DeviceIntPtr pDev)
     }
 }
 
-void
-xf86DisableInputDeviceForVTSwitch(InputInfoPtr pInfo)
+static void xf86DisableInputDeviceForVTSwitch(InputInfoPtr pInfo)
 {
     if (!pInfo->dev)
         return;

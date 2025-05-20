@@ -185,7 +185,6 @@ extern _X_EXPORT Bool xf86VTOwner(void);
 extern _X_EXPORT void xf86VTLeave(void);
 extern _X_EXPORT void xf86VTEnter(void);
 extern _X_EXPORT void xf86EnableInputDeviceForVTSwitch(InputInfoPtr pInfo);
-extern _X_EXPORT void xf86DisableInputDeviceForVTSwitch(InputInfoPtr pInfo);
 
 /* xf86Helper.c */
 
