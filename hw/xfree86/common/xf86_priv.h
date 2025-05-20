@@ -8,5 +8,6 @@
 #include "xf86.h"
 
 extern Bool xf86DoConfigure;
+extern Bool xf86DoConfigurePass1;
 
 #endif /* _XSERVER_XF86_PRIV_H */
