@@ -37,12 +37,10 @@
 #include "xf86Parser.h"
 #include "xf86str.h"
 
-#ifdef HAVE_PARSER_DECLS
 /*
  * global structure that holds the result of parsing the config file
  */
 extern XF86ConfigPtr xf86configptr;
-#endif
 
 typedef enum _ConfigStatus {
     CONFIG_OK = 0,

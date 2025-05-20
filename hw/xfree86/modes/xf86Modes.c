@@ -30,10 +30,10 @@
 #endif
 
 #include <libxcvt/libxcvt.h>
+
+#include "xf86Config.h"
 #include "xf86Modes.h"
 #include "xf86Priv.h"
-
-extern XF86ConfigPtr xf86configptr;
 
 /**
  * Calculates the horizontal sync rate of a mode.

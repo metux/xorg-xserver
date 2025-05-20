@@ -34,6 +34,7 @@
 
 #include "xf86.h"
 #include "xf86DDC_priv.h"
+#include "xf86Config.h"
 #include "xf86Crtc.h"
 #include "xf86Modes.h"
 #include "xf86Opt_priv.h"
@@ -459,8 +460,6 @@ xf86CrtcSetOrigin(xf86CrtcPtr crtc, int x, int y)
 /*
  * Output functions
  */
-
-extern XF86ConfigPtr xf86configptr;
 
 typedef enum {
     OPTION_PREFERRED_MODE,
