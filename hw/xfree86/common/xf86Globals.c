@@ -115,7 +115,6 @@ xf86InfoRec xf86Info = {
     .allowMouseOpenFail = FALSE,
     .vidModeEnabled = TRUE,
     .vidModeAllowNonLocal = FALSE,
-    .miscModInDevEnabled = TRUE,
     .pmFlag = TRUE,
 #if defined(CONFIG_HAL) || defined(CONFIG_UDEV) || defined(CONFIG_WSCONS)
     .forceInputDevices = FALSE,

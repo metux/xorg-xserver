@@ -1402,12 +1402,6 @@ xf86GetVidModeEnabled(void)
 }
 
 Bool
-xf86GetModInDevEnabled(void)
-{
-    return xf86Info.miscModInDevEnabled;
-}
-
-Bool
 xf86GetAllowMouseOpenFail(void)
 {
     return xf86Info.allowMouseOpenFail;
