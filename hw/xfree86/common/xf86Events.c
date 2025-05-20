@@ -341,6 +341,8 @@ xf86UpdateHasVTProperty(Bool hasVT)
     }
 }
 
+static void xf86DisableInputHandler(void *handler);
+
 void
 xf86VTLeave(void)
 {
@@ -621,8 +623,7 @@ xf86RemoveGeneralHandler(void *handler)
     return fd;
 }
 
-void
-xf86DisableInputHandler(void *handler)
+static void xf86DisableInputHandler(void *handler)
 {
     IHPtr ih;
 
