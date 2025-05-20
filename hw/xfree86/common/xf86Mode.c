@@ -248,7 +248,7 @@ xf86ModeStatusToString(ModeStatus status)
  * xf86ShowClockRanges() -- Print the clock ranges allowed
  * and the clock values scaled by ClockMulFactor and ClockDivFactor
  */
-void
+static void
 xf86ShowClockRanges(ScrnInfoPtr scrp, ClockRangePtr clockRanges)
 {
     ClockRangePtr cp;

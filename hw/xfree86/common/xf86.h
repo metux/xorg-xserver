@@ -298,8 +298,6 @@ extern _X_EXPORT void
 xf86SetCrtcForModes(ScrnInfoPtr scrp, int adjustFlags);
 extern _X_EXPORT void
 xf86PrintModes(ScrnInfoPtr scrp);
-extern _X_EXPORT void
-xf86ShowClockRanges(ScrnInfoPtr scrp, ClockRangePtr clockRanges);
 
 /* xf86Option.c */
 
