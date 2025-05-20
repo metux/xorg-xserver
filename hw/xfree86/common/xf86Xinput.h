@@ -171,7 +171,6 @@ extern _X_EXPORT void xf86DisableDevice(DeviceIntPtr dev, Bool panic);
 /* xf86Helper.c */
 extern _X_EXPORT void xf86AddInputDriver(InputDriverPtr driver, void *module,
                                          int flags);
-extern _X_EXPORT InputInfoPtr xf86LookupInput(const char *name);
 extern _X_EXPORT void xf86DeleteInput(InputInfoPtr pInp, int flags);
 extern _X_EXPORT void xf86MotionHistoryAllocate(InputInfoPtr pInfo);
 extern _X_EXPORT void

@@ -19,4 +19,6 @@ void xf86InputEnableVTProbe(void);
 
 InputDriverPtr xf86LookupInputDriver(const char *name);
 
+InputInfoPtr xf86LookupInput(const char *name);
+
 #endif /* _XSERVER__XF86XINPUT_H */
