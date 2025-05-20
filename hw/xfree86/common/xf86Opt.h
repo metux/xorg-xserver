@@ -106,7 +106,6 @@ extern _X_EXPORT XF86OptionPtr xf86FindOption(XF86OptionPtr options,
                                               const char *name);
 extern _X_EXPORT const char *xf86FindOptionValue(XF86OptionPtr options,
                                                  const char *name);
-extern _X_EXPORT void xf86MarkOptionUsed(XF86OptionPtr option);
 extern _X_EXPORT void xf86MarkOptionUsedByName(XF86OptionPtr options,
                                                const char *name);
 extern _X_EXPORT void xf86ShowUnusedOptions(int scrnIndex,

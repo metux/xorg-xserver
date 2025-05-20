@@ -35,7 +35,7 @@
 #include "xf86Config.h"
 #include "xf86Module.h"
 #include "xf86Extensions.h"
-#include "xf86Opt.h"
+#include "xf86Opt_priv.h"
 #include "optionstr.h"
 
 #ifdef XSELINUX
