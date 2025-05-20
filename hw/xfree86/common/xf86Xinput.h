@@ -167,7 +167,6 @@ extern _X_EXPORT void xf86InitValuatorDefaults(DeviceIntPtr dev, int axnum);
 extern _X_EXPORT void xf86AddEnabledDevice(InputInfoPtr pInfo);
 extern _X_EXPORT void xf86RemoveEnabledDevice(InputInfoPtr pInfo);
 extern _X_EXPORT void xf86DisableDevice(DeviceIntPtr dev, Bool panic);
-extern _X_EXPORT void xf86InputEnableVTProbe(void);
 
 /* xf86Helper.c */
 extern _X_EXPORT void xf86AddInputDriver(InputDriverPtr driver, void *module,

@@ -15,4 +15,6 @@ InputInfoPtr xf86AllocateInput(void);
 void xf86PostButtonEventM(DeviceIntPtr device, int is_absolute, int button,
                           int is_down, const ValuatorMask *mask);
 
+void xf86InputEnableVTProbe(void);
+
 #endif /* _XSERVER__XF86XINPUT_H */
