@@ -17,4 +17,6 @@ void xf86PostButtonEventM(DeviceIntPtr device, int is_absolute, int button,
 
 void xf86InputEnableVTProbe(void);
 
+InputDriverPtr xf86LookupInputDriver(const char *name);
+
 #endif /* _XSERVER__XF86XINPUT_H */
