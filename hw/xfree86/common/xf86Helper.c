@@ -1365,12 +1365,6 @@ xf86GetVerbosity(void)
     return max(xf86Verbose, xf86LogVerbose);
 }
 
-rgb
-xf86GetWeight(void)
-{
-    return xf86Weight;
-}
-
 Gamma
 xf86GetGamma(void)
 {

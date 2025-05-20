@@ -242,8 +242,6 @@ extern _X_EXPORT const char *
 xf86GetVisualName(int visual);
 extern _X_EXPORT int
 xf86GetVerbosity(void);
-extern _X_EXPORT rgb
-xf86GetWeight(void);
 extern _X_EXPORT Gamma
 xf86GetGamma(void);
 extern _X_EXPORT Bool
