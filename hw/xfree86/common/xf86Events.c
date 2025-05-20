@@ -359,7 +359,7 @@ xf86VTLeave(void)
     IHPtr ih;
 
     DebugF("xf86VTSwitch: Leaving, xf86Exiting is %s\n",
-           BOOLTOSTRING((dispatchException & DE_TERMINATE) ? TRUE : FALSE));
+           (dispatchException & DE_TERMINATE) ? "TRUE" : "FALSE");
 #ifdef DPMSExtension
     if (DPMSPowerLevel != DPMSModeOn)
         DPMSSet(serverClient, DPMSModeOn);
