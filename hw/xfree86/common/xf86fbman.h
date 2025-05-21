@@ -105,9 +105,6 @@ extern _X_EXPORT Bool
  xf86InitFBManagerRegion(ScreenPtr pScreen, RegionPtr ScreenRegion);
 
 extern _X_EXPORT Bool
- xf86InitFBManagerArea(ScreenPtr pScreen, int PixalArea, int Verbosity);
-
-extern _X_EXPORT Bool
  xf86InitFBManager(ScreenPtr pScreen, BoxPtr FullBox);
 
 extern _X_EXPORT Bool
