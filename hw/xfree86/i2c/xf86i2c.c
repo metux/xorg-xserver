@@ -452,15 +452,6 @@ xf86I2CWriteRead(I2CDevPtr d,
     return b->I2CWriteRead(d, WriteBuffer, nWrite, ReadBuffer, nRead);
 }
 
-/* Read a byte, the only readable register of a device.
- */
-
-Bool
-xf86I2CReadStatus(I2CDevPtr d, I2CByte * pbyte)
-{
-    return xf86I2CWriteRead(d, NULL, 0, pbyte, 1);
-}
-
 /* Read a byte from one of the registers determined by its sub-address.
  */
 

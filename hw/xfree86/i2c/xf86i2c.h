@@ -98,7 +98,6 @@ extern _X_EXPORT Bool xf86I2CWriteRead(I2CDevPtr d, I2CByte * WriteBuffer,
                                        int nRead);
 #define 	xf86I2CRead(d, rb, nr) xf86I2CWriteRead(d, NULL, 0, rb, nr)
 
-extern _X_EXPORT Bool xf86I2CReadStatus(I2CDevPtr d, I2CByte * pbyte);
 extern _X_EXPORT Bool xf86I2CReadByte(I2CDevPtr d, I2CByte subaddr,
                                       I2CByte * pbyte);
 extern _X_EXPORT Bool xf86I2CReadBytes(I2CDevPtr d, I2CByte subaddr,
