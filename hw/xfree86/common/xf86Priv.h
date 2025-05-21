@@ -39,7 +39,6 @@
 #include "input.h"
 
 #ifdef XF86VIDMODE
-extern _X_EXPORT Bool xf86VidModeDisabled;
 extern _X_EXPORT Bool xf86VidModeAllowNonLocal;
 #endif
 extern _X_EXPORT Bool xf86fpFlag;
