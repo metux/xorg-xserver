@@ -249,8 +249,6 @@ xf86ServerIsExiting(void);
 extern _X_EXPORT Bool
 xf86ServerIsOnlyDetecting(void);
 extern _X_EXPORT Bool
-xf86GetVidModeEnabled(void);
-extern _X_EXPORT Bool
 xf86GetAllowMouseOpenFail(void);
 extern _X_EXPORT CARD32
 xorgGetVersion(void);

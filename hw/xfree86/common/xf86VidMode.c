@@ -400,7 +400,7 @@ xf86VidModeInit(ScreenPtr pScreen)
 {
     VidModePtr pVidMode;
 
-    if (!xf86GetVidModeEnabled()) {
+    if (!xf86Info.vidModeEnabled) {
         DebugF("!xf86GetVidModeEnabled()\n");
         return FALSE;
     }
@@ -448,7 +448,7 @@ XFree86VidModeExtensionInit(void)
     DebugF("XFree86VidModeExtensionInit");
 
     /* This means that the DDX doesn't want the vidmode extension enabled */
-    if (!xf86GetVidModeEnabled())
+    if (!xf86Info.vidModeEnabled)
         return;
 
     for (i = 0; i < screenInfo.numScreens; i++) {
