@@ -814,42 +814,6 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bool set, int first, int num,
     return data;
 }
 
-VBEpmi *
-VBEGetVBEpmi(vbeInfoPtr pVbe)
-{
-    VBEpmi *pmi;
-
-    /*
-       Input:
-       AH    := 4Fh     Super VGA support
-       AL    := 0Ah     Protected Mode Interface
-       BL    := 00h     Return Protected Mode Table
-
-       Output:
-       AX    := Status
-       ES    := Real Mode Segment of Table
-       DI    := Offset of Table
-       CX    := Length of Table including protected mode code in bytes (for copying purposes)
-       (All other registers are preserved)
-     */
-
-    pVbe->pInt10->num = 0x10;
-    pVbe->pInt10->ax = 0x4f0a;
-    pVbe->pInt10->bx = 0;
-    pVbe->pInt10->di = 0;
-    xf86ExecX86int10(pVbe->pInt10);
-
-    if (R16(pVbe->pInt10->ax) != 0x4f)
-        return NULL;
-
-    pmi = malloc(sizeof(VBEpmi));
-    pmi->seg_tbl = R16(pVbe->pInt10->es);
-    pmi->tbl_off = R16(pVbe->pInt10->di);
-    pmi->tbl_len = R16(pVbe->pInt10->cx);
-
-    return pmi;
-}
-
 #if 0
 vbeModeInfoPtr
 VBEBuildVbeModeList(vbeInfoPtr pVbe, VbeInfoBlock * vbe)

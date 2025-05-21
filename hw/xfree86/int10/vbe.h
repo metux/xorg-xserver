@@ -302,8 +302,6 @@ typedef struct _VBEpmi {
     int tbl_len;
 } VBEpmi;
 
-extern _X_EXPORT VBEpmi *VBEGetVBEpmi(vbeInfoPtr pVbe);
-
 #define VESAFreeVBEpmi(pmi)	free(pmi)
 
 /* high level helper functions */
