@@ -83,4 +83,6 @@ void xf86PostProbe(void);
 void xf86ClearEntityListForScreen(ScrnInfoPtr pScrn);
 void xf86RemoveDevFromEntity(int entityIndex, GDevPtr dev);
 
+Bool xf86CallDriverProbe(struct _DriverRec *drv, Bool detect_only);
+
 #endif                          /* _XF86_BUS_H */
