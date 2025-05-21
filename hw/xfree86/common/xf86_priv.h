@@ -28,4 +28,7 @@ void xf86EnableInputDeviceForVTSwitch(InputInfoPtr pInfo);
 void xf86DeleteDriver(int drvIndex);
 void xf86DeleteScreen(ScrnInfoPtr pScrn);
 
+/* xf86Mode.c */
+const char * xf86ModeStatusToString(ModeStatus status);
+
 #endif /* _XSERVER_XF86_PRIV_H */

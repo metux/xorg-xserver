@@ -31,6 +31,7 @@
 
 #include <libxcvt/libxcvt.h>
 
+#include "xf86_priv.h"
 #include "xf86Config.h"
 #include "xf86Modes.h"
 #include "xf86Priv.h"
