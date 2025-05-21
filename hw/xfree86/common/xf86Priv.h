@@ -57,7 +57,6 @@ extern _X_EXPORT int xf86DRMMasterFd;              /* Command line argument for 
 #endif
 
 /* xf86Bus.c */
-extern _X_EXPORT Bool xf86BusConfig(void);
 extern _X_EXPORT void xf86BusProbe(void);
 extern _X_EXPORT void xf86PostProbe(void);
 extern _X_EXPORT void xf86ClearEntityListForScreen(ScrnInfoPtr pScrn);

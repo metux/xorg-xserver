@@ -78,4 +78,6 @@ void xf86RemoveEntityFromScreen(ScrnInfoPtr pScrn, int entityIndex);
 Bool xf86IsEntityPrimary(int entityIndex);
 ScrnInfoPtr xf86FindScreenForEntity(int entityIndex);
 
+Bool xf86BusConfig(void);
+
 #endif                          /* _XF86_BUS_H */
