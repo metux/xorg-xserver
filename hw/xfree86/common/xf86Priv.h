@@ -38,9 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-#ifdef XF86VIDMODE
-extern _X_EXPORT Bool xf86VidModeAllowNonLocal;
-#endif
 extern _X_EXPORT Bool xf86fpFlag;
 extern _X_EXPORT Bool xf86sFlag;
 extern _X_EXPORT Bool xf86bsEnableFlag;
