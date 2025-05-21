@@ -65,6 +65,8 @@ void xf86EnableInputDeviceForVTSwitch(InputInfoPtr pInfo);
 void xf86Wakeup(void *blockData, int err);
 void xf86HandlePMEvents(int fd, void *data);
 
+extern int (*xf86PMGetEventFromOs) (int fd, pmEvent * events, int num);
+
 /* xf86Helper.c */
 void xf86DeleteDriver(int drvIndex);
 void xf86DeleteScreen(ScrnInfoPtr pScrn);

@@ -62,8 +62,6 @@ extern _X_EXPORT void xf86AddDevToEntity(int entityIndex, GDevPtr dev);
 
 /* xf86Events.c */
 
-extern _X_EXPORT int (*xf86PMGetEventFromOs) (int fd, pmEvent * events,
-                                              int num);
 extern _X_EXPORT pmWait (*xf86PMConfirmEventToOs) (int fd, pmEvent event);
 
 /* xf86Helper.c */
