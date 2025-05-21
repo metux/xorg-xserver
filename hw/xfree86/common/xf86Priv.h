@@ -48,7 +48,6 @@ extern _X_EXPORT serverLayoutRec xf86ConfigLayout;
 
 extern _X_EXPORT DriverPtr *xf86DriverList;
 extern _X_EXPORT int xf86NumScreens;
-extern _X_EXPORT const char *xf86VisualNames[];
 extern _X_EXPORT int xf86Verbose;       /* verbosity level */
 extern _X_EXPORT int xf86LogVerbose;    /* log file verbosity level */
 
