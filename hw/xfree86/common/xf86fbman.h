@@ -110,9 +110,6 @@ extern _X_EXPORT Bool
 extern _X_EXPORT Bool
  xf86InitFBManagerLinear(ScreenPtr pScreen, int offset, int size);
 
-extern _X_EXPORT Bool
- xf86FBManagerRunning(ScreenPtr pScreen);
-
 extern _X_EXPORT FBAreaPtr
 xf86AllocateOffscreenArea(ScreenPtr pScreen,
                           int w, int h,

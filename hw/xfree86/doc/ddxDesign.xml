@@ -3322,18 +3322,6 @@ video memory using the following functions (definitions taken from
     </para>
 
     <para>
-The function:
-      <programlisting>
-    Bool xf86FBManagerRunning(ScreenPtr pScreen);
-      </programlisting>
-
-can be used by an extension to check if the driver has initialized
-the memory manager.  The manager is not available if this returns
-<constant>FALSE</constant> and the functions above will all fail.
-    </para>
-
-
-    <para>
 <function>xf86AllocateOffscreenArea()</function> can be used to request a
 rectangle of dimensions <parameter>width</parameter>&nbsp;&times;&nbsp;<parameter>height</parameter>
 (in pixels) from unused offscreen memory.  <parameter>granularity</parameter>

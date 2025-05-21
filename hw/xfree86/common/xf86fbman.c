@@ -60,18 +60,6 @@ xf86RegisterOffscreenManager(ScreenPtr pScreen, FBManagerFuncsPtr funcs)
 }
 
 Bool
-xf86FBManagerRunning(ScreenPtr pScreen)
-{
-    if (xf86FBManagerKey == NULL)
-        return FALSE;
-
-    if (!dixLookupPrivate(&pScreen->devPrivates, xf86FBManagerKey))
-        return FALSE;
-
-    return TRUE;
-}
-
-Bool
 xf86RegisterFreeBoxCallback(ScreenPtr pScreen,
                             FreeBoxCallbackProcPtr FreeBoxCallback,
                             void *devPriv)
