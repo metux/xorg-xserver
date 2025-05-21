@@ -459,7 +459,7 @@ XFree86VidModeExtensionInit(void)
     if (!enabled)
         return;
 
-   VidModeAddExtension(xf86GetVidModeAllowNonLocal());
+   VidModeAddExtension(xf86Info.vidModeAllowNonLocal);
 }
 
 #endif                          /* XF86VIDMODE */

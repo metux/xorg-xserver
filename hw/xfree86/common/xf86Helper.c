@@ -1384,12 +1384,6 @@ xf86ServerIsOnlyDetecting(void)
 }
 
 Bool
-xf86GetVidModeAllowNonLocal(void)
-{
-    return xf86Info.vidModeAllowNonLocal;
-}
-
-Bool
 xf86GetVidModeEnabled(void)
 {
     return xf86Info.vidModeEnabled;
