@@ -70,5 +70,6 @@ BusType StringToBusType(const char *busID, const char **retID);
 extern Bool fbSlotClaimed;
 extern Bool sbusSlotClaimed;
 extern int platformSlotClaimed;
+extern int pciSlotClaimed;
 
 #endif                          /* _XF86_BUS_H */
