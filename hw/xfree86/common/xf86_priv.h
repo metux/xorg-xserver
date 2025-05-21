@@ -32,6 +32,8 @@ extern char *xf86ScreenName;
 extern char *xf86PointerName;
 extern char *xf86KeyboardName;
 
+extern rgb xf86Weight;
+
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
 void xf86InitViewport(ScrnInfoPtr pScr);
