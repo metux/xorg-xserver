@@ -8,7 +8,7 @@
 #include "os/log_priv.h"
 
 #include "os.h"
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86Priv.h"
 #include "xf86_os_support.h"
 #include "xf86_OSproc.h"

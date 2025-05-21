@@ -38,9 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-#ifdef HAVE_ACPI
-extern _X_EXPORT Bool xf86acpiDisableFlag;
-#endif
 extern _X_EXPORT char *xf86LayoutName;
 extern _X_EXPORT char *xf86ScreenName;
 extern _X_EXPORT char *xf86PointerName;
