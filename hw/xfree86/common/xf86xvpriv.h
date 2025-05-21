@@ -34,7 +34,7 @@
 
 /*** These are DDX layer privates ***/
 
-extern _X_EXPORT DevPrivateKey XF86XvScreenKey;
+extern DevPrivateKey XF86XvScreenKey;
 
 typedef struct {
     DestroyWindowProcPtr DestroyWindow;
