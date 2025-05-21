@@ -345,7 +345,7 @@ static void xf86EnableInputHandler(void *handler);
 static void xf86DisableGeneralHandler(void *handler);
 static void xf86EnableGeneralHandler(void *handler);
 
-void
+static void
 xf86VTLeave(void)
 {
     int i;
