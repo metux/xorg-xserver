@@ -74,4 +74,6 @@ extern confDRIRec xf86ConfigDRI;
 extern const char *xf86ConfigFile;
 extern const char *xf86ConfigDir;
 
+Bool xf86PathIsSafe(const char *path);
+
 #endif                          /* _xf86_config_h */
