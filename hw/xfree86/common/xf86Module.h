@@ -143,9 +143,6 @@ typedef struct {
 
 #define MODULE_VERSION_NUMERIC(maj, min, patch) \
 	((((maj) & 0xFF) << 24) | (((min) & 0xFF) << 16) | (patch & 0xFFFF))
-#define GET_MODULE_MAJOR_VERSION(vers)	(((vers) >> 24) & 0xFF)
-#define GET_MODULE_MINOR_VERSION(vers)	(((vers) >> 16) & 0xFF)
-#define GET_MODULE_PATCHLEVEL(vers)	((vers) & 0xFFFF)
 
 /* Prototypes for Loader functions that are exported to modules */
 extern _X_EXPORT void *LoadSubModule(void *, const char *, const char **,
