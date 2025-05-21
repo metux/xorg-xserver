@@ -68,11 +68,6 @@ extern _X_EXPORT void xf86RemoveDevFromEntity(int entityIndex, GDevPtr dev);
 
 extern _X_EXPORT Bool xf86PathIsSafe(const char *path);
 
-/* xf86DefaultModes */
-
-extern _X_EXPORT const DisplayModeRec xf86DefaultModes[];
-extern _X_EXPORT const int xf86NumDefaultModes;
-
 /* xf86Configure.c */
 extern _X_EXPORT void
 DoConfigure(void)
