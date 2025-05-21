@@ -33,6 +33,7 @@
 #include "os/osdep.h"
 
 #include "xf86_priv.h"
+#include "xf86Bus.h"
 #include "xf86Config.h"
 #include "xf86_OSlib.h"
 #include "xf86Priv.h"
