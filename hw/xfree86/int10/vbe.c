@@ -728,23 +728,6 @@ VBESetDisplayStart(vbeInfoPtr pVbe, int x, int y, Bool wait_retrace)
     return TRUE;
 }
 
-Bool
-VBEGetDisplayStart(vbeInfoPtr pVbe, int *x, int *y)
-{
-    pVbe->pInt10->num = 0x10;
-    pVbe->pInt10->ax = 0x4f07;
-    pVbe->pInt10->bx = 0x01;
-    xf86ExecX86int10(pVbe->pInt10);
-
-    if (R16(pVbe->pInt10->ax) != 0x4f)
-        return FALSE;
-
-    *x = pVbe->pInt10->cx;
-    *y = pVbe->pInt10->dx;
-
-    return TRUE;
-}
-
 int
 VBESetGetDACPaletteFormat(vbeInfoPtr pVbe, int bits)
 {

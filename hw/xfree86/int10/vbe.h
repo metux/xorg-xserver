@@ -268,7 +268,6 @@ extern _X_EXPORT Bool VBESetGetLogicalScanlineLength(vbeInfoPtr pVbe,
 /* 16 bit code */
 extern _X_EXPORT Bool VBESetDisplayStart(vbeInfoPtr pVbe, int x, int y,
                                          Bool wait_retrace);
-extern _X_EXPORT Bool VBEGetDisplayStart(vbeInfoPtr pVbe, int *x, int *y);
 
 /*
  * INT 8
