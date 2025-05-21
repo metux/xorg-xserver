@@ -1719,52 +1719,6 @@ xf86XVFillKeyHelper(ScreenPtr pScreen, CARD32 key, RegionPtr fillboxes)
     xf86XVFillKeyHelperDrawable(&pScreen->root->drawable, key, fillboxes);
 }
 
-void
-xf86XVFillKeyHelperPort(DrawablePtr pDraw, void *data, CARD32 key,
-                        RegionPtr clipboxes, Bool fillEverything)
-{
-    WindowPtr pWin = (WindowPtr) pDraw;
-    XF86XVWindowPtr WinPriv = GET_XF86XV_WINDOW(pWin);
-    XvPortRecPrivatePtr portPriv = NULL;
-    RegionRec reg;
-    RegionPtr fillboxes;
-
-    while (WinPriv) {
-        XvPortRecPrivatePtr pPriv = WinPriv->PortRec;
-
-        if (data == pPriv->DevPriv.ptr) {
-            portPriv = pPriv;
-            break;
-        }
-
-        WinPriv = WinPriv->next;
-    }
-
-    if (!portPriv)
-        return;
-
-    if (!portPriv->ckeyFilled)
-        portPriv->ckeyFilled = RegionCreate(NULL, 0);
-
-    if (!fillEverything) {
-        RegionNull(&reg);
-        fillboxes = &reg;
-        RegionSubtract(fillboxes, clipboxes, portPriv->ckeyFilled);
-
-        if (!RegionNotEmpty(fillboxes))
-            goto out;
-    }
-    else
-        fillboxes = clipboxes;
-
-    RegionCopy(portPriv->ckeyFilled, clipboxes);
-
-    xf86XVFillKeyHelperDrawable(pDraw, key, fillboxes);
- out:
-    if (!fillEverything)
-        RegionUninit(&reg);
-}
-
 /* xf86XVClipVideoHelper -
 
    Takes the dst box in standard X BoxRec form (top and left
