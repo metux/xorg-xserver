@@ -32,7 +32,7 @@
 #include "dix/screen_hooks_priv.h"
 #include "randr/randrstr_priv.h"
 
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86DDC_priv.h"
 #include "xf86Config.h"
 #include "xf86Crtc.h"
