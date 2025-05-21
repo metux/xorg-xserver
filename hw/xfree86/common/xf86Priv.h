@@ -62,8 +62,6 @@ extern _X_EXPORT void xf86AddDevToEntity(int entityIndex, GDevPtr dev);
 
 /* xf86Helper.c */
 extern _X_EXPORT void
-xf86LogInit(void);
-extern _X_EXPORT void
 xf86CloseLog(enum ExitCode error);
 
 /* xf86Init.c */
