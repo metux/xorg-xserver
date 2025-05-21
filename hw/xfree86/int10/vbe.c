@@ -814,56 +814,6 @@ VBESetGetPaletteData(vbeInfoPtr pVbe, Bool set, int first, int num,
     return data;
 }
 
-#if 0
-vbeModeInfoPtr
-VBEBuildVbeModeList(vbeInfoPtr pVbe, VbeInfoBlock * vbe)
-{
-    vbeModeInfoPtr ModeList = NULL;
-
-    int i = 0;
-
-    while (vbe->VideoModePtr[i] != 0xffff) {
-        vbeModeInfoPtr m;
-        VbeModeInfoBlock *mode;
-        int id = vbe->VideoModePtr[i++];
-        int bpp;
-
-        if ((mode = VBEGetModeInfo(pVbe, id)) == NULL)
-            continue;
-
-        bpp = mode->BitsPerPixel;
-
-        m = XNFcallocarray(1, sizeof(vbeModeInfoRec));
-        m->width = mode->XResolution;
-        m->height = mode->YResolution;
-        m->bpp = bpp;
-        m->n = id;
-        m->next = ModeList;
-
-        xf86DrvMsgVerb(pVbe->pInt10->pScrn->scrnIndex, X_PROBED, 3,
-                       "BIOS reported VESA mode 0x%x: x:%i y:%i bpp:%i\n",
-                       m->n, m->width, m->height, m->bpp);
-
-        ModeList = m;
-
-        VBEFreeModeInfo(mode);
-    }
-    return ModeList;
-}
-
-unsigned short
-VBECalcVbeModeIndex(vbeModeInfoPtr m, DisplayModePtr mode, int bpp)
-{
-    while (m) {
-        if (bpp == m->bpp
-            && mode->HDisplay == m->width && mode->VDisplay == m->height)
-            return m->n;
-        m = m->next;
-    }
-    return 0;
-}
-#endif
-
 void
 VBEVesaSaveRestore(vbeInfoPtr pVbe, vbeSaveRestorePtr vbe_sr,
                    vbeSaveRestoreFunction function)
