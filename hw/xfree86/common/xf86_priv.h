@@ -40,6 +40,7 @@ extern const char *xf86ModulePath;
 extern MessageType xf86ModPathFrom;
 
 extern const char *xf86LogFile;
+extern MessageType xf86LogFileFrom;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
