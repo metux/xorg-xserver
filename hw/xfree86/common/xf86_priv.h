@@ -43,6 +43,7 @@ extern const char *xf86LogFile;
 extern MessageType xf86LogFileFrom;
 extern Bool xf86LogFileWasOpened;
 extern int xf86Verbose;       /* verbosity level */
+extern int xf86LogVerbose;    /* log file verbosity level */
 
 extern int xf86NumDrivers;
 extern Bool xf86Resetting;
