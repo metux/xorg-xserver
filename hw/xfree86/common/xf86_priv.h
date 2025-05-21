@@ -66,6 +66,7 @@ void xf86Wakeup(void *blockData, int err);
 void xf86HandlePMEvents(int fd, void *data);
 
 extern int (*xf86PMGetEventFromOs) (int fd, pmEvent * events, int num);
+extern pmWait (*xf86PMConfirmEventToOs) (int fd, pmEvent event);
 
 /* xf86Helper.c */
 void xf86DeleteDriver(int drvIndex);
