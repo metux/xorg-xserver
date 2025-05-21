@@ -30,7 +30,8 @@
 #endif
 
 #include <X11/X.h>
-#include "xf86.h"
+
+#include "xf86_priv.h"
 #include "xf86Priv.h"
 #include "xf86Xinput_priv.h"
 #include "xf86_OSproc.h"
