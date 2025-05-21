@@ -34,6 +34,7 @@ extern char *xf86KeyboardName;
 
 extern rgb xf86Weight;
 extern Bool xf86FlipPixels;
+extern Gamma xf86Gamma;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
