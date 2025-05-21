@@ -17,6 +17,7 @@ extern Bool xf86ProbeIgnorePrimary;
  */
 /* globals.c */
 extern Bool xf86AllowMouseOpenFail;
+extern Bool xf86AutoBindGPUDisabled;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);

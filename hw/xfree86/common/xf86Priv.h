@@ -38,12 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-/*
- * Parameters set ONLY from the command line options
- * The global state of these things is held in xf86InfoRec (when appropriate).
- */
-extern _X_EXPORT Bool xf86AutoBindGPUDisabled;
-
 #ifdef XF86VIDMODE
 extern _X_EXPORT Bool xf86VidModeDisabled;
 extern _X_EXPORT Bool xf86VidModeAllowNonLocal;
