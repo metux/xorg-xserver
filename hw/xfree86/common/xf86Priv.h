@@ -38,7 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-extern _X_EXPORT char *xf86LayoutName;
 extern _X_EXPORT char *xf86ScreenName;
 extern _X_EXPORT char *xf86PointerName;
 extern _X_EXPORT char *xf86KeyboardName;

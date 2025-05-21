@@ -27,6 +27,8 @@ extern Bool xf86silkenMouseDisableFlag;
 extern Bool xf86xkbdirFlag;
 extern Bool xf86acpiDisableFlag;
 
+extern char *xf86LayoutName;
+
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
 void xf86InitViewport(ScrnInfoPtr pScr);
