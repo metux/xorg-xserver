@@ -38,8 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-extern _X_EXPORT Bool xf86xkbdirFlag;
-
 #ifdef HAVE_ACPI
 extern _X_EXPORT Bool xf86acpiDisableFlag;
 #endif

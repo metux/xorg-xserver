@@ -24,6 +24,7 @@ extern Bool xf86fpFlag;
 extern Bool xf86bsEnableFlag;
 extern Bool xf86bsDisableFlag;
 extern Bool xf86silkenMouseDisableFlag;
+extern Bool xf86xkbdirFlag;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
