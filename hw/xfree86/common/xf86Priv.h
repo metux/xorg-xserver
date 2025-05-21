@@ -38,7 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-extern _X_EXPORT char *xf86KeyboardName;
 extern _X_EXPORT int xf86FbBpp;
 extern _X_EXPORT int xf86Depth;
 extern _X_EXPORT rgb xf86Weight;
