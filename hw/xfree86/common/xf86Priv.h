@@ -52,12 +52,6 @@ extern _X_EXPORT int xf86NumScreens;
 extern _X_EXPORT ScrnInfoPtr *xf86GPUScreens;      /* List of pointers to ScrnInfoRecs */
 extern _X_EXPORT int xf86NumGPUScreens;
 extern _X_EXPORT int xf86DRMMasterFd;              /* Command line argument for DRM master file descriptor */
-#ifndef DEFAULT_VERBOSE
-#define DEFAULT_VERBOSE		0
-#endif
-#ifndef DEFAULT_LOG_VERBOSE
-#define DEFAULT_LOG_VERBOSE	3
-#endif
 #ifndef DEFAULT_DPI
 #define DEFAULT_DPI		96
 #endif
