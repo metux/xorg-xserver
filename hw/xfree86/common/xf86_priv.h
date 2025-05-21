@@ -20,6 +20,7 @@ extern Bool xf86AllowMouseOpenFail;
 extern Bool xf86AutoBindGPUDisabled;
 extern Bool xf86VidModeDisabled;
 extern Bool xf86VidModeAllowNonLocal;
+extern Bool xf86fpFlag;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);

@@ -38,7 +38,6 @@
 #include "xf86Privstr.h"
 #include "input.h"
 
-extern _X_EXPORT Bool xf86fpFlag;
 extern _X_EXPORT Bool xf86sFlag;
 extern _X_EXPORT Bool xf86bsEnableFlag;
 extern _X_EXPORT Bool xf86bsDisableFlag;
