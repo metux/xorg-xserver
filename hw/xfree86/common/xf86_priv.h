@@ -17,4 +17,7 @@ void xf86InitViewport(ScrnInfoPtr pScr);
 void xf86ZoomViewport(ScreenPtr pScreen, int zoom);
 void xf86InitOrigins(void);
 
+/* xf86Events.c */
+InputHandlerProc xf86SetConsoleHandler(InputHandlerProc handler, void *data);
+
 #endif /* _XSERVER_XF86_PRIV_H */
