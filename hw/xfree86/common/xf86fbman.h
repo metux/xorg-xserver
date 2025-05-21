@@ -94,9 +94,6 @@ typedef struct {
     Bool (*PurgeOffscreenAreas) (ScreenPtr);
 } FBManagerFuncs, *FBManagerFuncsPtr;
 
-extern _X_EXPORT Bool xf86RegisterOffscreenManager(ScreenPtr pScreen,
-                                                   FBManagerFuncsPtr funcs);
-
 extern _X_EXPORT Bool
  xf86InitFBManagerRegion(ScreenPtr pScreen, RegionPtr ScreenRegion);
 

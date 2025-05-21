@@ -45,7 +45,7 @@
 static DevPrivateKeyRec xf86FBManagerKeyRec;
 static DevPrivateKey xf86FBManagerKey;
 
-Bool
+static Bool
 xf86RegisterOffscreenManager(ScreenPtr pScreen, FBManagerFuncsPtr funcs)
 {
 
