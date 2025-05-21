@@ -135,12 +135,6 @@ extern _X_EXPORT Bool
  xf86ResizeOffscreenLinear(FBLinearPtr resize, int size);
 
 extern _X_EXPORT Bool
-
-xf86RegisterFreeBoxCallback(ScreenPtr pScreen,
-                            FreeBoxCallbackProcPtr FreeBoxCallback,
-                            void *devPriv);
-
-extern _X_EXPORT Bool
  xf86PurgeUnlockedOffscreenAreas(ScreenPtr pScreen);
 
 extern _X_EXPORT Bool

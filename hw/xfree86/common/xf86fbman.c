@@ -59,23 +59,6 @@ xf86RegisterOffscreenManager(ScreenPtr pScreen, FBManagerFuncsPtr funcs)
     return TRUE;
 }
 
-Bool
-xf86RegisterFreeBoxCallback(ScreenPtr pScreen,
-                            FreeBoxCallbackProcPtr FreeBoxCallback,
-                            void *devPriv)
-{
-    FBManagerFuncsPtr funcs;
-
-    if (xf86FBManagerKey == NULL)
-        return FALSE;
-    if (!(funcs = (FBManagerFuncsPtr) dixLookupPrivate(&pScreen->devPrivates,
-                                                       xf86FBManagerKey)))
-        return FALSE;
-
-    return (*funcs->RegisterFreeBoxCallback) (pScreen, FreeBoxCallback,
-                                              devPriv);
-}
-
 FBAreaPtr
 xf86AllocateOffscreenArea(ScreenPtr pScreen,
                           int w, int h,
