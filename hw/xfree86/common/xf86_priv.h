@@ -83,5 +83,6 @@ void xf86ExtensionInit(void);
 
 /* xf86Configure.c */
 void DoConfigure(void) _X_NORETURN;
+void DoShowOptions(void) _X_NORETURN;
 
 #endif /* _XSERVER_XF86_PRIV_H */
