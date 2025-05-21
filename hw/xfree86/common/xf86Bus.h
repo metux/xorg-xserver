@@ -79,5 +79,6 @@ Bool xf86IsEntityPrimary(int entityIndex);
 ScrnInfoPtr xf86FindScreenForEntity(int entityIndex);
 
 Bool xf86BusConfig(void);
+void xf86PostProbe(void);
 
 #endif                          /* _XF86_BUS_H */
