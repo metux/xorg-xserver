@@ -260,22 +260,8 @@ typedef struct {
     int NumUsedAreas;
     FBLinearLinkPtr LinearAreas;
     CloseScreenProcPtr CloseScreen;
-    int NumCallbacks;
-    FreeBoxCallbackProcPtr *FreeBoxesUpdateCallback;
     DevUnion *devPrivates;
 } FBManager, *FBManagerPtr;
-
-static void
-SendCallFreeBoxCallbacks(FBManagerPtr offman)
-{
-    int i = offman->NumCallbacks;
-
-    while (i--) {
-        (*offman->FreeBoxesUpdateCallback[i]) (offman->pScreen,
-                                               offman->FreeBoxes,
-                                               offman->devPrivates[i].ptr);
-    }
-}
 
 static FBAreaPtr
 AllocateArea(FBManagerPtr offman,
@@ -375,14 +361,10 @@ localAllocateOffscreenArea(ScreenPtr pScreen,
                            RemoveAreaCallbackProcPtr removeCB, void *privData)
 {
     FBManagerPtr offman;
-    FBAreaPtr area = NULL;
 
     offman = (FBManagerPtr) dixLookupPrivate(&pScreen->devPrivates,
                                              xf86FBScreenKey);
-    if ((area = AllocateArea(offman, w, h, gran, moveCB, removeCB, privData)))
-        SendCallFreeBoxCallbacks(offman);
-
-    return area;
+    return AllocateArea(offman, w, h, gran, moveCB, removeCB, privData);
 }
 
 static void
@@ -419,8 +401,6 @@ localFreeOffscreenArea(FBAreaPtr area)
 
     free(pLink);
     offman->NumUsedAreas--;
-
-    SendCallFreeBoxCallbacks(offman);
 }
 
 static Bool
@@ -470,8 +450,6 @@ localResizeOffscreenArea(FBAreaPtr resize, int w, int h)
         RegionUnion(offman->FreeBoxes, offman->FreeBoxes, &FreedReg);
         RegionUninit(&FreedReg);
         RegionUninit(&NewReg);
-
-        SendCallFreeBoxCallbacks(offman);
 
         return TRUE;
     }
@@ -529,8 +507,6 @@ localResizeOffscreenArea(FBAreaPtr resize, int w, int h)
     }
 
     RegionUninit(&FreedReg);
-
-    SendCallFreeBoxCallbacks(offman);
 
     return TRUE;
 }
@@ -698,7 +674,6 @@ localPurgeUnlockedOffscreenAreas(ScreenPtr pScreen)
 
     if (anyUsed) {
         RegionValidate(offman->FreeBoxes, &anyUsed);
-        SendCallFreeBoxCallbacks(offman);
     }
 
     return TRUE;
@@ -1109,7 +1084,6 @@ xf86FBCloseScreen(ScreenPtr pScreen)
     RegionDestroy(offman->InitialBoxes);
     RegionDestroy(offman->FreeBoxes);
 
-    free(offman->FreeBoxesUpdateCallback);
     free(offman->devPrivates);
     free(offman);
     dixSetPrivate(&pScreen->devPrivates, xf86FBScreenKey, NULL);
@@ -1187,8 +1161,6 @@ xf86InitFBManagerRegion(ScreenPtr pScreen, RegionPtr FullRegion)
     offman->UsedAreas = NULL;
     offman->LinearAreas = NULL;
     offman->NumUsedAreas = 0;
-    offman->NumCallbacks = 0;
-    offman->FreeBoxesUpdateCallback = NULL;
     offman->devPrivates = NULL;
 
     return TRUE;

@@ -60,7 +60,6 @@ typedef struct _FBLinear {
     DevUnion devPrivate;
 } FBLinear, *FBLinearPtr;
 
-typedef void (*FreeBoxCallbackProcPtr) (ScreenPtr, RegionPtr, void *);
 typedef void (*MoveAreaCallbackProcPtr) (FBAreaPtr, FBAreaPtr);
 typedef void (*RemoveAreaCallbackProcPtr) (FBAreaPtr);
 
