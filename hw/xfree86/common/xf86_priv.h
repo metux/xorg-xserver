@@ -37,6 +37,7 @@ extern Bool xf86FlipPixels;
 extern Gamma xf86Gamma;
 
 extern const char *xf86ModulePath;
+extern MessageType xf86ModPathFrom;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
