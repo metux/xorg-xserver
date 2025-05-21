@@ -117,14 +117,6 @@ xf86AllocateOffscreenArea(ScreenPtr pScreen,
                           MoveAreaCallbackProcPtr moveCB,
                           RemoveAreaCallbackProcPtr removeCB, void *privData);
 
-extern _X_EXPORT FBAreaPtr
-xf86AllocateLinearOffscreenArea(ScreenPtr pScreen,
-                                int length,
-                                int granularity,
-                                MoveAreaCallbackProcPtr moveCB,
-                                RemoveAreaCallbackProcPtr removeCB,
-                                void *privData);
-
 extern _X_EXPORT FBLinearPtr
 xf86AllocateOffscreenLinear(ScreenPtr pScreen,
                             int length,
