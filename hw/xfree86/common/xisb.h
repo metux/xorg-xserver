@@ -54,8 +54,6 @@ typedef struct _XISBuffer {
 extern _X_EXPORT XISBuffer *XisbNew(int fd, ssize_t size);
 extern _X_EXPORT void XisbFree(XISBuffer * b);
 extern _X_EXPORT int XisbRead(XISBuffer * b);
-extern _X_EXPORT ssize_t XisbWrite(XISBuffer * b, unsigned char *msg,
-                                   ssize_t len);
 extern _X_EXPORT void XisbTrace(XISBuffer * b, int trace);
 extern _X_EXPORT void XisbBlockDuration(XISBuffer * b, int block_duration);
 
