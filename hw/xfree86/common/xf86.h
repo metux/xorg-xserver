@@ -74,8 +74,6 @@ extern _X_EXPORT int xf86ClaimPciSlot(struct pci_device *, DriverPtr drvp,
 extern _X_EXPORT void xf86UnclaimPciSlot(struct pci_device *, GDevPtr dev);
 extern _X_EXPORT Bool xf86ParsePciBusString(const char *busID, int *bus,
                                             int *device, int *func);
-extern _X_EXPORT Bool xf86ComparePciBusString(const char *busID, int bus,
-                                              int device, int func);
 extern _X_EXPORT Bool xf86IsPrimaryPci(struct pci_device *pPci);
 extern _X_EXPORT Bool xf86CheckPciMemBase(struct pci_device *pPci,
                                           memType base);
