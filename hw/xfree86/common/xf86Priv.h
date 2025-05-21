@@ -62,9 +62,6 @@ extern _X_EXPORT void xf86AddDevToEntity(int entityIndex, GDevPtr dev);
 
 /* xf86Configure.c */
 extern _X_EXPORT void
-DoConfigure(void)
-    _X_NORETURN;
-extern _X_EXPORT void
 DoShowOptions(void)
     _X_NORETURN;
 

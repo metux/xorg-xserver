@@ -81,4 +81,7 @@ Bool xf86RandRInit(ScreenPtr pScreen);
 /* xf86Extensions.c */
 void xf86ExtensionInit(void);
 
+/* xf86Configure.c */
+void DoConfigure(void) _X_NORETURN;
+
 #endif /* _XSERVER_XF86_PRIV_H */
