@@ -128,7 +128,6 @@ extern _X_EXPORT GDevPtr xf86AddBusDeviceToConfigure(const char *driver,
 extern _X_EXPORT void xf86SetViewport(ScreenPtr pScreen, int x, int y);
 extern _X_EXPORT Bool xf86SwitchMode(ScreenPtr pScreen, DisplayModePtr mode);
 extern _X_EXPORT void *xf86GetPointerScreenFuncs(void);
-extern _X_EXPORT void xf86InitOrigins(void);
 extern _X_EXPORT void xf86ReconfigureLayout(void);
 
 /* xf86DPMS.c */

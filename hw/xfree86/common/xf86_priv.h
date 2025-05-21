@@ -11,8 +11,10 @@ extern Bool xf86DoConfigure;
 extern Bool xf86DoConfigurePass1;
 extern Bool xf86ProbeIgnorePrimary;
 
+/* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
 void xf86InitViewport(ScrnInfoPtr pScr);
 void xf86ZoomViewport(ScreenPtr pScreen, int zoom);
+void xf86InitOrigins(void);
 
 #endif /* _XSERVER_XF86_PRIV_H */
