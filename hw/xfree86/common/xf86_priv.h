@@ -33,6 +33,7 @@ extern char *xf86PointerName;
 extern char *xf86KeyboardName;
 
 extern rgb xf86Weight;
+extern Bool xf86FlipPixels;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
