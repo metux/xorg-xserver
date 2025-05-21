@@ -42,6 +42,34 @@
 #define DEBUG
 */
 
+typedef struct {
+    FBAreaPtr(*AllocateOffscreenArea) (ScreenPtr pScreen,
+                                       int w, int h,
+                                       int granularity,
+                                       MoveAreaCallbackProcPtr moveCB,
+                                       RemoveAreaCallbackProcPtr removeCB,
+                                       void *privData);
+    void (*FreeOffscreenArea) (FBAreaPtr area);
+    Bool (*ResizeOffscreenArea) (FBAreaPtr area, int w, int h);
+    Bool (*QueryLargestOffscreenArea) (ScreenPtr pScreen,
+                                       int *width, int *height,
+                                       int granularity,
+                                       int preferences, int priority);
+/* linear functions */
+     FBLinearPtr(*AllocateOffscreenLinear) (ScreenPtr pScreen,
+                                            int size,
+                                            int granularity,
+                                            MoveLinearCallbackProcPtr moveCB,
+                                            RemoveLinearCallbackProcPtr
+                                            removeCB, void *privData);
+    void (*FreeOffscreenLinear) (FBLinearPtr area);
+    Bool (*ResizeOffscreenLinear) (FBLinearPtr area, int size);
+    Bool (*QueryLargestOffscreenLinear) (ScreenPtr pScreen,
+                                         int *size,
+                                         int granularity, int priority);
+    Bool (*PurgeOffscreenAreas) (ScreenPtr);
+} FBManagerFuncs, *FBManagerFuncsPtr;
+
 static DevPrivateKeyRec xf86FBManagerKeyRec;
 static DevPrivateKey xf86FBManagerKey;
 
