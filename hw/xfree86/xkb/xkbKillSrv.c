@@ -42,7 +42,7 @@ THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #include "scrnintstr.h"
 #include "windowstr.h"
 
-#include "xf86.h"
+#include "xf86_priv.h"
 
 int
 XkbDDXTerminateServer(DeviceIntPtr dev, KeyCode key, XkbAction *act)

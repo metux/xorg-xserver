@@ -12,7 +12,7 @@
 
 #include "windowstr.h"
 #include "os.h"
-#include "xf86.h"
+#include "xf86_priv.h"
 
 int
 XkbDDXPrivate(DeviceIntPtr dev, KeyCode key, XkbAction *act)
