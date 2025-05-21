@@ -266,9 +266,6 @@ xf86PrintModes(ScrnInfoPtr scrp);
 extern _X_EXPORT void
 xf86CollectOptions(ScrnInfoPtr pScrn, XF86OptionPtr extraOpts);
 
-/* xf86Extensions.c */
-extern void xf86ExtensionInit(void);
-
 /* convert ScreenPtr to ScrnInfoPtr */
 extern _X_EXPORT ScrnInfoPtr xf86ScreenToScrn(ScreenPtr pScreen);
 /* convert ScrnInfoPtr to ScreenPtr */

@@ -30,7 +30,7 @@
 #include "extension.h"
 #include "globals.h"
 
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86Config.h"
 #include "xf86Module.h"
 #include "xf86Extensions.h"

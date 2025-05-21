@@ -35,4 +35,7 @@ ModeStatus xf86CheckModeForDriver(ScrnInfoPtr scrp, DisplayModePtr mode, int fla
 /* xf86RandR.c */
 Bool xf86RandRInit(ScreenPtr pScreen);
 
+/* xf86Extensions.c */
+void xf86ExtensionInit(void);
+
 #endif /* _XSERVER_XF86_PRIV_H */
