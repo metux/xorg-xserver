@@ -135,7 +135,6 @@ cat > sdksyms.c << EOF
 #ifdef XV
 # include "xf86xv.h"
 # include "xf86xvmc.h"
-# include "xf86xvpriv.h"
 #endif
 #include "xorgVersion.h"
 #if defined(__sparc__) || defined(__sparc)
