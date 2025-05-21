@@ -44,7 +44,6 @@ extern _X_EXPORT int xf86Depth;
 /* Other parameters */
 
 extern _X_EXPORT xf86InfoRec xf86Info;
-extern _X_EXPORT const char *xf86ModulePath;
 extern _X_EXPORT MessageType xf86ModPathFrom;
 extern _X_EXPORT const char *xf86LogFile;
 extern _X_EXPORT MessageType xf86LogFileFrom;

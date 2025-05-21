@@ -36,6 +36,8 @@ extern rgb xf86Weight;
 extern Bool xf86FlipPixels;
 extern Gamma xf86Gamma;
 
+extern const char *xf86ModulePath;
+
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
 void xf86InitViewport(ScrnInfoPtr pScr);
