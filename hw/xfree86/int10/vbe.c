@@ -15,10 +15,12 @@
 
 #include <string.h>
 
+#include <X11/extensions/dpmsconst.h>
+
 #include "xf86.h"
 #include "xf86Modes.h"
 #include "vbe.h"
-#include <X11/extensions/dpmsconst.h>
+#include "xf86Bus.h"
 
 #define VERSION(x) VBE_VERSION_MAJOR(x),VBE_VERSION_MINOR(x)
 
