@@ -58,7 +58,6 @@ extern _X_EXPORT int xf86DRMMasterFd;              /* Command line argument for 
 
 /* xf86Bus.c */
 extern _X_EXPORT void xf86BusProbe(void);
-extern _X_EXPORT void xf86ClearEntityListForScreen(ScrnInfoPtr pScrn);
 extern _X_EXPORT void xf86AddDevToEntity(int entityIndex, GDevPtr dev);
 extern _X_EXPORT void xf86RemoveDevFromEntity(int entityIndex, GDevPtr dev);
 

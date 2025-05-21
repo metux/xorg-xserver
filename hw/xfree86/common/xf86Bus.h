@@ -80,5 +80,6 @@ ScrnInfoPtr xf86FindScreenForEntity(int entityIndex);
 
 Bool xf86BusConfig(void);
 void xf86PostProbe(void);
+void xf86ClearEntityListForScreen(ScrnInfoPtr pScrn);
 
 #endif                          /* _XF86_BUS_H */
