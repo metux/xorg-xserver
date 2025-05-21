@@ -777,12 +777,3 @@ gtf_supported(xf86MonPtr mon)
 
     return FALSE;
 }
-
-/*
- * Returns true if HDMI, false if definitely not or unknown.
- */
-Bool
-xf86MonitorIsHDMI(xf86MonPtr mon)
-{
-    return xf86MonitorFindHDMIBlock(mon) != NULL;
-}
