@@ -21,5 +21,6 @@ void xf86InitOrigins(void);
 InputHandlerProc xf86SetConsoleHandler(InputHandlerProc handler, void *data);
 void xf86ProcessActionEvent(ActionEvent action, void *arg);
 Bool xf86VTOwner(void);
+void xf86VTEnter(void);
 
 #endif /* _XSERVER_XF86_PRIV_H */
