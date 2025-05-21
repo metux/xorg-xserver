@@ -471,23 +471,6 @@ xf86I2CReadBytes(I2CDevPtr d, I2CByte subaddr, I2CByte * pbyte, int n)
     return xf86I2CWriteRead(d, &subaddr, 1, pbyte, n);
 }
 
-/* Read a word (high byte, then low byte) from one of the registers
- * determined by its sub-address.
- */
-
-Bool
-xf86I2CReadWord(I2CDevPtr d, I2CByte subaddr, unsigned short *pword)
-{
-    I2CByte rb[2];
-
-    if (!xf86I2CWriteRead(d, &subaddr, 1, rb, 2))
-        return FALSE;
-
-    *pword = (rb[0] << 8) | rb[1];
-
-    return TRUE;
-}
-
 /* Write a byte to one of the registers determined by its sub-address.
  */
 
