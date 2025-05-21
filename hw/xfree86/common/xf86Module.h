@@ -160,7 +160,6 @@ typedef void *(*ModuleSetupProc) (void *, void *, int *, int *);
 typedef void (*ModuleTearDownProc) (void *);
 
 #define MODULESETUPPROTO(func) void *func(void *, void *, int*, int*)
-#define MODULETEARDOWNPROTO(func) void func(void *)
 
 typedef struct {
     XF86ModuleVersionInfo *vers;
