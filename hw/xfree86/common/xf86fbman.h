@@ -80,9 +80,6 @@ typedef struct {
                                        int *width, int *height,
                                        int granularity,
                                        int preferences, int priority);
-    Bool (*RegisterFreeBoxCallback) (ScreenPtr pScreen,
-                                     FreeBoxCallbackProcPtr FreeBoxCallback,
-                                     void *devPriv);
 /* linear functions */
      FBLinearPtr(*AllocateOffscreenLinear) (ScreenPtr pScreen,
                                             int size,

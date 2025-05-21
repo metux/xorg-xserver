@@ -277,42 +277,6 @@ SendCallFreeBoxCallbacks(FBManagerPtr offman)
     }
 }
 
-static Bool
-localRegisterFreeBoxCallback(ScreenPtr pScreen,
-                             FreeBoxCallbackProcPtr FreeBoxCallback,
-                             void *devPriv)
-{
-    FBManagerPtr offman;
-    FreeBoxCallbackProcPtr *newCallbacks;
-    DevUnion *newPrivates;
-
-    offman = (FBManagerPtr) dixLookupPrivate(&pScreen->devPrivates,
-                                             xf86FBScreenKey);
-    newCallbacks = reallocarray(offman->FreeBoxesUpdateCallback,
-                                offman->NumCallbacks + 1,
-                                sizeof(FreeBoxCallbackProcPtr));
-    if (!newCallbacks)
-        return FALSE;
-    else
-        offman->FreeBoxesUpdateCallback = newCallbacks;
-
-    newPrivates = reallocarray(offman->devPrivates,
-                               offman->NumCallbacks + 1,
-                               sizeof(DevUnion));
-    if (!newPrivates)
-        return FALSE;
-    else
-        offman->devPrivates = newPrivates;
-
-    offman->FreeBoxesUpdateCallback[offman->NumCallbacks] = FreeBoxCallback;
-    offman->devPrivates[offman->NumCallbacks].ptr = devPriv;
-    offman->NumCallbacks++;
-
-    SendCallFreeBoxCallbacks(offman);
-
-    return TRUE;
-}
-
 static FBAreaPtr
 AllocateArea(FBManagerPtr offman,
              int w, int h,
@@ -1111,7 +1075,6 @@ static FBManagerFuncs xf86FBManFuncs = {
     localFreeOffscreenArea,
     localResizeOffscreenArea,
     localQueryLargestOffscreenArea,
-    localRegisterFreeBoxCallback,
     localAllocateOffscreenLinear,
     localFreeOffscreenLinear,
     localResizeOffscreenLinear,
