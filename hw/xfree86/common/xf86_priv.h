@@ -11,6 +11,13 @@ extern Bool xf86DoConfigure;
 extern Bool xf86DoConfigurePass1;
 extern Bool xf86ProbeIgnorePrimary;
 
+/*
+ * Parameters set ONLY from the command line options
+ * The global state of these things is held in xf86InfoRec (when appropriate).
+ */
+/* globals.c */
+extern Bool xf86AllowMouseOpenFail;
+
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
 void xf86InitViewport(ScrnInfoPtr pScr);

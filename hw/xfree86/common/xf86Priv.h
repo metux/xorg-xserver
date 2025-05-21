@@ -42,7 +42,6 @@
  * Parameters set ONLY from the command line options
  * The global state of these things is held in xf86InfoRec (when appropriate).
  */
-extern _X_EXPORT Bool xf86AllowMouseOpenFail;
 extern _X_EXPORT Bool xf86AutoBindGPUDisabled;
 
 #ifdef XF86VIDMODE
