@@ -32,7 +32,7 @@
 
 #include "os.h"
 #include "globals.h"
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86str.h"
 #include "xf86Priv.h"
 #include "xf86DDC.h"

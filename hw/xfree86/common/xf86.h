@@ -266,12 +266,6 @@ xf86PrintModes(ScrnInfoPtr scrp);
 extern _X_EXPORT void
 xf86CollectOptions(ScrnInfoPtr pScrn, XF86OptionPtr extraOpts);
 
-/* xf86RandR.c */
-#ifdef RANDR
-extern _X_EXPORT Bool
-xf86RandRInit(ScreenPtr pScreen);
-#endif
-
 /* xf86Extensions.c */
 extern void xf86ExtensionInit(void);
 
