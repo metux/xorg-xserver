@@ -41,7 +41,7 @@
 #include "scrnintstr.h"
 #include "globals.h"
 
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86Priv.h"
 #include "xf86_OSproc.h"
 
