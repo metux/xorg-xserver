@@ -485,22 +485,6 @@ xf86I2CWriteByte(I2CDevPtr d, I2CByte subaddr, I2CByte byte)
     return xf86I2CWriteRead(d, wb, 2, NULL, 0);
 }
 
-/* Write a word (high byte, then low byte) to one of the registers
- * determined by its sub-address.
- */
-
-Bool
-xf86I2CWriteWord(I2CDevPtr d, I2CByte subaddr, unsigned short word)
-{
-    I2CByte wb[3];
-
-    wb[0] = subaddr;
-    wb[1] = word >> 8;
-    wb[2] = word & 0xFF;
-
-    return xf86I2CWriteRead(d, wb, 3, NULL, 0);
-}
-
 /* Write a vector of bytes to not adjacent registers. This vector is,
  * 1st byte sub-address, 2nd byte value, 3rd byte sub-address asf.
  * This function is intended to initialize devices. Note this function

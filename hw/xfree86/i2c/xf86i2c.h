@@ -105,8 +105,6 @@ extern _X_EXPORT Bool xf86I2CReadBytes(I2CDevPtr d, I2CByte subaddr,
 #define 	xf86I2CWrite(d, wb, nw) xf86I2CWriteRead(d, wb, nw, NULL, 0)
 extern _X_EXPORT Bool xf86I2CWriteByte(I2CDevPtr d, I2CByte subaddr,
                                        I2CByte byte);
-extern _X_EXPORT Bool xf86I2CWriteWord(I2CDevPtr d, I2CByte subaddr,
-                                       unsigned short word);
 extern _X_EXPORT Bool xf86I2CWriteVec(I2CDevPtr d, I2CByte * vec, int nValues);
 
 #endif /*_XF86I2C_H */
