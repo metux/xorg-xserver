@@ -98,7 +98,6 @@ extern _X_EXPORT int xf86ClaimFbSlot(DriverPtr drvp, int chipset, GDevPtr dev,
                                      Bool active);
 extern _X_EXPORT int xf86ClaimNoSlot(DriverPtr drvp, int chipset, GDevPtr dev,
                                      Bool active);
-extern _X_EXPORT Bool xf86DriverHasEntities(DriverPtr drvp);
 extern _X_EXPORT void xf86AddEntityToScreen(ScrnInfoPtr pScrn, int entityIndex);
 extern _X_EXPORT void xf86SetEntityInstanceForScreen(ScrnInfoPtr pScrn,
                                                      int entityIndex,
