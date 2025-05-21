@@ -93,9 +93,6 @@ extern _X_EXPORT Bool xf86DRI2Enabled(void);
 static inline _X_DEPRECATED int xf86BlockSIGIO(void) { input_lock(); return 0; }
 static inline _X_DEPRECATED void xf86UnblockSIGIO(int wasset) { input_unlock(); }
 
-/* Function Prototypes */
-#ifndef _NO_XF86_PROTOTYPES
-
 /* PCI related */
 #ifdef XSERVER_LIBPCIACCESS
 #include <pciaccess.h>
@@ -380,8 +377,6 @@ extern void xf86ExtensionInit(void);
 extern _X_EXPORT ScrnInfoPtr xf86ScreenToScrn(ScreenPtr pScreen);
 /* convert ScrnInfoPtr to ScreenPtr */
 extern _X_EXPORT ScreenPtr xf86ScrnToScreen(ScrnInfoPtr pScrn);
-
-#endif                          /* _NO_XF86_PROTOTYPES */
 
 #define XF86_HAS_SCRN_CONV 1 /* define for drivers to use in api compat */
 

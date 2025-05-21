@@ -104,9 +104,6 @@ extern _X_EXPORT int xf86DRMMasterFd;              /* Command line argument for 
 #define DEFAULT_DPI		96
 #endif
 
-/* Function Prototypes */
-#ifndef _NO_XF86_PROTOTYPES
-
 /* xf86Bus.c */
 extern _X_EXPORT Bool xf86BusConfig(void);
 extern _X_EXPORT void xf86BusProbe(void);
@@ -156,7 +153,5 @@ extern _X_EXPORT Bool
 xf86CallDriverProbe(struct _DriverRec *drv, Bool detect_only);
 extern _X_EXPORT Bool
 xf86HasTTYs(void);
-
-#endif                          /* _NO_XF86_PROTOTYPES */
 
 #endif                          /* _XF86PRIV_H */
