@@ -24,4 +24,7 @@ Bool xf86VTOwner(void);
 void xf86VTEnter(void);
 void xf86EnableInputDeviceForVTSwitch(InputInfoPtr pInfo);
 
+/* xf86Helper.c */
+void xf86DeleteDriver(int drvIndex);
+
 #endif /* _XSERVER_XF86_PRIV_H */

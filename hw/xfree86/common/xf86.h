@@ -158,7 +158,6 @@ extern _X_EXPORT int xf86RemoveGeneralHandler(void *handler);
 
 extern _X_EXPORT void xf86AddDriver(DriverPtr driver, void *module,
                                     int flags);
-extern _X_EXPORT void xf86DeleteDriver(int drvIndex);
 extern _X_EXPORT ScrnInfoPtr xf86AllocateScreen(DriverPtr drv, int flags);
 extern _X_EXPORT void xf86DeleteScreen(ScrnInfoPtr pScrn);
 extern _X_EXPORT int xf86AllocateScrnInfoPrivateIndex(void);
