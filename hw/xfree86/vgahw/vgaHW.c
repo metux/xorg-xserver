@@ -24,6 +24,7 @@
 #include "xf86.h"
 #include "xf86_OSproc.h"
 #include "xf86Opt_priv.h"
+#include "xf86Priv.h"
 #include "vgaHW.h"
 
 #include "compiler.h"
@@ -1302,10 +1303,8 @@ vgaHWInit(ScrnInfoPtr scrninfp, DisplayModePtr mode)
     if (depth == 1) {
         /* Initialise the Mono map according to which bit-plane gets used */
 
-        Bool flipPixels = xf86GetFlipPixels();
-
         for (i = 0; i < 16; i++)
-            if (((i & (1 << BIT_PLANE)) != 0) != flipPixels)
+            if (((i & (1 << BIT_PLANE)) != 0) != xf86FlipPixels)
                 regp->Attribute[i] = WHITE_VALUE;
             else
                 regp->Attribute[i] = BLACK_VALUE;

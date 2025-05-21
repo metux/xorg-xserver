@@ -1872,17 +1872,6 @@ functions:
 
 	</para></blockquote>
 
-      <blockquote><para>
-	  <programlisting>
-    Bool xf86GetFlipPixels();
-	  </programlisting>
-	  <blockquote><para>
-      Returns <constant>TRUE</constant> if <option>-flippixels</option> is
-      present on the command line, and <constant>FALSE</constant> otherwise.
-	    </para></blockquote>
-
-	</para></blockquote>
-
     </sect2>
 
     <sect2>

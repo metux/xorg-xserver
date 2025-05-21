@@ -245,8 +245,6 @@ xf86GetVerbosity(void);
 extern _X_EXPORT Gamma
 xf86GetGamma(void);
 extern _X_EXPORT Bool
-xf86GetFlipPixels(void);
-extern _X_EXPORT Bool
 xf86ServerIsExiting(void);
 extern _X_EXPORT Bool
 xf86ServerIsOnlyDetecting(void);
