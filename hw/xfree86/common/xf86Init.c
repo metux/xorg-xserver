@@ -1026,11 +1026,6 @@ ddxProcessArgument(int argc, char **argv, int i)
         xf86bsEnableFlag = TRUE;
         return 0;
     }
-    /* Notice the -s flag, but allow it to pass to the dix layer */
-    if (!strcmp(argv[i], "-s")) {
-        xf86sFlag = TRUE;
-        return 0;
-    }
     if (!strcmp(argv[i], "-pixmap32") || !strcmp(argv[i], "-pixmap24")) {
         /* silently accept */
         return 1;

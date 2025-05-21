@@ -166,7 +166,6 @@ const char *xf86VisualNames[] = {
 
 /* Parameters set only from the command line */
 Bool xf86fpFlag = FALSE;
-Bool xf86sFlag = FALSE;
 Bool xf86bsEnableFlag = FALSE;
 Bool xf86bsDisableFlag = FALSE;
 Bool xf86silkenMouseDisableFlag = FALSE;
