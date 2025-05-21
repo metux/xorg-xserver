@@ -72,6 +72,7 @@ extern pmWait (*xf86PMConfirmEventToOs) (int fd, pmEvent event);
 void xf86DeleteDriver(int drvIndex);
 void xf86DeleteScreen(ScrnInfoPtr pScrn);
 void xf86LogInit(void);
+void xf86CloseLog(enum ExitCode error);
 
 /* xf86Mode.c */
 const char * xf86ModeStatusToString(ModeStatus status);
