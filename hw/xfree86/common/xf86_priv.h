@@ -29,6 +29,7 @@ extern Bool xf86acpiDisableFlag;
 
 extern char *xf86LayoutName;
 extern char *xf86ScreenName;
+extern char *xf86PointerName;
 
 /* xf86Cursor.c */
 void xf86LockZoom(ScreenPtr pScreen, int lock);
