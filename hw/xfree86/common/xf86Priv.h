@@ -60,7 +60,4 @@ extern _X_EXPORT int xf86DRMMasterFd;              /* Command line argument for 
 extern _X_EXPORT void xf86BusProbe(void);
 extern _X_EXPORT void xf86AddDevToEntity(int entityIndex, GDevPtr dev);
 
-extern _X_EXPORT Bool
-xf86HasTTYs(void);
-
 #endif                          /* _XF86PRIV_H */

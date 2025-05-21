@@ -76,6 +76,7 @@ void xf86CloseLog(enum ExitCode error);
 
 /* xf86Init.c */
 Bool xf86LoadModules(const char **list, void **optlist);
+Bool xf86HasTTYs(void);
 
 /* xf86Mode.c */
 const char * xf86ModeStatusToString(ModeStatus status);
