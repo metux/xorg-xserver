@@ -62,6 +62,7 @@ void xf86ProcessActionEvent(ActionEvent action, void *arg);
 Bool xf86VTOwner(void);
 void xf86VTEnter(void);
 void xf86EnableInputDeviceForVTSwitch(InputInfoPtr pInfo);
+void xf86Wakeup(void *blockData, int err);
 
 /* xf86Helper.c */
 void xf86DeleteDriver(int drvIndex);
