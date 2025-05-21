@@ -13,5 +13,6 @@ extern Bool xf86ProbeIgnorePrimary;
 
 void xf86LockZoom(ScreenPtr pScreen, int lock);
 void xf86InitViewport(ScrnInfoPtr pScr);
+void xf86ZoomViewport(ScreenPtr pScreen, int zoom);
 
 #endif /* _XSERVER_XF86_PRIV_H */
