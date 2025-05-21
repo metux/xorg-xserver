@@ -1091,6 +1091,9 @@ xf86FBCloseScreen(ScreenPtr pScreen)
     return (*pScreen->CloseScreen) (pScreen);
 }
 
+static Bool
+xf86InitFBManagerRegion(ScreenPtr pScreen, RegionPtr FullRegion);
+
 Bool
 xf86InitFBManager(ScreenPtr pScreen, BoxPtr FullBox)
 {
@@ -1128,7 +1131,7 @@ xf86InitFBManager(ScreenPtr pScreen, BoxPtr FullBox)
     return ret;
 }
 
-Bool
+static Bool
 xf86InitFBManagerRegion(ScreenPtr pScreen, RegionPtr FullRegion)
 {
     FBManagerPtr offman;
