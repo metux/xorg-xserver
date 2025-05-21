@@ -40,7 +40,7 @@
 #include "mi.h"
 #include "micmap.h"
 #include "xf86cmap.h"
-#include "xf86DDC.h"
+#include "xf86DDC_priv.h"
 #include <drm_fourcc.h>
 #include <drm_mode.h>
 

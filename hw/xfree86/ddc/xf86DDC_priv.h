@@ -52,4 +52,7 @@ struct cea_data_block *xf86MonitorFindHDMIBlock(xf86MonPtr mon);
 
 void xf86EdidMonitorSet(int scrnIndex, MonPtr Monitor, xf86MonPtr DDC);
 
+/* only exported for modesetting */ _X_EXPORT
+Bool gtf_supported(xf86MonPtr mon);
+
 #endif /* _XSERVER_XF86_DDC_PRIV_H */
