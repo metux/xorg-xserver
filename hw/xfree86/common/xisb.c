@@ -129,13 +129,6 @@ XisbRead(XISBuffer * b)
     return b->buf[b->current++];
 }
 
-/* turn tracing of this buffer on (1) or off (0) */
-void
-XisbTrace(XISBuffer * b, int trace)
-{
-    b->trace = trace;
-}
-
 /*
  * specify a block_duration of -1 when you know the buffer's fd is ready to
  * read. After a read, it is automatically set to 0 so that the next read
