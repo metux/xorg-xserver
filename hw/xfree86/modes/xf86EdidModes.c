@@ -424,7 +424,7 @@ ModeRefresh(const DisplayModeRec * mode)
  * part of the DMT pool.  For the 'standard' EDID mode descriptor there's
  * no way to specify whether the mode should be RB or not.
  */
-DisplayModePtr
+static DisplayModePtr
 FindDMTMode(int hsize, int vsize, int refresh, Bool rb)
 {
     int i;

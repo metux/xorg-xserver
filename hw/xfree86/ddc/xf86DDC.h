@@ -42,9 +42,6 @@ extern _X_EXPORT xf86MonPtr xf86InterpretEEDID(int screenIndex, Uchar * block);
 
 extern _X_EXPORT Bool xf86SetDDCproperties(ScrnInfoPtr pScreen, xf86MonPtr DDC);
 
-extern _X_EXPORT DisplayModePtr
-FindDMTMode(int hsize, int vsize, int refresh, Bool rb);
-
 extern _X_EXPORT const DisplayModeRec DMTModes[];
 
 #endif
