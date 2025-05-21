@@ -15,7 +15,7 @@
 /* Linux platform device support */
 #include "xf86_OSproc.h"
 
-#include "xf86.h"
+#include "xf86_priv.h"
 #include "xf86_os_support.h"
 #include "xf86platformBus.h"
 #include "xf86Bus.h"

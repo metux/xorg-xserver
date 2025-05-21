@@ -153,7 +153,6 @@ extern _X_EXPORT void SetTimeSinceLastInputEvent(void);
 extern _X_EXPORT void *xf86AddGeneralHandler(int fd, InputHandlerProc proc,
                                                void *data);
 extern _X_EXPORT int xf86RemoveGeneralHandler(void *handler);
-extern _X_EXPORT Bool xf86VTOwner(void);
 extern _X_EXPORT void xf86VTEnter(void);
 extern _X_EXPORT void xf86EnableInputDeviceForVTSwitch(InputInfoPtr pInfo);
 
