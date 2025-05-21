@@ -30,5 +30,6 @@ void xf86DeleteScreen(ScrnInfoPtr pScrn);
 
 /* xf86Mode.c */
 const char * xf86ModeStatusToString(ModeStatus status);
+ModeStatus xf86CheckModeForDriver(ScrnInfoPtr scrp, DisplayModePtr mode, int flags);
 
 #endif /* _XSERVER_XF86_PRIV_H */

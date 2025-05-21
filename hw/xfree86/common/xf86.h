@@ -245,8 +245,6 @@ xf86GetBppFromDepth(ScrnInfoPtr pScrn, int depth);
 
 extern _X_EXPORT ModeStatus
 xf86CheckModeForMonitor(DisplayModePtr mode, MonPtr monitor);
-extern _X_EXPORT ModeStatus
-xf86CheckModeForDriver(ScrnInfoPtr scrp, DisplayModePtr mode, int flags);
 extern _X_EXPORT int
 xf86ValidateModes(ScrnInfoPtr scrp, DisplayModePtr availModes,
                   const char **modeNames, ClockRangePtr clockRanges,
