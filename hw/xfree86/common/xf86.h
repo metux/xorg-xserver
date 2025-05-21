@@ -72,8 +72,6 @@ extern _X_EXPORT Bool sbusSlotClaimed;
 extern _X_EXPORT int platformSlotClaimed;
 #endif
 
-extern _X_EXPORT confDRIRec xf86ConfigDRI;
-
 #define XF86SCRNINFO(p) xf86ScreenToScrn(p)
 
 #define XF86FLIP_PIXELS() \

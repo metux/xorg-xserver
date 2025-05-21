@@ -73,6 +73,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include "inputstr.h"
 #include "xf86VGAarbiter_priv.h"
 #include "xf86Extensions.h"
+#include "xf86Config.h"
 
 static int DRIEntPrivIndex = -1;
 static DevPrivateKeyRec DRIScreenPrivKeyRec;
