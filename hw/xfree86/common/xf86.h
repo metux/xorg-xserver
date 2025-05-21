@@ -125,7 +125,6 @@ extern _X_EXPORT GDevPtr xf86AddBusDeviceToConfigure(const char *driver,
 
 /* xf86Cursor.c */
 
-extern _X_EXPORT void xf86InitViewport(ScrnInfoPtr pScr);
 extern _X_EXPORT void xf86SetViewport(ScreenPtr pScreen, int x, int y);
 extern _X_EXPORT void xf86ZoomViewport(ScreenPtr pScreen, int zoom);
 extern _X_EXPORT Bool xf86SwitchMode(ScreenPtr pScreen, DisplayModePtr mode);
