@@ -74,6 +74,9 @@ void xf86DeleteScreen(ScrnInfoPtr pScrn);
 void xf86LogInit(void);
 void xf86CloseLog(enum ExitCode error);
 
+/* xf86Init.c */
+Bool xf86LoadModules(const char **list, void **optlist);
+
 /* xf86Mode.c */
 const char * xf86ModeStatusToString(ModeStatus status);
 ModeStatus xf86CheckModeForDriver(ScrnInfoPtr scrp, DisplayModePtr mode, int flags);

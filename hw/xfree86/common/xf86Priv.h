@@ -60,10 +60,6 @@ extern _X_EXPORT int xf86DRMMasterFd;              /* Command line argument for 
 extern _X_EXPORT void xf86BusProbe(void);
 extern _X_EXPORT void xf86AddDevToEntity(int entityIndex, GDevPtr dev);
 
-/* xf86Init.c */
-extern _X_EXPORT Bool
-xf86LoadModules(const char **list, void **optlist);
-
 extern _X_EXPORT Bool
 xf86CallDriverProbe(struct _DriverRec *drv, Bool detect_only);
 extern _X_EXPORT Bool
