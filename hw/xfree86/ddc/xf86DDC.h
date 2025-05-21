@@ -40,9 +40,6 @@ extern _X_EXPORT xf86MonPtr xf86InterpretEDID(int screenIndex, Uchar * block);
 
 extern _X_EXPORT xf86MonPtr xf86InterpretEEDID(int screenIndex, Uchar * block);
 
-extern _X_EXPORT void
- xf86EdidMonitorSet(int scrnIndex, MonPtr Monitor, xf86MonPtr DDC);
-
 extern _X_EXPORT Bool xf86SetDDCproperties(ScrnInfoPtr pScreen, xf86MonPtr DDC);
 
 extern _X_EXPORT Bool

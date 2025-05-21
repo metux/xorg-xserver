@@ -50,4 +50,6 @@ void xf86ForEachVideoBlock(xf86MonPtr, handle_video_fn, void *);
 
 struct cea_data_block *xf86MonitorFindHDMIBlock(xf86MonPtr mon);
 
+void xf86EdidMonitorSet(int scrnIndex, MonPtr Monitor, xf86MonPtr DDC);
+
 #endif /* _XSERVER_XF86_DDC_PRIV_H */
