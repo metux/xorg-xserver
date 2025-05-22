@@ -159,12 +159,6 @@ NameForAtom(Atom atom)
     return node->string;
 }
 
-void
-AtomError(void)
-{
-    FatalError("initializing atoms");
-}
-
 static void
 FreeAtom(NodePtr patom)
 {
@@ -201,9 +195,9 @@ InitAtoms(void)
     tableLength = InitialTableSize;
     nodeTable = xallocarray(InitialTableSize, sizeof(NodePtr));
     if (!nodeTable)
-        AtomError();
+        FatalError("creating atom table");
     nodeTable[None] = NULL;
     MakePredeclaredAtoms();
     if (lastAtom != XA_LAST_PREDEFINED)
-        AtomError();
+        FatalError("builtin atom number mismatch");
 }

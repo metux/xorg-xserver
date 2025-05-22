@@ -10,7 +10,7 @@ do_line() {
     local name="$1"
     [ "$2" != "@" ] && return 0
     echo "    if (MakeAtom(\"$name\", ${#name}, 1) != XA_$name)"
-    echo "        AtomError();"
+    echo "        FatalError(\"adding builtin atom\");"
 }
 
 cat > "$OUTPUT" << __END__
