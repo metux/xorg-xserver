@@ -458,7 +458,6 @@ if build_xorg
             'cursorstr.h',
             'dix.h',
             'dixaccess.h',
-            'dixevents.h',
             'dixfont.h',
             'dixfontstr.h',
             'dixstruct.h',

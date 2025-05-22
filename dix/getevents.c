@@ -51,7 +51,6 @@
 #include "cursorstr.h"
 #include "dixstruct.h"
 #include "globals.h"
-#include "dixevents.h"
 #include "mipointer.h"
 #include "eventstr.h"
 #include "eventconvert.h"

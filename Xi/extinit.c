@@ -65,7 +65,6 @@ SOFTWARE.
 #include "gcstruct.h"           /* pointer for extnsionst.h */
 #include "extnsionst.h"         /* extension entry   */
 #include "geext.h"              /* extension interfaces for ge */
-#include "dixevents.h"
 #include "extinit_priv.h"
 #include "exglobals.h"
 #include "swaprep.h"

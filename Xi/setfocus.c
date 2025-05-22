@@ -60,7 +60,6 @@ SOFTWARE.
 
 #include "dix/dix_priv.h"
 
-#include "dixevents.h"
 #include "exglobals.h"
 #include "setfocus.h"
 

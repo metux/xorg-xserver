@@ -147,7 +147,6 @@ Equipment Corporation.
 #include "probes.h"
 #include "exglobals.h"
 #include "extnsionst.h"
-#include "dixevents.h"
 #include "dispatch.h"
 #include "dixstruct_priv.h"
 #include "eventstr.h"

@@ -48,7 +48,6 @@
 #include "windowstr.h"
 #include "globals.h"
 #include "servermd.h"
-#include "dixevents.h"
 #include "x-hash.h"
 
 typedef struct {

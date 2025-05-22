@@ -50,7 +50,6 @@
 #include "windowstr.h"
 #include "inputstr.h"
 #include "scrnintstr.h"
-#include "dixevents.h"
 #include "sleepuntil.h"
 #include "xkbsrv.h"
 #include "xkbstr.h"

@@ -77,7 +77,6 @@ SOFTWARE.
 #include "xace.h"
 #include "dispatch.h"
 #include "swaprep.h"
-#include "dixevents.h"
 #include "mipointer.h"
 #include "eventstr.h"
 #include "exglobals.h"

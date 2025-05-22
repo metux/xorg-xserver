@@ -61,7 +61,6 @@
 #include "dixstruct.h"
 #include "gcstruct.h"
 #include "servermd.h"
-#include "dixevents.h"
 #include "globals.h"
 #include "picturestr.h"
 #include "extnsionst.h"

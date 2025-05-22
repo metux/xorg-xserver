@@ -105,7 +105,6 @@ SOFTWARE.
 #include "extnsionst.h"
 #include "exglobals.h"
 #include "eventstr.h"
-#include "dixevents.h"          /* DeliverFocusedEvent */
 #include "scrnintstr.h"
 #include "listdev.h"            /* for CopySwapXXXClass */
 #include "xace.h"

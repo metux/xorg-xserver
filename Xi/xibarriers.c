@@ -52,7 +52,6 @@
 #include "xibarriers.h"
 #include "scrnintstr.h"
 #include "cursorstr.h"
-#include "dixevents.h"
 #include "servermd.h"
 #include "mipointer.h"
 #include "inputstr.h"

@@ -231,7 +231,6 @@ cat > sdksyms.c << EOF
 #include "cursorstr.h"
 #include "dix.h"
 #include "dixaccess.h"
-#include "dixevents.h"
 #define _FONTPROTO_H
 #include "dixfont.h"
 #include "dixfontstr.h"

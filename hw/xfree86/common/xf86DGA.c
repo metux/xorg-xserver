@@ -70,7 +70,6 @@
 #include "xf86Extensions.h"
 #include "misc.h"
 #include "dixstruct.h"
-#include "dixevents.h"
 #include "extnsionst.h"
 #include "cursorstr.h"
 #include "scrnintstr.h"

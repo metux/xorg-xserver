@@ -119,7 +119,6 @@ Equipment Corporation.
 #ifdef XINERAMA
 #include "panoramiXsrv.h"
 #else
-#include "dixevents.h"          /* InitEvents() */
 #endif /* XINERAMA */
 
 #ifdef DPMSExtension

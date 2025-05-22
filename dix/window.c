@@ -128,7 +128,6 @@ Equipment Corporation.
 #include "panoramiX.h"
 #include "panoramiXsrv.h"
 #endif /* XINERAMA */
-#include "dixevents.h"
 #include "globals.h"
 #ifdef COMPOSITE
 #include "compint.h"
