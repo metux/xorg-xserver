@@ -26,9 +26,4 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 #ifndef DIXEVENTS_H
 #define DIXEVENTS_H
 
-extern _X_EXPORT int EventSuppressForWindow(WindowPtr /* pWin */ ,
-                                            ClientPtr /* client */ ,
-                                            Mask /* mask */ ,
-                                            Bool * /* checkOptional */ );
-
 #endif                          /* DIXEVENTS_H */

@@ -288,4 +288,19 @@ Bool MaybeDeliverEventToClient(WindowPtr pWindow,
 XRetCode EventSelectForWindow(WindowPtr pWindow, ClientPtr pClient, Mask mask)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief set block propagation of specific events on window
+ *
+ * @param pWindow       window to act on
+ * @param pClient       client to act on
+ * @param mask          mask of events to not propagate
+ * @param checkOptional set to w/ TRUE when window's optional structure changed
+ * @return X error code
+ */
+int EventSuppressForWindow(WindowPtr pWindow,
+                           ClientPtr pClient,
+                           Mask mask,
+                           Bool *checkOptional)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2,4);
+
 #endif /* _XSERVER_DIX_PRIV_H */
