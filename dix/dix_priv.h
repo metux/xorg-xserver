@@ -269,12 +269,12 @@ void SetCriticalEvent(int event);
  * @param pEvent        event to be delivered
  * @param filter        filter mask based on event type
  * @param skipClient    don't deliver to this client (if not NULL)
- * @return 0 when skipped (skipClient), 1 when delivered, 2 when nobody's interested
+ * @return TRUE when event was delivered
  */
-int MaybeDeliverEventToClient(WindowPtr pWindow,
-                              xEvent *pEvent,
-                              Mask filter,
-                              ClientPtr skipClient)
+Bool MaybeDeliverEventToClient(WindowPtr pWindow,
+                               xEvent *pEvent,
+                               Mask filter,
+                               ClientPtr skipClient)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
 #endif /* _XSERVER_DIX_PRIV_H */

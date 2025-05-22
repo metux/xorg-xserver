@@ -2310,7 +2310,7 @@ ConfigureWindow(WindowPtr pWin, Mask mask, XID *vlist, ClientPtr client)
         }
 #endif /* XINERAMA */
         if (MaybeDeliverEventToClient(pParent, &event,
-                                      SubstructureRedirectMask, client) == 1)
+                                      SubstructureRedirectMask, client))
             return Success;
     }
     if (action == RESIZE_WIN) {
@@ -2326,7 +2326,7 @@ ConfigureWindow(WindowPtr pWin, Mask mask, XID *vlist, ClientPtr client)
             };
             eventT.u.u.type = ResizeRequest;
             if (MaybeDeliverEventToClient(pWin, &eventT,
-                                          ResizeRedirectMask, client) == 1) {
+                                          ResizeRedirectMask, client)) {
                 /* if event is delivered, leave the actual size alone. */
                 w = pWin->drawable.width;
                 h = pWin->drawable.height;
@@ -2475,7 +2475,7 @@ CirculateWindow(WindowPtr pParent, int direction, ClientPtr client)
     if (RedirectSend(pParent)) {
         event.u.u.type = CirculateRequest;
         if (MaybeDeliverEventToClient(pParent, &event,
-                                      SubstructureRedirectMask, client) == 1)
+                                      SubstructureRedirectMask, client))
             return Success;
     }
 
@@ -2633,7 +2633,7 @@ MaybeDeliverMapRequest(WindowPtr pWin, WindowPtr pParent, ClientPtr client)
 
     return MaybeDeliverEventToClient(pParent, &event,
                                      SubstructureRedirectMask,
-                                     client) == 1;
+                                     client);
 }
 
 static void

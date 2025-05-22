@@ -2545,41 +2545,40 @@ XineramaTryClientEventsResult(ClientPtr client,
  * @param filter Mask based on event type.
  * @param dontClient Don't deliver to the dontClient.
  */
-int
-MaybeDeliverEventToClient(WindowPtr pWin, xEvent *pEvents,
-                           Mask filter, ClientPtr dontClient)
+Bool MaybeDeliverEventToClient(WindowPtr pWin, xEvent *pEvents,
+                               Mask filter, ClientPtr dontClient)
 {
     OtherClients *other;
 
     if (pWin->eventMask & filter) {
         if (wClient(pWin) == dontClient)
-            return 0;
+            return FALSE;
 #ifdef XINERAMA
         if (!noPanoramiXExtension && pWin->drawable.pScreen->myNum)
             return XineramaTryClientEventsResult(wClient(pWin), NullGrab,
-                                                 pWin->eventMask, filter);
+                                                 pWin->eventMask, filter) == 1;
 #endif /* XINERAMA */
         if (XaceHookReceiveAccess(wClient(pWin), pWin, pEvents, 1))
-            return 1;           /* don't send, but pretend we did */
+            return TRUE;           /* don't send, but pretend we did */
         return TryClientEvents(wClient(pWin), NULL, pEvents, 1,
-                               pWin->eventMask, filter, NullGrab);
+                               pWin->eventMask, filter, NullGrab) == 1;
     }
     for (other = wOtherClients(pWin); other; other = other->next) {
         if (other->mask & filter) {
             if (SameClient(other, dontClient))
-                return 0;
+                return FALSE;
 #ifdef XINERAMA
             if (!noPanoramiXExtension && pWin->drawable.pScreen->myNum)
                 return XineramaTryClientEventsResult(rClient(other), NullGrab,
-                                                     other->mask, filter);
+                                                     other->mask, filter) == 1;
 #endif /* XINERAMA */
             if (XaceHookReceiveAccess(rClient(other), pWin, pEvents, 1))
-                return 1;       /* don't send, but pretend we did */
+                return TRUE;       /* don't send, but pretend we did */
             return TryClientEvents(rClient(other), NULL, pEvents, 1,
-                                   other->mask, filter, NullGrab);
+                                   other->mask, filter, NullGrab) == 1;
         }
     }
-    return 2;
+    return FALSE;
 }
 
 static Window
