@@ -30,6 +30,7 @@
 #include <stdint.h>
 #include <X11/extensions/XI2.h>
 
+#include "dix/atom_priv.h"
 #include "dix/dix_priv.h"
 #include "dix/exevents_priv.h"
 

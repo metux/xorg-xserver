@@ -28,6 +28,7 @@
 
 #include <stdint.h>
 
+#include "dix/atom_priv.h"
 #include "dix/input_priv.h"
 
 #include "inputstr.h"

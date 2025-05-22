@@ -29,6 +29,7 @@
 #include <stdint.h>
 #include <X11/Xatom.h>
 
+#include "dix/atom_priv.h"
 #include "dix/dix_priv.h"
 #include "dix/input_priv.h"
 
