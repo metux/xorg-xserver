@@ -23,6 +23,7 @@
 #include "include/events.h"
 #include "include/gc.h"
 #include "include/input.h"
+#include "include/os.h"
 #include "include/window.h"
 
 /* server setting: maximum size for big requests */
@@ -260,5 +261,22 @@ void MakePredeclaredAtoms(void);
  * @param event the event to add to the critical events bitmap
  */
 void SetCriticalEvent(int event);
+
+/**
+ * @brief try to deliver events to interested parties.
+ *
+ * @param pWindow       target window
+ * @param pEvents       array of events to be delivered
+ * @param nEvents       number of elements in *pEvents
+ * @param filter        filter mask based on event type
+ * @param skipClient    don't deliver to this client (if not NULL)
+ * @return 0 when skipped (skipClient), 1 when delivered, 2 when nobody's interested
+ */
+int MaybeDeliverEventsToClient(WindowPtr pWindow,
+                               xEvent *pEvents,
+                               size_t nEvents,
+                               Mask filter,
+                               ClientPtr skipClient)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
 #endif /* _XSERVER_DIX_PRIV_H */

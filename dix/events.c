@@ -2547,7 +2547,7 @@ XineramaTryClientEventsResult(ClientPtr client,
  */
 int
 MaybeDeliverEventsToClient(WindowPtr pWin, xEvent *pEvents,
-                           int count, Mask filter, ClientPtr dontClient)
+                           size_t count, Mask filter, ClientPtr dontClient)
 {
     OtherClients *other;
 
