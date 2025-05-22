@@ -303,4 +303,14 @@ int EventSuppressForWindow(WindowPtr pWindow,
                            Bool *checkOptional)
     _X_ATTRIBUTE_NONNULL_ARG(1,2,4);
 
+/*
+ * @brief allocate new ClientRec and initialize it
+ *
+ * Returns NULL on allocation failure or when client limit reached.
+ *
+ * @param ospriv pointer to OS layer's internal data
+ * @return pointer to new ClientRec or NULL on failure
+ */
+ClientPtr NextAvailableClient(void *ospriv);
+
 #endif /* _XSERVER_DIX_PRIV_H */
