@@ -202,11 +202,6 @@ extern _X_EXPORT Bool ValidAtom(Atom /*atom */ );
 
 extern _X_EXPORT const char *NameForAtom(Atom /*atom */ );
 
-/* main.c */
-
-extern _X_EXPORT void
-SetVendorRelease(int release);
-
 /* events.c */
 
 extern _X_EXPORT void
