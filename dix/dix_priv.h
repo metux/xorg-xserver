@@ -321,6 +321,8 @@ ClientPtr NextAvailableClient(void *ospriv);
 void MarkClientException(ClientPtr pClient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+typedef Bool (*ClientSleepProcPtr) (ClientPtr client, void *closure);
+
 /*
  * @brief put a client to sleep
  *
@@ -339,5 +341,20 @@ Bool ClientSleep(ClientPtr pClient, ClientSleepProcPtr func, void *closure)
  */
 Bool dixClientSignal(ClientPtr pClient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
+
+#define CLIENT_SIGNAL_ANY ((void *)-1)
+/*
+ * @brief signal to all sleeping clients matching client, func, closure
+ *
+ * If any of the client, func and closure parameters may be CLIENT_SIGNAL_ANY,
+ * so those will be matching any value
+ *
+ * @param pClient   match for client
+ * @param func      match for callback function
+ * @param closure   match for callback closure
+ * @return number of matched / queued clients
+ */
+int ClientSignalAll(ClientPtr pClient, ClientSleepProcPtr func, void *closure)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
 #endif /* _XSERVER_DIX_PRIV_H */
