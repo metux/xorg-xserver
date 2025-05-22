@@ -313,4 +313,12 @@ int EventSuppressForWindow(WindowPtr pWindow,
  */
 ClientPtr NextAvailableClient(void *ospriv);
 
+/*
+ * @brief mark exception on client - will be closed down later
+ *
+ * @param pClient pointer to client that has exception
+ */
+void MarkClientException(ClientPtr pClient)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */

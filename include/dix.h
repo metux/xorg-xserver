@@ -168,8 +168,6 @@ extern _X_EXPORT void SendErrorToClient(ClientPtr /*client */ ,
                                         XID /*resId */ ,
                                         int /*errorCode */ );
 
-extern _X_EXPORT void MarkClientException(ClientPtr /*client */ );
-
 /* dixutils.c */
 
 extern _X_EXPORT int dixLookupWindow(WindowPtr *result,
