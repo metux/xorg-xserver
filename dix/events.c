@@ -124,6 +124,7 @@ Equipment Corporation.
 #include "dix/input_priv.h"
 #include "dix/eventconvert.h"
 #include "dix/exevents_priv.h"
+#include "dix/reqhandlers_priv.h"
 #include "os/bug_priv.h"
 #include "os/client_priv.h"
 #include "os/fmt.h"
