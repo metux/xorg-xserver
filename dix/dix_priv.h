@@ -255,4 +255,10 @@ extern Bool enableBackingStore;
 /* in generated BuiltInAtoms.c */
 void MakePredeclaredAtoms(void);
 
+/*
+ * @brief mark event ID as critical
+ * @param event the event to add to the critical events bitmap
+ */
+void SetCriticalEvent(int event);
+
 #endif /* _XSERVER_DIX_PRIV_H */
