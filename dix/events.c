@@ -4536,8 +4536,7 @@ OtherClientGone(void *value, XID id)
     FatalError("client not on event list");
 }
 
-int
-EventSelectForWindow(WindowPtr pWin, ClientPtr client, Mask mask)
+XRetCode EventSelectForWindow(WindowPtr pWin, ClientPtr client, Mask mask)
 {
     Mask check;
     OtherClients *others;

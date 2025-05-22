@@ -277,4 +277,15 @@ Bool MaybeDeliverEventToClient(WindowPtr pWindow,
                                ClientPtr skipClient)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief select window events to listen on
+ *
+ * @param pWindow   window to listen on
+ * @param pClient   the client that's listening on the events
+ * @param mask      mask of events to listen on
+ * @return X error code
+ */
+XRetCode EventSelectForWindow(WindowPtr pWindow, ClientPtr pClient, Mask mask)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
+
 #endif /* _XSERVER_DIX_PRIV_H */
