@@ -1097,7 +1097,7 @@ DeliverOneTouchEvent(ClientPtr client, DeviceIntPtr dev, TouchPointInfoPtr ti,
     filter = GetEventFilter(dev, xi2);
     if (XaceHookReceiveAccess(client, win, xi2, 1) != Success)
         return FALSE;
-    err = TryClientEvents(client, dev, xi2, 1, filter, filter, NullGrab);
+    TryClientEvents(client, dev, xi2, 1, filter, filter, NullGrab);
     free(xi2);
 
     /* Returning the value from TryClientEvents isn't useful, since all our
@@ -2243,7 +2243,7 @@ DeliverOneGestureEvent(ClientPtr client, DeviceIntPtr dev, GestureInfoPtr gi,
     filter = GetEventFilter(dev, xi2);
     if (XaceHookReceiveAccess(client, win, xi2, 1) != Success)
         return FALSE;
-    err = TryClientEvents(client, dev, xi2, 1, filter, filter, NullGrab);
+    TryClientEvents(client, dev, xi2, 1, filter, filter, NullGrab);
     free(xi2);
 
     /* Returning the value from TryClientEvents isn't useful, since all our
