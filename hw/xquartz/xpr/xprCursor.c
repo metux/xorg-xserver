@@ -38,6 +38,7 @@
 #include "darwinEvents.h"
 #include <Xplugin.h>
 
+#include "dix/input_priv.h"
 #include "mi/mipointer_priv.h"
 
 #include "mi.h"
@@ -400,7 +401,7 @@ QuartzResumeXCursor(ScreenPtr pScreen)
     if (pWin->drawable.pScreen != pScreen)
         return;
 
-    pCursor = GetSpriteCursor(darwinPointer);
+    pCursor = InputDevGetSpriteCursor(darwinPointer);
     if (pCursor == NULL)
         return;
 

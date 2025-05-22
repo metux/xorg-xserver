@@ -51,7 +51,8 @@ SOFTWARE.
 #ifndef _XSERVER_INPUT_PRIV_H
 #define _XSERVER_INPUT_PRIV_H
 
-#include "input.h"
+#include "include/cursor.h"
+#include "include/input.h"
 
 void InitCoreDevices(void);
 void InitXTestDevices(void);
@@ -360,5 +361,14 @@ int InputThreadRegisterDev(int fd,
                            void *readInputArgs);
 
 int InputThreadUnregisterDev(int fd);
+
+/*
+ * @brief get current sprite cursor for input device
+ *
+ * @param pDev pointer to device structure
+ * @return pointer to device cursor
+ */
+CursorPtr InputDevGetSpriteCursor(DeviceIntPtr pDev)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
 
 #endif /* _XSERVER_INPUT_PRIV_H */

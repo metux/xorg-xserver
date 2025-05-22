@@ -132,7 +132,7 @@ ProcXTestCompareCursor(ClientPtr client)
     if (stuff->cursor == None)
         pCursor = NullCursor;
     else if (stuff->cursor == XTestCurrentCursor)
-        pCursor = GetSpriteCursor(ptr);
+        pCursor = InputDevGetSpriteCursor(ptr);
     else {
         rc = dixLookupResourceByType((void **) &pCursor, stuff->cursor,
                                      X11_RESTYPE_CURSOR, client, DixReadAccess);

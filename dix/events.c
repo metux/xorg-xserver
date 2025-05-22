@@ -1039,7 +1039,7 @@ GetSpriteWindow(DeviceIntPtr pDev)
  * @return current sprite cursor.
  */
 CursorPtr
-GetSpriteCursor(DeviceIntPtr pDev)
+InputDevGetSpriteCursor(DeviceIntPtr pDev)
 {
     return pDev->spriteInfo->sprite->current;
 }
