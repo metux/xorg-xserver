@@ -2546,8 +2546,8 @@ XineramaTryClientEventsResult(ClientPtr client,
  * @param dontClient Don't deliver to the dontClient.
  */
 int
-MaybeDeliverEventsToClient(WindowPtr pWin, xEvent *pEvents,
-                           size_t count, Mask filter, ClientPtr dontClient)
+MaybeDeliverEventToClient(WindowPtr pWin, xEvent *pEvents,
+                           Mask filter, ClientPtr dontClient)
 {
     OtherClients *other;
 
@@ -2559,9 +2559,9 @@ MaybeDeliverEventsToClient(WindowPtr pWin, xEvent *pEvents,
             return XineramaTryClientEventsResult(wClient(pWin), NullGrab,
                                                  pWin->eventMask, filter);
 #endif /* XINERAMA */
-        if (XaceHookReceiveAccess(wClient(pWin), pWin, pEvents, count))
+        if (XaceHookReceiveAccess(wClient(pWin), pWin, pEvents, 1))
             return 1;           /* don't send, but pretend we did */
-        return TryClientEvents(wClient(pWin), NULL, pEvents, count,
+        return TryClientEvents(wClient(pWin), NULL, pEvents, 1,
                                pWin->eventMask, filter, NullGrab);
     }
     for (other = wOtherClients(pWin); other; other = other->next) {
@@ -2573,10 +2573,9 @@ MaybeDeliverEventsToClient(WindowPtr pWin, xEvent *pEvents,
                 return XineramaTryClientEventsResult(rClient(other), NullGrab,
                                                      other->mask, filter);
 #endif /* XINERAMA */
-            if (XaceHookReceiveAccess(rClient(other), pWin, pEvents,
-                         count))
+            if (XaceHookReceiveAccess(rClient(other), pWin, pEvents, 1))
                 return 1;       /* don't send, but pretend we did */
-            return TryClientEvents(rClient(other), NULL, pEvents, count,
+            return TryClientEvents(rClient(other), NULL, pEvents, 1,
                                    other->mask, filter, NullGrab);
         }
     }

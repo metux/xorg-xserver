@@ -2309,8 +2309,8 @@ ConfigureWindow(WindowPtr pWin, Mask mask, XID *vlist, ClientPtr client)
             event.u.configureRequest.y += screenInfo.screens[0]->y;
         }
 #endif /* XINERAMA */
-        if (MaybeDeliverEventsToClient(pParent, &event, 1,
-                                       SubstructureRedirectMask, client) == 1)
+        if (MaybeDeliverEventToClient(pParent, &event,
+                                      SubstructureRedirectMask, client) == 1)
             return Success;
     }
     if (action == RESIZE_WIN) {
@@ -2325,8 +2325,8 @@ ConfigureWindow(WindowPtr pWin, Mask mask, XID *vlist, ClientPtr client)
                 .u.resizeRequest.height = h
             };
             eventT.u.u.type = ResizeRequest;
-            if (MaybeDeliverEventsToClient(pWin, &eventT, 1,
-                                           ResizeRedirectMask, client) == 1) {
+            if (MaybeDeliverEventToClient(pWin, &eventT,
+                                          ResizeRedirectMask, client) == 1) {
                 /* if event is delivered, leave the actual size alone. */
                 w = pWin->drawable.width;
                 h = pWin->drawable.height;
@@ -2474,8 +2474,8 @@ CirculateWindow(WindowPtr pParent, int direction, ClientPtr client)
 
     if (RedirectSend(pParent)) {
         event.u.u.type = CirculateRequest;
-        if (MaybeDeliverEventsToClient(pParent, &event, 1,
-                                       SubstructureRedirectMask, client) == 1)
+        if (MaybeDeliverEventToClient(pParent, &event,
+                                      SubstructureRedirectMask, client) == 1)
             return Success;
     }
 
@@ -2631,9 +2631,9 @@ MaybeDeliverMapRequest(WindowPtr pWin, WindowPtr pParent, ClientPtr client)
     };
     event.u.u.type = MapRequest;
 
-    return MaybeDeliverEventsToClient(pParent, &event, 1,
-                                      SubstructureRedirectMask,
-                                      client) == 1;
+    return MaybeDeliverEventToClient(pParent, &event,
+                                     SubstructureRedirectMask,
+                                     client) == 1;
 }
 
 static void
