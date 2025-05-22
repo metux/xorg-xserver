@@ -581,8 +581,7 @@ ClientSleep(ClientPtr client, ClientSleepProcPtr function, void *closure)
     return TRUE;
 }
 
-Bool
-ClientSignal(ClientPtr client)
+Bool dixClientSignal(ClientPtr client)
 {
     SleepQueuePtr q;
 

@@ -2035,7 +2035,7 @@ static void verrorf(const char *f, va_list args)
 static const xfont2_client_funcs_rec xfont2_client_funcs = {
     .version = XFONT2_CLIENT_FUNCS_VERSION,
     .client_auth_generation = _client_auth_generation,
-    .client_signal = ClientSignal,
+    .client_signal = dixClientSignal,
     .delete_font_client_id = delete_font_client_id,
     .verrorf = verrorf,
     .find_old_font = find_old_font,

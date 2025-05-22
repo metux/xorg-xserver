@@ -3532,7 +3532,7 @@ CloseDownClient(ClientPtr client)
         }
         client->clientGone = TRUE;      /* so events aren't sent to client */
         if (ClientIsAsleep(client))
-            ClientSignal(client);
+            dixClientSignal(client);
         ProcessWorkQueueZombies();
         CloseDownConnection(client);
         output_pending_clear(client);

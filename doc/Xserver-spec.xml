@@ -1274,7 +1274,7 @@ making its way back to Dispatch()).  No more X requests will be processed
 for this client until ClientWakeup is called.
 <blockquote><programlisting>
 
-	Bool ClientSignal (client)
+	Bool dixClientSignal (client)
 		ClientPtr	client;
 
 </programlisting></blockquote>
@@ -4921,7 +4921,7 @@ mi and fb implementations.</para>
 <row><entry><function>ChangeWindowAttributes</function></entry><entry><literal>ddx</literal></entry><entry><para>Screen</para></entry></row>
 <row><entry><function>ClearToBackground</function></entry><entry><literal>ddx</literal></entry><entry><para>Window</para></entry></row>
 <row><entry><function>ClientAuthorized</function></entry><entry><literal>os</literal></entry><entry><para></para></entry></row>
-<row><entry><function>ClientSignal</function></entry><entry><literal>dix</literal></entry><entry><para></para></entry></row>
+<row><entry><function>dixClientSignal</function></entry><entry><literal>dix</literal></entry><entry><para></para></entry></row>
 <row><entry><function>ClientSleep</function></entry><entry><literal>dix</literal></entry><entry><para></para></entry></row>
 <row><entry><function>ClientWakeup</function></entry><entry><literal>dix</literal></entry><entry><para></para></entry></row>
 <row><entry><function>ClipNotify</function></entry><entry><literal>ddx</literal></entry><entry><para>Screen</para></entry></row>

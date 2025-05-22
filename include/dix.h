@@ -219,11 +219,6 @@ extern _X_EXPORT Bool QueueWorkProc(Bool (*function)(ClientPtr clientUnused,
 typedef Bool (*ClientSleepProcPtr) (ClientPtr client,
                                     void *closure);
 
-#ifndef ___CLIENTSIGNAL_DEFINED___
-#define ___CLIENTSIGNAL_DEFINED___
-extern _X_EXPORT Bool ClientSignal(ClientPtr /*client */ );
-#endif                          /* ___CLIENTSIGNAL_DEFINED___ */
-
 #define CLIENT_SIGNAL_ANY ((void *)-1)
 extern _X_EXPORT int ClientSignalAll(ClientPtr /*client*/,
                                      ClientSleepProcPtr /*function*/,

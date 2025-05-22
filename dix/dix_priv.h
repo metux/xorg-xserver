@@ -331,4 +331,13 @@ void MarkClientException(ClientPtr pClient)
 Bool ClientSleep(ClientPtr pClient, ClientSleepProcPtr func, void *closure)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief signal to sleeping client there's work to do
+ *
+ * @param pClient   the client to signal to
+ * @return TRUE on success
+ */
+Bool dixClientSignal(ClientPtr pClient)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */
