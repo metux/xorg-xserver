@@ -321,4 +321,14 @@ ClientPtr NextAvailableClient(void *ospriv);
 void MarkClientException(ClientPtr pClient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief put a client to sleep
+ *
+ * @param pClient   the client to put into sleep
+ * @param func  called when client wakes up
+ * @param closure   data passed to the callback function
+ */
+Bool ClientSleep(ClientPtr pClient, ClientSleepProcPtr func, void *closure)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
+
 #endif /* _XSERVER_DIX_PRIV_H */
