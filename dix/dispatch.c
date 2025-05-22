@@ -205,13 +205,6 @@ GetCurrentClient(void)
 }
 
 void
-SetInputCheck(HWEventQueuePtr c0, HWEventQueuePtr c1)
-{
-    checkForInput[0] = c0;
-    checkForInput[1] = c1;
-}
-
-void
 UpdateCurrentTime(void)
 {
     TimeStamp systime;

@@ -136,13 +136,7 @@ typedef struct _TimeStamp {
     CARD32 milliseconds;
 } TimeStamp;
 
-typedef int HWEventQueueType;
-typedef HWEventQueueType *HWEventQueuePtr;
-
 /* dispatch.c */
-extern _X_EXPORT void SetInputCheck(HWEventQueuePtr /*c0 */ ,
-                                    HWEventQueuePtr /*c1 */ );
-
 extern _X_EXPORT void UpdateCurrentTime(void);
 
 extern _X_EXPORT void UpdateCurrentTimeIf(void);
