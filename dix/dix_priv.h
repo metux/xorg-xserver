@@ -554,4 +554,11 @@ int OtherClientGone(void *value, XID id);
 Bool WindowIsParent(WindowPtr parent, WindowPtr child)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief call the block handlers
+ *
+ * @param timeout   os-specific timeout value
+ */
+void BlockHandler(void *timeout);
+
 #endif /* _XSERVER_DIX_PRIV_H */

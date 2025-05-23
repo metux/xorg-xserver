@@ -179,8 +179,6 @@ extern _X_EXPORT int dixLookupFontable(FontPtr *result,
 
 extern _X_EXPORT void NoopDDA(void);
 
-extern _X_EXPORT void BlockHandler(void *timeout);
-
 extern _X_EXPORT void WakeupHandler(int result);
 
 typedef void (*ServerBlockHandlerProcPtr) (void *blockData,
