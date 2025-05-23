@@ -226,10 +226,6 @@ SetVendorRelease(int release);
 /* events.c */
 
 extern _X_EXPORT void
-NoticeTime(const DeviceIntPtr dev,
-           TimeStamp time);
-
-extern _X_EXPORT void
 NoticeEventTime(InternalEvent *ev,
                 DeviceIntPtr dev);
 
