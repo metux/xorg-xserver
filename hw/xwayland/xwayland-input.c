@@ -3252,7 +3252,7 @@ sprite_check_lost_focus(SpritePtr sprite, WindowPtr window)
     if (xwl_seat->focus_window == NULL &&
         xwl_seat->last_focus_window != NULL &&
         (xwl_seat->last_focus_window->toplevel == window ||
-         IsParent(xwl_seat->last_focus_window->toplevel, window)))
+         WindowIsParent(xwl_seat->last_focus_window->toplevel, window)))
         return TRUE;
 
     return FALSE;

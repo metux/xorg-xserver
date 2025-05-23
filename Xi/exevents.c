@@ -2930,7 +2930,7 @@ SendEvent(ClientPtr client, DeviceIntPtr d, Window dest, Bool propagate,
         if (inputFocus == PointerRootWin)
             inputFocus = InputDevCurrentRootWindow(d);
 
-        if (IsParent(inputFocus, spriteWin)) {
+        if (WindowIsParent(inputFocus, spriteWin)) {
             effectiveFocus = inputFocus;
             pWin = spriteWin;
         }

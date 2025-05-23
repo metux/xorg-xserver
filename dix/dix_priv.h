@@ -551,7 +551,7 @@ int OtherClientGone(void *value, XID id);
  * @param child     the alleged child
  * @return TRUE if `child` is a child window of `parent`
  */
-Bool IsParent(WindowPtr parent, WindowPtr child)
+Bool WindowIsParent(WindowPtr parent, WindowPtr child)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
 #endif /* _XSERVER_DIX_PRIV_H */

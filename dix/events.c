@@ -967,7 +967,7 @@ ChangeToCursor(DeviceIntPtr pDev, CursorPtr cursor)
  * @returns true if b is a descendent of a
  */
 Bool
-IsParent(WindowPtr a, WindowPtr b)
+WindowIsParent(WindowPtr a, WindowPtr b)
 {
     for (b = b->parent; b; b = b->parent)
         if (b == a)
@@ -995,7 +995,7 @@ PostNewCursor(DeviceIntPtr pDev)
             ChangeToCursor(pDev, grab->cursor);
             return;
         }
-        if (IsParent(grab->window, pSprite->win))
+        if (WindowIsParent(grab->window, pSprite->win))
             win = pSprite->win;
         else
             win = grab->window;
@@ -3066,7 +3066,7 @@ ActivateFocusInGrab(DeviceIntPtr dev, WindowPtr old, WindowPtr win)
         if (!dev->deviceGrab.fromPassiveGrab ||
             dev->deviceGrab.grab->type != XI_FocusIn ||
             dev->deviceGrab.grab->window == win ||
-            IsParent(dev->deviceGrab.grab->window, win))
+            WindowIsParent(dev->deviceGrab.grab->window, win))
             return FALSE;
         DoEnterLeaveEvents(dev, dev->id, old, win, XINotifyPassiveUngrab);
         (*dev->deviceGrab.DeactivateGrab) (dev);
@@ -3107,7 +3107,7 @@ ActivateEnterGrab(DeviceIntPtr dev, WindowPtr old, WindowPtr win)
         if (!dev->deviceGrab.fromPassiveGrab ||
             dev->deviceGrab.grab->type != XI_Enter ||
             dev->deviceGrab.grab->window == win ||
-            IsParent(dev->deviceGrab.grab->window, win))
+            WindowIsParent(dev->deviceGrab.grab->window, win))
             return FALSE;
         DoEnterLeaveEvents(dev, dev->id, old, win, XINotifyPassiveUngrab);
         (*dev->deviceGrab.DeactivateGrab) (dev);
@@ -4208,7 +4208,7 @@ DeliverFocusedEvent(DeviceIntPtr keybd, InternalEvent *event, WindowPtr window)
         DeliverDeviceEvents(window, event, NullGrab, NullWindow, keybd);
         return;
     }
-    if ((focus == window) || IsParent(focus, window)) {
+    if ((focus == window) || WindowIsParent(focus, window)) {
         if (DeliverDeviceEvents(window, event, NullGrab, focus, keybd))
             return;
     }
@@ -4382,7 +4382,7 @@ DeliverGrabbedEvent(InternalEvent *event, DeviceIntPtr thisDev,
             deliveries = DeliverDeviceEvents(pSprite->win, event, grab,
                                              NullWindow, thisDev);
         else if (focus && (focus == pSprite->win ||
-                           IsParent(focus, pSprite->win)))
+                           WindowIsParent(focus, pSprite->win)))
             deliveries = DeliverDeviceEvents(pSprite->win, event, grab, focus,
                                              thisDev);
         else if (focus)
@@ -4704,7 +4704,7 @@ CoreEnterLeaveEvent(DeviceIntPtr mouse,
     event.u.enterLeave.mode = mode;
     focus = (keybd) ? keybd->focus->win : None;
     if ((focus != NoneWin) &&
-        ((pWin == focus) || (focus == PointerRootWin) || IsParent(focus, pWin)))
+        ((pWin == focus) || (focus == PointerRootWin) || WindowIsParent(focus, pWin)))
         event.u.enterLeave.flags |= ELFlagFocus;
 
     if ((mask & GetEventFilter(mouse, &event))) {
@@ -4788,7 +4788,7 @@ DeviceEnterLeaveEvent(DeviceIntPtr mouse,
 
     focus = (kbd) ? kbd->focus->win : None;
     if ((focus != NoneWin) &&
-        ((pWin == focus) || (focus == PointerRootWin) || IsParent(focus, pWin)))
+        ((pWin == focus) || (focus == PointerRootWin) || WindowIsParent(focus, pWin)))
         event->focus = TRUE;
 
     FixUpEventFromWindow(mouse->spriteInfo->sprite, (xEvent *) event, pWin,
@@ -5531,7 +5531,7 @@ ProcSendEvent(ClientPtr client)
         if (inputFocus == PointerRootWin)
             inputFocus = InputDevCurrentRootWindow(dev);
 
-        if (IsParent(inputFocus, pSprite->win)) {
+        if (WindowIsParent(inputFocus, pSprite->win)) {
             effectiveFocus = inputFocus;
             pWin = pSprite->win;
         }
@@ -5952,7 +5952,7 @@ CheckCursorConfinement(WindowPtr pWin)
             if (grab && (confineTo = grab->confineTo)) {
                 if (!BorderSizeNotEmpty(pDev, confineTo))
                     (*pDev->deviceGrab.DeactivateGrab) (pDev);
-                else if ((pWin == confineTo) || IsParent(pWin, confineTo))
+                else if ((pWin == confineTo) || WindowIsParent(pWin, confineTo))
                     ConfineCursorToWindow(pDev, confineTo, TRUE, TRUE);
             }
         }
