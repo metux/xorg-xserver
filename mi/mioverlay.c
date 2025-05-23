@@ -4,6 +4,7 @@
 #include <X11/X.h>
 
 #include "dix/cursor_priv.h"
+#include "dix/dix_priv.h"
 #include "mi/mi_priv.h"
 
 #include "scrnintstr.h"

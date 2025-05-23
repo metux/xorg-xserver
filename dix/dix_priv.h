@@ -520,4 +520,11 @@ extern CallbackListPtr RootWindowFinalizeCallback;
 void WindowHasNewCursor(WindowPtr pWin)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief do post actions necessary when windows have been restructured
+ *
+ * currently updates the sprite position and the sprite's cursor.
+ */
+void WindowsRestructured(void);
+
 #endif /* _XSERVER_DIX_PRIV_H */

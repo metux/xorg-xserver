@@ -264,9 +264,6 @@ WriteEventsToClient(ClientPtr /*pClient */ ,
                     int /*count */ ,
                     xEventPtr /*events */ );
 
-extern _X_EXPORT void
-WindowsRestructured(void);
-
 extern _X_EXPORT DeviceIntPtr
 PickPointer(ClientPtr /* client */ );
 

@@ -50,6 +50,7 @@ SOFTWARE.
 #include <X11/extensions/shapeconst.h>
 
 #include "dix/cursor_priv.h"
+#include "dix/dix_priv.h"
 #include "dix/input_priv.h"
 #include "mi/mi_priv.h"
 
