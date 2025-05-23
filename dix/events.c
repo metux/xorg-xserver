@@ -2034,7 +2034,7 @@ ReleaseActiveGrabs(ClientPtr client)
  */
 int
 TryClientEvents(ClientPtr client, DeviceIntPtr dev, xEvent *pEvents,
-                int count, Mask mask, Mask filter, GrabPtr grab)
+                size_t count, Mask mask, Mask filter, GrabPtr grab)
 {
     int type;
 

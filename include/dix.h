@@ -286,15 +286,6 @@ WriteEventsToClient(ClientPtr /*pClient */ ,
                     int /*count */ ,
                     xEventPtr /*events */ );
 
-extern _X_EXPORT int
-TryClientEvents(ClientPtr /*client */ ,
-                DeviceIntPtr /* device */ ,
-                xEventPtr /*pEvents */ ,
-                int /*count */ ,
-                Mask /*mask */ ,
-                Mask /*filter */ ,
-                GrabPtr /*grab */ );
-
 extern _X_EXPORT void
 WindowsRestructured(void);
 

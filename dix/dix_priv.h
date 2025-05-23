@@ -422,4 +422,38 @@ XRetCode AlterSaveSetForClient(ClientPtr pClient,
                                Bool toRoot,
                                Bool map);
 
+/**
+ * @brief deliver the given events to the given client.
+ *
+ * More than one event may be delivered at a time. This is the case with
+ * DeviceMotionNotifies which may be followed by DeviceValuator events.
+ *
+ * TryClientEvents() is the last station before actually writing the events to
+ * the socket. Anything that is not filtered here, will get delivered to the
+ * client.
+ * An event is only delivered if
+ *   - mask and filter match up.
+ *   - no other client has a grab on the device that caused the event.
+ *
+ *
+ * @param client The target client to deliver to.
+ * @param dev The device the event came from. May be NULL.
+ * @param pEvents The events to be delivered.
+ * @param count Number of elements in pEvents.
+ * @param mask Event mask as set by the window.
+ * @param filter Mask based on event type.
+ * @param grab Possible grab on the device that caused the event.
+ *
+ * @return 1 if event was delivered, 0 if not or -1 if grab was not set by the
+ * client.
+ */
+int TryClientEvents(ClientPtr pClient,
+                    DeviceIntPtr device,
+                    xEventPtr pEvents,
+                    size_t count,
+                    Mask mask,
+                    Mask filter,
+                    GrabPtr grab)
+    _X_ATTRIBUTE_NONNULL_ARG(3);
+
 #endif /* _XSERVER_DIX_PRIV_H */
