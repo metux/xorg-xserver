@@ -2692,7 +2692,7 @@ AttachDevice(ClientPtr client, DeviceIntPtr dev, DeviceIntPtr master)
         WindowPtr currentRoot;
 
         if (dev->spriteInfo->sprite)
-            currentRoot = GetCurrentRootWindow(dev);
+            currentRoot = InputDevCurrentRootWindow(dev);
         else                    /* new device auto-set to floating */
             currentRoot = screenInfo.screens[0]->root;
 

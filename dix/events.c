@@ -1020,7 +1020,7 @@ PostNewCursor(DeviceIntPtr pDev)
  * @return root window where dev's sprite is located
  */
 WindowPtr
-GetCurrentRootWindow(DeviceIntPtr dev)
+InputDevCurrentRootWindow(DeviceIntPtr dev)
 {
     return RootWindow(dev->spriteInfo->sprite);
 }
@@ -1163,9 +1163,9 @@ EnqueueEvent(InternalEvent *ev, DeviceIntPtr device)
          *  must be valid.  At this point, it hasn't been filled in yet, so
          *  we do it here.  The long expression below is necessary to get
          *  the current root window; the apparently reasonable alternative
-         *  GetCurrentRootWindow()->drawable.id doesn't give you the right
+         *  InputDevCurrentRootWindow()->drawable.id doesn't give you the right
          *  answer on the first motion event after a screen change because
-         *  the data that GetCurrentRootWindow relies on hasn't been
+         *  the data that InputDevCurrentRootWindow relies on hasn't been
          *  updated yet.
          */
         if (ev->any.type == ET_Motion)
@@ -1704,7 +1704,7 @@ DeactivatePointerGrab(DeviceIntPtr mouse)
     DoEnterLeaveEvents(mouse, mouse->id, grab->window,
                        mouse->spriteInfo->sprite->win, NotifyUngrab);
     if (grab->confineTo)
-        ConfineCursorToWindow(mouse, GetCurrentRootWindow(mouse), FALSE, FALSE);
+        ConfineCursorToWindow(mouse, InputDevCurrentRootWindow(mouse), FALSE, FALSE);
     PostNewCursor(mouse);
 
     if (!wasImplicit && grab->grabtype == XI2)
@@ -5035,7 +5035,7 @@ ProcGrabPointer(ClientPtr client)
     grab = device->deviceGrab.grab;
 
     if (grab && grab->confineTo && !confineTo)
-        ConfineCursorToWindow(device, GetCurrentRootWindow(device), FALSE, FALSE);
+        ConfineCursorToWindow(device, InputDevCurrentRootWindow(device), FALSE, FALSE);
 
     mask.core = stuff->eventMask;
 
@@ -5361,7 +5361,7 @@ ProcQueryPointer(ClientPtr client)
         .sequenceNumber = client->sequence,
         .length = 0,
         .mask = event_get_corestate(mouse, keyboard),
-        .root = (GetCurrentRootWindow(mouse))->drawable.id,
+        .root = (InputDevCurrentRootWindow(mouse))->drawable.id,
         .rootX = pSprite->hot.x,
         .rootY = pSprite->hot.y,
         .child = None
@@ -5528,7 +5528,7 @@ ProcSendEvent(ClientPtr client)
         /* If the input focus is PointerRootWin, send the event to where
            the pointer is if possible, then perhaps propagate up to root. */
         if (inputFocus == PointerRootWin)
-            inputFocus = GetCurrentRootWindow(dev);
+            inputFocus = InputDevCurrentRootWindow(dev);
 
         if (IsParent(inputFocus, pSprite->win)) {
             effectiveFocus = inputFocus;

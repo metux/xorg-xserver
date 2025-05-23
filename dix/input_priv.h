@@ -385,4 +385,13 @@ CursorPtr InputDevGetSpriteCursor(DeviceIntPtr pDev)
 void ConfineToShape(RegionPtr region, int *px, int *py)
     _X_ATTRIBUTE_NONNULL_ARG(1,2,3);
 
+/*
+ * @brief get root window the input device is currently on
+ *
+ * @param pDev  pointer to input device structure
+ * @return pointer to current root window
+ */
+WindowPtr InputDevCurrentRootWindow(DeviceIntPtr pDev)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

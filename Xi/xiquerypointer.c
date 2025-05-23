@@ -131,7 +131,7 @@ ProcXIQueryPointer(ClientPtr client)
         .RepType = X_XIQueryPointer,
         .sequenceNumber = client->sequence,
         .length = 6,
-        .root = (GetCurrentRootWindow(pDev))->drawable.id,
+        .root = (InputDevCurrentRootWindow(pDev))->drawable.id,
         .root_x = double_to_fp1616(pSprite->hot.x),
         .root_y = double_to_fp1616(pSprite->hot.y),
         .child = None

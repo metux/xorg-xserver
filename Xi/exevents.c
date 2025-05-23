@@ -2928,7 +2928,7 @@ SendEvent(ClientPtr client, DeviceIntPtr d, Window dest, Bool propagate,
         /* If the input focus is PointerRootWin, send the event to where
          * the pointer is if possible, then perhaps propagate up to root. */
         if (inputFocus == PointerRootWin)
-            inputFocus = GetCurrentRootWindow(d);
+            inputFocus = InputDevCurrentRootWindow(d);
 
         if (IsParent(inputFocus, spriteWin)) {
             effectiveFocus = inputFocus;

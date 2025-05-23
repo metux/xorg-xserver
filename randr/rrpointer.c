@@ -22,6 +22,7 @@
 #include <dix-config.h>
 
 #include "dix/cursor_priv.h"
+#include "dix/input_priv.h"
 
 #include "randrstr.h"
 #include "inputstr.h"
@@ -145,7 +146,7 @@ RRPointerScreenConfigured(ScreenPtr pScreen)
 
     for (pDev = inputInfo.devices; pDev; pDev = pDev->next) {
         if (IsPointerDevice(pDev)) {
-            pRoot = GetCurrentRootWindow(pDev);
+            pRoot = InputDevCurrentRootWindow(pDev);
             pCurrentScreen = pRoot ? pRoot->drawable.pScreen : NULL;
 
             if (pScreen == pCurrentScreen) {

@@ -236,9 +236,6 @@ IsParent(WindowPtr /* maybeparent */ ,
          WindowPtr /* child */ );
 
 extern _X_EXPORT WindowPtr
-GetCurrentRootWindow(DeviceIntPtr pDev);
-
-extern _X_EXPORT WindowPtr
 GetSpriteWindow(DeviceIntPtr pDev);
 
 extern _X_EXPORT void

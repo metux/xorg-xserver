@@ -1444,7 +1444,7 @@ DeviceFocusEvents(DeviceIntPtr dev, WindowPtr from, WindowPtr to, int mode)
                 DeviceFocusEvent(dev, XI_FocusOut, mode, NotifyPointer,
                                  sprite->win);
                 DeviceFocusOutEvents(dev, sprite->win,
-                                     GetCurrentRootWindow(dev), mode,
+                                     InputDevCurrentRootWindow(dev), mode,
                                      NotifyPointer);
             }
             /* Notify all the roots */
@@ -1469,7 +1469,7 @@ DeviceFocusEvents(DeviceIntPtr dev, WindowPtr from, WindowPtr to, int mode)
             DeviceFocusEvent(dev, XI_FocusIn, mode, in,
                              screenInfo.screens[i]->root);
         if (to == PointerRootWin) {
-            DeviceFocusInEvents(dev, GetCurrentRootWindow(dev), sprite->win,
+            DeviceFocusInEvents(dev, InputDevCurrentRootWindow(dev), sprite->win,
                                 mode, NotifyPointer);
             DeviceFocusEvent(dev, XI_FocusIn, mode, NotifyPointer, sprite->win);
         }
@@ -1480,14 +1480,14 @@ DeviceFocusEvents(DeviceIntPtr dev, WindowPtr from, WindowPtr to, int mode)
                 DeviceFocusEvent(dev, XI_FocusOut, mode, NotifyPointer,
                                  sprite->win);
                 DeviceFocusOutEvents(dev, sprite->win,
-                                     GetCurrentRootWindow(dev), mode,
+                                     InputDevCurrentRootWindow(dev), mode,
                                      NotifyPointer);
             }
             for (i = 0; i < nscreens; i++)
                 DeviceFocusEvent(dev, XI_FocusOut, mode, out,
                                  screenInfo.screens[i]->root);
             if (to->parent != NullWindow)
-                DeviceFocusInEvents(dev, GetCurrentRootWindow(dev), to, mode,
+                DeviceFocusInEvents(dev, InputDevCurrentRootWindow(dev), to, mode,
                                     NotifyNonlinearVirtual);
             DeviceFocusEvent(dev, XI_FocusIn, mode, NotifyNonlinear, to);
             if (IsParent(to, sprite->win))
