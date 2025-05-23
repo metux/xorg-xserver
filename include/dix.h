@@ -226,9 +226,6 @@ SetVendorRelease(int release);
 /* events.c */
 
 extern _X_EXPORT void
-LastEventTimeToggleResetAll(Bool state);
-
-extern _X_EXPORT void
 WriteEventsToClient(ClientPtr /*pClient */ ,
                     int /*count */ ,
                     xEventPtr /*events */ );
