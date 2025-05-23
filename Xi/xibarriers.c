@@ -421,7 +421,7 @@ input_constrain_cursor(DeviceIntPtr dev, ScreenPtr screen,
     if (nevents)
         *nevents = 0;
 
-    if (xorg_list_is_empty(&cs->barriers) || IsFloating(dev))
+    if (xorg_list_is_empty(&cs->barriers) || InputDevIsFloating(dev))
         goto out;
 
     /**

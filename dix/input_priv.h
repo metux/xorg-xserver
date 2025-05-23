@@ -474,7 +474,7 @@ Bool InputDevIsMaster(DeviceIntPtr dev)
  * @param dev   device to check
  * @return TRUE if the device is in `floating` state
  */
-Bool IsFloating(DeviceIntPtr dev)
+Bool InputDevIsFloating(DeviceIntPtr dev)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
 #endif /* _XSERVER_INPUT_PRIV_H */

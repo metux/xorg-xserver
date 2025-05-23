@@ -782,7 +782,7 @@ ChangeMasterDeviceClasses(DeviceIntPtr device, DeviceChangedEvent *dce)
     if (InputDevIsMaster(slave))
         return;
 
-    if (IsFloating(slave))
+    if (InputDevIsFloating(slave))
         return;                 /* set floating since the event */
 
     if (GetMaster(slave, MASTER_ATTACHED)->id != dce->masterid)
@@ -1852,7 +1852,7 @@ ProcessDeviceEvent(InternalEvent *ev, DeviceIntPtr device)
 
     b = device->button;
 
-    if (InputDevIsMaster(device) || IsFloating(device))
+    if (InputDevIsMaster(device) || InputDevIsFloating(device))
         CheckMotion(event, device);
 
     switch (event->type) {
@@ -1955,7 +1955,7 @@ ProcessDeviceEvent(InternalEvent *ev, DeviceIntPtr device)
     if (deactivateDeviceGrab == TRUE) {
         (*device->deviceGrab.DeactivateGrab) (device);
 
-        if (!InputDevIsMaster (device) && !IsFloating (device)) {
+        if (!InputDevIsMaster (device) && !InputDevIsFloating (device)) {
             int flags, num_events = 0;
             InternalEvent dce;
 

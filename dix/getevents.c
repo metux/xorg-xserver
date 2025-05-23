@@ -786,7 +786,7 @@ static void
 moveRelative(DeviceIntPtr dev, int flags, ValuatorMask *mask)
 {
     int i;
-    Bool clip_xy = InputDevIsMaster(dev) || !IsFloating(dev);
+    Bool clip_xy = InputDevIsMaster(dev) || !InputDevIsFloating(dev);
     ValuatorClassPtr v = dev->valuator;
 
     /* for abs devices in relative mode, we've just scaled wrong, since we
@@ -1006,7 +1006,7 @@ updateHistory(DeviceIntPtr dev, ValuatorMask *mask, CARD32 ms)
         return;
 
     updateMotionHistory(dev, ms, mask, dev->last.valuators);
-    if (!InputDevIsMaster(dev) && !IsFloating(dev)) {
+    if (!InputDevIsMaster(dev) && !InputDevIsFloating(dev)) {
         DeviceIntPtr master = GetMaster(dev, MASTER_POINTER);
 
         updateMotionHistory(master, ms, mask, dev->last.valuators);
@@ -1450,7 +1450,7 @@ fill_pointer_events(InternalEvent *events, DeviceIntPtr pDev, int type,
     storeLastValuators(pDev, &mask, devx, devy);
 
     /* Update the MD's coordinates, which are always in desktop space. */
-    if (!InputDevIsMaster(pDev) && !IsFloating(pDev)) {
+    if (!InputDevIsMaster(pDev) && !InputDevIsFloating(pDev)) {
         DeviceIntPtr master = GetMaster(pDev, MASTER_POINTER);
 
         master->last.valuators[0] = screenx;
@@ -2067,7 +2067,7 @@ GetTouchEvents(InternalEvent *events, DeviceIntPtr dev, uint32_t ddx_touchid,
         storeLastValuators(dev, &mask, devx, devy);
 
     /* Update the MD's coordinates, which are always in desktop space. */
-    if (emulate_pointer && !InputDevIsMaster(dev) && !IsFloating(dev)) {
+    if (emulate_pointer && !InputDevIsMaster(dev) && !InputDevIsFloating(dev)) {
 	    DeviceIntPtr master = GetMaster(dev, MASTER_POINTER);
 
 	    master->last.valuators[0] = screenx;

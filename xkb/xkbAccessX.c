@@ -716,14 +716,14 @@ extern int xkbDevicePrivateIndex;
 void
 ProcessPointerEvent(InternalEvent *ev, DeviceIntPtr mouse)
 {
-    DeviceIntPtr dev;
     XkbSrvInfoPtr xkbi = NULL;
     unsigned changed = 0;
     ProcessInputProc backupproc;
     xkbDeviceInfoPtr xkbPrivPtr = XKBDEVICEINFO(mouse);
     DeviceEvent *event = &ev->device_event;
 
-    dev = IsFloating(mouse) ? mouse : GetMaster(mouse, MASTER_KEYBOARD);
+    DeviceIntPtr dev = InputDevIsFloating(mouse)
+        ? mouse : GetMaster(mouse, MASTER_KEYBOARD);
 
     if (dev && dev->key) {
         xkbi = dev->key->xkbInfo;

@@ -98,7 +98,7 @@ ProcXIWarpPointer(ClientPtr client)
         return rc;
     }
 
-    if ((!InputDevIsMaster(pDev) && !IsFloating(pDev)) ||
+    if ((!InputDevIsMaster(pDev) && !InputDevIsFloating(pDev)) ||
         (InputDevIsMaster(pDev) && !IsPointerDevice(pDev))) {
         client->errorValue = stuff->deviceid;
         return BadDevice;

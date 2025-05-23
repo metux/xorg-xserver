@@ -170,7 +170,7 @@ AnimCurDisplayCursor(DeviceIntPtr pDev, ScreenPtr pScreen, CursorPtr pCursor)
     AnimCurScreenPtr as = GetAnimCurScreen(pScreen);
     Bool ret = TRUE;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return FALSE;
 
     Unwrap(as, pScreen, DisplayCursor);

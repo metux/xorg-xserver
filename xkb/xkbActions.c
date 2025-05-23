@@ -1569,7 +1569,7 @@ InjectPointerKeyEvents(DeviceIntPtr dev, int type, int button, int flags,
         lastSlave = mpointer->lastSlave;
         ptr = GetXTestDevice(mpointer);
     }
-    else if (IsFloating(dev))
+    else if (InputDevIsFloating(dev))
         ptr = dev;
     else
         return;
@@ -1598,7 +1598,7 @@ XkbFakePointerMotion(DeviceIntPtr dev, unsigned flags, int x, int y)
     int gpe_flags = 0;
 
     /* ignore attached SDs */
-    if (!InputDevIsMaster(dev) && !IsFloating(dev))
+    if (!InputDevIsMaster(dev) && !InputDevIsFloating(dev))
         return;
 
     if (flags & XkbSA_MoveAbsoluteX || flags & XkbSA_MoveAbsoluteY)
@@ -1631,7 +1631,7 @@ XkbFakeDeviceButton(DeviceIntPtr dev, Bool press, int button)
 
         ptr = GetXTestDevice(mpointer);
     }
-    else if (IsFloating(dev))
+    else if (InputDevIsFloating(dev))
         ptr = dev;
     else
         return;

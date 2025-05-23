@@ -424,7 +424,7 @@ EnableDevice(DeviceIntPtr dev, BOOL sendevent)
         XISendDeviceHierarchyEvent(flags);
     }
 
-    if (!InputDevIsMaster(dev) && !IsFloating(dev))
+    if (!InputDevIsMaster(dev) && !InputDevIsFloating(dev))
         XkbPushLockedStateToSlaves(GetMaster(dev, MASTER_KEYBOARD), 0, 0);
 
     /* Now make sure our LEDs are in sync with the locked state */
@@ -1110,12 +1110,12 @@ CloseDownDevices(void)
      * to NULL and pretend nothing happened.
      */
     for (dev = inputInfo.devices; dev; dev = dev->next) {
-        if (!InputDevIsMaster(dev) && !IsFloating(dev))
+        if (!InputDevIsMaster(dev) && !InputDevIsFloating(dev))
             dev->master = NULL;
     }
 
     for (dev = inputInfo.off_devices; dev; dev = dev->next) {
-        if (!InputDevIsMaster(dev) && !IsFloating(dev))
+        if (!InputDevIsMaster(dev) && !InputDevIsFloating(dev))
             dev->master = NULL;
     }
 
@@ -2667,13 +2667,13 @@ AttachDevice(ClientPtr client, DeviceIntPtr dev, DeviceIntPtr master)
         return BadDevice;
 
     /* set from floating to floating? */
-    if (IsFloating(dev) && !master && dev->enabled)
+    if (InputDevIsFloating(dev) && !master && dev->enabled)
         return Success;
 
     input_lock();
 
     /* free the existing sprite. */
-    if (IsFloating(dev) && dev->spriteInfo->paired == dev) {
+    if (InputDevIsFloating(dev) && dev->spriteInfo->paired == dev) {
         screen = miPointerGetScreen(dev);
         screen->DeviceCursorCleanup(dev, screen);
         free(dev->spriteInfo->sprite);
@@ -2734,7 +2734,7 @@ AttachDevice(ClientPtr client, DeviceIntPtr dev, DeviceIntPtr master)
 DeviceIntPtr
 GetPairedDevice(DeviceIntPtr dev)
 {
-    if (!InputDevIsMaster(dev) && !IsFloating(dev))
+    if (!InputDevIsMaster(dev) && !InputDevIsFloating(dev))
         dev = GetMaster(dev, MASTER_ATTACHED);
 
     return (dev && dev->spriteInfo) ? dev->spriteInfo->paired: NULL;

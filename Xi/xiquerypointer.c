@@ -105,7 +105,8 @@ ProcXIQueryPointer(ClientPtr client)
         return rc;
     }
 
-    if (pDev->valuator == NULL || IsKeyboardDevice(pDev) || (!InputDevIsMaster(pDev) && !IsFloating(pDev))) {   /* no attached devices */
+    if (pDev->valuator == NULL || IsKeyboardDevice(pDev) ||
+        (!InputDevIsMaster(pDev) && !InputDevIsFloating(pDev))) {   /* no attached devices */
         client->errorValue = stuff->deviceid;
         return BadDevice;
     }

@@ -772,10 +772,10 @@ DeviceFocusEvent(DeviceIntPtr dev, int type, int mode, int detail,
 {
     deviceFocus event;
     xXIFocusInEvent *xi2event;
-    DeviceIntPtr mouse;
     int btlen, len, i;
 
-    mouse = IsFloating(dev) ? dev : GetMaster(dev, MASTER_POINTER);
+    DeviceIntPtr mouse = InputDevIsFloating(dev) ?
+            dev : GetMaster(dev, MASTER_POINTER);
 
     /* XI 2 event contains the logical button map - maps are CARD8
      * so we need 256 bits for the possibly maximum mapping */

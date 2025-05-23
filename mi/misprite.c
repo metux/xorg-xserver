@@ -148,7 +148,7 @@ GetSpriteScreen(ScreenPtr pScreen)
 static miCursorInfoPtr
 GetSprite(DeviceIntPtr dev)
 {
-    if (IsFloating(dev))
+    if (InputDevIsFloating(dev))
        return dixLookupPrivate(&dev->devPrivates, &miSpriteDevPrivatesKeyRec);
 
     return dixLookupPrivate(&(GetMaster(dev, MASTER_POINTER))->devPrivates,
@@ -614,7 +614,7 @@ miSpriteRealizeCursor(DeviceIntPtr pDev, ScreenPtr pScreen, CursorPtr pCursor)
 {
     miCursorInfoPtr pCursorInfo;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return FALSE;
 
     pCursorInfo = GetSprite(pDev);
@@ -638,7 +638,7 @@ miSpriteSetCursor(DeviceIntPtr pDev, ScreenPtr pScreen,
     miCursorInfoPtr pPointer;
     miSpriteScreenPtr pScreenPriv;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return;
 
     pPointer = GetSprite(pDev);
@@ -690,7 +690,7 @@ miSpriteMoveCursor(DeviceIntPtr pDev, ScreenPtr pScreen, int x, int y)
 {
     CursorPtr pCursor;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return;
 
     pCursor = GetSprite(pDev)->pCursor;
@@ -742,7 +742,7 @@ miSpriteRemoveCursor(DeviceIntPtr pDev, ScreenPtr pScreen)
     miSpriteScreenPtr pScreenPriv;
     miCursorInfoPtr pCursorInfo;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return;
 
     DamageDrawInternal(pScreen, TRUE);
@@ -777,7 +777,7 @@ miSpriteSaveUnderCursor(DeviceIntPtr pDev, ScreenPtr pScreen)
     miSpriteScreenPtr pScreenPriv;
     miCursorInfoPtr pCursorInfo;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return;
 
     DamageDrawInternal(pScreen, TRUE);
@@ -813,7 +813,7 @@ miSpriteRestoreCursor(DeviceIntPtr pDev, ScreenPtr pScreen)
     CursorPtr pCursor;
     miCursorInfoPtr pCursorInfo;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return;
 
     DamageDrawInternal(pScreen, TRUE);
@@ -852,7 +852,7 @@ miSpriteComputeSaved(DeviceIntPtr pDev, ScreenPtr pScreen)
     CursorPtr pCursor;
     miCursorInfoPtr pCursorInfo;
 
-    if (IsFloating(pDev))
+    if (InputDevIsFloating(pDev))
         return;
 
     pCursorInfo = GetSprite(pDev);

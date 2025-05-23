@@ -349,7 +349,7 @@ InputDevIsMaster(DeviceIntPtr dev)
 }
 
 Bool
-IsFloating(DeviceIntPtr dev)
+InputDevIsFloating(DeviceIntPtr dev)
 {
     return !InputDevIsMaster(dev) && GetMaster(dev, MASTER_KEYBOARD) == NULL;
 }
@@ -1393,7 +1393,7 @@ ScreenRestructured(ScreenPtr pScreen)
     DeviceIntPtr pDev;
 
     for (pDev = inputInfo.devices; pDev; pDev = pDev->next) {
-        if (!IsFloating(pDev) && !DevHasCursor(pDev))
+        if (!InputDevIsFloating(pDev) && !DevHasCursor(pDev))
             continue;
 
         /* GrabDevice doesn't have a confineTo field, so we don't need to
@@ -1455,7 +1455,7 @@ CheckGrabForSyncs(DeviceIntPtr thisDev, Bool thisMode, Bool otherMode)
 static void
 DetachFromMaster(DeviceIntPtr dev)
 {
-    if (IsFloating(dev))
+    if (InputDevIsFloating(dev))
         return;
 
     dev->saved_master_id = GetMaster(dev, MASTER_ATTACHED)->id;
@@ -3261,7 +3261,7 @@ WindowsRestructured(void)
     DeviceIntPtr pDev = inputInfo.devices;
 
     while (pDev) {
-        if (InputDevIsMaster(pDev) || IsFloating(pDev))
+        if (InputDevIsMaster(pDev) || InputDevIsFloating(pDev))
             CheckMotion(NULL, pDev);
         pDev = pDev->next;
     }
@@ -3480,7 +3480,7 @@ NewCurrentScreen(DeviceIntPtr pDev, ScreenPtr newScreen, int x, int y)
     SpritePtr pSprite;
 
     ptr =
-        IsFloating(pDev) ? pDev :
+        InputDevIsFloating(pDev) ? pDev :
         GetXTestDevice(GetMaster(pDev, MASTER_POINTER));
     pSprite = ptr->spriteInfo->sprite;
 
@@ -3967,7 +3967,7 @@ CheckPassiveGrab(DeviceIntPtr device, GrabPtr grab, InternalEvent *event,
          * attached master keyboard. Since the slave may have been
          * reattached after the grab, the modifier device may not be the
          * same. */
-        if (!InputDevIsMaster(grab->device) && !IsFloating(device))
+        if (!InputDevIsMaster(grab->device) && !InputDevIsFloating(device))
             gdev = GetMaster(device, MASTER_KEYBOARD);
     }
 
