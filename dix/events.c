@@ -2353,7 +2353,7 @@ DeliverEventToWindowMask(DeviceIntPtr dev, WindowPtr win, xEvent *events,
  */
 int
 DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWin, xEvent
-                      *pEvents, int count, Mask filter, GrabPtr grab)
+                      *pEvents, size_t count, Mask filter, GrabPtr grab)
 {
     int deliveries = 0, nondeliveries = 0;
     ClientPtr client = NullClient;

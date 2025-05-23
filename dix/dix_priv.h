@@ -478,4 +478,31 @@ enum EventDeliveryState DeliverEvents(WindowPtr pWindow,
                                       WindowPtr otherParent)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/**
+ * @brief deliver events to a window.
+ *
+ * At this point, we do not yet know if the event actually needs to be delivered.
+ * May activate a grab if the event is a button press.
+ *
+ * Core events are always delivered to the window owner. If the filter is
+ * something other than CantBeFiltered, the event is also delivered to other
+ * clients with the matching mask on the window.
+ *
+ * More than one event may be delivered at a time. This is the case with
+ * DeviceMotionNotifies which may be followed by DeviceValuator events.
+ *
+ * @param pWindow   The window that would get the event.
+ * @param pEvents   The events to be delivered.
+ * @param count     Number of elements in pEvents.
+ * @param filter    Mask based on event type.
+ * @param grab      Possible grab on the device that caused the event.
+ *
+ * @return a positive number if at least one successful delivery has been
+ * made, 0 if no events were delivered, or a negative number if the event
+ * has not been delivered _and_ rejected by at least one client.
+ */
+int DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWindow, xEventPtr pEvents,
+                          size_t count, Mask filter, GrabPtr grab)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2,3);
+
 #endif /* _XSERVER_DIX_PRIV_H */

@@ -255,14 +255,6 @@ LastEventTimeToggleResetFlag(int deviceid, Bool state);
 extern _X_EXPORT void
 LastEventTimeToggleResetAll(Bool state);
 
-extern _X_EXPORT int
-DeliverEventsToWindow(DeviceIntPtr /* pWin */ ,
-                      WindowPtr /* pWin */ ,
-                      xEventPtr /* pEvents */ ,
-                      int /* count */ ,
-                      Mask /* filter */ ,
-                      GrabPtr /* grab */ );
-
 extern _X_EXPORT void
 DeliverRawEvent(RawDeviceEvent * /* ev */ ,
                 DeviceIntPtr    /* dev */
