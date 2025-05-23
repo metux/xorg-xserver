@@ -255,10 +255,6 @@ LastEventTimeToggleResetFlag(int deviceid, Bool state);
 extern _X_EXPORT void
 LastEventTimeToggleResetAll(Bool state);
 
-extern _X_EXPORT int
-OtherClientGone(void *value,
-                XID id);
-
 extern _X_EXPORT void
 WriteEventsToClient(ClientPtr /*pClient */ ,
                     int /*count */ ,

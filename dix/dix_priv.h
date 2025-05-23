@@ -535,4 +535,13 @@ void WindowsRestructured(void);
 void ScreenRestructured(ScreenPtr pScreen)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief destructor for X11_RESTYPE_OTHERCLIENT resources
+ *
+ * @param value     pointer to resource data
+ * @param id        ID of the resource
+ * @return (undefined/ignored)
+ */
+int OtherClientGone(void *value, XID id);
+
 #endif /* _XSERVER_DIX_PRIV_H */
