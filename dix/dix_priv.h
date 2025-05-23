@@ -510,4 +510,14 @@ int DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWindow, xEventPtr pEvent
  */
 extern CallbackListPtr RootWindowFinalizeCallback;
 
+/*
+ * @brief do post actions necessary when window got a new cursor
+ *
+ * currently just for updating cursors on input devices
+ *
+ * @param pWindow   window that just got a new cursor
+ */
+void WindowHasNewCursor(WindowPtr pWin)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */

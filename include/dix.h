@@ -255,9 +255,6 @@ LastEventTimeToggleResetFlag(int deviceid, Bool state);
 extern _X_EXPORT void
 LastEventTimeToggleResetAll(Bool state);
 
-extern _X_EXPORT void
-WindowHasNewCursor(WindowPtr /* pWin */ );
-
 extern _X_EXPORT int
 OtherClientGone(void *value,
                 XID id);
