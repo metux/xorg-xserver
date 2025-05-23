@@ -568,4 +568,9 @@ void BlockHandler(void *timeout);
  */
 void WakeupHandler(int result);
 
+/*
+ * @brief initialize the block and wakeup handlers
+ */
+void InitBlockAndWakeupHandlers(void);
+
 #endif /* _XSERVER_DIX_PRIV_H */

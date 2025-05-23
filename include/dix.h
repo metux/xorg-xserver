@@ -193,8 +193,6 @@ extern _X_EXPORT void RemoveBlockAndWakeupHandlers(ServerBlockHandlerProcPtr blo
                                                    ServerWakeupHandlerProcPtr wakeupHandler,
                                                    void *blockData);
 
-extern _X_EXPORT void InitBlockAndWakeupHandlers(void);
-
 extern _X_EXPORT Bool QueueWorkProc(Bool (*function)(ClientPtr clientUnused,
                                                      void *closure),
                                     ClientPtr client,
