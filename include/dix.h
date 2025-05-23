@@ -235,9 +235,6 @@ extern _X_EXPORT Bool
 IsParent(WindowPtr /* maybeparent */ ,
          WindowPtr /* child */ );
 
-extern _X_EXPORT WindowPtr
-GetSpriteWindow(DeviceIntPtr pDev);
-
 extern _X_EXPORT void
 NoticeTime(const DeviceIntPtr dev,
            TimeStamp time);

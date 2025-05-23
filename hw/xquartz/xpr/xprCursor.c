@@ -396,7 +396,7 @@ QuartzResumeXCursor(ScreenPtr pScreen)
 
     /* TODO: Tablet? */
 
-    pWin = GetSpriteWindow(darwinPointer);
+    pWin = InputDevSpriteWindow(darwinPointer);
     if (pWin->drawable.pScreen != pScreen)
         return;
 

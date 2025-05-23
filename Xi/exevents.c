@@ -1946,9 +1946,9 @@ ProcessDeviceEvent(InternalEvent *ev, DeviceIntPtr device)
                                 deactivateDeviceGrab);
         else if (device->focus && !IsPointerEvent(ev))
             DeliverFocusedEvent(device, (InternalEvent *) event,
-                                GetSpriteWindow(device));
+                                InputDevSpriteWindow(device));
         else
-            DeliverDeviceEvents(GetSpriteWindow(device), (InternalEvent *) event,
+            DeliverDeviceEvents(InputDevSpriteWindow(device), (InternalEvent *) event,
                                 NullGrab, NullWindow, device);
     }
 
@@ -2907,7 +2907,7 @@ SendEvent(ClientPtr client, DeviceIntPtr d, Window dest, Bool propagate,
 {
     WindowPtr pWin;
     WindowPtr effectiveFocus = NullWindow;      /* only set if dest==InputFocus */
-    WindowPtr spriteWin = GetSpriteWindow(d);
+    WindowPtr spriteWin = InputDevSpriteWindow(d);
 
     if (dest == PointerWindow)
         pWin = spriteWin;

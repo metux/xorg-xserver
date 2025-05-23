@@ -1029,7 +1029,7 @@ InputDevCurrentRootWindow(DeviceIntPtr dev)
  * @return window underneath the cursor sprite.
  */
 WindowPtr
-GetSpriteWindow(DeviceIntPtr pDev)
+InputDevSpriteWindow(DeviceIntPtr pDev)
 {
     return pDev->spriteInfo->sprite->win;
 }

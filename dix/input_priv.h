@@ -394,4 +394,13 @@ void ConfineToShape(RegionPtr region, int *px, int *py)
 WindowPtr InputDevCurrentRootWindow(DeviceIntPtr pDev)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief return Window underneath the input device's cursor sprite
+ *
+ * @param pDev  pointer to input device structure
+ * @return pointer to window the cursor is currently above
+ */
+WindowPtr InputDevSpriteWindow(DeviceIntPtr pDev)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_INPUT_PRIV_H */
