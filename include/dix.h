@@ -275,12 +275,6 @@ extern _X_EXPORT int
 OtherClientGone(void *value,
                 XID id);
 
-extern _X_EXPORT int
-DeliverEvents(WindowPtr /*pWin */ ,
-              xEventPtr /*xE */ ,
-              int /*count */ ,
-              WindowPtr /*otherParent */ );
-
 extern _X_EXPORT void
 WriteEventsToClient(ClientPtr /*pClient */ ,
                     int /*count */ ,

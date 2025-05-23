@@ -2935,9 +2935,10 @@ DeliverDeviceEvents(WindowPtr pWin, InternalEvent *event, GrabPtr grab,
  * @param xE Events to deliver.
  * @param count number of events in xE.
  * @param otherParent Used for ReparentNotify events.
+ * @return event delivery state (@see enum EventDeliveryState)
  */
-int
-DeliverEvents(WindowPtr pWin, xEvent *xE, int count, WindowPtr otherParent)
+enum EventDeliveryState
+DeliverEvents(WindowPtr pWin, xEvent *xE, size_t count, WindowPtr otherParent)
 {
     DeviceIntRec dummy;
     int deliveries;

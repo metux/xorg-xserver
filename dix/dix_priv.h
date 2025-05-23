@@ -17,6 +17,8 @@
 #include <X11/Xfuncproto.h>
 #include <X11/extensions/XI.h>
 
+#include "dix/input_priv.h"
+
 #include "include/callback.h"
 #include "include/cursor.h"
 #include "include/dix.h"
@@ -455,5 +457,25 @@ int TryClientEvents(ClientPtr pClient,
                     Mask filter,
                     GrabPtr grab)
     _X_ATTRIBUTE_NONNULL_ARG(3);
+
+/**
+ * @brief deliver event to a window and its immediate parent.
+ *
+ * Used for most window events (CreateNotify, ConfigureNotify, etc.).
+ * Not useful for events that propagate up the tree or extension events
+ *
+ * In case of a ReparentNotify event, the event will be delivered to the
+ * otherParent as well.
+ *
+ * @param pWindow       Window to deliver events to.
+ * @param events        Events to deliver.
+ * @param count         number of events in xE.
+ * @param otherParent   Used for ReparentNotify events.
+ */
+enum EventDeliveryState DeliverEvents(WindowPtr pWindow,
+                                      xEventPtr events,
+                                      size_t nEvents,
+                                      WindowPtr otherParent)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
 #endif /* _XSERVER_DIX_PRIV_H */
