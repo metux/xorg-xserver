@@ -403,4 +403,13 @@ WindowPtr InputDevCurrentRootWindow(DeviceIntPtr pDev)
 WindowPtr InputDevSpriteWindow(DeviceIntPtr pDev)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief deliver a raw input device event
+ *
+ * @param event     pointer to raw input device event structure
+ * @param device    pointer to input device structure
+ */
+void DeliverRawEvent(RawDeviceEvent *event, DeviceIntPtr device)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

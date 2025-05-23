@@ -256,11 +256,6 @@ extern _X_EXPORT void
 LastEventTimeToggleResetAll(Bool state);
 
 extern _X_EXPORT void
-DeliverRawEvent(RawDeviceEvent * /* ev */ ,
-                DeviceIntPtr    /* dev */
-    );
-
-extern _X_EXPORT void
 WindowHasNewCursor(WindowPtr /* pWin */ );
 
 extern _X_EXPORT int
