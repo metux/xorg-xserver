@@ -544,4 +544,14 @@ void ScreenRestructured(ScreenPtr pScreen)
  */
 int OtherClientGone(void *value, XID id);
 
+/*
+ * @brief check whether one window is parent of another
+ *
+ * @param parent    the alleged parent
+ * @param child     the alleged child
+ * @return TRUE if `child` is a child window of `parent`
+ */
+Bool IsParent(WindowPtr parent, WindowPtr child)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
+
 #endif /* _XSERVER_DIX_PRIV_H */

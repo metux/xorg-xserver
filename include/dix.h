@@ -231,10 +231,6 @@ SetVendorRelease(int release);
 
 /* events.c */
 
-extern _X_EXPORT Bool
-IsParent(WindowPtr /* maybeparent */ ,
-         WindowPtr /* child */ );
-
 extern _X_EXPORT void
 NoticeTime(const DeviceIntPtr dev,
            TimeStamp time);
