@@ -365,4 +365,13 @@ int ClientSignalAll(ClientPtr pClient, ClientSleepProcPtr func, void *closure)
 void ClientWakeup(ClientPtr pclient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief check whether client is asleep
+ *
+ * @param pClient pointer to client structure
+ * @return TRUE if client is sleeping and has no work to do
+ */
+Bool ClientIsAsleep(ClientPtr pClient)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */

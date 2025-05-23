@@ -216,8 +216,6 @@ extern _X_EXPORT Bool QueueWorkProc(Bool (*function)(ClientPtr clientUnused,
                                     ClientPtr client,
                                     void *closure);
 
-extern _X_EXPORT Bool ClientIsAsleep(ClientPtr /*client */ );
-
 extern _X_EXPORT void SendGraphicsExpose(ClientPtr /*client */ ,
                                          RegionPtr /*pRgn */ ,
                                          XID /*drawable */ ,
