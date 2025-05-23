@@ -1003,7 +1003,7 @@ DGAProcessKeyboardEvent(ScreenPtr pScreen, DGAEvent * event, DeviceIntPtr keybd)
 
     UpdateDeviceState(keybd, &ev);
 
-    if (!IsMaster(keybd))
+    if (!InputDevIsMaster(keybd))
         return;
 
     /*
@@ -1057,7 +1057,7 @@ DGAProcessPointerEvent(ScreenPtr pScreen, DGAEvent * event, DeviceIntPtr mouse)
 
     UpdateDeviceState(mouse, &ev);
 
-    if (!IsMaster(mouse))
+    if (!InputDevIsMaster(mouse))
         return;
 
     /*

@@ -2104,7 +2104,7 @@ XkbMergeLockedPtrBtns(DeviceIntPtr master)
     DeviceIntPtr d = inputInfo.devices;
     XkbSrvInfoPtr xkbi = NULL;
 
-    if (!IsMaster(master))
+    if (!InputDevIsMaster(master))
         return;
 
     if (!master->key)
@@ -2114,7 +2114,7 @@ XkbMergeLockedPtrBtns(DeviceIntPtr master)
     xkbi->lockedPtrButtons = 0;
 
     for (; d; d = d->next) {
-        if (IsMaster(d) || GetMaster(d, MASTER_KEYBOARD) != master || !d->key)
+        if (InputDevIsMaster(d) || GetMaster(d, MASTER_KEYBOARD) != master || !d->key)
             continue;
 
         xkbi->lockedPtrButtons |= d->key->xkbInfo->lockedPtrButtons;

@@ -105,7 +105,7 @@ ProcXIQueryPointer(ClientPtr client)
         return rc;
     }
 
-    if (pDev->valuator == NULL || IsKeyboardDevice(pDev) || (!IsMaster(pDev) && !IsFloating(pDev))) {   /* no attached devices */
+    if (pDev->valuator == NULL || IsKeyboardDevice(pDev) || (!InputDevIsMaster(pDev) && !IsFloating(pDev))) {   /* no attached devices */
         client->errorValue = stuff->deviceid;
         return BadDevice;
     }
@@ -119,7 +119,7 @@ ProcXIQueryPointer(ClientPtr client)
     if (pDev->valuator->motionHintWindow)
         MaybeStopHint(pDev, client);
 
-    if (IsMaster(pDev))
+    if (InputDevIsMaster(pDev))
         kbd = GetMaster(pDev, MASTER_KEYBOARD);
     else
         kbd = (pDev->key) ? pDev : NULL;

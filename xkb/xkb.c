@@ -560,7 +560,7 @@ ProcXkbBell(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixBellAccess);
                 if (rc == Success)
@@ -644,7 +644,7 @@ ProcXkbLatchLockState(ClientPtr client)
 
     for (tmpd = inputInfo.devices; tmpd; tmpd = tmpd->next) {
         if ((tmpd == dev) ||
-            (!IsMaster(tmpd) && GetMaster(tmpd, MASTER_KEYBOARD) == dev)) {
+            (!InputDevIsMaster(tmpd) && GetMaster(tmpd, MASTER_KEYBOARD) == dev)) {
             if (!tmpd->key || !tmpd->key->xkbInfo)
                 continue;
 
@@ -789,7 +789,7 @@ ProcXkbSetControls(ClientPtr client)
         if (!tmpd->key || !tmpd->key->xkbInfo)
             continue;
         if ((tmpd == dev) ||
-            (!IsMaster(tmpd) && GetMaster(tmpd, MASTER_KEYBOARD) == dev)) {
+            (!InputDevIsMaster(tmpd) && GetMaster(tmpd, MASTER_KEYBOARD) == dev)) {
             xkbi = tmpd->key->xkbInfo;
             ctrl = xkbi->desc->ctrls;
             new = *ctrl;
@@ -2747,7 +2747,7 @@ ProcXkbSetMap(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
                 if (rc == Success) {
@@ -2780,7 +2780,7 @@ ProcXkbSetMap(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
                 if (rc == Success)
@@ -3119,7 +3119,7 @@ ProcXkbSetCompatMap(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
                 if (rc == Success) {
@@ -3140,7 +3140,7 @@ ProcXkbSetCompatMap(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
                 if (rc == Success) {
@@ -3401,7 +3401,7 @@ ProcXkbSetIndicatorMap(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixSetAttrAccess);
                 if (rc == Success)
@@ -3665,7 +3665,7 @@ ProcXkbSetNamedIndicator(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && !IsMaster(other) &&
+            if ((other != dev) && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev && (other->kbdfeed ||
                                                              other->leds) &&
                 (XaceHookDeviceAccess(client, other, DixSetAttrAccess)
@@ -3689,7 +3689,7 @@ ProcXkbSetNamedIndicator(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && !IsMaster(other) &&
+            if ((other != dev) && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev && (other->kbdfeed ||
                                                              other->leds) &&
                 (XaceHookDeviceAccess(client, other, DixSetAttrAccess)
@@ -4528,7 +4528,7 @@ ProcXkbSetNames(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
 
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
@@ -4551,7 +4551,7 @@ ProcXkbSetNames(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
 
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
@@ -5684,7 +5684,7 @@ ProcXkbSetGeometry(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if ((other != dev) && other->key && !IsMaster(other) &&
+            if ((other != dev) && other->key && !InputDevIsMaster(other) &&
                 GetMaster(other, MASTER_KEYBOARD) == dev) {
                 rc = XaceHookDeviceAccess(client, other, DixManageAccess);
                 if (rc == Success)
@@ -6946,7 +6946,7 @@ ProcXkbSetDeviceInfo(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if (((other != dev) && !IsMaster(other) &&
+            if (((other != dev) && !InputDevIsMaster(other) &&
                  GetMaster(other, MASTER_KEYBOARD) == dev) &&
                 ((stuff->deviceSpec == XkbUseCoreKbd && other->key) ||
                  (stuff->deviceSpec == XkbUseCorePtr && other->button))) {
@@ -6970,7 +6970,7 @@ ProcXkbSetDeviceInfo(ClientPtr client)
         DeviceIntPtr other;
 
         for (other = inputInfo.devices; other; other = other->next) {
-            if (((other != dev) && !IsMaster(other) &&
+            if (((other != dev) && !InputDevIsMaster(other) &&
                  GetMaster(other, MASTER_KEYBOARD) == dev) &&
                 ((stuff->deviceSpec == XkbUseCoreKbd && other->key) ||
                  (stuff->deviceSpec == XkbUseCorePtr && other->button))) {

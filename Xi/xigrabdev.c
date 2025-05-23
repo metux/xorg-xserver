@@ -84,7 +84,7 @@ ProcXIGrabDevice(ClientPtr client)
     if (!dev->enabled)
         return AlreadyGrabbed;
 
-    if (!IsMaster(dev))
+    if (!InputDevIsMaster(dev))
         stuff->paired_device_mode = GrabModeAsync;
 
     if (IsKeyboardDevice(dev)) {

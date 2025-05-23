@@ -724,7 +724,7 @@ TouchAddPassiveGrabListener(DeviceIntPtr dev, TouchPointInfoPtr ti,
                             WindowPtr win, InternalEvent *ev)
 {
     GrabPtr grab;
-    Bool check_core = IsMaster(dev) && ti->emulate_pointer;
+    Bool check_core = InputDevIsMaster(dev) && ti->emulate_pointer;
 
     /* FIXME: make CheckPassiveGrabsOnWindow only trigger on TouchBegin */
     grab = CheckPassiveGrabsOnWindow(win, dev, ev, check_core, FALSE);
@@ -797,7 +797,7 @@ TouchAddRegularListener(DeviceIntPtr dev, TouchPointInfoPtr ti,
         OtherClients *oclients;
 
         /* window owner */
-        if (IsMaster(dev) && (win->eventMask & core_filter)) {
+        if (InputDevIsMaster(dev) && (win->eventMask & core_filter)) {
             TouchEventHistoryAllocate(ti);
             TouchAddListener(ti, win->drawable.id, X11_RESTYPE_WINDOW, CORE,
                              TOUCH_LISTENER_POINTER_REGULAR,

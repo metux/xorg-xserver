@@ -242,7 +242,7 @@ xf86RandRSetConfig(ScreenPtr pScreen,
     Bool view_adjusted = FALSE;
 
     for (dev = inputInfo.devices; dev; dev = dev->next) {
-        if (!IsMaster(dev) && !IsFloating(dev))
+        if (!InputDevIsMaster(dev) && !IsFloating(dev))
             continue;
 
         miPointerGetPosition(dev, &pos[dev->id][0], &pos[dev->id][1]);
@@ -314,7 +314,7 @@ xf86RandRSetConfig(ScreenPtr pScreen,
      * FIXME: duplicated code, see modes/xf86RandR12.c
      */
     for (dev = inputInfo.devices; dev; dev = dev->next) {
-        if (!IsMaster(dev) && !IsFloating(dev))
+        if (!InputDevIsMaster(dev) && !IsFloating(dev))
             continue;
 
         if (pScreen == miPointerGetScreen(dev)) {
@@ -325,7 +325,7 @@ xf86RandRSetConfig(ScreenPtr pScreen,
             py = (py >= pScreen->height ? (pScreen->height - 1) : py);
 
             /* Setting the viewpoint makes only sense on one device */
-            if (!view_adjusted && IsMaster(dev)) {
+            if (!view_adjusted && InputDevIsMaster(dev)) {
                 xf86SetViewport(pScreen, px, py);
                 view_adjusted = TRUE;
             }

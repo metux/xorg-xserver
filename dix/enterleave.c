@@ -540,7 +540,7 @@ CoreEnterLeaveToDescendant(DeviceIntPtr dev, WindowPtr A, WindowPtr B, int mode)
 static void
 CoreEnterLeaveEvents(DeviceIntPtr dev, WindowPtr from, WindowPtr to, int mode)
 {
-    if (!IsMaster(dev))
+    if (!InputDevIsMaster(dev))
         return;
 
     LeaveWindow(dev);
@@ -1396,7 +1396,7 @@ CoreFocusFromPointerRootOrNone(DeviceIntPtr dev,
 static void
 CoreFocusEvents(DeviceIntPtr dev, WindowPtr from, WindowPtr to, int mode)
 {
-    if (!IsMaster(dev))
+    if (!InputDevIsMaster(dev))
         return;
 
     SetFocusOut(dev);

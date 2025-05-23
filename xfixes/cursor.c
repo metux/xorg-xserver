@@ -877,7 +877,7 @@ ProcXFixesHideCursor(ClientPtr client)
         DeviceIntPtr dev;
 
         for (dev = inputInfo.devices; dev; dev = dev->next) {
-            if (IsMaster(dev) && IsPointerDevice(dev))
+            if (InputDevIsMaster(dev) && IsPointerDevice(dev))
                 CursorDisplayCursor(dev, pWin->drawable.pScreen,
                                     CursorForDevice(dev));
         }
@@ -968,7 +968,7 @@ CursorFreeHideCount(void *data, XID id)
 
     deleteCursorHideCount(pChc, pChc->pScreen);
     for (dev = inputInfo.devices; dev; dev = dev->next) {
-        if (IsMaster(dev) && IsPointerDevice(dev))
+        if (InputDevIsMaster(dev) && IsPointerDevice(dev))
             CursorDisplayCursor(dev, pScreen, CursorForDevice(dev));
     }
 

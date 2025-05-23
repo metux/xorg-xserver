@@ -461,7 +461,7 @@ Bool IsKeyboardDevice(DeviceIntPtr dev)
  * @param dev   device to be checked
  * @return TRUE if the device is a master
  */
-Bool IsMaster(DeviceIntPtr dev)
+Bool InputDevIsMaster(DeviceIntPtr dev)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
 #endif /* _XSERVER_INPUT_PRIV_H */

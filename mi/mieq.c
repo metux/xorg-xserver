@@ -42,6 +42,7 @@ in this Software without prior written authorization from The Open Group.
 #include   <X11/extensions/geproto.h>
 
 #include   "dix/cursor_priv.h"
+#include   "dix/input_priv.h"
 #include   "mi/mi_priv.h"
 #include   "mi/mipointer_priv.h"
 #include   "os/bug_priv.h"
@@ -398,7 +399,7 @@ CopyGetMasterEvent(DeviceIntPtr sdev,
     verify_internal_event(original);
 
     /* ET_XQuartz has sdev == NULL */
-    if (!sdev || IsMaster(sdev) || IsFloating(sdev))
+    if (!sdev || InputDevIsMaster(sdev) || IsFloating(sdev))
         return NULL;
 
 #ifdef XFreeXDGA

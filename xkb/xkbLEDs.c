@@ -458,7 +458,7 @@ XkbForceUpdateDeviceLEDs(DeviceIntPtr dev)
     sli = XkbFindSrvLedInfo(dev, XkbDfltXIClass, XkbDfltXIId, 0);
     XkbDDXUpdateDeviceIndicators(dev, sli, sli->effectiveState);
 
-    if (IsMaster(dev)) {
+    if (InputDevIsMaster(dev)) {
         master = dev;
         nt_list_for_each_entry(dev, inputInfo.devices, next) {
             if (!dev->key || GetMaster(dev, MASTER_KEYBOARD) != master)

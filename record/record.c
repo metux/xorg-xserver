@@ -782,7 +782,7 @@ RecordADeviceEvent(CallbackListPtr *pcbl, void *nulldata, void *calldata)
                 xEvent *xi_events = NULL;
 
                 /* TODO check return values */
-                if (IsMaster(pei->device)) {
+                if (InputDevIsMaster(pei->device)) {
                     xEvent *core_events;
 
                     EventToCore(pei->event, &core_events, &count);

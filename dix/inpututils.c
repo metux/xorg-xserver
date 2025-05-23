@@ -266,9 +266,9 @@ change_modmap(ClientPtr client, DeviceIntPtr dev, KeyCode *modkeymap,
     do_modmap_change(client, dev, modmap);
 
     /* Change any attached masters/slaves. */
-    if (IsMaster(dev)) {
+    if (InputDevIsMaster(dev)) {
         for (tmp = inputInfo.devices; tmp; tmp = tmp->next) {
-            if (!IsMaster(tmp) && GetMaster(tmp, MASTER_KEYBOARD) == dev)
+            if (!InputDevIsMaster(tmp) && GetMaster(tmp, MASTER_KEYBOARD) == dev)
                 if (check_modmap_change_slave(client, dev, tmp, modmap))
                     do_modmap_change(client, tmp, modmap);
         }
@@ -1158,7 +1158,7 @@ xi2mask_isset(XI2Mask *mask, const DeviceIntPtr dev, int event_type)
         set = 1;
     else if (xi2mask_isset_for_device(mask, dev, event_type))
         set = 1;
-    else if (IsMaster(dev) && xi2mask_isset_for_device(mask, inputInfo.all_master_devices, event_type))
+    else if (InputDevIsMaster(dev) && xi2mask_isset_for_device(mask, inputInfo.all_master_devices, event_type))
         set = 1;
 
     return set;

@@ -375,7 +375,7 @@ AllocateMotionHistory(DeviceIntPtr pDev)
      * potential valuators, plus the respective range of the valuators.
      * 3 * INT32 for (min_val, max_val, curr_val))
      */
-    if (IsMaster(pDev))
+    if (InputDevIsMaster(pDev))
         size = sizeof(INT32) * 3 * MAX_VALUATORS;
     else {
         ValuatorClassPtr v = pDev->valuator;
@@ -427,7 +427,7 @@ GetMotionHistory(DeviceIntPtr pDev, xTimecoord ** buff, unsigned long start,
     if (core && !pScreen)
         return 0;
 
-    if (IsMaster(pDev))
+    if (InputDevIsMaster(pDev))
         size = (sizeof(INT32) * 3 * MAX_VALUATORS) + sizeof(Time);
     else
         size = (sizeof(INT32) * pDev->valuator->numAxes) + sizeof(Time);
@@ -481,7 +481,7 @@ GetMotionHistory(DeviceIntPtr pDev, xTimecoord ** buff, unsigned long start,
                 memcpy(corebuf, &coord, sizeof(INT16));
 
             }
-            else if (IsMaster(pDev)) {
+            else if (InputDevIsMaster(pDev)) {
                 memcpy(obuff, ibuff, sizeof(Time));     /* copy timestamp */
 
                 ocbuf = (INT32 *) (obuff + sizeof(Time));
@@ -551,7 +551,7 @@ updateMotionHistory(DeviceIntPtr pDev, CARD32 ms, ValuatorMask *mask,
         return;
 
     v = pDev->valuator;
-    if (IsMaster(pDev)) {
+    if (InputDevIsMaster(pDev)) {
         buff += ((sizeof(INT32) * 3 * MAX_VALUATORS) + sizeof(CARD32)) *
             v->last_motion;
 
@@ -786,7 +786,7 @@ static void
 moveRelative(DeviceIntPtr dev, int flags, ValuatorMask *mask)
 {
     int i;
-    Bool clip_xy = IsMaster(dev) || !IsFloating(dev);
+    Bool clip_xy = InputDevIsMaster(dev) || !IsFloating(dev);
     ValuatorClassPtr v = dev->valuator;
 
     /* for abs devices in relative mode, we've just scaled wrong, since we
@@ -1006,7 +1006,7 @@ updateHistory(DeviceIntPtr dev, ValuatorMask *mask, CARD32 ms)
         return;
 
     updateMotionHistory(dev, ms, mask, dev->last.valuators);
-    if (!IsMaster(dev) && !IsFloating(dev)) {
+    if (!InputDevIsMaster(dev) && !IsFloating(dev)) {
         DeviceIntPtr master = GetMaster(dev, MASTER_POINTER);
 
         updateMotionHistory(master, ms, mask, dev->last.valuators);
@@ -1450,7 +1450,7 @@ fill_pointer_events(InternalEvent *events, DeviceIntPtr pDev, int type,
     storeLastValuators(pDev, &mask, devx, devy);
 
     /* Update the MD's coordinates, which are always in desktop space. */
-    if (!IsMaster(pDev) && !IsFloating(pDev)) {
+    if (!InputDevIsMaster(pDev) && !IsFloating(pDev)) {
         DeviceIntPtr master = GetMaster(pDev, MASTER_POINTER);
 
         master->last.valuators[0] = screenx;
@@ -1972,7 +1972,7 @@ GetTouchEvents(InternalEvent *events, DeviceIntPtr dev, uint32_t ddx_touchid,
 
     emulate_pointer = ti->emulate_pointer;
 
-    if (!IsMaster(dev))
+    if (!InputDevIsMaster(dev))
         events =
             UpdateFromMaster(events, dev, DEVCHANGE_POINTER_EVENT, &num_events);
 
@@ -2067,7 +2067,7 @@ GetTouchEvents(InternalEvent *events, DeviceIntPtr dev, uint32_t ddx_touchid,
         storeLastValuators(dev, &mask, devx, devy);
 
     /* Update the MD's coordinates, which are always in desktop space. */
-    if (emulate_pointer && !IsMaster(dev) && !IsFloating(dev)) {
+    if (emulate_pointer && !InputDevIsMaster(dev) && !IsFloating(dev)) {
 	    DeviceIntPtr master = GetMaster(dev, MASTER_POINTER);
 
 	    master->last.valuators[0] = screenx;
@@ -2224,7 +2224,7 @@ GetGestureEvents(InternalEvent *events, DeviceIntPtr dev,
     if (!dev->enabled || !g)
         return 0;
 
-    if (!IsMaster(dev))
+    if (!InputDevIsMaster(dev))
         events = UpdateFromMaster(events, dev, DEVCHANGE_POINTER_EVENT,
                                   &num_events);
 

@@ -599,7 +599,7 @@ CreatePointerBarrierClient(ClientPtr client,
             goto error;
         }
 
-        if (!IsMaster (device)) {
+        if (!InputDevIsMaster (device)) {
             client->errorValue = device_id;
             err = BadDevice;
             goto error;

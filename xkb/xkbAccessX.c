@@ -735,7 +735,7 @@ ProcessPointerEvent(InternalEvent *ev, DeviceIntPtr mouse)
         changed |= XkbPointerButtonMask;
     }
     else if (event->type == ET_ButtonRelease) {
-        if (IsMaster(dev)) {
+        if (InputDevIsMaster(dev)) {
             DeviceIntPtr source;
             int rc;
 

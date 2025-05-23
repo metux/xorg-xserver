@@ -343,7 +343,7 @@ IsKeyboardDevice(DeviceIntPtr dev)
 }
 
 Bool
-IsMaster(DeviceIntPtr dev)
+InputDevIsMaster(DeviceIntPtr dev)
 {
     return dev->type == MASTER_POINTER || dev->type == MASTER_KEYBOARD;
 }
@@ -351,7 +351,7 @@ IsMaster(DeviceIntPtr dev)
 Bool
 IsFloating(DeviceIntPtr dev)
 {
-    return !IsMaster(dev) && GetMaster(dev, MASTER_KEYBOARD) == NULL;
+    return !InputDevIsMaster(dev) && GetMaster(dev, MASTER_KEYBOARD) == NULL;
 }
 
 /**
@@ -1429,7 +1429,7 @@ CheckGrabForSyncs(DeviceIntPtr thisDev, Bool thisMode, Bool otherMode)
             thisDev->deviceGrab.sync.other = NullGrab;
     }
 
-    if (IsMaster(thisDev)) {
+    if (InputDevIsMaster(thisDev)) {
         dev = GetPairedDevice(thisDev);
         if (otherMode == GrabModeSync)
             dev->deviceGrab.sync.other = grab;
@@ -1468,7 +1468,7 @@ ReattachToOldMaster(DeviceIntPtr dev)
 {
     DeviceIntPtr master = NULL;
 
-    if (IsMaster(dev))
+    if (InputDevIsMaster(dev))
         return;
 
     dixLookupDevice(&master, dev->saved_master_id, serverClient, DixUseAccess);
@@ -1613,7 +1613,7 @@ ActivatePointerGrab(DeviceIntPtr mouse, GrabPtr grab,
 
     /* slave devices need to float for the duration of the grab. */
     if (grab->grabtype == XI2 &&
-        !(autoGrab & ImplicitGrabMask) && !IsMaster(mouse))
+        !(autoGrab & ImplicitGrabMask) && !InputDevIsMaster(mouse))
         DetachFromMaster(mouse);
 
     if (grab->confineTo) {
@@ -1734,7 +1734,7 @@ ActivateKeyboardGrab(DeviceIntPtr keybd, GrabPtr grab, TimeStamp time,
 
     /* slave devices need to float for the duration of the grab. */
     if (grab->grabtype == XI2 && keybd->enabled &&
-        !(passive & ImplicitGrabMask) && !IsMaster(keybd))
+        !(passive & ImplicitGrabMask) && !InputDevIsMaster(keybd))
         DetachFromMaster(keybd);
 
     if (!keybd->enabled)
@@ -2901,7 +2901,7 @@ DeliverDeviceEvents(WindowPtr pWin, InternalEvent *event, GrabPtr grab,
             }
 
             /* Core event */
-            if ((mask & EVENT_CORE_MASK) && IsMaster(dev) && dev->coreEvents) {
+            if ((mask & EVENT_CORE_MASK) && InputDevIsMaster(dev) && dev->coreEvents) {
                 deliveries =
                     DeliverOneEvent(event, dev, CORE, pWin, child, grab);
                 if (deliveries > 0)
@@ -3261,7 +3261,7 @@ WindowsRestructured(void)
     DeviceIntPtr pDev = inputInfo.devices;
 
     while (pDev) {
-        if (IsMaster(pDev) || IsFloating(pDev))
+        if (InputDevIsMaster(pDev) || IsFloating(pDev))
             CheckMotion(NULL, pDev);
         pDev = pDev->next;
     }
@@ -3967,7 +3967,7 @@ CheckPassiveGrab(DeviceIntPtr device, GrabPtr grab, InternalEvent *event,
          * attached master keyboard. Since the slave may have been
          * reattached after the grab, the modifier device may not be the
          * same. */
-        if (!IsMaster(grab->device) && !IsFloating(device))
+        if (!InputDevIsMaster(grab->device) && !IsFloating(device))
             gdev = GetMaster(device, MASTER_KEYBOARD);
     }
 
@@ -4126,7 +4126,7 @@ CheckDeviceGrabs(DeviceIntPtr device, InternalEvent *ievent, WindowPtr ancestor)
     WindowPtr pWin = NULL;
     FocusClassPtr focus =
         IsPointerEvent(ievent) ? NULL : device->focus;
-    BOOL sendCore = (IsMaster(device) && device->coreEvents);
+    BOOL sendCore = (InputDevIsMaster(device) && device->coreEvents);
     Bool ret = FALSE;
     DeviceEvent *event = &ievent->device_event;
 
@@ -4195,7 +4195,7 @@ DeliverFocusedEvent(DeviceIntPtr keybd, InternalEvent *event, WindowPtr window)
 {
     DeviceIntPtr ptr;
     WindowPtr focus = keybd->focus->win;
-    BOOL sendCore = (IsMaster(keybd) && keybd->coreEvents);
+    BOOL sendCore = (InputDevIsMaster(keybd) && keybd->coreEvents);
     xEvent *core = NULL, *xE = NULL, *xi2 = NULL;
     int count, rc;
     int deliveries = 0;
@@ -4390,7 +4390,7 @@ DeliverGrabbedEvent(InternalEvent *event, DeviceIntPtr thisDev,
                                              thisDev);
     }
     if (!deliveries) {
-        sendCore = (IsMaster(thisDev) && thisDev->coreEvents);
+        sendCore = (InputDevIsMaster(thisDev) && thisDev->coreEvents);
         /* try core event */
         if ((sendCore && grab->grabtype == CORE) || grab->grabtype != CORE)
             deliveries = DeliverOneGrabbedEvent(event, thisDev, grab->grabtype);
@@ -6158,7 +6158,7 @@ SetClientPointer(ClientPtr client, DeviceIntPtr device)
     if (rc != Success)
         return rc;
 
-    if (!IsMaster(device)) {
+    if (!InputDevIsMaster(device)) {
         ErrorF("[dix] Need master device for ClientPointer. This is a bug.\n");
         return BadDevice;
     }
@@ -6197,7 +6197,7 @@ PickPointer(ClientPtr client)
     if (!client->clientPtr) {
         it = inputInfo.devices;
         while (it) {
-            if (IsMaster(it) && it->spriteInfo->spriteOwner) {
+            if (InputDevIsMaster(it) && it->spriteInfo->spriteOwner) {
                 client->clientPtr = it;
                 break;
             }

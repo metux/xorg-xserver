@@ -451,12 +451,12 @@ GrabMatchesSecond(GrabPtr pFirstGrab, GrabPtr pSecondGrab, Bool ignoreDevice)
         }
         else if (pFirstGrab->device == inputInfo.all_master_devices) {
             if (pSecondGrab->device != inputInfo.all_master_devices &&
-                !IsMaster(pSecondGrab->device))
+                !InputDevIsMaster(pSecondGrab->device))
                 return FALSE;
         }
         else if (pSecondGrab->device == inputInfo.all_master_devices) {
             if (pFirstGrab->device != inputInfo.all_master_devices &&
-                !IsMaster(pFirstGrab->device))
+                !InputDevIsMaster(pFirstGrab->device))
                 return FALSE;
         }
         else if (pSecondGrab->device != pFirstGrab->device)

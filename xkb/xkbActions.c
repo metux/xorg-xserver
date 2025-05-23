@@ -658,7 +658,7 @@ _XkbFilterPointerBtn(XkbSrvInfoPtr xkbi,
             }
             xkbi->lockedPtrButtons &= ~(1 << button);
 
-            if (IsMaster(xkbi->device)) {
+            if (InputDevIsMaster(xkbi->device)) {
                 XkbMergeLockedPtrBtns(xkbi->device);
                 /* One SD still has lock set, don't post event */
                 if ((xkbi->lockedPtrButtons & (1 << button)) != 0)
@@ -1564,7 +1564,7 @@ InjectPointerKeyEvents(DeviceIntPtr dev, int type, int button, int flags,
     DeviceIntPtr ptr, mpointer, lastSlave = NULL;
     Bool saveWait;
 
-    if (IsMaster(dev)) {
+    if (InputDevIsMaster(dev)) {
         mpointer = GetMaster(dev, MASTER_POINTER);
         lastSlave = mpointer->lastSlave;
         ptr = GetXTestDevice(mpointer);
@@ -1579,7 +1579,7 @@ InjectPointerKeyEvents(DeviceIntPtr dev, int type, int button, int flags,
     pScreen = miPointerGetScreen(ptr);
     saveWait = miPointerSetWaitForUpdate(pScreen, FALSE);
     nevents = GetPointerEvents(events, ptr, type, button, flags, mask);
-    if (IsMaster(dev) && (lastSlave && lastSlave != ptr))
+    if (InputDevIsMaster(dev) && (lastSlave && lastSlave != ptr))
         UpdateFromMaster(&events[nevents], lastSlave, DEVCHANGE_POINTER_EVENT,
                          &nevents);
     miPointerSetWaitForUpdate(pScreen, saveWait);
@@ -1598,7 +1598,7 @@ XkbFakePointerMotion(DeviceIntPtr dev, unsigned flags, int x, int y)
     int gpe_flags = 0;
 
     /* ignore attached SDs */
-    if (!IsMaster(dev) && !IsFloating(dev))
+    if (!InputDevIsMaster(dev) && !IsFloating(dev))
         return;
 
     if (flags & XkbSA_MoveAbsoluteX || flags & XkbSA_MoveAbsoluteY)
@@ -1626,7 +1626,7 @@ XkbFakeDeviceButton(DeviceIntPtr dev, Bool press, int button)
      * if dev is a floating slave, post through the device itself.
      */
 
-    if (IsMaster(dev)) {
+    if (InputDevIsMaster(dev)) {
         DeviceIntPtr mpointer = GetMaster(dev, MASTER_POINTER);
 
         ptr = GetXTestDevice(mpointer);

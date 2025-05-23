@@ -157,9 +157,9 @@ CopySwapDevice(ClientPtr client, DeviceIntPtr d, int num_classes, char **buf)
     dev->id = d->id;
     dev->type = d->xinput_type;
     dev->num_classes = num_classes;
-    if (IsMaster(d) && IsKeyboardDevice(d))
+    if (InputDevIsMaster(d) && IsKeyboardDevice(d))
         dev->use = IsXKeyboard;
-    else if (IsMaster(d) && IsPointerDevice(d))
+    else if (InputDevIsMaster(d) && IsPointerDevice(d))
         dev->use = IsXPointer;
     else if (d->valuator && d->button)
         dev->use = IsXExtensionPointer;
@@ -294,7 +294,7 @@ static Bool
 ShouldSkipDevice(ClientPtr client, DeviceIntPtr d)
 {
     /* don't send master devices other than VCP/VCK */
-    if (!IsMaster(d) || d == inputInfo.pointer ||d == inputInfo.keyboard) {
+    if (!InputDevIsMaster(d) || d == inputInfo.pointer ||d == inputInfo.keyboard) {
         int rc = XaceHookDeviceAccess(client, d, DixGetAttrAccess);
 
         if (rc == Success)

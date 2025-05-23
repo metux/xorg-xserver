@@ -97,7 +97,7 @@ ProcXOpenDevice(ClientPtr client)
     else if (status != Success)
         return status;
 
-    if (IsMaster(dev))
+    if (InputDevIsMaster(dev))
         return BadDevice;
 
     if (status != Success)

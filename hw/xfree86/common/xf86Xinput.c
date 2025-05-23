@@ -1138,7 +1138,7 @@ DeleteInputDeviceRequest(DeviceIntPtr pDev)
 {
     InputInfoPtr pInfo = (InputInfoPtr) pDev->public.devicePrivate;
     InputDriverPtr drv = NULL;
-    Bool isMaster = IsMaster(pDev);
+    Bool isMaster = InputDevIsMaster(pDev);
 
     if (pInfo)                  /* need to get these before RemoveDevice */
         drv = pInfo->drv;

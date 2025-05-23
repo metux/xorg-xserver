@@ -650,7 +650,7 @@ AllocXTestDevice(ClientPtr client, const char *name,
 BOOL
 IsXTestDevice(DeviceIntPtr dev, DeviceIntPtr master)
 {
-    if (IsMaster(dev))
+    if (InputDevIsMaster(dev))
         return FALSE;
 
     /* deviceid 0 is reserved for XIAllDevices, non-zero mid means XTest

@@ -771,7 +771,7 @@ ChangeMasterDeviceClasses(DeviceIntPtr device, DeviceChangedEvent *dce)
     int rc;
 
     /* For now, we don't have devices that change physically. */
-    if (!IsMaster(device))
+    if (!InputDevIsMaster(device))
         return;
 
     rc = dixLookupDevice(&slave, dce->sourceid, serverClient, DixReadAccess);
@@ -779,7 +779,7 @@ ChangeMasterDeviceClasses(DeviceIntPtr device, DeviceChangedEvent *dce)
     if (rc != Success)
         return;                 /* Device has disappeared */
 
-    if (IsMaster(slave))
+    if (InputDevIsMaster(slave))
         return;
 
     if (IsFloating(slave))
@@ -966,7 +966,7 @@ UpdateDeviceState(DeviceIntPtr device, DeviceEvent *event)
 
         if (!button_is_down(device, key, BUTTON_PROCESSED))
             return DONT_PROCESS;
-        if (IsMaster(device)) {
+        if (InputDevIsMaster(device)) {
             DeviceIntPtr sd;
 
             /*
@@ -975,7 +975,7 @@ UpdateDeviceState(DeviceIntPtr device, DeviceEvent *event)
              * event being delivered through the slave first
              */
             for (sd = inputInfo.devices; sd; sd = sd->next) {
-                if (IsMaster(sd) || GetMaster(sd, MASTER_POINTER) != device)
+                if (InputDevIsMaster(sd) || GetMaster(sd, MASTER_POINTER) != device)
                     continue;
                 if (!sd->button)
                     continue;
@@ -1676,7 +1676,7 @@ ProcessTouchEvent(InternalEvent *ev, DeviceIntPtr dev)
                            (ev->any.type == ET_TouchEnd && ti->num_listeners > 0)))
         DeliverEmulatedMotionEvent(dev, ti, ev);
 
-    if (emulate_pointer && IsMaster(dev))
+    if (emulate_pointer && InputDevIsMaster(dev))
         CheckMotion(&ev->device_event, dev);
 
     kbd = GetMaster(dev, KEYBOARD_OR_FLOAT);
@@ -1716,7 +1716,7 @@ ProcessBarrierEvent(InternalEvent *e, DeviceIntPtr dev)
     int rc;
     GrabPtr grab = dev->deviceGrab.grab;
 
-    if (!IsMaster(dev))
+    if (!InputDevIsMaster(dev))
         return;
 
     if (dixLookupWindow(&pWin, be->window, serverClient, DixReadAccess) != Success)
@@ -1777,7 +1777,7 @@ ProcessGestureEvent(InternalEvent *ev, DeviceIntPtr dev)
     if (!dev->gesture)
         return;
 
-    if (IsMaster(dev) && IsAnotherGestureActiveOnMaster(dev, ev))
+    if (InputDevIsMaster(dev) && IsAnotherGestureActiveOnMaster(dev, ev))
         return;
 
     if (IsGestureBeginEvent(ev))
@@ -1852,7 +1852,7 @@ ProcessDeviceEvent(InternalEvent *ev, DeviceIntPtr device)
 
     b = device->button;
 
-    if (IsMaster(device) || IsFloating(device))
+    if (InputDevIsMaster(device) || IsFloating(device))
         CheckMotion(event, device);
 
     switch (event->type) {
@@ -1955,7 +1955,7 @@ ProcessDeviceEvent(InternalEvent *ev, DeviceIntPtr device)
     if (deactivateDeviceGrab == TRUE) {
         (*device->deviceGrab.DeactivateGrab) (device);
 
-        if (!IsMaster (device) && !IsFloating (device)) {
+        if (!InputDevIsMaster (device) && !IsFloating (device)) {
             int flags, num_events = 0;
             InternalEvent dce;
 

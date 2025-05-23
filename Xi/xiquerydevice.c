@@ -176,7 +176,7 @@ static Bool
 ShouldSkipDevice(ClientPtr client, int deviceid, DeviceIntPtr dev)
 {
     /* if all devices are not being queried, only master devices are */
-    if (deviceid == XIAllDevices || IsMaster(dev)) {
+    if (deviceid == XIAllDevices || InputDevIsMaster(dev)) {
         int rc = XaceHookDeviceAccess(client, dev, DixGetAttrAccess);
 
         if (rc == Success)
@@ -515,7 +515,7 @@ GetDeviceUse(DeviceIntPtr dev, uint16_t * attachment)
     DeviceIntPtr master = GetMaster(dev, MASTER_ATTACHED);
     int use;
 
-    if (IsMaster(dev)) {
+    if (InputDevIsMaster(dev)) {
         DeviceIntPtr paired = GetPairedDevice(dev);
 
         use = IsPointerDevice(dev) ? XIMasterPointer : XIMasterKeyboard;

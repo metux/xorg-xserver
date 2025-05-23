@@ -367,7 +367,7 @@ miPointerDeviceCleanup(DeviceIntPtr pDev, ScreenPtr pScreen)
 {
     SetupScreen(pScreen);
 
-    if (!IsMaster(pDev) && !IsFloating(pDev))
+    if (!InputDevIsMaster(pDev) && !IsFloating(pDev))
         return;
 
     (*pScreenPriv->spriteFuncs->DeviceCursorCleanup) (pDev, pScreen);
