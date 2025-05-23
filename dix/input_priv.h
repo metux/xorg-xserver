@@ -428,4 +428,13 @@ extern CallbackListPtr DeviceEventCallback;
 DeviceIntPtr PickPointer(ClientPtr pClient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief pick an appropriate keyboard for the given client
+ *
+ * searching the list of devices for the keyboard device that is
+ * paired with the client's pointer.
+ */
+DeviceIntPtr PickKeyboard(ClientPtr client)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

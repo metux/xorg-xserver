@@ -260,9 +260,6 @@ WriteEventsToClient(ClientPtr /*pClient */ ,
                     int /*count */ ,
                     xEventPtr /*events */ );
 
-extern _X_EXPORT DeviceIntPtr
-PickKeyboard(ClientPtr /* client */ );
-
 /*
  *  ServerGrabCallback stuff
  */
