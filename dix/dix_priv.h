@@ -357,4 +357,12 @@ Bool dixClientSignal(ClientPtr pClient)
 int ClientSignalAll(ClientPtr pClient, ClientSleepProcPtr func, void *closure)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief wake up a client and restart request processing of this client
+ *
+ * @param pClient pointer to client structure
+ */
+void ClientWakeup(ClientPtr pclient)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */
