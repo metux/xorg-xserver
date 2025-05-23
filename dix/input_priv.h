@@ -503,4 +503,6 @@ void NoticeEventTime(InternalEvent *ev, DeviceIntPtr dev)
  */
 TimeStamp LastEventTime(int deviceid);
 
+Bool LastEventTimeWasReset(int deviceid);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

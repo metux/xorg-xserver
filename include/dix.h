@@ -225,9 +225,6 @@ SetVendorRelease(int release);
 
 /* events.c */
 
-extern _X_EXPORT Bool
-LastEventTimeWasReset(int deviceid);
-
 extern _X_EXPORT void
 LastEventTimeToggleResetFlag(int deviceid, Bool state);
 
