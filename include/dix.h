@@ -210,12 +210,6 @@ extern _X_EXPORT Bool QueueWorkProc(Bool (*function)(ClientPtr clientUnused,
                                     ClientPtr client,
                                     void *closure);
 
-extern _X_EXPORT void SendGraphicsExpose(ClientPtr /*client */ ,
-                                         RegionPtr /*pRgn */ ,
-                                         XID /*drawable */ ,
-                                         int /*major */ ,
-                                         int  /*minor */);
-
 /* atom.c */
 
 extern _X_EXPORT Atom MakeAtom(const char * /*string */ ,

@@ -1726,7 +1726,7 @@ ProcClearToBackground(ClientPtr client)
 /* send GraphicsExpose events, or a NoExpose event, based on the region */
 void
 SendGraphicsExpose(ClientPtr client, RegionPtr pRgn, XID drawable,
-                     int major, int minor)
+                     CARD8 major, CARD16 minor)
 {
     if (pRgn && !RegionNil(pRgn)) {
         xEvent *pEvent;

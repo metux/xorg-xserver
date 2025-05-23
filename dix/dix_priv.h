@@ -390,4 +390,20 @@ void SendErrorToClient(ClientPtr pClient,
                        BYTE errorCode)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief send GraphicsExposure events for given region to client
+
+ * Sends a series of GraphicsExposure events spanning the given region to the
+ * client. If region is empty or NULL, sending NoExpose event instead.
+ *
+ + @param pClient     the client to send events to
+ * @param pRegion     the region the events are based on
+ * @param drawable    ID of the drawable the events are related to
+ * @param majorOpcode major opcode of request which caused the expose event
+ * @param minorOpcode minor opcode of request which caused the expose event
+ */
+void SendGraphicsExpose(ClientPtr pClient, RegionPtr pRegion, XID drawable,
+                        BYTE majorOpcode, CARD16 minorOpcode)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */
