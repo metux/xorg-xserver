@@ -58,6 +58,15 @@ SOFTWARE.
 
 #include <X11/Xfuncproto.h>
 
+/*
+ * @brief macro for specifying non-null arguments
+ *
+ * part of public SDK / driver API
+ */
+#ifndef _X_ATTRIBUTE_NONNULL_ARG
+#define _X_ATTRIBUTE_NONNULL_ARG(...) __attribute__((nonnull(__VA_ARGS__)))
+#endif
+
 #define SCREEN_SAVER_ON   0
 #define SCREEN_SAVER_OFF  1
 #define SCREEN_SAVER_FORCER 2
