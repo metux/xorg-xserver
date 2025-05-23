@@ -270,11 +270,6 @@ PickPointer(ClientPtr /* client */ );
 extern _X_EXPORT DeviceIntPtr
 PickKeyboard(ClientPtr /* client */ );
 
-#ifdef RANDR
-extern _X_EXPORT void
-ScreenRestructured(ScreenPtr pScreen);
-#endif
-
 /*
  *  ServerGrabCallback stuff
  */

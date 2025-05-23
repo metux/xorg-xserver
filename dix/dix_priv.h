@@ -527,4 +527,12 @@ void WindowHasNewCursor(WindowPtr pWin)
  */
 void WindowsRestructured(void);
 
+/*
+ * @brief do post actions necessary whn screens have been restructured
+ *
+ * currently eg. fixing up cursors and their confinements (randr)
+ */
+void ScreenRestructured(ScreenPtr pScreen)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */
