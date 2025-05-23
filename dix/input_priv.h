@@ -486,4 +486,13 @@ Bool InputDevIsFloating(DeviceIntPtr dev)
 void NoticeTime(const DeviceIntPtr dev, TimeStamp time)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief store event's timestamp as the device's last event time
+ *
+ * @param event     source event
+ * @param dev       device the timestamp is stored for
+ */
+void NoticeEventTime(InternalEvent *ev, DeviceIntPtr dev)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

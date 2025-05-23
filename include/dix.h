@@ -225,10 +225,6 @@ SetVendorRelease(int release);
 
 /* events.c */
 
-extern _X_EXPORT void
-NoticeEventTime(InternalEvent *ev,
-                DeviceIntPtr dev);
-
 extern _X_EXPORT TimeStamp
 LastEventTime(int deviceid);
 
