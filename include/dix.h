@@ -237,12 +237,6 @@ SetVendorRelease(int release);
 
 /* events.c */
 
-extern _X_EXPORT void
-ConfineToShape(DeviceIntPtr /* pDev */ ,
-               RegionPtr /* shape */ ,
-               int * /* px */ ,
-               int * /* py */ );
-
 extern _X_EXPORT Bool
 IsParent(WindowPtr /* maybeparent */ ,
          WindowPtr /* child */ );

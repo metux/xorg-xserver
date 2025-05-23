@@ -371,4 +371,19 @@ int InputThreadUnregisterDev(int fd);
 CursorPtr InputDevGetSpriteCursor(DeviceIntPtr pDev)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief confine cursor position to specific region
+ *
+ * this is used eg. when a cursor position should be moved, but the cursor
+ * is constrained to specific region. it moves the position so it fits
+ * into the region.
+ *
+ * @param pDev   pointer to device (unused)
+ * @param region pointer to the constraining region
+ * @param px     in/out buffer for X position
+ * @param py     in/out buffer for Y position
+ */
+void ConfineToShape(DeviceIntPtr pDev, RegionPtr region, int *px, int *py)
+    _X_ATTRIBUTE_NONNULL_ARG(2,3,4);
+
 #endif /* _XSERVER_INPUT_PRIV_H */
