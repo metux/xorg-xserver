@@ -495,4 +495,12 @@ void NoticeTime(const DeviceIntPtr dev, TimeStamp time)
 void NoticeEventTime(InternalEvent *ev, DeviceIntPtr dev)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief retrieve last event's timestamp for given device ID
+ *
+ * @param deviceid  ID of device get fetch timestamp for
+ * @return timestamp of last event
+ */
+TimeStamp LastEventTime(int deviceid);
+
 #endif /* _XSERVER_INPUT_PRIV_H */
