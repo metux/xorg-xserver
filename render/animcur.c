@@ -37,6 +37,7 @@
 #include <X11/Xmd.h>
 
 #include "dix/cursor_priv.h"
+#include "dix/input_priv.h"
 
 #include "servermd.h"
 #include "scrnintstr.h"

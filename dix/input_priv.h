@@ -464,4 +464,17 @@ Bool IsKeyboardDevice(DeviceIntPtr dev)
 Bool InputDevIsMaster(DeviceIntPtr dev)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief check whether input device is floating
+ *
+ * when a slave device is grabbed directly (but not it's master), it's
+ * temporarily detached from the master (for as long as the grab is held)
+ * we call this state `floating`
+ *
+ * @param dev   device to check
+ * @return TRUE if the device is in `floating` state
+ */
+Bool IsFloating(DeviceIntPtr dev)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

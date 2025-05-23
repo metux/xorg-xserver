@@ -288,9 +288,6 @@ typedef struct {
     DeviceIntPtr device;
 } DeviceEventInfoRec;
 
-extern _X_EXPORT Bool
-IsFloating(DeviceIntPtr dev);
-
 extern _X_EXPORT void *lastGLContext;
 
 /**
