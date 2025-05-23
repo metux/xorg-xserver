@@ -417,4 +417,15 @@ void DeliverRawEvent(RawDeviceEvent *event, DeviceIntPtr device)
  */
 extern CallbackListPtr DeviceEventCallback;
 
+/*
+ * @brief pick an appropriate pointer for the given client.
+ *
+ * An "appropriate device" is (in order of priority):
+ *  1) A device the given client has a core grab on.
+ *  2) A device set as ClientPointer for the given client.
+ *  3) The first master device.
+ */
+DeviceIntPtr PickPointer(ClientPtr pClient)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

@@ -261,9 +261,6 @@ WriteEventsToClient(ClientPtr /*pClient */ ,
                     xEventPtr /*events */ );
 
 extern _X_EXPORT DeviceIntPtr
-PickPointer(ClientPtr /* client */ );
-
-extern _X_EXPORT DeviceIntPtr
 PickKeyboard(ClientPtr /* client */ );
 
 /*
