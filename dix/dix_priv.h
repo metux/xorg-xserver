@@ -561,4 +561,11 @@ Bool WindowIsParent(WindowPtr parent, WindowPtr child)
  */
 void BlockHandler(void *timeout);
 
+/*
+ * @brief call the wakeup handlers
+ *
+ * @param result    32 bit opaque value from the wait
+ */
+void WakeupHandler(int result);
+
 #endif /* _XSERVER_DIX_PRIV_H */
