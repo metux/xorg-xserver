@@ -313,8 +313,6 @@ typedef struct {
     DeviceIntPtr device;
 } DeviceEventInfoRec;
 
-extern _X_EXPORT CallbackListPtr RootWindowFinalizeCallback;
-
 extern _X_EXPORT Bool
 IsPointerDevice(DeviceIntPtr dev);
 

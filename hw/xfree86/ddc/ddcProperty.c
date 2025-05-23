@@ -25,6 +25,8 @@
 #include <xorg-config.h>
 #endif
 
+#include "dix/dix_priv.h"
+
 #include "xf86.h"
 #include "xf86DDC.h"
 #include "xf86Priv.h"

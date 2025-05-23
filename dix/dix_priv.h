@@ -505,4 +505,9 @@ int DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWindow, xEventPtr pEvent
                           size_t count, Mask filter, GrabPtr grab)
     _X_ATTRIBUTE_NONNULL_ARG(1,2,3);
 
+/*
+ * @brief callback when root window has is finalized
+ */
+extern CallbackListPtr RootWindowFinalizeCallback;
+
 #endif /* _XSERVER_DIX_PRIV_H */
