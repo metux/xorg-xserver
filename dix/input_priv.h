@@ -378,12 +378,11 @@ CursorPtr InputDevGetSpriteCursor(DeviceIntPtr pDev)
  * is constrained to specific region. it moves the position so it fits
  * into the region.
  *
- * @param pDev   pointer to device (unused)
  * @param region pointer to the constraining region
  * @param px     in/out buffer for X position
  * @param py     in/out buffer for Y position
  */
-void ConfineToShape(DeviceIntPtr pDev, RegionPtr region, int *px, int *py)
-    _X_ATTRIBUTE_NONNULL_ARG(2,3,4);
+void ConfineToShape(RegionPtr region, int *px, int *py)
+    _X_ATTRIBUTE_NONNULL_ARG(1,2,3);
 
 #endif /* _XSERVER_INPUT_PRIV_H */

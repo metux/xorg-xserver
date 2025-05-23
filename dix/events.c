@@ -691,7 +691,7 @@ SetCriticalEvent(int event)
 }
 
 void
-ConfineToShape(DeviceIntPtr pDev, RegionPtr shape, int *px, int *py)
+ConfineToShape(RegionPtr shape, int *px, int *py)
 {
     BoxRec box;
     int x = *px, y = *py;
@@ -761,7 +761,7 @@ CheckPhysLimits(DeviceIntPtr pDev, CursorPtr cursor, Bool generateEvents,
     else if (new.y >= pSprite->physLimits.y2)
         new.y = pSprite->physLimits.y2 - 1;
     if (pSprite->hotShape)
-        ConfineToShape(pDev, pSprite->hotShape, &new.x, &new.y);
+        ConfineToShape(pSprite->hotShape, &new.x, &new.y);
     if ((
 #ifdef XINERAMA
             noPanoramiXExtension &&
@@ -881,7 +881,7 @@ CheckVirtualMotion(DeviceIntPtr pDev, QdEventPtr qe, WindowPtr pWin)
         }
 
         if (reg)
-            ConfineToShape(pDev, reg, &pSprite->hot.x, &pSprite->hot.y);
+            ConfineToShape(reg, &pSprite->hot.x, &pSprite->hot.y);
 
         if (qe && ev) {
             qe->pScreen = pSprite->hot.pScreen;
@@ -3194,7 +3194,7 @@ CheckMotion(DeviceEvent *ev, DeviceIntPtr pDev)
         else if (pSprite->hot.y >= pSprite->physLimits.y2)
             pSprite->hot.y = pSprite->physLimits.y2 - 1;
         if (pSprite->hotShape)
-            ConfineToShape(pDev, pSprite->hotShape, &pSprite->hot.x,
+            ConfineToShape(pSprite->hotShape, &pSprite->hot.x,
                            &pSprite->hot.y);
         pSprite->hotPhys = pSprite->hot;
 
@@ -3617,7 +3617,7 @@ XineramaWarpPointer(ClientPtr client)
     else if (y >= pSprite->physLimits.y2)
         y = pSprite->physLimits.y2 - 1;
     if (pSprite->hotShape)
-        ConfineToShape(PickPointer(client), pSprite->hotShape, &x, &y);
+        ConfineToShape(pSprite->hotShape, &x, &y);
 
     XineramaSetCursorPosition(PickPointer(client), x, y, TRUE);
 
@@ -3720,7 +3720,7 @@ ProcWarpPointer(ClientPtr client)
         else if (y >= pSprite->physLimits.y2)
             y = pSprite->physLimits.y2 - 1;
         if (pSprite->hotShape)
-            ConfineToShape(dev, pSprite->hotShape, &x, &y);
+            ConfineToShape(pSprite->hotShape, &x, &y);
         (*newScreen->SetCursorPosition) (dev, newScreen, x, y, TRUE);
     }
     else if (!PointerConfinedToScreen(dev)) {

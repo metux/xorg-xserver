@@ -177,7 +177,7 @@ ProcXIWarpPointer(ClientPtr client)
             y = pSprite->physLimits.y2 - 1;
 
         if (pSprite->hotShape)
-            ConfineToShape(pDev, pSprite->hotShape, &x, &y);
+            ConfineToShape(pSprite->hotShape, &x, &y);
         (*newScreen->SetCursorPosition) (pDev, newScreen, x, y, TRUE);
     }
     else if (!PointerConfinedToScreen(pDev)) {
