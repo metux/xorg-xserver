@@ -243,7 +243,7 @@ dixLookupClient(ClientPtr *pClient, XID rid, ClientPtr client, Mask access)
     return rc;
 }
 
-int
+XRetCode
 AlterSaveSetForClient(ClientPtr client, WindowPtr pWin, unsigned mode,
                       Bool toRoot, Bool map)
 {

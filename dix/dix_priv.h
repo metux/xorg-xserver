@@ -406,4 +406,20 @@ void SendGraphicsExpose(ClientPtr pClient, RegionPtr pRegion, XID drawable,
                         BYTE majorOpcode, CARD16 minorOpcode)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief alter the SaveSet of a window (see automatic reparenting when client gone)
+ *
+ * @param pClient pointer to client structure
+ * @param pWindow pointer to window structure whose SaveSet is changed
+ * @param mode    what to do when client goes away
+ * @param toRoot  TRUE to reparent to root when parent's client gone
+ * @param map     TRUE if window shall remain mapped
+ * @return X return code
+ */
+XRetCode AlterSaveSetForClient(ClientPtr pClient,
+                               WindowPtr pWin,
+                               unsigned mode,
+                               Bool toRoot,
+                               Bool map);
+
 #endif /* _XSERVER_DIX_PRIV_H */
