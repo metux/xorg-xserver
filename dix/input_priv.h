@@ -437,4 +437,13 @@ DeviceIntPtr PickPointer(ClientPtr pClient)
 DeviceIntPtr PickKeyboard(ClientPtr client)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief check whether input device is a pointer device
+ *
+ * @param dev   pointer to device structure
+ * @return TRUE if dev is a pointer device
+ */
+Bool IsPointerDevice(DeviceIntPtr dev)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_INPUT_PRIV_H */

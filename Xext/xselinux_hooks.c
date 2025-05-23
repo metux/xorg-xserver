@@ -32,6 +32,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <X11/Xatom.h>
 #include <X11/Xfuncproto.h>
 
+#include "dix/input_priv.h"
 #include "dix/registry_priv.h"
 #include "os/client_priv.h"
 
