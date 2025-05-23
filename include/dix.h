@@ -289,9 +289,6 @@ typedef struct {
 } DeviceEventInfoRec;
 
 extern _X_EXPORT Bool
-IsKeyboardDevice(DeviceIntPtr dev);
-
-extern _X_EXPORT Bool
 IsMaster(DeviceIntPtr dev);
 
 extern _X_EXPORT Bool
