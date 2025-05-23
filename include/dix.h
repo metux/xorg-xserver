@@ -308,12 +308,6 @@ typedef struct {
     int count;
 } EventInfoRec;
 
-/*
- *  DeviceEventCallback stuff
- */
-
-extern _X_EXPORT CallbackListPtr DeviceEventCallback;
-
 typedef struct {
     InternalEvent *event;
     DeviceIntPtr device;

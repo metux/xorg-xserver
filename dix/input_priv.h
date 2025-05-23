@@ -412,4 +412,9 @@ WindowPtr InputDevSpriteWindow(DeviceIntPtr pDev)
 void DeliverRawEvent(RawDeviceEvent *event, DeviceIntPtr device)
     _X_ATTRIBUTE_NONNULL_ARG(1,2);
 
+/*
+ * @brief callback on input device events
+ */
+extern CallbackListPtr DeviceEventCallback;
+
 #endif /* _XSERVER_INPUT_PRIV_H */
