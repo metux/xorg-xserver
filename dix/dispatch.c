@@ -3820,8 +3820,8 @@ ProcEstablishConnection(ClientPtr client)
 }
 
 void
-SendErrorToClient(ClientPtr client, unsigned majorCode, unsigned minorCode,
-                  XID resId, int errorCode)
+SendErrorToClient(ClientPtr client, CARD8 majorCode, CARD16 minorCode,
+                  XID resId, BYTE errorCode)
 {
     xError rep = {
         .type = X_Error,

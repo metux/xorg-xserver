@@ -374,4 +374,20 @@ void ClientWakeup(ClientPtr pclient)
 Bool ClientIsAsleep(ClientPtr pClient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
+/*
+ * @brief send error packet (xError) to client
+ *
+ * @param pClient     pointer to client structure
+ * @param majorCode   major opcode of failed request
+ * @param minorCode   minor opcode of failed request
+ * @param resId       ID of resource the failure occured on
+ * @param errorCode   error code value
+ */
+void SendErrorToClient(ClientPtr pClient,
+                       CARD8 majorCode,
+                       CARD16 minorCode,
+                       XID resId,
+                       BYTE errorCode)
+    _X_ATTRIBUTE_NONNULL_ARG(1);
+
 #endif /* _XSERVER_DIX_PRIV_H */

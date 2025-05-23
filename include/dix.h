@@ -162,12 +162,6 @@ extern _X_EXPORT void UpdateCurrentTimeIf(void);
  */
 _X_EXPORT int dixDestroyPixmap(void *pPixmap, XID unused);
 
-extern _X_EXPORT void SendErrorToClient(ClientPtr /*client */ ,
-                                        unsigned int /*majorCode */ ,
-                                        unsigned int /*minorCode */ ,
-                                        XID /*resId */ ,
-                                        int /*errorCode */ );
-
 /* dixutils.c */
 
 extern _X_EXPORT int dixLookupWindow(WindowPtr *result,
