@@ -505,4 +505,6 @@ TimeStamp LastEventTime(int deviceid);
 
 Bool LastEventTimeWasReset(int deviceid);
 
+void LastEventTimeToggleResetFlag(int deviceid, Bool state);
+
 #endif /* _XSERVER_INPUT_PRIV_H */
