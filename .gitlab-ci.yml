@@ -263,7 +263,7 @@ xf86-driver-build-test:
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-mouse
               SHA: xf86-input-mouse-1.9.5
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-synaptics
-              SHA: xf86-input-synaptics-1.9.2
+              SHA: xf86-input-synaptics-1.10.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu
               SHA: xf86-video-amdgpu-23.0.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati
