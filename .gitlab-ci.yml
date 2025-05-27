@@ -286,6 +286,8 @@ xf86-driver-build-test:
               SHA: 4503aece04cc8860df18ce946633b5449a0cb47b # 7 commits ahead of 1.5.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-cirrus
               SHA: 15d68316524c593bd67a6ea59b5c746a94c6c1f6 # 10 commits ahead of 1.6.0
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-dummy
+              SHA: 3a407a34c4a2b6b263a535b6aa7b49dd70784fdf # 9 commits ahead of 0.4.1
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-intel
               SHA: submit/fixes-for-xserver # temporary
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-qxl
