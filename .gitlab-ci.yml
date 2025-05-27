@@ -292,6 +292,8 @@ xf86-driver-build-test:
               SHA: c8d9f3be7e95689d793bb2f45a5dddf409e46811 # 15 commits ahead of 0.5.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-i128
               SHA: 4fd0309834deca78e5ef6cad5ecba8864a308ba5 # 7 commits ahead of 1.4.1
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-i740
+              SHA: d610334264e82a18477b9a5c3a4095c49c18f47b # 11 commits ahead of 1.4.0
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-intel
               SHA: submit/fixes-for-xserver # temporary
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-qxl
