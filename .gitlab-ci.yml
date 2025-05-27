@@ -312,6 +312,8 @@ xf86-driver-build-test:
               SHA: incubate # temporary
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-r128
               SHA: bc21fcdffa623bb8e7150e1da69aeaed6cd7c5d2 # 1 commit ahead of 6.13.0
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-rendition
+              SHA: 49d50f1fdeb4dc81895fec81be9fae1dc78e5974 # 14 commit ahead of 4.2.7
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
               SHA: 5b33e95acb831768c52d491de079a1adcae762e0 # 10 commits ahead of 2.6.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
