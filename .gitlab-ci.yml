@@ -273,7 +273,7 @@ xf86-driver-build-test:
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-qxl
               SHA: incubate # temporary
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
-              SHA: xf86-video-vesa-2.6.0
+              SHA: 5b33e95acb831768c52d491de079a1adcae762e0 # 10 commits ahead of 2.6.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
               SHA: 92cc4534146dd84c0d843759cdb30f75abddddd6 # 6 commits ahead 13.4.0
     script:
