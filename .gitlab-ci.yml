@@ -270,6 +270,8 @@ xf86-driver-build-test:
               SHA: xf86-input-synaptics-1.10.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-vmmouse
               SHA: 3bbcb6a143bb3f53e5b776fb70a4933229c1781a # 2 commits ahead of 13.2.0
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-void
+              SHA: b43e11eeb8b96aa87da910991da8b005d9847783 # 4 commits ahead of 1.4.2
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu
               SHA: 2cb59a92de4a19909682a35e4f31f3c02de2899f # 18 commits ahead of 23.0.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati
