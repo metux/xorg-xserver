@@ -257,7 +257,7 @@ xf86-driver-build-test:
     parallel:
         matrix:
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev
-              SHA: xf86-input-evdev-2.10.6
+              SHA: xf86-input-evdev-2.11.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput
               SHA: xf86-input-libinput-1.4.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-mouse
