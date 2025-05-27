@@ -275,7 +275,7 @@ xf86-driver-build-test:
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
               SHA: xf86-video-vesa-2.6.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
-              SHA: xf86-video-vmware-13.4.0
+              SHA: 92cc4534146dd84c0d843759cdb30f75abddddd6 # 6 commits ahead 13.4.0
     script:
         # built xserver is taken from meson-dist job
         - export PKG_CONFIG_PATH=$(pwd)/xserver-tarball/install/lib/x86_64-linux-gnu/pkgconfig
