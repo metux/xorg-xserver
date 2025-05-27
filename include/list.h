@@ -131,6 +131,13 @@ xorg_list_init(struct xorg_list *list)
 }
 
 static inline void
+__xorg_list_autoinit(struct xorg_list *head)
+{
+    if ((!head->prev) && (!head->next))
+        xorg_list_init(head);
+}
+
+static inline void
 __xorg_list_add(struct xorg_list *entry,
                 struct xorg_list *prev, struct xorg_list *next)
 {
@@ -158,6 +165,7 @@ __xorg_list_add(struct xorg_list *entry,
 static inline void
 xorg_list_add(struct xorg_list *entry, struct xorg_list *head)
 {
+    __xorg_list_autoinit(head);
     __xorg_list_add(entry, head, head->next);
 }
 
@@ -179,6 +187,7 @@ xorg_list_add(struct xorg_list *entry, struct xorg_list *head)
 static inline void
 xorg_list_append(struct xorg_list *entry, struct xorg_list *head)
 {
+    __xorg_list_autoinit(head);
     __xorg_list_add(entry, head->prev, head);
 }
 
@@ -222,7 +231,7 @@ xorg_list_del(struct xorg_list *entry)
 static inline int
 xorg_list_is_empty(struct xorg_list *head)
 {
-    return head->next == head;
+    return ((head->next == NULL) || (head->next == head));
 }
 
 /**
@@ -302,7 +311,7 @@ xorg_list_is_empty(struct xorg_list *head)
 #define xorg_list_for_each_entry(pos, head, member)			\
     for (pos = NULL,                                                    \
          pos = __container_of((head)->next, pos, member);		\
-	 &pos->member != (head);					\
+	 (((head)->next != NULL) && &pos->member != (head));		\
 	 pos = __container_of(pos->member.next, pos, member))
 
 /**
@@ -316,7 +325,7 @@ xorg_list_is_empty(struct xorg_list *head)
     for (pos = NULL,                                                    \
          pos = __container_of((head)->next, pos, member),		\
 	 tmp = __container_of(pos->member.next, pos, member);		\
-	 &pos->member != (head);					\
+	 (((head)->next != NULL) && (&pos->member != (head)));		\
 	 pos = tmp, tmp = __container_of(pos->member.next, tmp, member))
 
 /* NULL-Terminated List Interface
