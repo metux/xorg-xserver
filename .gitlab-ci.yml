@@ -260,6 +260,8 @@ xf86-driver-build-test:
               SHA: xf86-input-elographics-1.4.4
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-evdev
               SHA: xf86-input-evdev-2.11.0
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-joystick
+              SHA: fa296d27fb479107fa6328a7565f665de2de98d3 # 5 commits ahead of 1.6.4
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-libinput
               SHA: xf86-input-libinput-1.5.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-input-mouse
