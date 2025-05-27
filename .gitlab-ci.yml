@@ -308,25 +308,6 @@ xf86-driver-build-test:
           *xorg_paths
 
 #
-# Verify that commit messages are as expected
-#
-check-commits:
-  extends:
-    - .fdo.ci-fairy
-  needs: []
-  stage: test
-  script:
-    - ci-fairy check-commits --junit-xml=results.xml
-  except:
-    - master@xorg/xserver
-  variables:
-    GIT_DEPTH: 100
-  artifacts:
-    reports:
-      junit: results.xml
-  allow_failure: true
-
-#
 # Verify that the merge request has the allow-collaboration checkbox ticked
 #
 check-merge-request:
