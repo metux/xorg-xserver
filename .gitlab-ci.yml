@@ -296,6 +296,8 @@ xf86-driver-build-test:
               SHA: d610334264e82a18477b9a5c3a4095c49c18f47b # 11 commits ahead of 1.4.0
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-intel
               SHA: submit/fixes-for-xserver # temporary
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-mach64
+              SHA: 878048e3aec04c6bb8034f21afdfff37e3528c5f # 20 commits ahead of 6.9.7
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-qxl
               SHA: incubate # temporary
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
