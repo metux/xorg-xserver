@@ -326,6 +326,8 @@ xf86-driver-build-test:
               SHA: ccff93b681968463d00793a9a7c5c2db8301634f # 30 commits ahead of 0.12.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-suncg14
               SHA: 471e04fe84abaf2f868fb85566d99495142692a9 # 9 commits ahead of 1.1.3
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-suncg3
+              SHA: 8162844221f6d59e540c3c3a146a9c581d413949 # 9 commits ahead of 1.1.3
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
               SHA: 5b33e95acb831768c52d491de079a1adcae762e0 # 10 commits ahead of 2.6.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
