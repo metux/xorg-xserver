@@ -350,6 +350,8 @@ xf86-driver-build-test:
               SHA: 92cc4534146dd84c0d843759cdb30f75abddddd6 # 6 commits ahead 13.4.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-voodoo
               SHA: c70353ddf49d557c596a47b835b6b8d8bbe35ebe # 15 commits ahead of 1.2.6
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-xgi
+              SHA: e73ff14a7f1b7562ff447aad527641cc35f557ae # 49 commits ahead 1.6.1
     script:
         # built xserver is taken from meson-dist job
         - export PKG_CONFIG_PATH=$(pwd)/xserver-tarball/install/lib/x86_64-linux-gnu/pkgconfig
