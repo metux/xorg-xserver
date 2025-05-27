@@ -302,6 +302,10 @@ xf86-driver-build-test:
               SHA: 66ee371516c48c30b67684317a8e3c24ba7f1f4e # 11 commits ahead of 2.0.1
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-neomagic
               SHA: 69cafdeebf7c338ede076424f9bcb97f26ede7a8 # 8 commits ahead of 1.3.1
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-nested
+              SHA: 86b6dc3bb6d78f40905ecc63df3635b284214836 # no release yet
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-nouveau
+              SHA: xf86-video-nouveau-1.0.18
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-qxl
               SHA: incubate # temporary
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
