@@ -340,6 +340,8 @@ xf86-driver-build-test:
               SHA: 5253278119a4db07b5a01856f0de34e576f4dcdd # 9 commits ahead of 1.5.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-trident
               SHA: fddaa2084b9aac51a845ee1ede8c498cbc9330cf # 13 commits ahead of 1.4.0
+            - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-v4l
+              SHA: eb1e55874cbacf7455f70269581a877e88e3bf37 # 15 commits ahead of 0.3.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vesa
               SHA: 5b33e95acb831768c52d491de079a1adcae762e0 # 10 commits ahead of 2.6.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-vmware
