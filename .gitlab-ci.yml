@@ -267,7 +267,7 @@ xf86-driver-build-test:
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-amdgpu
               SHA: 2cb59a92de4a19909682a35e4f31f3c02de2899f # 18 commits ahead of 23.0.0
             - REPO: https://gitlab.freedesktop.org/xorg/driver/xf86-video-ati
-              SHA: xf86-video-ati-22.0.0
+              SHA: c610c037369500089baddd86aa3cf8046f3dc48b # 11 commits ahead of 22.0.0
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-intel
               SHA: submit/fixes-for-xserver # temporary
             - REPO: https://gitlab.freedesktop.org/metux/xf86-video-qxl
