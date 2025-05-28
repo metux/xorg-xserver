@@ -252,6 +252,44 @@ xorg_list_present(struct xorg_list *entry, struct xorg_list *head)
 }
 
 /**
+ * @brief prepend a new element to the end of the list if not existing yet
+ *
+ * Same as xorg_list_add(), but protecting against duplicate insertion.
+ *
+ * @param entry The new element to append to the list.
+ * @param head The existing list.
+ * @return zero if element already in list, otherwise non-zero
+ */
+static inline int
+xorg_list_add_ndup(struct xorg_list *entry, struct xorg_list *head)
+{
+    if (xorg_list_present(entry, head))
+        return 0;
+
+    xorg_list_add(entry, head);
+    return 1;
+}
+
+/**
+ * @brief append a new element to the end of the list if not existing yet
+ *
+ * Same as xorg_list_append(), but protecting against duplicate insertion.
+ *
+ * @param entry The new element to append to the list.
+ * @param head The existing list.
+ * @return zero if element already in list, otherwise non-zero
+ */
+static inline int
+xorg_list_append_ndup(struct xorg_list *entry, struct xorg_list *head)
+{
+    if (xorg_list_present(entry, head))
+        return 0;
+
+    xorg_list_append(entry, head);
+    return 1;
+}
+
+/**
  * Returns a pointer to the container of this list element.
  *
  * Example:
