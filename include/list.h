@@ -168,7 +168,7 @@ xorg_list_add(struct xorg_list *entry, struct xorg_list *head)
  * struct foo *newfoo = malloc(...);
  * xorg_list_append(&newfoo->entry, &bar->list_of_foos);
  *
- * @param entry The new element to prepend to the list.
+ * @param entry The new element to append to the list.
  * @param head The existing list.
  */
 static inline void
