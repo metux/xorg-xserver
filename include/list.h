@@ -95,6 +95,11 @@
  *              xorg_list_del(&iterator->entry);
  * }
  *
+ * WARNING: entries MUST NOT be added to the list twice, otherwise iterating
+ *          will end up in infinite loop.
+ * WARNING: entries MUST NOT be added to multiple lists - use separate entry
+ *          nodes within the container struct, if it needs to be added to
+ *          several lists at the same time.
  */
 
 /**
