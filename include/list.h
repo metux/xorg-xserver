@@ -235,6 +235,23 @@ xorg_list_is_empty(struct xorg_list *head)
 }
 
 /**
+ * @brief check whether element already is in list
+ *
+ * @param entry The element to check for
+ * @param head The existing list.
+ * @return zero when entry isn't present in list, otherwise non-zero
+ */
+static inline int
+xorg_list_present(struct xorg_list *entry, struct xorg_list *head)
+{
+    for (struct xorg_list *l=head->next; l && (l != head); l=l->next) {
+        if (l == entry)
+            return 1;
+    }
+    return 0;
+}
+
+/**
  * Returns a pointer to the container of this list element.
  *
  * Example:
