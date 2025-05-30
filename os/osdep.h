@@ -81,13 +81,6 @@ SOFTWARE.
 #define ETEST(err) (err == EAGAIN || err == WSAEWOULDBLOCK)
 #endif
 
-#if defined(XDMCP) || defined(HASXDMAUTH)
-typedef Bool (*ValidatorFunc) (ARRAY8Ptr Auth, ARRAY8Ptr Data, int packet_type);
-typedef Bool (*GeneratorFunc) (ARRAY8Ptr Auth, ARRAY8Ptr Data, int packet_type);
-typedef Bool (*AddAuthorFunc) (unsigned name_length, const char *name,
-                               unsigned data_length, char *data);
-#endif
-
 typedef struct _connectionInput *ConnectionInputPtr;
 typedef struct _connectionOutput *ConnectionOutputPtr;
 

@@ -3,7 +3,11 @@
 
 #include "osdep.h"
 
-#ifdef XDMCP
+typedef Bool (*ValidatorFunc) (ARRAY8Ptr Auth, ARRAY8Ptr Data, int packet_type);
+typedef Bool (*GeneratorFunc) (ARRAY8Ptr Auth, ARRAY8Ptr Data, int packet_type);
+typedef Bool (*AddAuthorFunc) (unsigned name_length, const char *name,
+                               unsigned data_length, char *data);
+
 /* in xdmcp.c */
 void XdmcpUseMsg(void);
 int XdmcpOptions(int argc, char **argv, int i);
@@ -24,6 +28,5 @@ void XdmcpRegisterAuthentication(const char *name,
 
 struct sockaddr_in;
 void XdmcpRegisterBroadcastAddress(const struct sockaddr_in *addr);
-#endif /* XDMCP */
 
 #endif /* _XSERVER_OS_XDMCP_H */
