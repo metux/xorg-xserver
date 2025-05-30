@@ -76,12 +76,15 @@ struct Xnamespace* XnsFindByAuth(size_t szAuthProto, const char* authProto, size
 {
     struct Xnamespace *walk;
     xorg_list_for_each_entry(walk, &ns_list, entry) {
-        int protoLen = walk->authProto ? strlen(walk->authProto) : 0;
-        if ((protoLen == szAuthProto) &&
-            (walk->authTokenLen == szAuthToken) &&
-            (memcmp(walk->authTokenData, authToken, szAuthToken)==0) &&
-            (memcmp(walk->authProto, authProto, szAuthProto)==0))
-            return walk;
+        struct auth_token *at;
+        xorg_list_for_each_entry(at, &walk->auth_tokens, entry) {
+            int protoLen = at->authProto ? strlen(at->authProto) : 0;
+            if ((protoLen == szAuthProto) &&
+                (at->authTokenLen == szAuthToken) &&
+                (memcmp(at->authTokenData, authToken, szAuthToken)==0) &&
+                (memcmp(at->authProto, authProto, szAuthProto)==0))
+                return walk;
+        }
     }
 
     // default to anonymous if credentials aren't assigned to specific NS

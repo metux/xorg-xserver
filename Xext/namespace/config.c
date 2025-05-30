@@ -105,21 +105,27 @@ static void parseLine(char *line, struct Xnamespace **walk_ns)
         if (token == NULL)
             return;
 
-        curr->authProto = strdup(token);
+        struct auth_token *new_token = calloc(1, sizeof(struct auth_token));
+        if (new_token == NULL)
+            FatalError("Xnamespace: failed allocating token\n");
+
+        new_token->authProto = strdup(token);
         token = strtok(NULL, " ");
 
-        curr->authTokenLen = strlen(token)/2;
-        curr->authTokenData = calloc(1, curr->authTokenLen);
-        if (!curr->authTokenData) {
-            curr->authTokenLen = 0;
+        new_token->authTokenLen = strlen(token)/2;
+        new_token->authTokenData = calloc(1, new_token->authTokenLen);
+        if (!new_token->authTokenData) {
+            free(new_token);
             return;
         }
-        hex2bin(token, curr->authTokenData);
+        hex2bin(token, new_token->authTokenData);
 
-        AddAuthorization(strlen(curr->authProto),
-                         curr->authProto,
-                         curr->authTokenLen,
-                         curr->authTokenData);
+        new_token->authId = AddAuthorization(strlen(new_token->authProto),
+                                             new_token->authProto,
+                                             new_token->authTokenLen,
+                                             new_token->authTokenData);
+
+        xorg_list_append(&new_token->entry, &curr->auth_tokens);
         return;
     }
 
@@ -179,12 +185,14 @@ Bool XnsLoadConfig(void)
 
     struct Xnamespace *ns;
     xorg_list_for_each_entry(ns, &ns_list, entry) {
-        XNS_LOG("namespace: \"%s\" \"%s\" \"",
-            ns->name,
-            ns->authProto);
-        for (int i=0; i<ns->authTokenLen; i++)
-            printf("%02X", (unsigned char)ns->authTokenData[i]);
-        printf("\"\n");
+        XNS_LOG("namespace: \"%s\" \n", ns->name);
+        struct auth_token *at;
+        xorg_list_for_each_entry(at, &ns->auth_tokens, entry) {
+            XNS_LOG("      auth: \"%s\" \"", at->authProto);
+            for (int i=0; i<at->authTokenLen; i++)
+                printf("%02X", (unsigned char)at->authTokenData[i]);
+            printf("\"\n");
+        }
     }
 
     return TRUE;

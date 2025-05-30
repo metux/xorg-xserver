@@ -10,6 +10,14 @@
 #include "include/window.h"
 #include "include/windowstr.h"
 
+struct auth_token {
+    struct xorg_list entry;
+    const char *authProto;
+    char *authTokenData;
+    size_t authTokenLen;
+    XID authId;
+};
+
 struct Xnamespace {
     struct xorg_list entry;
     const char *name;
@@ -20,9 +28,7 @@ struct Xnamespace {
     Bool allowXInput;
     Bool allowXKeyboard;
     Bool superPower;
-    const char *authProto;
-    char *authTokenData;
-    size_t authTokenLen;
+    struct xorg_list auth_tokens;
     size_t refcnt;
     WindowPtr rootWindow;
 };
