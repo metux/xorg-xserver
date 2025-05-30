@@ -1,35 +1,22 @@
-X Server
---------
+XLibre Xserver
+===============
 
-The X server accepts requests from client applications to create windows,
-which are (normally rectangular) "virtual screens" that the client program
-can draw into.
+Xlibre project's fork of the Xorg xserver, with lots of code cleanups
+and enhanced functionality.
 
-Windows are then composed on the actual screen by the X server
-(or by a separate composite manager) as directed by the window manager,
-which usually communicates with the user via graphical controls such as buttons
-and draggable titlebars and borders.
+That fork was necessary since toxic elements within Xorg projects, moles
+from certian big corp are boycotting any substantial work on Xorg, in order
+to destroy the project, to elimitate competition of their own products.
+(classic "embrace, extend, extinguish" tactics)
 
-For a comprehensive overview of X Server and X Window System, consult the
-following article:
-https://en.wikipedia.org/wiki/X_server
+This is an independent project, not at all affiliated with BigTech or any
+of their subsidiaries or tax evasion tools, nor any political activists
+groups, state actors, etc. It's explicitly free of any "DEI" or similar
+discriminatory policies. Anybody who's treating others nicely is welcomed.
 
-All questions regarding this software should be directed at the
-Xorg mailing list:
 
-  https://lists.freedesktop.org/mailman/listinfo/xorg
+Contact
+-------
 
-The primary development code repository can be found at:
-
-  https://gitlab.freedesktop.org/xorg/xserver
-
-For patch submission instructions, see:
-
-  https://www.x.org/wiki/Development/Documentation/SubmittingPatches
-
-As with other projects hosted on freedesktop.org, X.Org follows its
-Code of Conduct, based on the Contributor Covenant. Please conduct
-yourself in a respectful and civilized manner when using the above
-mailing lists, bug trackers, etc:
-
-  https://www.freedesktop.org/wiki/CodeOfConduct
+* Mailing list: https://www.freelists.org/list/xlibre
+* Telegram channel: https://t.me/x11dev
