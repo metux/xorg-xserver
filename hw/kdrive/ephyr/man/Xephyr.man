@@ -50,9 +50,9 @@ sets the screen size.
 uses existing window
 .I id .
 If a
-.BI -screen
+.B -screen
 argument follows a
-.BI -parent
+.B -parent
 argument, this screen is embedded into the given window.
 .TP 8
 .B -host-cursor

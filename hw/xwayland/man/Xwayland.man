@@ -148,7 +148,7 @@ Run \fIXwayland\fP rootless, so that X clients integrate seamlessly with
 Wayland clients in a Wayland desktop. That requires the Wayland server
 to be an X window manager as well.
 .TP 8
-.BI \-shm
+.B \-shm
 Force the shared memory backend instead of glamor (if available) for passing
 buffers to the Wayland server.
 
@@ -163,7 +163,7 @@ verbosity level.  When the
 value is supplied, the verbosity level is set to that value.  The default
 verbosity level is 0.
 .TP 8
-.BI \-version
+.B \-version
 Show the server version and exit.
 .TP 8
 .B \-wm \fIfd\fP
