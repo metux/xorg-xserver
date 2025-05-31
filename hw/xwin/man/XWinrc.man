@@ -136,7 +136,6 @@ such items should be included at the start or at the end of the menu.
 
 .SH Icon Instructions
 When specifying an \fIicon-specifier\fP in the following commands several different formats are allowed:
-.PP
 .IP \fI"NAME.ICO"\fP 16
 filename of an .ico format file
 .br

@@ -76,7 +76,6 @@ The
 delay between this can be altered by setting a XEPHYR_PAUSE env var to
 a value in micro seconds.
 .SH CAVEATS
-.PP
 .IP \(bu 2
 Rotated displays are currently updated via full blits. This
 is slower than a normal orientated display. Debug mode will

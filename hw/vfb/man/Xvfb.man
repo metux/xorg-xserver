@@ -48,7 +48,6 @@ rendering engine, load testing, as an aid to porting the X server to a
 new platform, and providing an unobtrusive way to run applications
 that don't really need an X server but insist on having one anyway.
 .SH OPTIONS
-.PP
 In addition to the normal server options described in the
 .BR Xserver (1)
 manual page, \fIXvfb\fP accepts the following command line switches:
@@ -119,7 +118,6 @@ and will use memory mapped files in /var/tmp for the framebuffer.
 xwud -in /var/tmp/Xvfb_screen0
 Displays screen 0 of the server started by the preceding example.
 .SH "SEE ALSO"
-.PP
 .BR X (@miscmansuffix@),
 .BR Xserver (1),
 .BR xwd (1),

@@ -23,7 +23,6 @@ The XFree86 release was originally derived from
 by Thomas Roell which was contributed to X11R5 by Snitily Graphics
 Consulting Service.
 .SH PLATFORMS
-.PP
 .B Xorg
 operates under a wide range of operating systems and hardware platforms.
 The Intel x86 (IA32) architecture is the most widely supported hardware
@@ -37,7 +36,6 @@ GNU Hurd.  Mac OS X is supported with the
 X server.  Win32/Cygwin is supported with the
 .BR XWin (@appmansuffix@)
 X server.
-.PP
 .SH "NETWORK CONNECTIONS"
 .B Xorg
 supports connections made using the following reliable
@@ -400,7 +398,6 @@ Print out the server version, patchlevel, release date, the operating
 system/platform it was built on, and whether it includes module loader
 support.
 .SH "KEYBOARD"
-.PP
 The
 .B Xorg
 server is normally configured to recognize various special combinations
@@ -657,7 +654,6 @@ information can be found from the X.Org web site
 \fI<https://www.x.org/>\fP.
 
 .SH LEGAL
-.PP
 .B Xorg
 is copyright software, provided under licenses that permit modification
 and redistribution in source and binary form without fee.
