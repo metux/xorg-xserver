@@ -2116,7 +2116,7 @@ Default: mesa.
 .TP 7
 .BI "Option \*RenderingAPI\*q \*q" string \*q
 This option specifies an rendering API for use in conjunction with Glamor
-accel method. You can specify OpenGL with a value "gl" and OpenGL ES with a 
+accel method. You can specify OpenGL with a value "gl" and OpenGL ES with a
 value "es", and the default is both, when Glamor fallbacks to GLES if GL 2.1 is
 not available. This may be useful for embedded and old cards, where GL ES
 feature set works faster than GL feature set.

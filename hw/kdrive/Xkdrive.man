@@ -10,7 +10,7 @@ Xkdrive \- tiny X server
 .SH DESCRIPTION
 .B Xkdrive
 is a family of X servers designed to be particularly small.  This
-manual page describes the common functionality of the 
+manual page describes the common functionality of the
 .B Xkdrive
 servers; for information on a specific X server, please refer to the
 relevant manual page.

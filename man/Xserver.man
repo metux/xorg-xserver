@@ -618,46 +618,46 @@ Protocols:
 .I "The X Font Service Protocol,"
 .I "X Display Manager Control Protocol"
 .PP
-Fonts: 
-.BR bdftopcf (1), 
-.BR mkfontdir (1), 
+Fonts:
+.BR bdftopcf (1),
+.BR mkfontdir (1),
 .BR mkfontscale (1),
-.BR xfs (1), 
-.BR xlsfonts (1), 
-.BR xfontsel (1), 
+.BR xfs (1),
+.BR xlsfonts (1),
+.BR xfontsel (1),
 .BR xfd (1),
 .I "X Logical Font Description Conventions"
 .PP
-Keyboards: 
+Keyboards:
 .BR xkeyboard\-config (@miscmansuffix@)
 .PP
-Security: 
-.BR Xsecurity (@miscmansuffix@), 
-.BR xauth (1), 
+Security:
+.BR Xsecurity (@miscmansuffix@),
+.BR xauth (1),
 .BR Xau (3),
-.BR xdm (1), 
+.BR xdm (1),
 .BR xhost (1),
 .I "Security Extension Specification"
 .PP
-Starting the server: 
-.BR startx (1), 
-.BR xdm (1), 
+Starting the server:
+.BR startx (1),
+.BR xdm (1),
 .BR xinit (1)
 .PP
-Controlling the server once started: 
-.BR xset (1), 
+Controlling the server once started:
+.BR xset (1),
 .BR xsetroot (1),
-.BR xhost (1), 
-.BR xinput (1), 
+.BR xhost (1),
+.BR xinput (1),
 .BR xrandr (1)
 .PP
 Server-specific man pages:
-.BR Xorg (1), 
+.BR Xorg (1),
 .BR Xwayland (1),
-.BR Xephyr (1), 
+.BR Xephyr (1),
 .BR Xnest (1),
-.BR Xvfb (1), 
-.BR Xquartz (1), 
+.BR Xvfb (1),
+.BR Xquartz (1),
 .BR XWin (1).
 .PP
 Server internal documentation:
