@@ -23,7 +23,7 @@ shared_module(
     ],
 
     install: true,
-    install_dir: join_paths(module_dir, 'drivers'),
+    install_dir: join_paths(module_abi_dir, 'drivers'),
 )
 
 # Test that we don't have any unresolved symbols from our module to Xorg.

@@ -4,7 +4,7 @@ shared_module('shadowfb',
     dependencies: common_dep,
     c_args: xorg_c_args,
     install: true,
-    install_dir: module_dir,
+    install_dir: module_abi_dir,
     link_with: e,
 )
 

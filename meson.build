@@ -834,7 +834,7 @@ if build_xorg
     sdkconfig.set('libdir', join_paths('${exec_prefix}', get_option('libdir')))
     sdkconfig.set('includedir', join_paths('${prefix}', get_option('includedir')))
     sdkconfig.set('datarootdir', join_paths('${prefix}', get_option('datadir')))
-    sdkconfig.set('moduledir', join_paths('${exec_prefix}', module_dir))
+    sdkconfig.set('moduledir', join_paths(join_paths('${exec_prefix}', module_dir), module_abi_tag))
     sdkconfig.set('sdkdir', join_paths('${prefix}', get_option('includedir'), 'xorg'))
     sdkconfig.set('sysconfigdir', join_paths('${datarootdir}', 'X11/xorg.conf.d'))
 

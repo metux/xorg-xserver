@@ -9,7 +9,7 @@ shared_module(
     link_with: e,
 
     install: true,
-    install_dir: module_dir,
+    install_dir: module_abi_dir,
 )
 
 shared_module(
@@ -23,7 +23,7 @@ shared_module(
     link_with: e,
 
     install: true,
-    install_dir: module_dir,
+    install_dir: module_abi_dir,
 )
 
 if build_glx
@@ -38,6 +38,6 @@ if build_glx
         link_with: e,
 
         install: true,
-        install_dir: join_paths(module_dir, 'extensions')
+        install_dir: join_paths(module_abi_dir, 'extensions')
     )
 endif

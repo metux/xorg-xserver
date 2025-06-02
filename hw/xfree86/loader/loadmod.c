@@ -175,6 +175,12 @@ LoaderSetPath(const char *path)
 
 /* Standard set of module subdirectories to search, in order of preference */
 static const char *stdSubdirs[] = {
+    // first try loading from per-ABI subdir
+    XORG_MODULE_ABI_TAG "/",
+    XORG_MODULE_ABI_TAG "/input/",
+    XORG_MODULE_ABI_TAG "/drivers/",
+    XORG_MODULE_ABI_TAG "/extensions/",
+    // now try loading from legacy / unversioned directories
     "",
     "input/",
     "drivers/",

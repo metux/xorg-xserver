@@ -56,7 +56,7 @@ xorg_int10 = shared_module('int10',
     c_args: int10_c_args,
 
     install: true,
-    install_dir: module_dir,
+    install_dir: module_abi_dir,
 )
 
 install_data('xf86int10.h', install_dir: xorgsdkdir)

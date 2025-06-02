@@ -12,7 +12,7 @@ shared_module(
     dependencies: [common_dep],
 
     install: true,
-    install_dir: join_paths(module_dir, 'input'),
+    install_dir: join_paths(module_abi_dir, 'input'),
 
     link_with: e,
 )

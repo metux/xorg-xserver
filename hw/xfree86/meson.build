@@ -1,3 +1,6 @@
+module_abi_tag = 'xlibre-25.0'
+module_abi_dir = join_paths(module_dir, module_abi_tag)
+
 xorg_inc = include_directories(
     'common',
     'ddc',
@@ -16,6 +19,7 @@ xorg_inc = include_directories(
 xorg_c_args = []
 xorg_c_args += '-DHAVE_XORG_CONFIG_H'
 xorg_c_args += '-DXORG_NO_SDKSYMS'
+xorg_c_args += ('-DXORG_MODULE_ABI_TAG="'+module_abi_tag+'"')
 
 pciaccess_dep = []
 if get_option('pciaccess')

@@ -18,5 +18,5 @@ shared_module(
     link_with: [glamor, libxserver_glx],
 
     install: true,
-    install_dir: module_dir,
+    install_dir: module_abi_dir,
 )
