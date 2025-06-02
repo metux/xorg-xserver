@@ -406,7 +406,7 @@ ClientPtr NextAvailableClient(void *ospriv);
  *
  * @param pClient pointer to client that has exception
  */
-void MarkClientException(ClientPtr pClient)
+void dixMarkClientException(ClientPtr pClient)
     _X_ATTRIBUTE_NONNULL_ARG(1);
 
 typedef Bool (*ClientSleepProcPtr) (ClientPtr client, void *closure);

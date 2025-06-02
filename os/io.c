@@ -742,7 +742,7 @@ WriteToClient(ClientPtr who, int count, const void *__buf)
         }
         else if (!(oco = AllocateOutputBuffer())) {
             AbortClient(who);
-            MarkClientException(who);
+            dixMarkClientException(who);
             return -1;
         }
         oc->output = oco;
@@ -920,7 +920,7 @@ FlushClient(ClientPtr who, OsCommPtr oc, const void *__extraBuf, int extraCount)
                 }
                 if (!obuf) {
                     AbortClient(who);
-                    MarkClientException(who);
+                    dixMarkClientException(who);
                     oco->count = 0;
                     return -1;
                 }
@@ -947,7 +947,7 @@ FlushClient(ClientPtr who, OsCommPtr oc, const void *__extraBuf, int extraCount)
 #endif
         else {
             AbortClient(who);
-            MarkClientException(who);
+            dixMarkClientException(who);
             oco->count = 0;
             return -1;
         }

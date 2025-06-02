@@ -3913,7 +3913,7 @@ SendErrorToClient(ClientPtr client, CARD8 majorCode, CARD16 minorCode,
 }
 
 void
-MarkClientException(ClientPtr client)
+dixMarkClientException(ClientPtr client)
 {
     client->noClientException = -1;
 }

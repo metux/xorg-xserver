@@ -800,7 +800,7 @@ FakeClientID(int client)
     if (!id) {
         if (!client)
             FatalError("FakeClientID: server internal ids exhausted\n");
-        MarkClientException(clients[client]);
+        dixMarkClientException(clients[client]);
         id = ((Mask) client << CLIENTOFFSET) | (SERVER_BIT * 3);
         maxid = id | RESOURCE_ID_MASK;
     }
