@@ -24,6 +24,7 @@ endif
 
 # subdirs for convenience libraries statically linked into Xorg
 subdir('common')
+subdir('compat')
 subdir('ddc')
 if build_dri1
     subdir('dri')
@@ -53,6 +54,7 @@ xorg_link = [
     libxserver,
     libglxvnd,
     xorg_common,
+    xorg_compat,
     xorg_loader,
     xorg_ddc,
     xorg_xkb,
