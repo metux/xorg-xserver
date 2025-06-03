@@ -168,15 +168,14 @@ xf86PrintBanner(void)
                            name.version, name.machine);
 #ifdef __linux__
             do {
-                char buf[80];
                 int fd = open("/proc/cmdline", O_RDONLY);
 
                 if (fd != -1) {
+                    char buf[82] = { 0 };
                     xf86ErrorFVerb(0, "Kernel command line: ");
-                    memset(buf, 0, 80);
-                    while (read(fd, buf, 80) > 0) {
+                    while (read(fd, buf, sizeof(buf)-2) > 0) {
                         xf86ErrorFVerb(0, "%.80s", buf);
-                        memset(buf, 0, 80);
+                        memset(buf, 0, sizeof(buf));
                     }
                     close(fd);
                 }
