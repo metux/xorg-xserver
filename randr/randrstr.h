@@ -674,6 +674,14 @@ extern _X_EXPORT RESTYPE RRCrtcType;      /* X resource type: Randr CRTC */
 extern _X_EXPORT RESTYPE RRModeType;      /* X resource type: Randr MODE */
 extern _X_EXPORT RESTYPE RROutputType;    /* X resource type: Randr OUTPUT */
 
+/*
+ * Set non-desktop property on given output. This flag should be TRUE on
+ * outputs where usual desktops shouldn't expand onto (eg. head displays,
+ * additional display bars in various handhelds, etc)
+ */
+_X_EXPORT /* just for Nvidia legacy */
+Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*

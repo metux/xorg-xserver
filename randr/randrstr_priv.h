@@ -157,13 +157,6 @@ Bool RRInit(void);
 RRCrtcPtr RRFirstEnabledCrtc(ScreenPtr pScreen);
 
 /*
- * Set non-desktop property on given output. This flag should be TRUE on
- * outputs where usual desktops shouldn't expand onto (eg. head displays,
- * additional display bars in various handhelds, etc)
- */
-Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
-
-/*
  * Compute vertical refresh rate from randr mode information
  *
  * @param mode pointer to randr mode info
