@@ -191,16 +191,6 @@ void RRCrtcSetTransformSupport(RRCrtcPtr crtc, Bool transforms);
 void RRDeliverCrtcEvent(ClientPtr pClient, WindowPtr pWin, RRCrtcPtr crtc);
 
 /*
- * Return the area of the frame buffer scanned out by the crtc,
- * taking into account the current mode and rotation
- *
- * @param crtc    the CRTC to query
- * @param width   return buffer for width value
- * @param height  return buffer for height value
- */
-void RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
-
-/*
  * Retrieve CRTCs current transform
  *
  * @param crtc    the CRTC to query

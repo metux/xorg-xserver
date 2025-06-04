@@ -682,6 +682,17 @@ extern _X_EXPORT RESTYPE RROutputType;    /* X resource type: Randr OUTPUT */
 _X_EXPORT /* just for Nvidia legacy */
 Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
 
+/*
+ * Return the area of the frame buffer scanned out by the crtc,
+ * taking into account the current mode and rotation
+ *
+ * @param crtc    the CRTC to query
+ * @param width   return buffer for width value
+ * @param height  return buffer for height value
+ */
+_X_EXPORT /* just for Nvidia legacy */
+void RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*
