@@ -38,9 +38,7 @@ extern int RREventBase, RRErrorBase;
 extern RESTYPE RRClientType, RREventType;     /* resource types for event masks */
 extern DevPrivateKeyRec RRClientPrivateKeyRec;
 
-extern RESTYPE RRCrtcType;      /* X resource type: Randr CRTC */
-extern RESTYPE RRModeType;      /* X resource type: Randr MODE */
-extern RESTYPE RROutputType;    /* X resource type: Randr OUTPUT */
+/* see also randr/randrstr.h: some still need to be exported for legacy Nvidia */
 extern RESTYPE RRProviderType;  /* X resource type: Randr PROVIDER */
 extern RESTYPE RRLeaseType;     /* X resource type: Randr LEASE */
 

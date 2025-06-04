@@ -667,6 +667,13 @@ RRConfigureOutputProperty(RROutputPtr output, Atom property,
 /* rrprovider.c */
 #define PRIME_SYNC_PROP         "PRIME Synchronization"
 
+
+/* *just* for backwards compat with legacy proprietary NVidia driver */
+
+extern _X_EXPORT RESTYPE RRCrtcType;      /* X resource type: Randr CRTC */
+extern _X_EXPORT RESTYPE RRModeType;      /* X resource type: Randr MODE */
+extern _X_EXPORT RESTYPE RROutputType;    /* X resource type: Randr OUTPUT */
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*
