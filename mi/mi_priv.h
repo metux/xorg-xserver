@@ -55,6 +55,8 @@ typedef void (*mieqHandler) (int screen, InternalEvent *event,
 void mieqSetHandler(int event, mieqHandler handler);
 
 void miSendExposures(WindowPtr pWin, RegionPtr pRgn, int dx, int dy);
+
+_X_EXPORT /* used by in-tree libwfb.so module */
 void miWindowExposures(WindowPtr pWin, RegionPtr prgn);
 
 void miPaintWindow(WindowPtr pWin, RegionPtr prgn, int what);
@@ -84,6 +86,7 @@ void miMarkUnrealizedWindow(WindowPtr pChild, WindowPtr pWin, Bool fromConfigure
 WindowPtr miSpriteTrace(SpritePtr pSprite, int x, int y);
 WindowPtr miXYToWindow(ScreenPtr pScreen, SpritePtr pSprite, int x, int y);
 
+_X_EXPORT /* used by in-tree libwfb.so module */
 int miExpandDirectColors(ColormapPtr, int, xColorItem *, xColorItem *);
 
 #endif /* _XSERVER_MI_PRIV_H */
