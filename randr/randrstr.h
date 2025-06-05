@@ -731,6 +731,16 @@ RRProviderPtr RRProviderCreate(ScreenPtr pScreen, const char *name,
 _X_EXPORT /* just for Nvidia legacy */
 void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
 
+/*
+ * Check whether client is operating on recent enough protocol version
+ * to know about refresh rates. This has influence on reply packet formats
+ *
+ * @param pClient the client to check
+ * @return TRUE if client using recent enough protocol version
+ */
+_X_EXPORT /* just for Nvidia legacy */
+Bool RRClientKnowsRates(ClientPtr pClient);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*

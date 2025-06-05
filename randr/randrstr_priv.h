@@ -223,15 +223,6 @@ Bool RRReplaceScanoutPixmap(DrawablePtr pDrawable, PixmapPtr pPixmap, Bool enabl
 Bool RRHasScanoutPixmap(ScreenPtr pScreen);
 
 /*
- * Check whether client is operating on recent enough protocol version
- * to know about refresh rates. This has influence on reply packet formats
- *
- * @param pClient the client to check
- * @return TRUE if client using recent enough protocol version
- */
-Bool RRClientKnowsRates(ClientPtr pClient);
-
-/*
  * Called by DIX to notify RANDR extension that a lease had been terminated.
  *
  * @param lease   the lease that had been terminated
