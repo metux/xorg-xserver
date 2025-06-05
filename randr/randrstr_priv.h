@@ -382,17 +382,6 @@ Bool RRProviderInit(void);
 void RRProviderInitErrorValue(void);
 
 /*
- * Create / allocate new provider structure
- *
- * @param pScreen the screen the provider belongs to
- * @param name    name of the provider (counted string)
- * @param nameLen size of the provider name
- * @return new provider structure, or NULL on failure
- */
-RRProviderPtr RRProviderCreate(ScreenPtr pScreen, const char *name,
-                               int nameLen);
-
-/*
  * Set provider capabilities field
  *
  * @param provider      the provider whose capabilities are to be set

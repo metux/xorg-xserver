@@ -710,6 +710,18 @@ RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
 _X_EXPORT /* just for Nvidia legacy */
 void RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
 
+/*
+ * Create / allocate new provider structure
+ *
+ * @param pScreen the screen the provider belongs to
+ * @param name    name of the provider (counted string)
+ * @param nameLen size of the provider name
+ * @return new provider structure, or NULL on failure
+ */
+_X_EXPORT /* just for Nvidia legacy */
+RRProviderPtr RRProviderCreate(ScreenPtr pScreen, const char *name,
+                               int nameLen);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*
