@@ -18,7 +18,9 @@ PanoramiXRes *PanoramiXFindIDByScrnum(RESTYPE, XID, int);
 Bool XineramaRegisterConnectionBlockCallback(void (*func) (void));
 int XineramaDeleteResource(void *, XID);
 
-extern RESTYPE XRC_DRAWABLE;
+/* only exported for Nvidia legacy. This really shouldn't be used by drivers */
+extern _X_EXPORT RESTYPE XRC_DRAWABLE;
+
 extern RESTYPE XRT_WINDOW;
 extern RESTYPE XRT_PIXMAP;
 extern RESTYPE XRT_GC;
