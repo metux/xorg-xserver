@@ -693,6 +693,15 @@ Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
 _X_EXPORT /* just for Nvidia legacy */
 void RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
 
+/*
+ * Retrieve CRTCs current transform
+ *
+ * @param crtc    the CRTC to query
+ * @return        pointer to CRTCs current transform
+ */
+_X_EXPORT /* just for Nvidia legacy */
+RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*

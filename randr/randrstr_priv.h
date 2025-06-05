@@ -191,14 +191,6 @@ void RRCrtcSetTransformSupport(RRCrtcPtr crtc, Bool transforms);
 void RRDeliverCrtcEvent(ClientPtr pClient, WindowPtr pWin, RRCrtcPtr crtc);
 
 /*
- * Retrieve CRTCs current transform
- *
- * @param crtc    the CRTC to query
- * @return        pointer to CRTCs current transform
- */
-RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
-
-/*
  * Destroy a Crtc at shutdown
  *
  * @param crtc    the CRTC to destroy
