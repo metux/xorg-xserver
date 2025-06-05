@@ -82,6 +82,7 @@ int TellGainedMap(WindowPtr pwin, void *value);
 
 int CopyColormapAndFree(Colormap mid, ColormapPtr pSrc, int client);
 
+_X_EXPORT /* only for internal wfb module, as long as it's still a shared object */
 int AllocColor(ColormapPtr pmap, unsigned short *pred, unsigned short *pgreen,
                unsigned short *pblue, Pixel *pPix, int client );
 
