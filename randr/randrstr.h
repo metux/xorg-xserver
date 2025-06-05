@@ -741,6 +741,13 @@ void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
 _X_EXPORT /* just for Nvidia legacy */
 Bool RRClientKnowsRates(ClientPtr pClient);
 
+/*
+ * Set filter on transform structure
+ */
+_X_EXPORT /* just for Nvidia legacy */
+Bool RRTransformSetFilter(RRTransformPtr dst, PictFilterPtr filter,
+                          xFixed *params, int nparams, int width, int height);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*
