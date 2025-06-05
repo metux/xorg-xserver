@@ -608,7 +608,8 @@ int DeliverEventsToWindow(DeviceIntPtr pDev, WindowPtr pWindow, xEventPtr pEvent
 /*
  * @brief callback when root window has is finalized
  */
-extern CallbackListPtr RootWindowFinalizeCallback;
+/* only exported temporariy for Nvidia legacy */
+extern _X_EXPORT CallbackListPtr RootWindowFinalizeCallback;
 
 /*
  * @brief do post actions necessary when window got a new cursor
