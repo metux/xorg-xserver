@@ -702,6 +702,14 @@ void RRCrtcGetScanoutSize(RRCrtcPtr crtc, int *width, int *height);
 _X_EXPORT /* just for Nvidia legacy */
 RRTransformPtr RRCrtcGetTransform(RRCrtcPtr crtc);
 
+/*
+ * Detach and free a scanout pixmap
+ *
+ * @param crtc    the CRTC to act on
+ */
+_X_EXPORT /* just for Nvidia legacy */
+void RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*

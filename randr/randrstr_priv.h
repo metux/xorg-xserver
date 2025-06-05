@@ -209,13 +209,6 @@ Bool RRCrtcInit(void);
 void RRCrtcInitErrorValue(void);
 
 /*
- * Detach and free a scanout pixmap
- *
- * @param crtc    the CRTC to act on
- */
-void RRCrtcDetachScanoutPixmap(RRCrtcPtr crtc);
-
-/*
  * Handler for the ReplaceScanoutPixmap screen proc
  * Should not be called directly.
  */
