@@ -722,6 +722,15 @@ _X_EXPORT /* just for Nvidia legacy */
 RRProviderPtr RRProviderCreate(ScreenPtr pScreen, const char *name,
                                int nameLen);
 
+/*
+ * Set provider capabilities field
+ *
+ * @param provider      the provider whose capabilities are to be set
+ * @param capabilities  the new capabilities
+ */
+_X_EXPORT /* just for Nvidia legacy */
+void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
+
 #endif                          /* _RANDRSTR_H_ */
 
 /*

@@ -382,14 +382,6 @@ Bool RRProviderInit(void);
 void RRProviderInitErrorValue(void);
 
 /*
- * Set provider capabilities field
- *
- * @param provider      the provider whose capabilities are to be set
- * @param capabilities  the new capabilities
- */
-void RRProviderSetCapabilities(RRProviderPtr provider, uint32_t capabilities);
-
-/*
  * Destroy a provider and free it's memory
  *
  * @param provider  the provider to be destroyed
